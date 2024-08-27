@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ApplicantModel;
-use App\models\AgentModel;
+use App\Models\AgentModel;
 use App\Models\ClientModel;
 use App\Controllers\NotifController;
 
