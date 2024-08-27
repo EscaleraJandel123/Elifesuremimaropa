@@ -11,7 +11,7 @@
 			<div class="row align-items-center">
 				<div class="col-lg-7">
 					<div class="single-banner-three-content">
-						<h1>Securing Your Tomorrow, asdddddddddd. </h1>
+						<h1>Securing Your Tomorrow, Today. </h1>
 						<p>Allianz PNB Agency is a leading name in the insurance industry, providing services since its
 							inception.</p>
 						<div class="banner-btn d-flex align-items-center">
