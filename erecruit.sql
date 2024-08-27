@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 27, 2024 at 02:50 PM
+-- Generation Time: Aug 27, 2024 at 04:52 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -204,24 +204,24 @@ CREATE TABLE `aonff` (
   `id` int NOT NULL,
   `applicant_id` int DEFAULT NULL,
   `app_aonff_token` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `place` varchar(100) NOT NULL,
-  `reason` varchar(255) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `place` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `reason` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `day` int DEFAULT NULL,
-  `witness_place` varchar(100) NOT NULL,
-  `month` varchar(100) NOT NULL,
-  `year` varchar(100) NOT NULL,
-  `affiant` varchar(255) DEFAULT NULL,
+  `witness_place` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `month` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `year` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `affiant` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `ctc_no` int DEFAULT NULL,
   `ctc_issue_date` date DEFAULT NULL,
-  `ctc_issue_place` varchar(255) DEFAULT NULL,
+  `ctc_issue_place` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `sworn_day` int DEFAULT NULL,
-  `sworn_month` varchar(100) NOT NULL,
-  `sworn_year` varchar(100) NOT NULL,
-  `sworn_place` varchar(100) NOT NULL,
+  `sworn_month` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `sworn_year` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `sworn_place` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `aonff`
@@ -537,61 +537,61 @@ CREATE TABLE `gli` (
   `id` int NOT NULL,
   `applicant_id` int DEFAULT NULL,
   `app_gli_token` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `lastName` varchar(255) DEFAULT NULL,
-  `firstName` varchar(255) DEFAULT NULL,
-  `middleName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `firstName` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `middleName` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `dateOfBirth` date DEFAULT NULL,
-  `occupation` varchar(255) DEFAULT NULL,
-  `companyName` varchar(255) DEFAULT NULL,
-  `businessNature` varchar(255) DEFAULT NULL,
-  `sex` varchar(255) NOT NULL,
-  `civilStatus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `nationality` varchar(255) DEFAULT NULL,
-  `residenceAddress` varchar(255) DEFAULT NULL,
+  `occupation` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `companyName` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `businessNature` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `sex` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `civilStatus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `residenceAddress` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `residenceTelephone` int DEFAULT NULL,
-  `businessAddress` varchar(255) DEFAULT NULL,
+  `businessAddress` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `businessTelephone` int DEFAULT NULL,
-  `firstName1` varchar(255) DEFAULT NULL,
-  `mi1` varchar(255) DEFAULT NULL,
-  `lastName1` varchar(255) DEFAULT NULL,
+  `firstName1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mi1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastName1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `month1` int DEFAULT NULL,
   `day1` int DEFAULT NULL,
   `year1` int DEFAULT NULL,
-  `relationship1` varchar(255) DEFAULT NULL,
-  `remarks1` varchar(255) DEFAULT NULL,
-  `firstName2` varchar(255) DEFAULT NULL,
-  `mi2` varchar(255) DEFAULT NULL,
-  `lastName2` varchar(255) DEFAULT NULL,
+  `relationship1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `remarks1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `firstName2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mi2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastName2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `month2` int DEFAULT NULL,
   `day2` int DEFAULT NULL,
   `year2` int DEFAULT NULL,
-  `relationship2` varchar(255) DEFAULT NULL,
-  `remarks2` varchar(255) DEFAULT NULL,
-  `firstName3` varchar(255) DEFAULT NULL,
-  `mi3` varchar(255) DEFAULT NULL,
-  `lastName3` varchar(255) DEFAULT NULL,
+  `relationship2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `remarks2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `firstName3` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mi3` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastName3` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `month3` int DEFAULT NULL,
   `day3` int DEFAULT NULL,
   `year3` int DEFAULT NULL,
-  `relationship3` varchar(255) DEFAULT NULL,
-  `remarks3` varchar(255) DEFAULT NULL,
-  `firstName4` varchar(255) DEFAULT NULL,
-  `mi4` varchar(255) DEFAULT NULL,
-  `lastName4` varchar(255) DEFAULT NULL,
+  `relationship3` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `remarks3` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `firstName4` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mi4` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `lastName4` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `month4` int DEFAULT NULL,
   `day4` int DEFAULT NULL,
   `year4` int DEFAULT NULL,
-  `relationship4` varchar(255) DEFAULT NULL,
-  `remarks4` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `trusteeMinorBeneficiary` varchar(255) DEFAULT NULL,
-  `place` varchar(255) DEFAULT NULL,
+  `relationship4` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `remarks4` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `trusteeMinorBeneficiary` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `place` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `day` int DEFAULT NULL,
   `month` int DEFAULT NULL,
   `year` int DEFAULT NULL,
-  `applicantSignature` varchar(255) DEFAULT NULL,
+  `applicantSignature` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gli`
@@ -773,11 +773,11 @@ INSERT INTO `plan` (`id`, `plan_name`, `brief_description`, `description`, `pric
 
 CREATE TABLE `schedules` (
   `id` int NOT NULL,
-  `title` text NOT NULL,
-  `description` text NOT NULL,
+  `title` text COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
   `start_datetime` datetime NOT NULL,
   `end_datetime` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `schedules`
@@ -796,12 +796,12 @@ CREATE TABLE `sou` (
   `id` int NOT NULL,
   `applicant_id` int DEFAULT NULL,
   `app_sou_token` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `position` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `printedname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `position` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `printedname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sou`
