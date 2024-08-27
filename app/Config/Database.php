@@ -27,9 +27,9 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'erecruit',
+        'username'     => 'u311273531_elifesure',
+        'password'     => '@Elifesure123',
+        'database'     => 'u311273531_elifesure',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
