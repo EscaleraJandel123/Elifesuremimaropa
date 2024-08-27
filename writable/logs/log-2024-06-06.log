@@ -1,0 +1,419 @@
+CRITICAL - 2024-06-06 00:15:04 --> Trying to access array offset on value of type null
+in APPPATH\Views\Admin\Forms\details.php on line 836.
+ 1 APPPATH\Views\Admin\Forms\details.php(836): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details.php', 836)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Forms/details', [], true)
+ 5 APPPATH\Controllers\AdminController.php(249): view('Admin/Forms/details', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('d000fd7c8315f1964e7e4a6e755daed0bd8ee44ef37d278597')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 00:15:09 --> Trying to access array offset on value of type null
+in APPPATH\Views\Admin\Forms\details.php on line 836.
+ 1 APPPATH\Views\Admin\Forms\details.php(836): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details.php', 836)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Forms/details', [], true)
+ 5 APPPATH\Controllers\AdminController.php(249): view('Admin/Forms/details', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('6ac375885b352b7cc1555d5f36398a6a7e4f44e8d5a2a0d7a6')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 00:19:43 --> Trying to access array offset on value of type null
+in APPPATH\Views\Admin\Forms\details.php on line 836.
+ 1 APPPATH\Views\Admin\Forms\details.php(836): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details.php', 836)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Forms/details', [], true)
+ 5 APPPATH\Controllers\AdminController.php(249): view('Admin/Forms/details', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('d000fd7c8315f1964e7e4a6e755daed0bd8ee44ef37d278597')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 00:21:01 --> Trying to access array offset on value of type null
+in APPPATH\Views\Admin\Forms\details2.php on line 652.
+ 1 APPPATH\Views\Admin\Forms\details2.php(652): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details2.php', 652)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details2.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Forms/details2', [], true)
+ 5 APPPATH\Controllers\AdminController.php(256): view('Admin/Forms/details2', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm2('d000fd7c8315f1964e7e4a6e755daed0bd8ee44ef37d278597')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 00:22:45 --> Trying to access array offset on value of type null
+in APPPATH\Views\Admin\Forms\details4.php on line 291.
+ 1 APPPATH\Views\Admin\Forms\details4.php(291): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details4.php', 291)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\Forms\\details4.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/Forms/details4', [], true)
+ 5 APPPATH\Controllers\AdminController.php(270): view('Admin/Forms/details4', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm4('10b3ff25d1669d3a24983032f3994cd60a0cd7b99deb8e849e')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:10:36 --> Trying to access array offset on value of type null
+in APPPATH\Views\Admin\applicantprofile.php on line 97.
+ 1 APPPATH\Views\Admin\applicantprofile.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\CapstoneSystem\\app\\Views\\Admin\\applicantprofile.php', 97)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\applicantprofile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/applicantprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(87): view('Admin/applicantprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->applicantprofile('8d3f2ec598d606580041f50bb888d5d3498790f542ea4c7ed8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:14:00 --> Undefined array key "user"
+in APPPATH\Controllers\ProfileController.php on line 99.
+ 1 APPPATH\Controllers\ProfileController.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user"', 'C:\\CapstoneSystem\\app\\Controllers\\ProfileController.php', 99)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->applicantprofile('8d3f2ec598d606580041f50bb888d5d3498790f542ea4c7ed8')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:17:15 --> Undefined variable $data
+in APPPATH\Controllers\ProfileController.php on line 88.
+ 1 APPPATH\Controllers\ProfileController.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\CapstoneSystem\\app\\Controllers\\ProfileController.php', 88)
+ 2 APPPATH\Controllers\ProfileController.php(83): App\Controllers\ProfileController->files()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->applicantprofile('10b3ff25d1669d3a24983032f3994cd60a0cd7b99deb8e849e')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:18:21 --> Too few arguments to function App\Controllers\ProfileController::files(), 0 passed in C:\CapstoneSystem\app\Controllers\ProfileController.php on line 83 and exactly 1 expected
+in APPPATH\Controllers\ProfileController.php on line 86.
+ 1 APPPATH\Controllers\ProfileController.php(83): App\Controllers\ProfileController->files()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->applicantprofile('10b3ff25d1669d3a24983032f3994cd60a0cd7b99deb8e849e')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:27:25 --> Undefined variable $applicant
+in APPPATH\Views\Admin\agentprofile.php on line 259.
+ 1 APPPATH\Views\Admin\agentprofile.php(259): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $applicant', 'C:\\CapstoneSystem\\app\\Views\\Admin\\agentprofile.php', 259)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\agentprofile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/agentprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(50): view('Admin/agentprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->agentprofile('eee083ba96efcbabad43c418f3282b73db93c7ec59b481486e')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:31:57 --> Undefined array key "applicant"
+in APPPATH\Controllers\ProfileController.php on line 94.
+ 1 APPPATH\Controllers\ProfileController.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "applicant"', 'C:\\CapstoneSystem\\app\\Controllers\\ProfileController.php', 94)
+ 2 APPPATH\Controllers\ProfileController.php(48): App\Controllers\ProfileController->files([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->agentprofile('d000fd7c8315f1964e7e4a6e755daed0bd8ee44ef37d278597')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-06-06 01:32:51 --> Undefined array key "user"
+in APPPATH\Controllers\ProfileController.php on line 94.
+ 1 APPPATH\Controllers\ProfileController.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user"', 'C:\\CapstoneSystem\\app\\Controllers\\ProfileController.php', 94)
+ 2 APPPATH\Controllers\ProfileController.php(48): App\Controllers\ProfileController->files([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProfileController->agentprofile('d000fd7c8315f1964e7e4a6e755daed0bd8ee44ef37d278597')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:53:48 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(262): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm3('94966b01b9092ac...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 15:53:48 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(262): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm3('94966b01b9092aca3a4961544981fa4a2c4ebc85bfe14e4812')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:55:48 --> mysqli_sql_exception: Table 'erecruit.users' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(196): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(563): CodeIgniter\Model->doFind(true, '92')
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(241): CodeIgniter\BaseModel->find('92')
+#7 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(141): App\Controllers\AdminController->getData()
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->formsTable('ViewAppForm')
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-06-06 15:55:48 --> Table 'erecruit.users' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`id` = :users.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(196): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(563): CodeIgniter\Model->doFind(true, '92')
+ 4 APPPATH\Controllers\AdminController.php(241): CodeIgniter\BaseModel->find('92')
+ 5 APPPATH\Controllers\AdminController.php(141): App\Controllers\AdminController->getData()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->formsTable('ViewAppForm')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:55:50 --> mysqli_sql_exception: Table 'erecruit.users' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(196): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(563): CodeIgniter\Model->doFind(true, '92')
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(241): CodeIgniter\BaseModel->find('92')
+#7 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(134): App\Controllers\AdminController->getData()
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->Forms()
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-06-06 15:55:50 --> Table 'erecruit.users' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`id` = :users.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(196): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(563): CodeIgniter\Model->doFind(true, '92')
+ 4 APPPATH\Controllers\AdminController.php(241): CodeIgniter\BaseModel->find('92')
+ 5 APPPATH\Controllers\AdminController.php(134): App\Controllers\AdminController->getData()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->Forms()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:56:53 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 15:56:53 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:57:07 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(262): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm3('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 15:57:07 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(262): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm3('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:57:30 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(262): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm3('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 15:57:30 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(262): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm3('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:57:39 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 15:57:39 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 15:59:20 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 15:59:20 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 16:00:04 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 16:00:04 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-06-06 16:00:06 --> mysqli_sql_exception: Table 'erecruit.e-signature' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec9...')
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 16:00:06 --> Table 'erecruit.e-signature' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `e-signature`
+WHERE `user_token` = :user_token:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(248): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewAppForm('67317351b248ec97b623a04d470c8cfe8ddf2ea8f637936ef8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')

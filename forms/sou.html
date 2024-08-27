@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Size</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Narrow';
+            /* background-color: #f0f0f0; */
+        }
+
+        .page {
+            width: 210mm;
+            /* A4 width */
+            /* height: 297mm; */
+            /* A4 height */
+            margin: 20px auto;
+            /* Centered on the page */
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Adding a shadow for visual effect */
+            padding: 30px;
+            /* Add padding to avoid content touching the edges */
+            box-sizing: border-box;
+            /* Include padding and border in the element's total width and height */
+            position: relative;
+        }
+
+        /* Add additional styles for your content */
+        .content {
+            /* Example styles */
+            color: #333;
+            line-height: 1.5;
+            position: relative;
+            align-items: center;
+            margin-left: 0.7in;
+            margin-right: 0.3in;
+
+        }
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .line {
+            /* display: flex; */
+            justify-content: space-between;
+            font-size: 9pt;
+            padding-bottom: 10px;
+            /* background-color: #e3eaf1; */
+        }
+
+        .line strong {
+            background-color: #002161;
+            color: #ffffff;
+            padding: 5px;
+            padding-right: 50px;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .logo {
+            color: #327bbe;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .educationaltable input[type="text"] {
+            border: none;
+            outline: none;
+            width: 98%;
+            /* background-color: #333; */
+            /* text-align: center; */
+            /* justify-content: center; */
+            font-size: 9pt;
+        }
+
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+
+        }
+
+        .educationaltable,
+        .educationaltable,
+        .recentemployertable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .educationaltable th,
+        .employmenthistorytable th,
+        .recentemployertable th,
+        .characterreftable th {
+            color: #002161;
+        }
+
+        .educationaltable td:first-child {
+            width: 120px;
+        }
+
+
+        .employmenthistorytable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .topdown {
+            justify-content: center;
+            text-align: center;
+            font-size: 11pt;
+        }
+
+        .laman {
+            font-family: 'Arial';
+            font-size: medium;
+            text-align: justify;
+        }
+        .lo{
+            float:right
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page" style="text-align: justify;">
+        <div class="content" >
+            <div class="head">
+                <div class="Internal">
+                    <h6 style="text-align: center;">Internal</h6>
+                </div>
+                <div class="lo">
+                    <!-- <h1 class="logo">Allianz</h1> -->
+                    <img src="logo.png" alt="">
+                </div>
+            </div>
+            <div class="laman">
+                <br><br><br>
+                <div class="topdown">
+                    <strong style="font-size: 125%;">Statement of Undertaking</strong><br>
+                    <strong style="font-size: 125%;">Submission of Hard Copies of Application Forms</strong><br><br>
+                </div>
+                <div style="text-align: justify; font-size: 11.5pt;">
+                    <p style="text-indent: 0.5in;">I, <input style="width: 200px;" type="text"
+                            name="" id="">(Name) in my capacity as<input style="width: 130px;" type="text"
+                            name="" id="">(Intm. Position)
+                            at ALLIANZ PNB LIFE INSURANCE, INC. (the, “Company”), hereby undertake the responsibility
+                            of ensuring the timely submission of hard copies of the application forms of the clients as
+                            required by Insurance Commission Circular Letter (IC CL) No. 2013-33 (also known as the,
+                            “Market Conduct Guidelines”) within the period set by the Company.
+                            duly sworn to in accordance with law, hereby depose and say:
+                            </p>
+
+                    <p style="text-indent: 0.5in;">I understand that any delays in submitting the hard copies of the application forms could
+                        potentially impact the overall process and the experience of our clients. Therefore, I pledge to
+                        take all necessary actions to ensure that the hard copies of the application forms are delivered
+                        within the specified timeframe.
+                    </p>
+                    <p style="text-indent: 0.5in;">Furthermore, I acknowledge and fully understand that any untoward incident or negative
+                        consequences that may arise as a result of unsubmitted or delayed submission of the hard copies
+                        of application forms shall be my responsibility. Accordingly, I commit to bearing any costs,
+                        liabilities, or damages that may result from such incidents.
+                    </p>
+                    <p style="text-indent: 0.5in;">I am fully committed to maintaining clear communication, monitoring the progress, and
+                        addressing any potential obstacles that may arise during the submission process. I will keep the
+                        Company informed of the status of each submission and promptly address any concerns or
+                        queries.
+                    </p>
+                    <p style="text-indent: 0.5in;">By signing this Statement of Undertaking, I affirm my dedication to upholding the standards of
+                        professionalism, timeliness, and reliability in all my interactions with the Company. I understand
+                        the importance of this commitment and is fully prepared to fulfill my responsibilities as outlined
+                        in this undertaking.
+                    </p>
+                </div>
+                <br>
+
+                <div>
+                    <div style="margin-top: 10px; text-align: left; float: left;">
+                        <input type="text" name="applicantName" id="applicantName" style="margin-right: 350px;"><br>
+                        Signature over Printed Name<br>
+                        Date of Signature:
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

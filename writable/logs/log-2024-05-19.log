@@ -1,0 +1,890 @@
+CRITICAL - 2024-05-19 00:31:22 --> Undefined variable $applicants
+in APPPATH\Views\Admin\map.php on line 146.
+ 1 APPPATH\Views\Admin\map.php(146): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $applicants', 'C:\\CapstoneSystem\\app\\Views\\Admin\\map.php', 146)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\map.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/map', [], true)
+ 5 APPPATH\Controllers\MapController.php(17): view('Admin/map', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\MapController->map()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MapController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+CRITICAL - 2024-05-19 00:31:36 --> Undefined variable $applicants
+in APPPATH\Views\Admin\map.php on line 146.
+ 1 APPPATH\Views\Admin\map.php(146): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $applicants', 'C:\\CapstoneSystem\\app\\Views\\Admin\\map.php', 146)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\CapstoneSystem\\app\\Views\\Admin\\map.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('Admin/map', [], true)
+ 5 APPPATH\Controllers\MapController.php(17): view('Admin/map', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\MapController->map()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MapController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:12:18 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `agent_i...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `agent_i...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `agent_i...')
+#3 C:\laragon\www\CapstoneSystem\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `agent_i...', Array, false)
+#4 C:\laragon\www\CapstoneSystem\system\Model.php(871): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(90): CodeIgniter\Model->__call('get', Array)
+#6 C:\laragon\www\CapstoneSystem\app\Controllers\AdminController.php(59): App\Controllers\AdminController->topcommi()
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\AdminController->AdDash()
+#8 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-19 21:12:18 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `agent_id`, SUM(commi) AS total_commissions
+FROM `commissions`
+GROUP BY `agent_id`
+ORDER BY `total_commissions` DESC
+ LIMIT 3', [], false)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\AdminController.php(90): CodeIgniter\Model->__call('get', [])
+ 4 APPPATH\Controllers\AdminController.php(59): App\Controllers\AdminController->topcommi()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->AdDash()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:13:01 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:13:01 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:13:01 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:13:01 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:25:11 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:25:11 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:25:11 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:25:11 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:26:09 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:26:09 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:26:09 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:26:09 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:26:57 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:26:57 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:26:57 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:26:57 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:29:04 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:29:04 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:29:05 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:29:05 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:31:38 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:31:38 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:31:38 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:31:38 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:34:31 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:34:31 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:34:31 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:34:31 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:34:58 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:34:58 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:34:58 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:34:58 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:37:07 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:37:07 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:37:07 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:37:07 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:49:46 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:49:46 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 21:49:46 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 21:49:46 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:00:26 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:00:26 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:00:26 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:00:26 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:02:27 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:02:27 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:02:27 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:02:27 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:02:49 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:02:49 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:02:49 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:02:49 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:12:36 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:12:36 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:12:36 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:12:36 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:13:14 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:13:14 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:13:14 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:13:14 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:19:06 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:19:06 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:19:06 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:19:06 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:41:24 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:41:24 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 22:41:24 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 22:41:24 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 23:01:04 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 23:01:04 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 138 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 23:01:04 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 23:01:04 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 138 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 23:03:16 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(cr...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(cr...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(cr...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(cr...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 23:03:16 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC')
+ 2 APPPATH\Controllers\ChartsController.php(41): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getMonthlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
+ERROR - 2024-05-19 23:03:16 --> mysqli_sql_exception: Table 'erecruit.commissions' doesn't exist in C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\CapstoneSystem\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(cre...', 0)
+#1 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(cre...')
+#2 C:\laragon\www\CapstoneSystem\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(cre...')
+#3 C:\laragon\www\CapstoneSystem\system\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(cre...')
+#4 C:\laragon\www\CapstoneSystem\app\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', Array)
+#5 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+#6 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+#7 C:\laragon\www\CapstoneSystem\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\CapstoneSystem\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\CapstoneSystem\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-05-19 23:03:16 --> Table 'erecruit.commissions' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Model.php(867): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(created_at) AS year, SUM(commi) AS total_commission FROM commissions WHERE agent_id = 133 GROUP BY YEAR(created_at) ORDER BY year ASC')
+ 2 APPPATH\Controllers\ChartsController.php(50): CodeIgniter\Model->__call('query', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChartsController->getYearlyCommissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartsController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CapstoneSystem\\public\\index.php')
