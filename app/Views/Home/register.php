@@ -77,7 +77,6 @@
                     </div>
                   </div>
 
-
                   <div class="col-md-6 col-6">
                     <label for="yourUsername" class="form-label">Username</label>
                     <div class="input-group has-validation">
@@ -87,12 +86,11 @@
                   </div>
 
                   <div class="col-md-6 col-6">
-                    <label for="number" class="form-label">Philippines Number</label>
+                    <label for="number" class="form-label">Number</label>
                     <input type="tel" name="number" class="form-control" id="number" pattern="^(\+639|09)\d{9}$"
                       required>
                     <div class="invalid-feedback">Please enter a valid Philippine number!</div>
                   </div>
-
 
                   <div class="col-md-12 col-12">
                     <label for="yourEmail" class="form-label">Your Email</label>
