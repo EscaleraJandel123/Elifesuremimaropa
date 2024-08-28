@@ -91,9 +91,6 @@ class HomepageController extends BaseController
         $usertoken = bin2hex(random_bytes(50));
         if ($this->validate($rules)) {
             $userModel = new UserModel();
-            $applicantModel = new ApplicantModel();
-            $form1 = new Form1Model();
-
             $agent = $this->agent->where('AgentCode', $ref)->findAll();
             if ($agent) {
                 $userData = [
@@ -139,12 +136,13 @@ class HomepageController extends BaseController
             return redirect()->to('/login')->with('success', 'Account Registered please be patient. An email has been sent to your registered email address.');
 
         } else {
+            $validation = \Config\Services::validation();
+            $errorList = $validation->listErrors();
+    
             if ($this->request->getVar('role') === 'client') {
-                return redirect()->to('/ClientRegister')->with('error', 'Invalid Input');
+                return redirect()->to('/ClientRegister')->with('error', $errorList);
             } else {
-                $error['validation'] = $this->validator;
-                // return view('Home/register', $data);
-                return redirect()->to('/register/' . $ref)->with('error', $error);
+                return redirect()->to('/register/' . $ref)->with('error', $errorList);
             }
         }
     }
