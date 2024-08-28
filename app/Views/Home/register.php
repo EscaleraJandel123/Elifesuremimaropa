@@ -112,7 +112,6 @@
                     <div class="invalid-feedback">Please confirm your password!</div>
                   </div>
 
-
                   <div class="col-md-12">
                     <div class="form-check">
                       <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>

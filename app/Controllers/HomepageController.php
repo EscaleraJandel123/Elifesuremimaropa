@@ -146,6 +146,7 @@ class HomepageController extends BaseController
                 $r = 'admin';
                 // $this->notifcont->newnotif($userId, $link, $message, $r);
                 // $this->confirm->save($applicantData);
+                var_dump($applicantData);
             }
             $emailSubject = "Account Registration Confirmation";
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
