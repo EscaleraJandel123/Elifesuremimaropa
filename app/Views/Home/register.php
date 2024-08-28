@@ -88,7 +88,7 @@
 
                   <div class="col-md-6 col-6">
                     <label for="number" class="form-label">Number</label>
-                    <input type="tel" name="number" class="form-control" id="number" pattern="^(\+639|09)\d{9}$"
+                    <input type="number" name="number" class="form-control" id="number" pattern="^(\+639|09)\d{9}$"
                       required>
                     <div class="invalid-feedback">Please enter a valid number!</div>
                   </div>
