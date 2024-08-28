@@ -101,7 +101,7 @@
                   <div class="col-md-6 col-6">
                     <label for="yourPassword" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" id="yourPassword"
-                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}" required>
+                       required>
                     <div class="invalid-feedback">Password must be at least 8 characters long and include an uppercase
                       letter, a lowercase letter, a number, and a special character.</div>
                   </div>
