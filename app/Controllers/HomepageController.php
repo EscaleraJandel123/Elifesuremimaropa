@@ -142,9 +142,9 @@ class HomepageController extends BaseController
             if ($this->request->getVar('role') === 'client') {
                 return redirect()->to('/ClientRegister')->with('error', 'Invalid Input');
             } else {
-                // $data['validation'] = $this->validator;
+                $error['validation'] = $this->validator;
                 // return view('Home/register', $data);
-                return redirect()->to('/register/' . $ref)->with('error', 'Invalid Input');
+                return redirect()->to('/register/' . $ref)->with('error', $error);
             }
         }
     }
