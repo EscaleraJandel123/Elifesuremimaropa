@@ -83,9 +83,10 @@ class HomepageController extends BaseController
         $rules = [
             'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username,id]',
             'email' => 'required|min_length[6]|max_length[100]|valid_email|is_unique[users.email,id]',
-            'password' => 'required|min_length[8]|max_length[50]|regex_match[/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])]/',
+            'password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
             'confirmpassword' => 'required|matches[password]',
         ];
+        
         
         // $verificationToken = bin2hex(random_bytes(50));
         $usertoken = bin2hex(random_bytes(50));
