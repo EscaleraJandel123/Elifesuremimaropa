@@ -88,7 +88,7 @@ class HomepageController extends BaseController
         // ];
 
         $rules = [
-            'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username,id]',
+            'username' => 'required|min_length[8]|max_length[50]|is_unique[users.username,id]',
             'email' => 'required|min_length[6]|max_length[100]|valid_email|is_unique[users.email,id]',
             'password' => [
                 'label' => 'Password',
