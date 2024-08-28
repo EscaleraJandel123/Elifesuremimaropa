@@ -22,7 +22,7 @@
 
             <div class="d-flex justify-content-center py-4">
               <a href="/" class="logo d-flex align-items-center w-auto">
-                <img src="<?= base_url()?>req/allianzlogo1.png" alt="">
+                <img src="<?= base_url() ?>req/allianzlogo1.png" alt="">
                 <span class="d-none d-lg-block">ALLIANZ PNB</span>
               </a>
             </div><!-- End Logo -->
@@ -85,10 +85,12 @@
                   </div>
 
                   <div class="col-md-6 col-6">
-                    <label for="number" class="form-label">Number</label>
-                    <input type="text" name="number" class="form-control " id="number" required>
-                    <div class="invalid-feedback">Please enter a valid number!</div>
+                    <label for="number" class="form-label">Philippines Number</label>
+                    <input type="tel" name="number" class="form-control" id="number" pattern="^(\+639|09)\d{9}$"
+                      required>
+                    <div class="invalid-feedback">Please enter a valid Philippine number!</div>
                   </div>
+
 
                   <div class="col-md-12 col-12">
                     <label for="yourEmail" class="form-label">Your Email</label>
@@ -111,7 +113,8 @@
                   <div class="col-md-12">
                     <div class="form-check">
                       <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="/terms">terms and
+                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="/terms">terms
+                          and
                           conditions</a></label>
                       <div class="invalid-feedback">You must agree before submitting.</div>
                     </div>
