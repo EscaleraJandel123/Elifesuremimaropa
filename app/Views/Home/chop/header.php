@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="applicant/assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">ALLIANZ PNB</span>
+        <span class="d-none d-lg-block">ALLIANZ PNB MIMAROPA</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
