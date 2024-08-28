@@ -147,6 +147,17 @@
   function confirmSubmit() {
     return confirm("Are you sure you want Register?");
   }
+  document.getElementById('confirmPassword').addEventListener('input', function () {
+    const password = document.getElementById('yourPassword').value;
+    const confirmPassword = this.value;
+
+    if (password !== confirmPassword) {
+      this.setCustomValidity('Passwords do not match!');
+    } else {
+      this.setCustomValidity('');
+    }
+  });
+
 </script>
 </body>
 
