@@ -42,7 +42,7 @@
                     <?= session()->getFlashdata('success') ?>
                   </div>
                 <?php endif; ?>
-                
+
                 <div class="pt-4 pb-2">
                   <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                   <p class="text-center">Enter your personal details to create account</p>
@@ -88,8 +88,8 @@
 
                   <div class="col-md-6 col-6">
                     <label for="number" class="form-label">Number</label>
-                    <input type="number" name="number" class="form-control" id="number" pattern="^(\+639|09)\d{9}$"
-                      required>
+                    <input type="tel" name="number" class="form-control" id="number" maxlength="11"
+                      pattern="^(\+639|09)\d{9}$" inputmode="numeric" required>
                     <div class="invalid-feedback">Please enter a valid number!</div>
                   </div>
 
