@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="<?=base_url()?>client/assets/css/style.css">
     <link rel="stylesheet" href="<?=base_url()?>client/assets/css/dark.css">
     <link rel="stylesheet" href="<?=base_url()?>client/assets/css/responsive.css">
-    <title>ALLIANZ PNB</title>
+    <title>MIMAROPA</title>
     <link rel="icon" type="image/png" href="<?= base_url(); ?>req/allianzlogo4.png">
     <!-- <style>
     body {
