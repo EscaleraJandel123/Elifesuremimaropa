@@ -83,24 +83,10 @@ class HomepageController extends BaseController
         $rules = [
             'username' => 'required|min_length[3]|max_length[50]|is_unique[users.username,id]',
             'email' => 'required|min_length[6]|max_length[100]|valid_email|is_unique[users.email,id]',
-            'password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#]).{8,}$/]',
-            'confirmpassword' => 'matches[password]',
+            'password' => 'required|min_length[8]|max_length[50]|regex_match[/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])]/',
+            'confirmpassword' => 'required|matches[password]',
         ];
-
-        // $rules = [
-        //     'username' => 'required|min_length[8]|max_length[50]|is_unique[users.username,id]',
-        //     'email' => 'required|min_length[6]|max_length[100]|valid_email|is_unique[users.email,id]',
-        //     'password' => [
-        //         'label' => 'Password',
-        //         'rules' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#]).{8,}$/]',
-        //         'errors' => [
-        //             'regex_match' => 'The {field} must be at least 8 characters long, and include at least one uppercase letter, one lowercase letter, one digit, and one special character.',
-        //         ],
-        //     ],
-        //     'confirmpassword' => 'required|matches[password]',
-        // ];
         
-
         // $verificationToken = bin2hex(random_bytes(50));
         $usertoken = bin2hex(random_bytes(50));
         if ($this->validate($rules)) {
@@ -144,9 +130,8 @@ class HomepageController extends BaseController
                 $link = 'confirmation';
                 $message = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
                 $r = 'admin';
-                // $this->notifcont->newnotif($userId, $link, $message, $r);
-                // $this->confirm->save($applicantData);
-                var_dump($applicantData);
+                $this->notifcont->newnotif($userId, $link, $message, $r);
+                $this->confirm->save($applicantData);
             }
             $emailSubject = "Account Registration Confirmation";
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
