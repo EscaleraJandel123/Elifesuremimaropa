@@ -54,7 +54,7 @@
                     <label for="lastname" class="form-label">Last Name</label>
                     <div class="input-group has-validation">
                       <input type="text" name="lastname" class="form-control " id="lastname" required>
-                      <div class="invalid-feedback">Please Enter Last Name!</div>
+                      <div class="invalid-feedback">Please Enter your Last Name!</div>
                     </div>
                   </div>
 
@@ -64,16 +64,16 @@
                     <label for="firstname" class="form-label">First Name</label>
                     <div class="input-group has-validation">
                       <input type="text" name="firstname" class="form-control " id="firstname" required>
-                      <div class="invalid-feedback">Please Enter First Name!</div>
+                      <div class="invalid-feedback">Please Enter your First Name!</div>
                     </div>
                   </div>
 
                   <div class="col-md-3 col-3">
                     <label for="middlename" class="form-label">Initial</label>
                     <div class="input-group has-validation">
-                      <input type="text" name="middlename" class="form-control" id="middlename" pattern="[A-Z]"
+                      <input type="text" name="middlename" class="form-control text-uppercase" id="middlename" pattern="[a-z]"
                         maxlength="1" required>
-                      <div class="invalid-feedback">Please enter a single uppercase letter for the middle initial!</div>
+                      <div class="invalid-feedback">Please enter your Middle Initial!</div>
                     </div>
                   </div>
 
@@ -89,7 +89,7 @@
                     <label for="number" class="form-label">Number</label>
                     <input type="tel" name="number" class="form-control" id="number" pattern="^(\+639|09)\d{9}$"
                       required>
-                    <div class="invalid-feedback">Please enter a valid Philippine number!</div>
+                    <div class="invalid-feedback">Please enter a valid number!</div>
                   </div>
 
                   <div class="col-md-12 col-12">
