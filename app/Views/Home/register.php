@@ -31,7 +31,7 @@
 
               <div class="card-body">
 
-                <?php if (session()->getFlashdata('error')): ?>
+                <!-- <?php if (session()->getFlashdata('error')): ?>
                   <div class="alert alert-danger mt-3 text-center" role="alert">
                     <?= session()->getFlashdata('error') ?>
                   </div>
@@ -40,7 +40,20 @@
                   <div class="alert alert-success mt-3 text-center" role="alert">
                     <?= session()->getFlashdata('success') ?>
                   </div>
-                <?php endif; ?>
+                <?php endif; ?> -->
+
+                <?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger mt-3" role="alert">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success mt-3" role="alert">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+<?php endif; ?>
+
 
                 <div class="pt-4 pb-2">
                   <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
