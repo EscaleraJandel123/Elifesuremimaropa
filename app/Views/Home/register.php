@@ -73,7 +73,7 @@
                     <div class="input-group has-validation">
                       <input type="text" name="middlename" class="form-control text-uppercase" id="middlename"
                         pattern="[A-Z]" maxlength="1" required>
-                      <div class="invalid-feedback">Please enter a single letter for the middle initial!</div>
+                      <div class="invalid-feedback">Please enter Middle Initial!</div>
                     </div>
                   </div>
 
