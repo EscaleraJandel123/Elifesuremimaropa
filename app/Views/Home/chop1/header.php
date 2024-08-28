@@ -63,7 +63,7 @@
 				<div class="main-responsive-menu">
 					<div class="logo">
 						<a href="/">
-							<h6 style="font-family: Arial Black; color: #013781; font-size: 8pt">ALLIANZ PNB LIFE INSURANCE MIMAROPA</h6>
+							<h6 style="font-family: Arial Black; color: #013781; font-size: 10pt">ALLIANZ PNB LIFE INSURANCE MIMAROPA</h6>
 						</a>
 					</div>
 				</div>
