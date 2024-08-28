@@ -492,12 +492,11 @@ class AdminController extends BaseController
         }
 
         // $verificationLink = site_url("login");
-        // $verificationLink = site_url("verify-email/{$verificationToken}");
-        // $emailSubject = 'Registration Confirmation';
-        // $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";
-        // $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
-        var_dump($data['applicant']['email']);
-        // return redirect()->to('/confirmation')->with('success', 'Acount Confirmed!');
+        $verificationLink = site_url("verify-email/{$verificationToken}");
+        $emailSubject = 'Registration Confirmation';
+        $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";
+        $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
+        return redirect()->to('/confirmation')->with('success', 'Acount Confirmed!');
     }
 
     public function deny($token)
