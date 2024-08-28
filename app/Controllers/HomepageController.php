@@ -127,12 +127,12 @@ class HomepageController extends BaseController
                 $link = 'confirmation';
                 $message = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
                 $r = 'admin';
-                // $this->notifcont->newnotif($userId, $link, $message, $r);
+                $this->notifcont->newnotif($userId, $link, $message, $r);
                 $this->confirm->save($applicantData);
             }
-            // $emailSubject = "Account Registration Confirmation";
-            // $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
-            // $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
+            $emailSubject = "Account Registration Confirmation";
+            $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
+            $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
             return redirect()->to('/login')->with('success', 'Account Registered please be patient. An email has been sent to your registered email address.');
 
         } else {
