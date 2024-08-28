@@ -31,29 +31,17 @@
 
               <div class="card-body">
 
-                <!-- <?php if (session()->getFlashdata('error')): ?>
-                  <div class="alert alert-danger mt-3 text-center" role="alert">
+                <?php if (session()->getFlashdata('error')): ?>
+                  <div class="alert alert-danger mt-3" role="alert">
                     <?= session()->getFlashdata('error') ?>
                   </div>
                 <?php endif; ?>
+
                 <?php if (session()->getFlashdata('success')): ?>
-                  <div class="alert alert-success mt-3 text-center" role="alert">
+                  <div class="alert alert-success mt-3" role="alert">
                     <?= session()->getFlashdata('success') ?>
                   </div>
-                <?php endif; ?> -->
-
-                <?php if (session()->getFlashdata('error')): ?>
-    <div class="alert alert-danger mt-3" role="alert">
-        <?= session()->getFlashdata('error') ?>
-    </div>
-<?php endif; ?>
-
-<?php if (session()->getFlashdata('success')): ?>
-    <div class="alert alert-success mt-3" role="alert">
-        <?= session()->getFlashdata('success') ?>
-    </div>
-<?php endif; ?>
-
+                <?php endif; ?>
 
                 <div class="pt-4 pb-2">
                   <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
@@ -84,8 +72,8 @@
                   <div class="col-md-3 col-3">
                     <label for="middlename" class="form-label">Initial</label>
                     <div class="input-group has-validation">
-                      <input type="text" name="middlename" class="form-control text-uppercase" id="middlename" pattern="[a-z]"
-                        maxlength="1" required>
+                      <input type="text" name="middlename" class="form-control text-uppercase" id="middlename"
+                        pattern="[a-z]" maxlength="1" required>
                       <div class="invalid-feedback">Please enter your Middle Initial!</div>
                     </div>
                   </div>
@@ -164,11 +152,11 @@
     const confirmPassword = this.value;
 
     if (password !== confirmPassword) {
-        this.setCustomValidity('Passwords do not match!');
+      this.setCustomValidity('Passwords do not match!');
     } else {
-        this.setCustomValidity('');
+      this.setCustomValidity('');
     }
-});
+  });
 
 </script>
 </body>
