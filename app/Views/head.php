@@ -4,7 +4,7 @@
     <meta name="description" content="">
     <meta name="author" content="Tooplate">
 
-    <title>ALLIANZ PNB</title>
+    <title>ALLIANZ PNB Mimaropa</title>
 
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
