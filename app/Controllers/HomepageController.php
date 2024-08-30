@@ -86,7 +86,7 @@ class HomepageController extends BaseController
             'password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
             'confirmpassword' => 'required|matches[password]',
         ];
-        
+
         // $verificationToken = bin2hex(random_bytes(50));
         $usertoken = bin2hex(random_bytes(50));
         if ($this->validate($rules)) {
@@ -138,7 +138,7 @@ class HomepageController extends BaseController
         } else {
             $validation = \Config\Services::validation();
             $errorList = $validation->listErrors();
-    
+
             if ($this->request->getVar('role') === 'client') {
                 return redirect()->to('/ClientRegister')->with('error', $errorList);
             } else {
@@ -278,7 +278,7 @@ class HomepageController extends BaseController
             $session->setFlashdata('error', 'Invalid email address.');
             return redirect()->to('/login');
         }
-        
+
         // Fetch the user from the database
         $user = $userModel->where('email', $email)->first();
 
@@ -371,7 +371,6 @@ class HomepageController extends BaseController
         helper(['form']);
         $rules = [
             'current_password' => 'required',
-            // 'new_password' => 'required|min_length[6]|max_length[50]',
             'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
             'confirm_new_password' => 'matches[new_password]',
         ];
@@ -379,7 +378,6 @@ class HomepageController extends BaseController
         if ($this->validate($rules)) {
             $session = session();
             $userId = $session->get('id');
-
             $userModel = new UserModel();
 
             // Get the current user data
@@ -392,14 +390,14 @@ class HomepageController extends BaseController
                 $userModel->update($userId, ['password' => $newPassword]);
                 return redirect()->to('/logout')->with('success', 'Password Updated');
             } else {
-                echo 'Current password is incorrect.';
+                return redirect()->back()->with('error', 'Current password is incorrect.');
             }
         } else {
-            $data['validation'] = $this->validator;
-            // echo view('Home/register', $data);
-            return redirect()->back()->with('error', $data);
+            $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
+            return redirect()->back()->with('error', $validationErrors);
         }
     }
+
 
     public function forgot()
     {
