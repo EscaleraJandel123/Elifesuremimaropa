@@ -311,42 +311,23 @@ class HomepageController extends BaseController
         $rules = [
             'current_password' => 'required',
             'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
-            'confirm_new_password' => 'matches[new password]',
+            'confirm_new_password' => 'matches[new_password]',
         ];
 
         // Check if form validation is correct
-        // if ($this->validate($rules)) {
-        //     $userModel = new UserModel();
-        //     $userData = $userModel->find($userId);
-
-        //     // Verify the current password
-        //     if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
-        //         // Passwords match, proceed to update the password
-        //         $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
-        //         $userModel->update($userId, ['password' => $newPassword]);
-        //         return redirect()->to('/logout')->with('success', 'Password Updated');
-        //     } else {
-        //         // Current password does not match
-        //         return redirect()->back()->with('error', 'Current password is incorrect.');
-        //     }
-        // } 
         if ($this->validate($rules)) {
-            $session = session();
-            $userId = $session->get('id');
-
             $userModel = new UserModel();
-
-            // Get the current user data
             $userData = $userModel->find($userId);
 
-            // Check if the entered current password matches the stored password
+            // Verify the current password
             if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
-                // Passwords match, update the password
+                // Passwords match, proceed to update the password
                 $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
                 $userModel->update($userId, ['password' => $newPassword]);
                 return redirect()->to('/logout')->with('success', 'Password Updated');
             } else {
-                echo 'Current password is incorrect.';
+                // Current password does not match
+                return redirect()->back()->with('error', 'Current password is incorrect.');
             }
         } 
         else {
