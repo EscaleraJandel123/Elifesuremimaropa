@@ -372,9 +372,9 @@ class HomepageController extends BaseController
         $userId = $session->get('id');
 
         $rules = [
-            'current_password' => 'required',
-            'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
-            'confirm_new_password' => 'matches[new_password]',
+            'current password' => 'required',
+            'new password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
+            'confirm new password' => 'matches[new_password]',
         ];
 
         // Check if form validation is correct
@@ -383,9 +383,9 @@ class HomepageController extends BaseController
             $userData = $userModel->find($userId);
 
             // Verify the current password
-            if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
+            if (password_verify($this->request->getVar('current password'), $userData['password'])) {
                 // Passwords match, proceed to update the password
-                $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
+                $newPassword = password_hash($this->request->getVar('new password'), PASSWORD_DEFAULT);
                 $userModel->update($userId, ['password' => $newPassword]);
                 return redirect()->to('/logout')->with('success', 'Password Updated');
             } else {
