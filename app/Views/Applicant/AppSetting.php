@@ -61,8 +61,13 @@
                     <!-- <h1 class="h2 mb-0">Settings</h1> -->
                 </div>
 
+                
+
+
                 <div class="row my-4">
                     <div class="col-lg-10 col-12">
+                        <div class="custom-block bg-white">
+
                         <!-- Add this section to display validation alerts -->
                 <?php if (session()->getFlashdata('error')): ?>
                     <div class="alert alert-danger mt-3 text-center" role="alert">
@@ -81,7 +86,7 @@
                         <?= session()->getFlashdata('warning') ?>
                     </div>
                 <?php endif; ?>
-                        <div class="custom-block bg-white">
+
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="profile-tab" data-bs-toggle="tab"
