@@ -315,27 +315,26 @@ class HomepageController extends BaseController
         ];
 
         // Check if form validation is correct
-        // if ($this->validate($rules)) {
-        //     $userModel = new UserModel();
-        //     $userData = $userModel->find($userId);
+        if ($this->validate($rules)) {
+            $userModel = new UserModel();
+            $userData = $userModel->find($userId);
 
-        //     // Verify the current password
-        //     if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
-        //         // Passwords match, proceed to update the password
-        //         $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
-        //         $userModel->update($userId, ['password' => $newPassword]);
-        //         return redirect()->to('/logout')->with('success', 'Password Updated');
-        //     } else {
-        //         // Current password does not match
-        //         return redirect()->back()->with('error', 'Current password is incorrect.');
-        //     }
-        // } 
-        // else {
-        //     // Validation failed
-        //     $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
-        //     return redirect()->back()->with('error', $validationErrors);
-        // }
-        echo $userId;
+            // Verify the current password
+            if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
+                // Passwords match, proceed to update the password
+                $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
+                $userModel->update($userId, ['password' => $newPassword]);
+                return redirect()->to('/logout')->with('success', 'Password Updated');
+            } else {
+                // Current password does not match
+                return redirect()->back()->with('error', 'Current password is incorrect.');
+            }
+        } 
+        else {
+            // Validation failed
+            $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
+            return redirect()->back()->with('error', $validationErrors);
+        }
     }
 
     public function forgot()
