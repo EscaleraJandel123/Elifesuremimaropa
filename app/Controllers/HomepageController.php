@@ -287,17 +287,19 @@ class HomepageController extends BaseController
             $userData = $userModel->find($userId);
 
             // Check if the entered current password matches the stored password
-            if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
-                // Passwords match, update the password
-                $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
-                $userModel->update($userId, ['password' => $newPassword]);
-                return redirect()->to('/logout')->with('success', 'Password Updated');
-            } else {
-                echo 'Current password is incorrect.';
-            }
-        } else {
-            $data['validation'] = $this->validator;
-            echo view('Home/register', $data);
+        //     if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
+        //         // Passwords match, update the password
+        //         $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
+        //         $userModel->update($userId, ['password' => $newPassword]);
+        //         return redirect()->to('/logout')->with('success', 'Password Updated');
+        //     } else {
+        //         echo 'Current password is incorrect.';
+        //     }
+        // } 
+        // else {
+        //     $data['validation'] = $this->validator;
+        //     echo view('Home/register', $data);
+        echo $this->request->getVar('current_password');
         }
     }
 
