@@ -273,11 +273,11 @@
                                                 class="form-control" placeholder="Current Password" required>
 
                                             <input type="password" name="new_password" id="new_password"
-                                                pattern="[0-9a-zA-Z]{4,10}" class="form-control"
+                                                 class="form-control"
                                                 placeholder="New Password" required>
 
                                             <input type="password" name="confirm_new_password" id="confirm_new_password"
-                                                pattern="[0-9a-zA-Z]{4,10}" class="form-control"
+                                                 class="form-control"
                                                 placeholder="Confirm Password" required>
 
                                             <div class="d-flex">
