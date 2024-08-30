@@ -272,7 +272,7 @@
 
                                     <form class="custom-form password-form" action="/updatePasswordlogin" method="post"
                                         role="form" onsubmit="return confirmSubmitpassword()">
-                                        <div class="col-md-12 mb-3 col-lg-8">
+                                        <div class="col-md-12 mb-3 col-lg-12">
                                             <!-- Added col-md-8 class -->
                                             <input type="password" name="current_password" id="current_password"
                                                 class="form-control" placeholder="Current Password" required>
