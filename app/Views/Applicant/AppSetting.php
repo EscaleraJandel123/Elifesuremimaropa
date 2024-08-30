@@ -61,31 +61,31 @@
                     <!-- <h1 class="h2 mb-0">Settings</h1> -->
                 </div>
 
-                
+
 
 
                 <div class="row my-4">
                     <div class="col-lg-10 col-12">
                         <div class="custom-block bg-white">
 
-                        <!-- Add this section to display validation alerts -->
-                <?php if (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger mt-3 text-center" role="alert">
-                        <?= session()->getFlashdata('error') ?>
-                    </div>
-                <?php endif; ?>
+                            <!-- Add this section to display validation alerts -->
+                            <?php if (session()->getFlashdata('error')): ?>
+                                <div class="alert alert-danger mt-3 text-center" role="alert">
+                                    <?= session()->getFlashdata('error') ?>
+                                </div>
+                            <?php endif; ?>
 
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success mt-3 text-center" role="alert">
-                        <?= session()->getFlashdata('success') ?>
-                    </div>
-                <?php endif; ?>
+                            <?php if (session()->getFlashdata('success')): ?>
+                                <div class="alert alert-success mt-3 text-center" role="alert">
+                                    <?= session()->getFlashdata('success') ?>
+                                </div>
+                            <?php endif; ?>
 
-                <?php if (session()->getFlashdata('warning')): ?>
-                    <div class="alert alert-warning mt-3 text-center" role="alert">
-                        <?= session()->getFlashdata('warning') ?>
-                    </div>
-                <?php endif; ?>
+                            <?php if (session()->getFlashdata('warning')): ?>
+                                <div class="alert alert-warning mt-3 text-center" role="alert">
+                                    <?= session()->getFlashdata('warning') ?>
+                                </div>
+                            <?php endif; ?>
 
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
@@ -278,139 +278,15 @@
                                                 class="form-control" placeholder="Current Password" required>
 
                                             <input type="password" name="new_password" id="new_password"
-                                                 class="form-control"
-                                                placeholder="New Password" required>
+                                                class="form-control" placeholder="New Password" required>
 
                                             <input type="password" name="confirm_new_password" id="confirm_new_password"
-                                                 class="form-control"
-                                                placeholder="Confirm Password" required>
+                                                class="form-control" placeholder="Confirm Password" required>
 
                                             <div class="d-flex">
                                                 <button type="button" class="form-control me-3">Reset</button>
                                                 <button type="submit" class="form-control ms-2">Update</button>
                                             </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel"
-                                    aria-labelledby="notification-tab" tabindex="0">
-                                    <h6 class="mb-4">Notification</h6>
-
-                                    <form class="custom-form notification-form" action="#" method="post" role="form">
-
-                                        <div class="form-check form-switch d-flex mb-3 ps-0">
-                                            <label class="form-check-label" for="flexSwitchCheckCheckedOne">Account
-                                                activity</label>
-
-                                            <input class="form-check-input ms-auto" type="checkbox"
-                                                name="form-check-input" role="switch" id="flexSwitchCheckCheckedOne"
-                                                checked>
-                                        </div>
-
-                                        <div class="form-check form-switch d-flex mb-3 ps-0">
-                                            <label class="form-check-label" for="flexSwitchCheckCheckedTwo">Payment
-                                                updated</label>
-
-                                            <input class="form-check-input ms-auto" type="checkbox"
-                                                name="form-check-input" role="switch" id="flexSwitchCheckCheckedTwo"
-                                                checked>
-                                        </div>
-
-                                        <div class="d-flex mt-4">
-                                            <button type="button" class="form-control me-3">
-                                                Reset
-                                            </button>
-
-                                            <button type="submit" class="form-control ms-2">
-                                                Update Password
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane fade" id="contacts-tab-pane" role="tabpanel"
-                                    aria-labelledby="contacts-tab" tabindex="0">
-                                    <h6 class="mb-4">Contacts</h6>
-
-                                    <form class="custom-form contacts-form" action="#" method="post" role="form">
-
-                                        <div class="form-check form-switch d-flex mb-3 ps-0">
-                                            <label class="form-check-label" for="flexSwitchCheckCheckedOne">Account
-                                                activity</label>
-
-                                            <input class="form-check-input ms-auto" type="checkbox"
-                                                name="form-check-input" role="switch" id="flexSwitchCheckCheckedOne"
-                                                checked>
-                                        </div>
-
-                                        <div class="form-check form-switch d-flex mb-3 ps-0">
-                                            <label class="form-check-label" for="flexSwitchCheckCheckedTwo">Payment
-                                                updated</label>
-
-                                            <input class="form-check-input ms-auto" type="checkbox"
-                                                name="form-check-input" role="switch" id="flexSwitchCheckCheckedTwo"
-                                                checked>
-                                        </div>
-
-                                        <div class="d-flex mt-4">
-                                            <button type="button" class="form-control me-3">
-                                                Reset
-                                            </button>
-
-                                            <button type="submit" class="form-control ms-2">
-                                                Update Password
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane fade" id="address-tab-pane" role="tabpanel"
-                                    aria-labelledby="address-tab" tabindex="0">
-                                    <h6 class="mb-4">Address Information</h6>
-
-                                    <form class="custom-form address-form" action="" method="post" role="form">
-                                        <div class="row">
-                                            <div class="row">
-                                                <div class="col-md-4 text-center">
-                                                    <label for="region" class="small">Region</label>
-                                                    <select class="form-control" name="region" id="region">
-                                                    </select>
-                                                    <input type="hidden" class="form-control form-control-md"
-                                                        name="region_text" id="region-text" required>
-
-                                                </div>
-                                                <div class="col-md-4 text-center">
-                                                    <label for="province" class="small">Province</label>
-                                                    <select class="form-control " name="province" id="province">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 text-center">
-                                                    <label for="city" class="small">City/Municipality</label>
-                                                    <select class="form-control" name="city" id="city">
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4 text-center">
-                                                    <label for="barangay" class="small">Barangay</label>
-                                                    <select class="form-control" name="barangay" id="barangay">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-8 text-center">
-                                                <label for="street" class="small">Street (optional)</label>
-                                                <input class="form-control" type="text" name="street" id="street"
-                                                    placeholder="Street">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2 text-center">
-
-                                            <button type="submit" class="form-control ms-2">
-                                                Save
-                                            </button>
                                         </div>
                                     </form>
                                 </div>
