@@ -280,23 +280,21 @@
 
                                     <form class="custom-form password-form" action="/updatePasswordlogin" method="post"
                                         role="form" onsubmit="return confirmSubmitpassword()">
-                                        <input type="password" name="current_password" id="current_password"
-                                            class="form-control"
-                                            placeholder="Current Password" required="">
+                                        <div class="col-md-12 mb-3 col-lg-12">
+                                            <!-- Added col-md-8 class -->
+                                            <input type="password" name="current_password" id="current_password"
+                                                class="form-control" placeholder="Current Password" required>
 
-                                        <input type="password" name="new_password" id="new_password"
-                                            class="form-control" placeholder="New Password"
-                                            required="">
+                                            <input type="password" name="new_password" id="new_password"
+                                                class="form-control" placeholder="New Password" required>
 
-                                        <input type="password" name="confirm_new_password" id="confirm_new_password"
-                                            class="form-control"
-                                            placeholder="Confirm Password" required="">
+                                            <input type="password" name="confirm_new_password" id="confirm_new_password"
+                                                class="form-control" placeholder="Confirm Password" required>
 
-                                        <div class="d-flex">
-                                            <button type="button" class="form-control me-3"
-                                                onclick="resetPasswordFields()">Clear</button>
-
-                                            <button type="submit" class="form-control ms-2">Update Password</button>
+                                            <div class="d-flex">
+                                                <button type="button" class="form-control me-3">Reset</button>
+                                                <button type="submit" class="form-control ms-2">Update</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
