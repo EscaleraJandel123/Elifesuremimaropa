@@ -336,7 +336,8 @@ class HomepageController extends BaseController
         helper(['form']);
         $rules = [
             'current_password' => 'required',
-            'new_password' => 'required|min_length[6]|max_length[50]',
+            // 'new_password' => 'required|min_length[6]|max_length[50]',
+            'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
             'confirm_new_password' => 'matches[new_password]',
         ];
 

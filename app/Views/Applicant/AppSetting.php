@@ -252,7 +252,7 @@
                                         <div class="col-md-12 mb-3 col-lg-8">
                                             <!-- Added col-md-8 class -->
                                             <input type="password" name="current_password" id="current_password"
-                                                pattern="[0-9a-zA-Z]{4,10}" class="form-control"
+                                                class="form-control"
                                                 placeholder="Current Password" required>
 
                                             <input type="password" name="new_password" id="new_password"
