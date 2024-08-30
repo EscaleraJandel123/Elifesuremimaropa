@@ -304,37 +304,36 @@ class HomepageController extends BaseController
 
     public function updatePasswordlogin()
     {
-        // helper(['form']);
-        // $session = session();
-        // $userId = $session->get('id');
+        helper(['form']);
+        $session = session();
+        $userId = $session->get('id');
 
-        // $rules = [
-        //     'current_password' => 'required',
-        //     'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
-        //     'confirm_new_password' => 'matches[new password]',
-        // ];
+        $rules = [
+            'current_password' => 'required',
+            'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
+            'confirm_new_password' => 'matches[new password]',
+        ];
 
-        // // Check if form validation is correct
-        // if ($this->validate($rules)) {
-        //     $userModel = new UserModel();
-        //     $userData = $userModel->find($userId);
+        // Check if form validation is correct
+        if ($this->validate($rules)) {
+            $userModel = new UserModel();
+            $userData = $userModel->find($userId);
 
-        //     // Verify the current password
-        //     if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
-        //         // Passwords match, proceed to update the password
-        //         $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
-        //         $userModel->update($userId, ['password' => $newPassword]);
-        //         return redirect()->to('/logout')->with('success', 'Password Updated');
-        //     } else {
-        //         // Current password does not match
-        //         return redirect()->back()->with('error', 'Current password is incorrect.');
-        //     }
-        // } 
-        // else {
-        //     // Validation failed
-        //     $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
-        //     return redirect()->back()->with('error', $validationErrors);
-        // }
+            // Verify the current password
+            if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
+                // Passwords match, proceed to update the password
+                $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
+                $userModel->update($userId, ['password' => $newPassword]);
+                return redirect()->to('/logout')->with('success', 'Password Updated');
+            } else {
+                // Current password does not match
+                return redirect()->back()->with('error', 'Current password is incorrect.');
+            }
+        } else {
+            // Validation failed
+            $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
+            return redirect()->back()->with('error', $validationErrors);
+        }
     }
 
     public function forgot()
