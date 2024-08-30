@@ -397,6 +397,8 @@ class HomepageController extends BaseController
         //     $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
         //     return redirect()->back()->with('error', $validationErrors);
         // }
+        $validationErrors = $this->validator->listErrors();
+        var_dump($validationErrors);
     }
 
 
