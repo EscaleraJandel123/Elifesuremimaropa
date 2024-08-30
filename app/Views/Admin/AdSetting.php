@@ -104,6 +104,23 @@
                 <div class="row my-4">
                     <div class="col-lg-10 col-12">
                         <div class="custom-block bg-white">
+                        <?php if (session()->getFlashdata('error')): ?>
+                                <div class="alert alert-danger mt-3 text-center" role="alert">
+                                    <?= session()->getFlashdata('error') ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (session()->getFlashdata('success')): ?>
+                                <div class="alert alert-success mt-3 text-center" role="alert">
+                                    <?= session()->getFlashdata('success') ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (session()->getFlashdata('warning')): ?>
+                                <div class="alert alert-warning mt-3 text-center" role="alert">
+                                    <?= session()->getFlashdata('warning') ?>
+                                </div>
+                            <?php endif; ?>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="profile-tab" data-bs-toggle="tab"
