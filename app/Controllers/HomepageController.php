@@ -374,7 +374,7 @@ class HomepageController extends BaseController
         $rules = [
             'current password' => 'required',
             'new password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
-            'confirm new password' => 'matches[new_password]',
+            'confirm new password' => 'matches[new password]',
         ];
 
         // Check if form validation is correct
