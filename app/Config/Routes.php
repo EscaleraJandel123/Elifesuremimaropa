@@ -98,6 +98,8 @@ $routes->post('/Authreg/(:any)', 'HomepageController::Authreg/$1');
 
 $routes->post('/Authreg', 'HomepageController::Authreg');
 $routes->post('/updatePassword', 'HomepageController::updatePassword', ['filter' => 'authGuard']);
+$routes->post('/updatePasswordlogin', 'HomepageController::updatePasswordlogin', ['filter' => 'authGuard']);
+
 $routes->get('/login', 'HomepageController::login', ['filter' => 'online']);
 $routes->post('/authlog', 'HomepageController::authlog');
 

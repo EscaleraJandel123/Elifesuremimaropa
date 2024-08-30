@@ -354,7 +354,6 @@ class HomepageController extends BaseController
             if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
                 // Passwords match, update the password
                 $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
-
                 $userModel->update($userId, ['password' => $newPassword]);
                 return redirect()->to('/logout')->with('success', 'Password Updated');
             } else {
@@ -363,6 +362,42 @@ class HomepageController extends BaseController
         } else {
             $data['validation'] = $this->validator;
             echo view('Home/register', $data);
+        }
+    }
+
+
+    public function updatePasswordlogin()
+    {
+        helper(['form']);
+        $rules = [
+            'current_password' => 'required',
+            // 'new_password' => 'required|min_length[6]|max_length[50]',
+            'new_password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
+            'confirm_new_password' => 'matches[new_password]',
+        ];
+
+        if ($this->validate($rules)) {
+            $session = session();
+            $userId = $session->get('id');
+
+            $userModel = new UserModel();
+
+            // Get the current user data
+            $userData = $userModel->find($userId);
+
+            // Check if the entered current password matches the stored password
+            if (password_verify($this->request->getVar('current_password'), $userData['password'])) {
+                // Passwords match, update the password
+                $newPassword = password_hash($this->request->getVar('new_password'), PASSWORD_DEFAULT);
+                $userModel->update($userId, ['password' => $newPassword]);
+                return redirect()->to('/logout')->with('success', 'Password Updated');
+            } else {
+                echo 'Current password is incorrect.';
+            }
+        } else {
+            $data['validation'] = $this->validator;
+            // echo view('Home/register', $data);
+            return redirect()->back()->with('error', $data);
         }
     }
 

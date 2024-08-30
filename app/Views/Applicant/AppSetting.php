@@ -247,7 +247,7 @@
                                     aria-labelledby="password-tab" tabindex="0">
                                     <h6 class="mb-4">Password Management</h6>
 
-                                    <form class="custom-form password-form" action="/updatePassword" method="post"
+                                    <form class="custom-form password-form" action="/updatePasswordlogin" method="post"
                                         role="form" onsubmit="return confirmSubmitpassword()">
                                         <div class="col-md-12 mb-3 col-lg-8">
                                             <!-- Added col-md-8 class -->
