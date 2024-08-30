@@ -61,6 +61,25 @@
                     <!-- <h1 class="h2 mb-0">Settings</h1> -->
                 </div>
 
+                <!-- Add this section to display validation alerts -->
+                <?php if (session()->getFlashdata('error')): ?>
+                                        <div class="alert alert-danger mt-3 text-center" role="alert">
+                                            <?= session()->getFlashdata('error') ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if (session()->getFlashdata('success')): ?>
+                                        <div class="alert alert-success mt-3 text-center" role="alert">
+                                            <?= session()->getFlashdata('success') ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if (session()->getFlashdata('warning')): ?>
+                                        <div class="alert alert-warning mt-3 text-center" role="alert">
+                                            <?= session()->getFlashdata('warning') ?>
+                                        </div>
+                                    <?php endif; ?>
+
                 <div class="row my-4">
                     <div class="col-lg-10 col-12">
                         <div class="custom-block bg-white">
