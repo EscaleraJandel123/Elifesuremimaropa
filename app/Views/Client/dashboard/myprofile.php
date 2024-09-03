@@ -3,7 +3,7 @@
 <?= view('/Home/chop/head'); ?>
 
 <body>
-  <?= view('/client/dashboard/topside'); ?>
+  <?= view('/Client/dashboard/topside'); ?>
   <main id="main" class="main">
 
     <div class="pagetitle">

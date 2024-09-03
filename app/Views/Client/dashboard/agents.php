@@ -3,7 +3,7 @@
 <?= view('/Home/chop/head'); ?>
 
 <body>
-    <?= view('/client/dashboard/topside'); ?>
+    <?= view('/Client/dashboard/topside'); ?>
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -25,8 +25,9 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <div class="card">
                                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                                    <a href="<?= base_url('seeprofile/' . base64_encode($agents['agent_token'])) ?>"><img src="<?= isset($agents['agentprofile']) && !empty($agents['agentprofile']) ? base_url('/uploads/' . $agents['agentprofile']) : base_url('/uploads/def.png') ?>"
-                                            alt="Profile" class="rounded-circle"></a>
+                                        <a href="<?= base_url('seeprofile/' . base64_encode($agents['agent_token'])) ?>"><img
+                                                src="<?= isset($agents['agentprofile']) && !empty($agents['agentprofile']) ? base_url('/uploads/' . $agents['agentprofile']) : base_url('/uploads/def.png') ?>"
+                                                alt="Profile" class="rounded-circle"></a>
                                         <h2><?php echo isset($agents['username']) ? $agents['username'] : '' ?></h2>
                                         <div class="social-links mt-2">
                                             <a href="#" class="twitter"><i class="bi bi-messenger"></i></a>
