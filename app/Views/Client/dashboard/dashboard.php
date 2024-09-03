@@ -4,7 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
 <body>
-    <?= view('/dashboard/topside'); ?>
+    <?= view('/Client/dashboard/topside'); ?>
     <main id="main" class="main">
 
         <div class="pagetitle">
