@@ -14,7 +14,7 @@
 
         <section class="section">
             <div class="row">
-                <?= view('/client/dashboard/calendar'); ?>
+                <?= view('/Client/dashboard/calendar'); ?>
             </div>
         </section>
     </main>
