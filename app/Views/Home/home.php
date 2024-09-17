@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?= view('chop1/head') ?>
+
 <body>
 <?= view('chop1/header') ?>
 
