@@ -82,7 +82,7 @@
                                     <div class="col-lg-2 col-md-4 mb-3">
                                         <div class="custom-block-profile-front text-center">
                                             <div class="custom-block-profile-image-wrap mb-1">
-                                                <a href="http://" data-bs-toggle="modal"
+                                                <a href="https://" data-bs-toggle="modal"
                                                     data-bs-target="#verticalycentered<?= $ag['agent_id']; ?>">
                                                     <img src="<?= isset($ag['agentprofile']) && !empty($ag['agentprofile']) ? base_url('/uploads/' . $ag['agentprofile']) : base_url('/uploads/def.png') ?>"
                                                         class="img-fluid" alt="" style="height: 100px; width: auto"></a>
