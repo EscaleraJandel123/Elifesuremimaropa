@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/xyz123.css">
-
-    <!-- <link href="<?= base_url(); ?>req/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="<?= base_url(); ?>req/css/bootstrap-icons.css" rel="stylesheet"> -->
-    <!-- <link href="<?= base_url(); ?>req/css/apexcharts.css" rel="stylesheet"> -->
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CSS -->
@@ -25,9 +21,7 @@
     <!-- Custom CSS -->
 
     <link rel="stylesheet" href="<?= base_url(); ?>req/fullcalendar/lib/main.min.css">
-
     <link href="<?= base_url(); ?>req/css/tooplate-mini-finance.css" rel="stylesheet">
-    <!-- <link href="<?= base_url(); ?>req/css/chat.css" rel="stylesheet"> -->
     <link rel="shortcut icon" href="<?= base_url(); ?>req/allianzlogo1.png" />
 </head>
 
