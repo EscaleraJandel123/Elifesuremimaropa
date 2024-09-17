@@ -51,6 +51,9 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'secureheaders',
         ],
+        'csp' => [
+            'Content-Security-Policy' => "default-src 'self'; img-src 'self' https://elifesuremimaropa.com; script-src 'self';"
+        ],
     ];
 
     /**
