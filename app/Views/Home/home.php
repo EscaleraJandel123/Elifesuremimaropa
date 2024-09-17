@@ -4,7 +4,7 @@
 <?= view('Home/chop1/head') ?>
 
 <body>
-<?= view('Home/chop1/head') ?>
+<?= view('Home/chop1/header') ?>
 
 	<div class="banner-three-area">
 		<div class="container-fluid">
@@ -330,6 +330,8 @@
 
 	<?= view('Home/chop1/footer') ?>
 	<?= view('Home/chop1/js') ?>
+
+
 </body>
 
 </html>
