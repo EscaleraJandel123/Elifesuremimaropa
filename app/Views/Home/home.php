@@ -328,8 +328,8 @@
 		</div>
 	</div>
 
-	<?= view('Home/chop1/footer') ?>
-	<?= view('Home/chop1/js') ?>
+	<?= view('chop1/footer') ?>
+	<?= view('chop1/js') ?>
 
 
 </body>
