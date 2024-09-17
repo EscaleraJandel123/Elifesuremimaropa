@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?= view('chop1/head') ?>
+<?= view('HOME/chop1/head') ?>
 
 <body>
-<?= view('chop1/header') ?>
+<?= view('HOME/chop1/head') ?>
 
 	<div class="banner-three-area">
 		<div class="container-fluid">
@@ -328,8 +328,8 @@
 		</div>
 	</div>
 
-	<?= view('chop1/footer') ?>
-	<?= view('chop1/js') ?>
+	<?= view('HOME/chop1/footer') ?>
+	<?= view('HOME/chop1/js') ?>
 
 
 </body>
