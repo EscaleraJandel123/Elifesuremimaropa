@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<?= view('Home/chop1/head') ?>
-
 <body>
-<?= view('Home/chop1/header') ?>
+<?= view('chop1/header') ?>
 
 	<div class="banner-three-area">
 		<div class="container-fluid">
