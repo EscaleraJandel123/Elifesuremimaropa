@@ -329,8 +329,7 @@
 	</div>
 
 	<?= view('Home/chop1/footer') ?>
-
-
+	<?= view('Home/chop1/js') ?>
 </body>
 
 </html>
