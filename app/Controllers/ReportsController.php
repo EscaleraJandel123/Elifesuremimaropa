@@ -68,7 +68,7 @@ class ReportsController extends BaseController
     {
         // Load the database service
         $builder = \Config\Database::connect()->table('agent a');
-        $builder->select('a.username, a.FA, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
+        $builder->select('a.username, a.FA, a.rank, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
         $builder->orderBy('total_fa', 'DESC');
         $builder->limit(3); // change for your desire
         // Get the result as an array
