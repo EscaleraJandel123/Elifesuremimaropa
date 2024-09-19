@@ -7,7 +7,7 @@ use App\Models\UserModel;
 use App\Models\ApplicantModel;
 use App\Models\AgentModel;
 use App\Models\ClientModel;
-use app\Models\CommiModel;
+use App\Models\CommiModel;
 
 class ReportsController extends BaseController
 {
