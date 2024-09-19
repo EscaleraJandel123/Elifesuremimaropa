@@ -64,17 +64,44 @@ class ReportsController extends BaseController
         return $data;
     }
 
+    // private function topagentrecruters()
+    // {
+    //     // Load the database service
+    //     $builder = \Config\Database::connect()->table('agent a');
+    //     $builder->select('a.username, a.FA, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
+    //     $builder->orderBy('total_fa', 'DESC');
+    //     $builder->limit(3); // change for your desire
+    //     // Get the result as an array
+    //     $result = $builder->get()->getResultArray();
+    //     // Pass the data to your view or perform any other actions
+    //     $data['top'] = $result;
+    //     return $data;
+    // }
+
     private function topagentrecruters()
     {
         // Load the database service
         $builder = \Config\Database::connect()->table('agent a');
         $builder->select('a.username, a.FA, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
-        $builder->orderBy('total_fa', 'DESC');
-        $builder->limit(3); // change for your desire
+        $builder->orderBy('total_fA', 'DESC');
+        $builder->limit(3); // change for your desired number of top agents
+
         // Get the result as an array
         $result = $builder->get()->getResultArray();
-        // Pass the data to your view or perform any other actions
-        $data['top'] = $result;
+
+        // Add rank to the result
+        $rank = 1;
+        $rankedAgents = [];
+
+        foreach ($result as $agent) {
+            // Add rank to each agent data
+            $agent['rank'] = $rank++;
+            $rankedAgents[] = $agent;
+        }
+
+        // Pass the ranked data
+        $data['top'] = $rankedAgents;
+
         return $data;
     }
 
@@ -109,8 +136,14 @@ class ReportsController extends BaseController
 
     public function reports()
     {
-        $data = array_merge($this->getData(), $this->getDataAd(),
-        $this->getagent(), $this->topcommissioner(), $this->topagentrecruters(), $this->getapplicants());
+        $data = array_merge(
+            $this->getData(),
+            $this->getDataAd(),
+            $this->getagent(),
+            $this->topcommissioner(),
+            $this->topagentrecruters(),
+            $this->getapplicants()
+        );
         return view('Admin/reports', $data);
     }
 }
