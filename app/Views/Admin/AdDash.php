@@ -180,7 +180,7 @@
 
                             <div class="col-lg-12 col-sm-12">
                                 <div class="row">
-                                    <div class="col-lg-12 col-6">
+                                    <div class="col-lg-12 col-12">
                                         <div class="card mb-3">
                                             <div class="card-body text-center">
                                                 <!-- Changed icon to 'fa-file-alt' for report -->
