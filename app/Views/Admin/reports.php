@@ -112,7 +112,7 @@
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">User Name</th>
+                                                    <th scope="col">Name</th>
                                                     <th scope="col">Birth Day</th>
                                                     <th scope="col">Contact</th>
                                                 </tr>
@@ -121,7 +121,7 @@
                                                 <?php foreach ($agents as $agent): ?>
                                                     <tr>
                                                         <td>
-                                                            <?= $agent['username'] ?>
+                                                            <?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['firstname'] ?>
                                                         </td>
                                                         <td>
                                                             <?= $agent['birthday'] ?>
