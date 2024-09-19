@@ -106,30 +106,6 @@
                             <!-- Table Applicants -->
                             <div class="col-12 mb-3">
                                 <div class="card">
-                                    <div class="card-body">
-
-                                        <div class="row">
-                                            <div class="col-lg-7 col-md-8 col-12">
-                                                <form class="custom-form search-form" action="" method="post"
-                                                    role="form">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-8">
-                                                            <input class="form-control mb-lg-0 mb-md-0"
-                                                                name="searchusers" type="text"
-                                                                placeholder="Search by username" aria-label="Search"
-                                                                required>
-                                                        </div>
-                                                        <div class="col-lg-2 col-4">
-                                                            <button type="submit" class="form-control">
-                                                                <i class="bi bi-search"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
                                     <!-- Table with hoverable rows -->
                                     <div class="table-responsive mx-3">
                                         <h5 class="card-title">Agents</h5>
