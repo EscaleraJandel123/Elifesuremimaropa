@@ -130,7 +130,6 @@
                     <!-- Applicants Table -->
                     <div class="col-lg-6 mb-3">
                         <div class="card">
-                            <hr>
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-4">Applicants</h5>
                                 <table class="table table-hover">
