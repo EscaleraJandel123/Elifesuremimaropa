@@ -8,7 +8,7 @@ use App\Models\ApplicantModel;
 use App\Models\AgentModel;
 use App\Models\ClientModel;
 use App\Models\CommiModel;
-use App\Controllers\AdminController;
+use App\Models\AdminModel;
 
 class ReportsController extends BaseController
 {
@@ -18,7 +18,7 @@ class ReportsController extends BaseController
     private $applicant;
     private $client;
     private $db;
-    private $admincont;
+    private $admin;
 
     public function __construct()
     {
@@ -28,7 +28,7 @@ class ReportsController extends BaseController
         $this->agent = new AgentModel();
         $this->applicant = new ApplicantModel();
         $this->client = new ClientModel();
-        $this->admincont = new AdminController();
+        $this->admin = new AdminModel();
     }
     public function usersreportdata()
     {
@@ -78,10 +78,28 @@ class ReportsController extends BaseController
         return $data;
     }
 
+    public function getData()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data['user'] = $this->user->find($userId);
+        return $data;
+    }
+
+    public function getDataAd()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data['admin'] = $this->admin->where('admin_id', $userId)
+            ->orderBy('id', 'desc')
+            ->first();
+        return $data;
+    }
+
     public function reports()
     {
-        $data = array_merge($this->admincont->getData(), $this->admincont->getDataAd(),
-        $this->admincont->getagent(), $this->topcommissioner(), $this->topagentrecruters());
+        $data = array_merge($this->getData(), $this->getDataAd(),
+        $this->getagent(), $this->topcommissioner(), $this->topagentrecruters());
         return view('Admin/reports', $data);
     }
 }
