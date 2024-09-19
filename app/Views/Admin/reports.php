@@ -2,7 +2,17 @@
 <html lang="en">
 
 <?= view('head') ?>
+<style>
+    .table-responsive {
+    position: relative;
+}
 
+.table thead.sticky-top {
+    top: 50px; /* Adjust based on the height of the header or navbar */
+    z-index: 1; /* Ensure it's below other important components */
+}
+
+</style>
 <body>
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
