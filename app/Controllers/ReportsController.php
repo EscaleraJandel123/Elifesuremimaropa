@@ -21,11 +21,11 @@ class ReportsController extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
+        $this->commi = new CommiModel();
         $this->user = new UserModel();
         $this->agent = new AgentModel();
         $this->applicant = new ApplicantModel();
         $this->client = new ClientModel();
-        // $this->commi = new CommiModel();
     }
     public function usersreportdata()
     {
