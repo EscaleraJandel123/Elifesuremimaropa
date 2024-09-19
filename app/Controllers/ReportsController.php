@@ -95,6 +95,11 @@ class ReportsController extends BaseController
             ->first();
         return $data;
     }
+    private function getagent()
+    {
+        $data['agent'] = $this->agent->findAll();
+        return $data;
+    }
 
     public function reports()
     {
