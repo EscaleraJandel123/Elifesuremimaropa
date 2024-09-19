@@ -81,7 +81,7 @@ class ReportsController extends BaseController
     {
         // Load the database service
         $builder = \Config\Database::connect()->table('agent a');
-        $builder->select('a.username, a.FA, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
+        $builder->select('a.username, a.FA, a.rank, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
         $builder->orderBy('total_fA', 'DESC');
         $builder->limit(3); // change for your desired number of top agents
         
@@ -94,13 +94,12 @@ class ReportsController extends BaseController
         
         foreach ($result as $agent) {
             // Add rank to each agent data
-            $agent['rank'] = $rank++;
+            $agent['ranking'] = $rank++;
             $rankedAgents[] = $agent;
         }
         
         // Pass the ranked data
         $data['top'] = $rankedAgents;
-        
         return $data;
     }
     
