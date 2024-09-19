@@ -103,7 +103,6 @@
                     <!-- left side columns -->
                     <div class="col-lg-8 mb-3">
                         <div class="row">
-
                             <div class="col-lg-12 col-12">
                                 <div class="custom-block bg-white">
                                     <div id="agentChart"></div>

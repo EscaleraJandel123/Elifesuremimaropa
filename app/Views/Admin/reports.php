@@ -107,7 +107,7 @@
                             <div class="col-12 mb-3">
                                 <div class="card">
                                     <div class="card-body">
-
+                                        
                                         <div class="row">
                                             <div class="col-lg-7 col-md-8 col-12">
                                                 <form class="custom-form search-form" action="" method="post"
@@ -132,6 +132,7 @@
                                     <hr>
                                     <!-- Table with hoverable rows -->
                                     <div class="table-responsive mx-3">
+                                        <h5 class="card-title">Agents</h5>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
