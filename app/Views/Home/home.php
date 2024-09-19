@@ -4,7 +4,7 @@
 <?= view('Home/chop1/head') ?>
 
 <body>
-<?= view('Home/chop1/header') ?>
+	<?= view('Home/chop1/header') ?>
 
 	<div class="banner-three-area">
 		<div class="container-fluid">
@@ -104,7 +104,8 @@
 								<h3><?= isset($plans['pla']) ? $plans['pla'] : ''; ?></h3>
 								<p><?= isset($plans['coverage']) ? number_format($plans['coverage'], 2) : '0.00'; ?> <br>
 									COVERAGE</p>
-								<a href="<?=base_url()?>ServiceDescription/<?= $plans['token']?>" class="default-btn btn-style-2">Read More</a>
+								<a href="<?= base_url() ?>ServiceDescription/<?= $plans['token'] ?>"
+									class="default-btn btn-style-2">Read More</a>
 							</div>
 						</div>
 					<?php endforeach ?>
@@ -112,8 +113,8 @@
 			</div>
 	</section>
 
-	
-	
+
+
 
 	<section id="faq">
 		<div class="insurance-benefits-area pt-100 pb-100">
@@ -227,7 +228,7 @@
 									alt="team">
 							</div>
 							<div class="single-team-content">
-								<h5><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['middlename'] ?>.</h5>
+								<h5><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> 	<?= $agent['middlename'] ?>.</h5>
 								<p><?= $agent['email'] ?></p>
 								<ul class="d-flex align-items-center justify-content-center">
 									<li class="list-inline">
@@ -330,8 +331,6 @@
 
 	<?= view('Home/chop1/footer') ?>
 	<?= view('Home/chop1/js') ?>
-
-
 </body>
 
 </html>

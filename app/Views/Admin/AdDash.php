@@ -179,6 +179,22 @@
                             </div>
 
                             <div class="col-lg-12 col-sm-12">
+                                <div class="row">
+                                    <div class="col-lg-6 col-6">
+                                        <div class="card mb-3">
+                                            <div class="card-body text-center">
+                                                <i class="fas fa-users fa-2x"></i>
+                                                <small class="d-block mt-2">Agents</small>
+                                                <h3 class="card-title mt-2">
+                                                    <?= $totalAgents ?>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-sm-12">
                                 <div class="card mb-3 text-center">
                                     <h5 class="card-title mt-3">Top 3 Recruiters</h5>
                                     <?php foreach ($top as $topagent): ?>
