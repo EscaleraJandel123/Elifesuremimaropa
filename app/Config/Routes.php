@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->get('/AdDash', 'AdminController::AdDash', ['filter' => 'adminFilter'] , );
+$routes->get('/AdDash', 'AdminController::AdDash', ['filter' => 'adminFilter']);
 $routes->get('/ManageAgent', 'AdminController::ManageAgent', ['filter' => 'adminFilter']);
 $routes->get('/AdProfile', 'AdminController::AdProfile', ['filter' => 'adminFilter']);
 $routes->get('/AdSetting', 'AdminController::AdSetting', ['filter' => 'adminFilter']);
@@ -123,8 +123,8 @@ $routes->get('/getYearlyCommissions', 'ChartsController::getYearlyCommissions', 
 // $routes->get('/send', 'RTCController::send');
 
 //pdf
-$routes->get('/generatePdf/(:num)', 'AdminController::generatePdf/$1');
-$routes->get('/generatePdf3/(:num)', 'AdminController::generatePdf3/$1');
+$routes->get('/generatePdf/(:num)', 'AdminController::generatePdf/$1', ['filter' => 'adminFilter']);
+$routes->get('/generatePdf3/(:num)', 'AdminController::generatePdf3/$1', ['filter' => 'adminFilter']);
 
 //Clientt
 $routes->get('/ClientPage', 'ClientController::ClientPage',['filter' => 'clientFilter']);
@@ -155,14 +155,14 @@ $routes->get('/comingsoon', 'HomepageController::comingsoon', ['filter' => 'onli
 $routes->match(['get', 'post'], '/feedback/saveFeedback', 'FeedbackController::saveFeedback');
 
 
-$routes->get('/sched', 'AdminController::sched');
-$routes->get('/calendar', 'AdminController::calendar');
-$routes->get('sched/create', 'AdminController::create');
-$routes->post('sched/schedsave', 'AdminController::schedsave');
-$routes->get('sched/edit/(:num)', 'AdminController::edit/$1');
-$routes->post('sched/update/(:num)', 'AdminController::update/$1');
-$routes->get('sched/delete/(:num)', 'AdminController::delete/$1');
-$routes->get('/agentsched', 'AgentController::sched');
+$routes->get('/sched', 'AdminController::sched', ['filter' => 'adminFilter']);
+$routes->get('/calendar', 'AdminController::calendar', ['filter' => 'adminFilter']);
+$routes->get('sched/create', 'AdminController::create', ['filter' => 'adminFilter']);
+$routes->post('sched/schedsave', 'AdminController::schedsave', ['filter' => 'adminFilter']);
+$routes->get('sched/edit/(:num)', 'AdminController::edit/$1', ['filter' => 'adminFilter']);
+$routes->post('sched/update/(:num)', 'AdminController::update/$1', ['filter' => 'adminFilter']);
+$routes->get('sched/delete/(:num)', 'AdminController::delete/$1', ['filter' => 'adminFilter']);
+$routes->get('/agentsched', 'AgentController::sched', ['filter' => 'adminFilter']);
 
 //notification
 $routes->get('/clearnotif', 'NotifController::clearnotif', ['filter' => 'authGuard']);

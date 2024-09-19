@@ -119,7 +119,6 @@
                                         <h5 class="card-title">Table with hoverable rows</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover">
-
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
@@ -134,9 +133,7 @@
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
-
                                             </table>
-
                                         </div>
                                     </div>
                                 </div>
