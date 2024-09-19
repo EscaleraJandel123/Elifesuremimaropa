@@ -108,7 +108,7 @@
                                 <div class="card">
                                     <!-- Table with hoverable rows -->
                                     <div class="table-responsive mx-3">
-                                        <h5 class="card-title mt-2">Agents</h5>
+                                        <h5 class="card-title mt-4">Agents</h5>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
