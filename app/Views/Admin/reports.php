@@ -177,7 +177,7 @@
                                         <tbody>
                                             <?php foreach ($top as $topagent): ?>
                                                 <tr>
-                                                    <td><?= $topagent['top'] ?></td>
+                                                    <td><?= $topagent['rank'] ?></td>
                                                     <td><?= $topagent['ranking'] ?></td>
                                                     <td><?= $topagent['username'] ?></td>
                                                     <td><?= $topagent['total_fA'] ?></td>
