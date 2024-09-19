@@ -28,8 +28,6 @@ class ReportsController extends BaseController
         $data['allagents'] = $this->agent->findAll();
         $data['allclient'] = $this->client->findAll();
         $data['allapplicants'] = $this->applicant->where('status', 'confirmed')->findAll();
-
-        var_dump($data['alluser']['username']);
         return view('Admin/AdDash', $data);
     }
 }

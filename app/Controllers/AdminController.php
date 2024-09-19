@@ -78,7 +78,7 @@ class AdminController extends BaseController
         $data['totalAgents'] = $totalAgents;
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
-        // return view('Admin/AdDash', $data);
+        return view('Admin/AdDash', $data);
     }
 
 
