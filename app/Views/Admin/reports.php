@@ -187,6 +187,35 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- top commissioner -->
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <div class="table-responsive mx-3">
+                                <h5 class="card-title mt-3">Top Recruiters</h5>
+                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                    <table class="table table-hover">
+                                        <thead class="table-light sticky-top">
+                                            <tr>
+                                                <th scope="col">rank</th>
+                                                <th scope="col">User Name</th>
+                                                <th scope="col">Total Commi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($top_commi as $topagent): ?>
+                                                <tr>
+                                                    <td><?= $topagent['rank'] ?></td>
+                                                    <td><?= $topagent['username'] ?></td>
+                                                    <td><?= number_format($topagent['total_commissions']) ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
