@@ -129,33 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 mb-3">
-                        <div class="card">
-                            <div class="table-responsive mx-3">
-                                <h5 class="card-title mt-3">Top Recruiters</h5>
-                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                    <table class="table table-hover">
-                                        <thead class="table-light sticky-top">
-                                            <tr>
-                                                <th scope="col">rank</th>
-                                                <th scope="col">User Name</th>
-                                                <th scope="col">No. of Reqruits</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($top as $topagent): ?>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><?= $topagent['username'] ?></td>
-                                                    <td><?= $topagent['total_fA'] ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
 
                     <!-- Applicants Table -->
                     <div class="col-lg-6 mb-3">
@@ -181,6 +155,35 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Reqruiters  -->
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <div class="table-responsive mx-3">
+                                <h5 class="card-title mt-3">Top Recruiters</h5>
+                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                    <table class="table table-hover">
+                                        <thead class="table-light sticky-top">
+                                            <tr>
+                                                <th scope="col">rank</th>
+                                                <th scope="col">User Name</th>
+                                                <th scope="col">No. of Reqruits</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($top as $topagent): ?>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><?= $topagent['username'] ?></td>
+                                                    <td><?= $topagent['total_fA'] ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
