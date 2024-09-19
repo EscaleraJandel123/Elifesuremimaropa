@@ -8,7 +8,7 @@
 }
 
 .table thead.sticky-top {
-    top: 30px; /* Adjust based on the height of the header or navbar */
+    top: 15px; /* Adjust based on the height of the header or navbar */
     z-index: 1; /* Ensure it's below other important components */
 }
 
