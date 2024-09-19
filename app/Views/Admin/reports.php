@@ -100,41 +100,57 @@
                     <h1 class="h2 mb-0">Reports</h1>
                 </div>
                 <div class="row">
-                    <!-- left side columns -->
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <!-- Table Applicants -->
-                            <div class="col-12 mb-3">
-                                <div class="card">
-                                    <!-- Table with hoverable rows -->
-                                    <div class="table-responsive mx-3">
-                                        <h5 class="card-title mt-4">Agents</h5>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Birth Day</th>
-                                                    <th scope="col">Contact</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($agents as $agent): ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['firstname'] ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= $agent['birthday'] ?>
-                                                        </td>
-                                                        <td>
-                                                            <?= $agent['number'] ?>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                    <!-- left and right table columns -->
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <div class="table-responsive mx-3">
+                                <h5 class="card-title mt-3">Agents</h5>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">User Name</th>
+                                            <th scope="col">Birth Day</th>
+                                            <th scope="col">Contact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($agents as $agent): ?>
+                                            <tr>
+                                                <td><?= $agent['username'] ?></td>
+                                                <td><?= $agent['birthday'] ?></td>
+                                                <td><?= $agent['number'] ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Applicants Table -->
+                    <div class="col-lg-6 mb-3">
+                        <div class="card">
+                            <hr>
+                            <div class="table-responsive mx-3">
+                                <h5 class="card-title mt-4">Applicants</h5>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">User Name</th>
+                                            <th scope="col">Birth Day</th>
+                                            <th scope="col">Contact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
