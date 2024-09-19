@@ -131,7 +131,7 @@
                     <div class="col-lg-6 mb-3">
                         <div class="card">
                             <div class="table-responsive mx-3">
-                                <h5 class="card-title mt-4">Applicants</h5>
+                                <h5 class="card-title mt-3">Applicants</h5>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -142,11 +142,11 @@
                                     </thead>
                                     <tbody>
 
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
