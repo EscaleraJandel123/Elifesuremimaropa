@@ -22,12 +22,12 @@ class ReportsController extends BaseController
         $this->applicant = new ApplicantModel();
         $this->client = new ClientModel();
     }
-    public function data()
+    public function usersreportdata()
     {
         $data['alluser'] = $this->user->where('role !=', 'admin')->findAll();
         $data['allagents'] = $this->agent->findAll();
         $data['allclient'] = $this->client->findAll();
         $data['allapplicants'] = $this->applicant->where('status', 'confirmed')->findAll();
-        return view('Admin/AdDash', $data);
+        return $data;
     }
 }

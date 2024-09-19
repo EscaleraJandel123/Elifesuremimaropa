@@ -21,6 +21,7 @@ use App\Models\CommiModel;
 use App\Models\SignatureModel;
 // use App\Models\NotifModel;
 use App\Controllers\NotifController;
+use App\Controllers\ReportsController;
 
 class AdminController extends BaseController
 {
@@ -42,6 +43,7 @@ class AdminController extends BaseController
     private $form5;
     // private $notif;
     private $notifcont;
+    private $reportscont;
 
     protected $scheduleModel;
     // protected $cache;
@@ -74,7 +76,8 @@ class AdminController extends BaseController
         $totalAgents = count($this->agent->findAll());
         $totalApplicants = count($this->applicant->findAll());
         $pendingApplicants = $this->applicant->where('status', 'pending')->countAllResults();
-        $data = array_merge($this->getData(), $this->getDataAd(), $this->topagent(), $this->getagent(), $this->topcommi(), $this->notifcont->notification());
+        $data = array_merge($this->getData(), $this->getDataAd(), $this->topagent(), $this->getagent(),
+         $this->topcommi(), $this->notifcont->notification(), $this->reportscont->userreportdata());
         $data['totalAgents'] = $totalAgents;
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
