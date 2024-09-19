@@ -105,24 +105,26 @@
                         <div class="card">
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Agents</h5>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">User Name</th>
-                                            <th scope="col">Birth Day</th>
-                                            <th scope="col">Contact</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($agents as $agent): ?>
+                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                    <table class="table table-hover">
+                                        <thead class="table-light sticky-top">
                                             <tr>
-                                                <td><?= $agent['username'] ?></td>
-                                                <td><?= $agent['birthday'] ?></td>
-                                                <td><?= $agent['number'] ?></td>
+                                                <th scope="col">User Name</th>
+                                                <th scope="col">Birth Day</th>
+                                                <th scope="col">Contact</th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($agents as $agent): ?>
+                                                <tr>
+                                                    <td><?= $agent['username'] ?></td>
+                                                    <td><?= $agent['birthday'] ?></td>
+                                                    <td><?= $agent['number'] ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
