@@ -119,21 +119,22 @@
                                         <h5 class="card-title">Table with hoverable rows</h5>
                                         <div class="table-responsive">
                                             <table class="table table-hover">
-                                                <?php foreach ($allagents as $usersss): ?>
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">User name</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">User name</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($allagents as $usersss): ?>
                                                         <tr>
                                                             <th scope="row">1</th>
                                                             <td><?= $usersss['username'] ?></td>
                                                         </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
 
-                                                    </tbody>
-                                                <?php endforeach; ?>
                                             </table>
 
                                         </div>
