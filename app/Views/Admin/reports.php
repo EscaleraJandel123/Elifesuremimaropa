@@ -67,7 +67,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/reports">
-                            <i class="fas fa-file-alt me-2"></i></i>
+                                <i class="fas fa-file-alt me-2"></i></i>
                                 Reports
                             </a>
                         </li>
@@ -107,7 +107,7 @@
                             <div class="col-12 mb-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        
+
                                         <div class="row">
                                             <div class="col-lg-7 col-md-8 col-12">
                                                 <form class="custom-form search-form" action="" method="post"
@@ -137,19 +137,24 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">User Name</th>
+                                                    <th scope="col">Birth Day</th>
+                                                    <th scope="col">Contact</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
+                                                <?php foreach ($agents as $agent): ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?= $agent['username'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $agent['birthday'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?= $agent['number'] ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
