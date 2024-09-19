@@ -129,7 +129,7 @@
                         </div>
                     </div>
 
-                
+
 
                     <!-- Applicants Table -->
                     <div class="col-lg-6 mb-3">
@@ -199,6 +199,7 @@
                                     <table class="table table-hover">
                                         <thead class="table-light sticky-top">
                                             <tr>
+                                                <th scope="col">Top</th>
                                                 <th scope="col">User Name</th>
                                                 <th scope="col">Total Commi</th>
                                             </tr>
@@ -206,6 +207,7 @@
                                         <tbody>
                                             <?php foreach ($top_commi as $topagent): ?>
                                                 <tr>
+                                                    <td><?= $topagent['ranking'] ?></td>
                                                     <td><?= $topagent['username'] ?></td>
                                                     <td><?= number_format($topagent['total_commissions']) ?></td>
                                                 </tr>

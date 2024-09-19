@@ -39,27 +39,64 @@ class ReportsController extends BaseController
         return $data;
     }
 
+    // public function topcommissioner()
+    // {
+    //     // Select the agent_id and sum of commissions for each agent
+    //     $this->commi->select('agent_id, SUM(commi) AS total_commissions')
+    //         ->groupBy('agent_id')
+    //         ->orderBy('total_commissions', 'DESC')
+    //         ->limit(3);//change to your top desire
+    //     // Get the query result
+    //     $result = $this->commi->get()->getResultArray();
+    //     // Fetch additional agent data for the top agents
+    //     $topAgents = [];
+    //     foreach ($result as $row) {
+    //         $agentId = $row['agent_id'];
+    //         $agentData = $this->agent->where('agent_id', $agentId)->first();
+    //         if ($agentData) {
+    //             $agentData['total_commissions'] = $row['total_commissions'];
+    //             $topAgents[] = $agentData;
+    //         }
+    //     }
+    //     // Prepare the data to be returned
+    //     $data['top_commi'] = $topAgents;
+    //     // Return the data
+    //     return $data;
+    // }
+
     public function topcommissioner()
     {
         // Select the agent_id and sum of commissions for each agent
         $this->commi->select('agent_id, SUM(commi) AS total_commissions')
             ->groupBy('agent_id')
             ->orderBy('total_commissions', 'DESC')
-            ->limit(3);//change to your top desire
+            ->limit(3); // Change to your desired number of top agents
+
         // Get the query result
         $result = $this->commi->get()->getResultArray();
-        // Fetch additional agent data for the top agents
+
+        // Initialize ranking
+        $rank = 1;
         $topAgents = [];
+
+        // Fetch additional agent data for the top agents
         foreach ($result as $row) {
             $agentId = $row['agent_id'];
             $agentData = $this->agent->where('agent_id', $agentId)->first();
+
             if ($agentData) {
+                // Add total commissions and ranking
                 $agentData['total_commissions'] = $row['total_commissions'];
+                $agentData['ranking'] = $rank++;
+
+                // Add the agent data to the topAgents array
                 $topAgents[] = $agentData;
             }
         }
+
         // Prepare the data to be returned
         $data['top_commi'] = $topAgents;
+
         // Return the data
         return $data;
     }
@@ -84,25 +121,25 @@ class ReportsController extends BaseController
         $builder->select('a.username, a.FA, a.rank, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
         $builder->orderBy('total_fA', 'DESC');
         $builder->limit(3); // change for your desired number of top agents
-        
+
         // Get the result as an array
         $result = $builder->get()->getResultArray();
-        
+
         // Add rank to the result
         $rank = 1;
         $rankedAgents = [];
-        
+
         foreach ($result as $agent) {
             // Add rank to each agent data
             $agent['ranking'] = $rank++;
             $rankedAgents[] = $agent;
         }
-        
+
         // Pass the ranked data
         $data['top'] = $rankedAgents;
         return $data;
     }
-    
+
     public function getData()
     {
         $session = session();
@@ -134,8 +171,14 @@ class ReportsController extends BaseController
 
     public function reports()
     {
-        $data = array_merge($this->getData(), $this->getDataAd(),
-        $this->getagent(), $this->topcommissioner(), $this->topagentrecruters(), $this->getapplicants());
+        $data = array_merge(
+            $this->getData(),
+            $this->getDataAd(),
+            $this->getagent(),
+            $this->topcommissioner(),
+            $this->topagentrecruters(),
+            $this->getapplicants()
+        );
         return view('Admin/reports', $data);
     }
 }
