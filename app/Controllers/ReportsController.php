@@ -25,7 +25,7 @@ class ReportsController extends BaseController
         $this->agent = new AgentModel();
         $this->applicant = new ApplicantModel();
         $this->client = new ClientModel();
-        $this->commi = new CommiModel();
+        // $this->commi = new CommiModel();
     }
     public function usersreportdata()
     {
