@@ -11,12 +11,12 @@ use app\Models\CommiModel;
 
 class ReportsController extends BaseController
 {
+    private $commi;
     private $user;
     private $agent;
     private $applicant;
     private $client;
     private $db;
-    private $commi;
 
     public function __construct()
     {
