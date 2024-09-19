@@ -7,7 +7,7 @@
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
         <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block sidebar collapse">
                 <div class="position-sticky py-4 px-3 sidebar-sticky">
                     <ul class="nav flex-column h-100">
                         <li class="nav-item">
@@ -180,14 +180,16 @@
 
                             <div class="col-lg-12 col-sm-12">
                                 <div class="row">
-                                    <div class="col-lg-6 col-6">
+                                    <div class="col-lg-12 col-6">
                                         <div class="card mb-3">
                                             <div class="card-body text-center">
-                                                <i class="fas fa-users fa-2x"></i>
-                                                <small class="d-block mt-2">Agents</small>
-                                                <h3 class="card-title mt-2">
-                                                    <?= $totalAgents ?>
-                                                </h3>
+                                                <!-- Changed icon to 'fa-file-alt' for report -->
+                                                <i class="fas fa-file-alt fa-2x"></i>
+                                                <small class="d-block mt-2">Generate Reports</small>
+                                                <h3 class="card-title mt-2"></h3>
+                                                <!-- Button to generate report -->
+                                                <button class="btn btn-primary mt-3" id="generateReportBtn">Generate
+                                                    Report</button>
                                             </div>
                                         </div>
                                     </div>
@@ -199,10 +201,10 @@
                                     <h5 class="card-title mt-3">Top 3 Recruiters</h5>
                                     <?php foreach ($top as $topagent): ?>
                                         <div class="card-body">
-                                        <a href="<?=base_url()?>/agentprofile/<?= $topagent['agent_token']; ?>">
-                                            <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
-                                                class="card-img-top img-fluid rounded-circle mx-auto" alt="Agent Image"
-                                                style="width: 80px; height: 80px;"></a>
+                                            <a href="<?= base_url() ?>/agentprofile/<?= $topagent['agent_token']; ?>">
+                                                <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
+                                                    class="card-img-top img-fluid rounded-circle mx-auto" alt="Agent Image"
+                                                    style="width: 80px; height: 80px;"></a>
                                             <h5 class="card-title mt-2 small">
                                                 <?= $topagent['username'] ?>
                                                 <!-- <?= $topagent['total_fA'] ?> -->
@@ -218,10 +220,10 @@
                                     <h6 class="card-title mt-3">Top 3 Awardies</>
                                         <?php foreach ($top_commi as $topagent): ?>
                                             <div class="card-body">
-                                            <a href="<?=base_url()?>/agentprofile/<?= $topagent['agent_token']; ?>">
-                                                <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
-                                                    class="card-img-top img-fluid rounded-circle mx-auto" alt="Agent Image"
-                                                    style="width: 80px; height: 80px;"></a>
+                                                <a href="<?= base_url() ?>/agentprofile/<?= $topagent['agent_token']; ?>">
+                                                    <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
+                                                        class="card-img-top img-fluid rounded-circle mx-auto"
+                                                        alt="Agent Image" style="width: 80px; height: 80px;"></a>
                                                 <h5 class="card-title mt-2 small">
                                                     <?= $topagent['username'] ?>
                                                     <!-- <?= number_format($topagent['total_commissions']) ?> -->
