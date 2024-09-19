@@ -97,7 +97,7 @@ class ReportsController extends BaseController
     }
     private function getagent()
     {
-        $data['agent'] = $this->agent->findAll();
+        $data['agents'] = $this->agent->findAll();
         return $data;
     }
 
