@@ -15,8 +15,8 @@ class ReportsController extends BaseController
     private $agent;
     private $applicant;
     private $client;
-    private $commi;
     private $db;
+    private $commi;
 
     public function __construct()
     {
@@ -77,7 +77,7 @@ class ReportsController extends BaseController
 
     public function reports()
     {
-        
+
         return view('Admin/reports');
     }
 }
