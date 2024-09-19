@@ -8,6 +8,7 @@ use App\Models\ApplicantModel;
 use App\Models\AgentModel;
 use App\Models\ClientModel;
 use App\Models\CommiModel;
+use App\Controllers\AdminController;
 
 class ReportsController extends BaseController
 {
@@ -17,6 +18,7 @@ class ReportsController extends BaseController
     private $applicant;
     private $client;
     private $db;
+    private $admincont;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class ReportsController extends BaseController
         $this->agent = new AgentModel();
         $this->applicant = new ApplicantModel();
         $this->client = new ClientModel();
+        $this->admincont = new AdminController();
     }
     public function usersreportdata()
     {
@@ -77,7 +80,8 @@ class ReportsController extends BaseController
 
     public function reports()
     {
-
-        return view('Admin/reports');
+        $data = array_merge($this->admincont->getData(), $this->admincont->getDataAd(),
+        $this->admincont->getagent(), $this->topcommissioner(), $this->topagentrecruters());
+        return view('Admin/reports', $data);
     }
 }
