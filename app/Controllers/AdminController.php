@@ -69,6 +69,7 @@ class AdminController extends BaseController
         // $this->notif = new NotifModel();
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
+        $this->reportscont = new ReportsController();
     }
 
     public function AdDash()
@@ -77,7 +78,7 @@ class AdminController extends BaseController
         $totalApplicants = count($this->applicant->findAll());
         $pendingApplicants = $this->applicant->where('status', 'pending')->countAllResults();
         $data = array_merge($this->getData(), $this->getDataAd(), $this->topagent(), $this->getagent(),
-         $this->topcommi(), $this->notifcont->notification(), $this->reportscont->userreportdata());
+         $this->topcommi(), $this->notifcont->notification(), $this->reportscont->usersreportdata());
         $data['totalAgents'] = $totalAgents;
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
