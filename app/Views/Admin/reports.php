@@ -139,8 +139,6 @@
                         </div>
                     </div>
 
-
-
                     <!-- Applicants Table -->
                     <div class="col-lg-6 mb-3">
                         <div class="card">
@@ -148,7 +146,7 @@
                                 <h5 class="card-title mt-3">Applicants</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;"></div>
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="table-light sticky-top">
                                         <tr>
                                             <th scope="col">User Name</th>
                                             <th scope="col">Birth Day</th>
