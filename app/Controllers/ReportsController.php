@@ -74,4 +74,10 @@ class ReportsController extends BaseController
         $data['top'] = $result;
         return $data;
     }
+
+    public function reports()
+    {
+        
+        return view('Admin/reports');
+    }
 }
