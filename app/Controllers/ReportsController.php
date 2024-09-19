@@ -101,10 +101,16 @@ class ReportsController extends BaseController
         return $data;
     }
 
+    private function getapplicants()
+    {
+        $data['applicants'] = $this->applicant->where('status', 'pending')->findAll();
+        return $data;
+    }
+
     public function reports()
     {
         $data = array_merge($this->getData(), $this->getDataAd(),
-        $this->getagent(), $this->topcommissioner(), $this->topagentrecruters());
+        $this->getagent(), $this->topcommissioner(), $this->topagentrecruters(), $this->getapplicants());
         return view('Admin/reports', $data);
     }
 }

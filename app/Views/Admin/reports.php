@@ -144,13 +144,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-
+                                        <?php foreach ($applicants as $applicant): ?>
+                                            <tr>
+                                                <td><?= $applicant['username'] ?></td>
+                                                <td><?= $applicant['birthday'] ?></td>
+                                                <td><?= $applicant['number'] ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
