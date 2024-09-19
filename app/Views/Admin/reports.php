@@ -134,6 +134,7 @@
                         <div class="card">
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Applicants</h5>
+                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;"></div>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
