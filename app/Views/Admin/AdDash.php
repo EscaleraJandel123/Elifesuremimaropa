@@ -183,11 +183,9 @@
                                     <div class="col-lg-12 col-12">
                                         <div class="card mb-3">
                                             <div class="card-body text-center">
-                                                <!-- Changed icon to 'fa-file-alt' for report -->
                                                 <i class="fas fa-file-alt fa-2x"></i>
                                                 <small class="d-block mt-2">Generate Reports</small>
                                                 <h3 class="card-title mt-2"></h3>
-                                                <!-- Button to generate report -->
                                                 <button class="btn btn-primary mt-3" id="generateReportBtn">Generate
                                                     Report</button>
                                             </div>

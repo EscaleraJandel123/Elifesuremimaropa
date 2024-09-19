@@ -79,25 +79,7 @@ class AdminController extends BaseController
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
         return view('Admin/AdDash', $data);
-        // var_dump($data['notification']);
-        // $data = $this->notifcont->notification();
     }
-    // public function notif()
-    // {
-    //     $data['notifications'] = $this->notif->where('role', 'admin')->orderBy('created_at', 'DESC')->limit(5)->findAll();
-    //     if (!empty($data['notifications'])) {
-    //         foreach ($data['notifications'] as &$notification) {
-    //             if (isset($notification['user_id'])) {
-    //                 $id = $notification['user_id'];
-    //                 $usertoken = $this->user->where('id', $id)->findColumn('token');
-    //                 if (!empty($usertoken)) {
-    //                     $notification['token'] = $usertoken[0]; // Assuming 'token' is a single value
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return $data;
-    // }
 
 
     //Top 3 Agents
