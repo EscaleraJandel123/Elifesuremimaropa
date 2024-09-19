@@ -120,7 +120,7 @@
                                         <div class="table-responsive">
                                             <table class="table table-hover">
                                                 <thead>
-                                                    <?php foreach ($alluser as $users): ?>
+                                                    <?php foreach ($allagents as $users): ?>
                                                         <tr>
                                                             <th scope="col">#</th>
                                                             <th scope="col">User Name</th>
