@@ -168,8 +168,8 @@
                                     <table class="table table-hover">
                                         <thead class="table-light sticky-top">
                                             <tr>
-                                                <th scope="col">Top</th>
                                                 <th scope="col">Rank</th>
+                                                <th scope="col">Top</th>
                                                 <th scope="col">User Name</th>
                                                 <th scope="col">No. of Reqruits</th>
                                             </tr>
