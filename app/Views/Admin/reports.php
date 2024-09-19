@@ -197,7 +197,6 @@
                                     <table class="table table-hover">
                                         <thead class="table-light sticky-top">
                                             <tr>
-                                                <th scope="col">Top</th>
                                                 <th scope="col">Rank</th>
                                                 <th scope="col">User Name</th>
                                                 <th scope="col">Total Commi</th>
@@ -206,7 +205,6 @@
                                         <tbody>
                                             <?php foreach ($top_commi as $topagent): ?>
                                                 <tr>
-                                                    <td><?= $topagent['top'] ?></td>
                                                     <td><?= $topagent['rank'] ?></td>
                                                     <td><?= $topagent['username'] ?></td>
                                                     <td><?= number_format($topagent['total_commissions']) ?></td>
