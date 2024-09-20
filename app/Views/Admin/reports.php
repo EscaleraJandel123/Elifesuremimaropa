@@ -131,7 +131,8 @@
                                             <?php foreach ($agents as $agent): ?>
                                                 <tr>
                                                     <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?>
-                                                        <?= $agent['middlename'] ?>.</td>
+                                                        <?= $agent['middlename'] ?>.
+                                                    </td>
                                                     <td><?= $agent['birthday'] ?></td>
                                                     <td><?= $agent['number'] ?></td>
                                                 </tr>
@@ -161,7 +162,8 @@
                                         <?php foreach ($applicants as $applicant): ?>
                                             <tr>
                                                 <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?>
-                                                    <?= $applicant['middlename'] ?>.</td>
+                                                    <?= $applicant['middlename'] ?>.
+                                                </td>
                                                 <td><?= $applicant['birthday'] ?></td>
                                                 <td><?= $applicant['number'] ?></td>
                                             </tr>
@@ -193,7 +195,8 @@
                                                     <td><?= $topagent['rank'] ?></td>
                                                     <td><?= $topagent['ranking'] ?></td>
                                                     <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?>
-                                                        <?= $topagent['middlename'] ?>.</td>
+                                                        <?= $topagent['middlename'] ?>.
+                                                    </td>
                                                     <td><?= $topagent['total_fA'] ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -223,7 +226,8 @@
                                                 <tr>
                                                     <td><?= $topagent['ranking'] ?></td>
                                                     <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?>
-                                                        <?= $topagent['middlename'] ?>.</td>
+                                                        <?= $topagent['middlename'] ?>.
+                                                    </td>
                                                     <td><?= number_format($topagent['total_commissions']) ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
