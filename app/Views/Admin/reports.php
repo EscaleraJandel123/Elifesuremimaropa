@@ -119,7 +119,7 @@
                                     <table class="table table-hover">
                                         <thead class="table-light sticky-top">
                                             <tr>
-                                                <th scope="col">User Name</th>
+                                                <th scope="col">Name</th>
                                                 <th scope="col">Birth Day</th>
                                                 <th scope="col">Contact</th>
                                             </tr>
@@ -127,7 +127,7 @@
                                         <tbody>
                                             <?php foreach ($agents as $agent): ?>
                                                 <tr>
-                                                    <td><?= $agent['username'] ?></td>
+                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['middlename'] ?></td>
                                                     <td><?= $agent['birthday'] ?></td>
                                                     <td><?= $agent['number'] ?></td>
                                                 </tr>
