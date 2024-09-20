@@ -4,15 +4,17 @@
 <?= view('head') ?>
 <style>
     .table-responsive {
-    position: relative;
-}
+        position: relative;
+    }
 
-.table thead.sticky-top {
-    top: 5px; /* Adjust based on the height of the header or navbar */
-    z-index: 1; /* Ensure it's below other important components */
-}
-
+    .table thead.sticky-top {
+        top: 5px;
+        /* Adjust based on the height of the header or navbar */
+        z-index: 1;
+        /* Ensure it's below other important components */
+    }
 </style>
+
 <body>
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
@@ -106,8 +108,9 @@
                 </div>
             </nav>
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
-                <div class="title-group mb-3">
+                <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
+                    <a href="#" class="btn btn-primary">Generate Report</a>
                 </div>
                 <div class="row">
                     <!-- left and right table columns -->
@@ -127,7 +130,8 @@
                                         <tbody>
                                             <?php foreach ($agents as $agent): ?>
                                                 <tr>
-                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['middlename'] ?>.</td>
+                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?>
+                                                        <?= $agent['middlename'] ?>.</td>
                                                     <td><?= $agent['birthday'] ?></td>
                                                     <td><?= $agent['number'] ?></td>
                                                 </tr>
@@ -156,7 +160,8 @@
                                     <tbody>
                                         <?php foreach ($applicants as $applicant): ?>
                                             <tr>
-                                            <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?> <?= $applicant['middlename'] ?>.</td>
+                                                <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?>
+                                                    <?= $applicant['middlename'] ?>.</td>
                                                 <td><?= $applicant['birthday'] ?></td>
                                                 <td><?= $applicant['number'] ?></td>
                                             </tr>
@@ -187,7 +192,8 @@
                                                 <tr>
                                                     <td><?= $topagent['rank'] ?></td>
                                                     <td><?= $topagent['ranking'] ?></td>
-                                                    <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?> <?= $topagent['middlename'] ?>.</td>
+                                                    <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?>
+                                                        <?= $topagent['middlename'] ?>.</td>
                                                     <td><?= $topagent['total_fA'] ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -216,7 +222,8 @@
                                             <?php foreach ($top_commi as $topagent): ?>
                                                 <tr>
                                                     <td><?= $topagent['ranking'] ?></td>
-                                                    <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?> <?= $topagent['middlename'] ?>.</td>
+                                                    <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?>
+                                                        <?= $topagent['middlename'] ?>.</td>
                                                     <td><?= number_format($topagent['total_commissions']) ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
