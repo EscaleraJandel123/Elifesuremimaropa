@@ -127,7 +127,7 @@
                                         <tbody>
                                             <?php foreach ($agents as $agent): ?>
                                                 <tr>
-                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['middlename'] ?></td>
+                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> <?= $agent['middlename'] ?>.</td>
                                                     <td><?= $agent['birthday'] ?></td>
                                                     <td><?= $agent['number'] ?></td>
                                                 </tr>
@@ -148,7 +148,7 @@
                                 <table class="table table-hover">
                                     <thead class="table-light sticky-top">
                                         <tr>
-                                            <th scope="col">User Name</th>
+                                            <th scope="col">Name</th>
                                             <th scope="col">Birth Day</th>
                                             <th scope="col">Contact</th>
                                         </tr>
@@ -156,7 +156,7 @@
                                     <tbody>
                                         <?php foreach ($applicants as $applicant): ?>
                                             <tr>
-                                                <td><?= $applicant['username'] ?></td>
+                                            <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?> <?= $applicant['middlename'] ?>.</td>
                                                 <td><?= $applicant['birthday'] ?></td>
                                                 <td><?= $applicant['number'] ?></td>
                                             </tr>
@@ -178,7 +178,7 @@
                                             <tr>
                                                 <th scope="col">Rank</th>
                                                 <th scope="col">Top</th>
-                                                <th scope="col">User Name</th>
+                                                <th scope="col">Name</th>
                                                 <th scope="col">No. of Reqruits</th>
                                             </tr>
                                         </thead>
@@ -187,7 +187,7 @@
                                                 <tr>
                                                     <td><?= $topagent['rank'] ?></td>
                                                     <td><?= $topagent['ranking'] ?></td>
-                                                    <td><?= $topagent['username'] ?></td>
+                                                    <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?> <?= $topagent['middlename'] ?>.</td>
                                                     <td><?= $topagent['total_fA'] ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -208,7 +208,7 @@
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Top</th>
-                                                <th scope="col">User Name</th>
+                                                <th scope="col">Name</th>
                                                 <th scope="col">Total Commi</th>
                                             </tr>
                                         </thead>
@@ -216,7 +216,7 @@
                                             <?php foreach ($top_commi as $topagent): ?>
                                                 <tr>
                                                     <td><?= $topagent['ranking'] ?></td>
-                                                    <td><?= $topagent['username'] ?></td>
+                                                    <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?> <?= $topagent['middlename'] ?>.</td>
                                                     <td><?= number_format($topagent['total_commissions']) ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
