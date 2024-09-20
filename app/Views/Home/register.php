@@ -72,7 +72,7 @@
                   <div class="col-md-3 col-3">
                     <label for="middlename" class="form-label">Initial</label>
                     <div class="input-group has-validation">
-                      <input type="text" name="middlename" class="form-control text-uppercase" id="middlename"
+                      <input type="text" name="middlename" class="form-control" id="middlename"
                         pattern="[a-z]" maxlength="1" required>
                       <div class="invalid-feedback">Please enter your Middle Initial!</div>
                     </div>
