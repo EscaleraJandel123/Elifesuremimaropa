@@ -119,7 +119,7 @@
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Agents</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" id="agents-table">
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Name</th>
@@ -150,7 +150,7 @@
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Applicants</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;"></div>
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="applicants-table">
                                     <thead class="table-light sticky-top">
                                         <tr>
                                             <th scope="col">Name</th>
