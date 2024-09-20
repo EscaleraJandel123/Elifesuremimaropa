@@ -18,7 +18,7 @@
 <body>
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="page">
             <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block sidebar collapse">
                 <div class="position-sticky py-4 px-3 sidebar-sticky">
                     <ul class="nav flex-column h-100">
@@ -110,7 +110,7 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
-                    <a href="#" class="btn btn-primary">Generate Report</a>
+                    <a href="#" class="btn btn-primary" onclick="generatePdf()">Generate Report</a>
                 </div>
                 <div class="row">
                     <!-- left and right table columns -->
@@ -206,7 +206,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- top commissioner -->
                     <div class="col-lg-6 mb-3">
                         <div class="card">
@@ -242,6 +241,34 @@
         </div>
     </div>
     <?= view('js'); ?>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    function generatePdf() {
+    let jsPdf = new jsPDF('p', 'pt', 'a4');
+    var htmlElement = document.getElementById('page');
+    // you need to load html2canvas (and dompurify if you pass a string to html)
+    const opt = {
+        callback: function (jsPdf) {
+            jsPdf.save("Life Changer_<?= isset($lifechangerform['user_id']) ? $lifechangerform['user_id'] : '' ?>.pdf");
+            // to open the generated PDF in browser window
+            // window.open(jsPdf.output('bloburl'));
+        },
+        // margin: [72, 0, 72, 0],
+        // autoPaging: 'text',
+        // margin: { top: 0, right: 0, bottom: 0.5, left: 0 },
+        autoPaging: true, // Enable auto pagination
+        html2canvas: {
+            allowTaint: true,
+            dpi: 300,
+            letterRendering: true,
+            logging: false,
+            scale: .75
+        }
+    };
+
+    jsPdf.html(htmlElement, opt);
+    }
+    </script>
 </body>
 
 </html>
