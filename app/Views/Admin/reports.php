@@ -250,24 +250,30 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Add title to PDF
+            // Add a main title for the PDF
             doc.text('Reports - Agents & Applicants', 10, 10);
+
+            // Adding the label for Agents table
+            doc.text('Agents', 10, 20);
 
             // Agents Table
             doc.autoTable({
                 html: '#agents-table',
-                startY: 20,
+                startY: 25, // Start just after the "Agents" label
                 theme: 'striped',
                 headStyles: { fillColor: [22, 160, 133] }
             });
 
-            // Space before the next table
+            // Get the final position after the first table
             let finalY = doc.lastAutoTable.finalY + 10;
+
+            // Adding the label for Applicants table
+            doc.text('Applicants', 10, finalY);
 
             // Applicants Table
             doc.autoTable({
                 html: '#applicants-table',
-                startY: finalY,
+                startY: finalY + 5, // Start just after the "Applicants" label
                 theme: 'striped',
                 headStyles: { fillColor: [22, 160, 133] }
             });
