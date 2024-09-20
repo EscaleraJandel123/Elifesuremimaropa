@@ -22,7 +22,7 @@
 <body>
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
-        <div class="row" id="page">
+        <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block sidebar collapse">
                 <div class="position-sticky py-4 px-3 sidebar-sticky">
                     <ul class="nav flex-column h-100">
@@ -116,7 +116,7 @@
                     <h1 class="h2 mb-0">Reports</h1>
                     <a href="#" class="btn btn-primary" onclick="generatePdf()">Generate Report</a>
                 </div>
-                <div class="row">
+                <div class="row"  id="page">
                     <!-- left and right table columns -->
                     <div class="col-lg-6 mb-3">
                         <div class="card">
