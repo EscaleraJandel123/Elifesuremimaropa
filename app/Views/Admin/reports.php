@@ -180,7 +180,7 @@
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Top Recruiters</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" id="top-recruiters-table">
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Rank</th>
@@ -212,7 +212,7 @@
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Awardee</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" id="awardee-table">
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Top</th>
@@ -251,7 +251,7 @@
             const doc = new jsPDF();
 
             // Add a main title for the PDF
-            doc.text('Reports - Agents & Applicants', 10, 10);
+            doc.text('Reports - Agents, Applicants, Recruiters & Awardees', 10, 10);
 
             // Adding the label for Agents table
             doc.text('Agents', 10, 20);
@@ -274,6 +274,34 @@
             doc.autoTable({
                 html: '#applicants-table',
                 startY: finalY + 5, // Start just after the "Applicants" label
+                theme: 'striped',
+                headStyles: { fillColor: [22, 160, 133] }
+            });
+
+            // Get the final position after the second table
+            finalY = doc.lastAutoTable.finalY + 10;
+
+            // Adding the label for Top Recruiters table
+            doc.text('Top Recruiters', 10, finalY);
+
+            // Top Recruiters Table
+            doc.autoTable({
+                html: '#top-recruiters-table',
+                startY: finalY + 5, // Start just after the "Top Recruiters" label
+                theme: 'striped',
+                headStyles: { fillColor: [22, 160, 133] }
+            });
+
+            // Get the final position after the third table
+            finalY = doc.lastAutoTable.finalY + 10;
+
+            // Adding the label for Awardee table
+            doc.text('Awardee', 10, finalY);
+
+            // Awardee Table
+            doc.autoTable({
+                html: '#awardee-table',
+                startY: finalY + 5, // Start just after the "Awardee" label
                 theme: 'striped',
                 headStyles: { fillColor: [22, 160, 133] }
             });
