@@ -208,7 +208,7 @@
                     <div class="col-lg-6 mb-3">
                         <div class="card">
                             <div class="table-responsive mx-3">
-                                <h5 class="card-title mt-3">Top Recruiters</h5>
+                                <h5 class="card-title mt-3">Awardee</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
                                     <table class="table table-hover">
                                         <thead class="table-light sticky-top">
