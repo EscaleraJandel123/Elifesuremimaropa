@@ -55,7 +55,7 @@ class NotifController extends BaseController
     public function sendNotification() {
         $smsService = new SMSService(); // Load the SMS library
 
-        $to = '+639945428697'; // The recipient's phone number
+        $to = '+639366581432'; // The recipient's phone number
         $message = 'Your custom notification message.';
 
         $result = $smsService->sendSMS($to, $message);
