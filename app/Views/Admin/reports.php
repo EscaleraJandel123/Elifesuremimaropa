@@ -83,7 +83,6 @@
                                 Reports
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/map">
                                 <i class="bi bi-map me-2"></i>

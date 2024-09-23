@@ -65,6 +65,12 @@
                                 Applicants
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/reports">
+                                <i class="fas fa-file-alt me-2"></i></i>
+                                Reports
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/map">
