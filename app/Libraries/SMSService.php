@@ -8,7 +8,7 @@ class SMSService {
 
     public function __construct() {
         $sid = 'ACe186affed625b3c41f27090783cc5e00';
-        $token = 'fe93296fbf986116c0a0933a58998b4f';
+        $token = 'af1b0428794f7c530edb661a21031afe';
         $this->client = new Client($sid, $token);
     }
 
