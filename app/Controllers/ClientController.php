@@ -133,10 +133,10 @@ class ClientController extends BaseController
         return $data;
     }
 
-    public function registers()
-    {
-        return view('Client/registers');
-    }
+    // public function registers()
+    // {
+    //     return view('Client/registers');
+    // }
 
     private function sendVerificationEmail($to, $subject, $message)
     {
