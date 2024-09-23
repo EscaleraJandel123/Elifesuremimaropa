@@ -166,7 +166,7 @@ $routes->get('/agentsched', 'AgentController::sched', ['filter' => 'adminFilter'
 
 //notification
 $routes->get('/clearnotif', 'NotifController::clearnotif', ['filter' => 'authGuard']);
-$routes->get('/sms', 'NotifController::sms');
+$routes->get('/sms', 'NotifController::sendNotification');
 
 
 

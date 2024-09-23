@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use \App\Models\NotifModel;
 use \App\Models\UserModel;
-
 use App\Controllers\BaseController;
 
 class NotifController extends BaseController
@@ -53,5 +52,5 @@ class NotifController extends BaseController
         }
         return $data;
     }
-
+    
 }
