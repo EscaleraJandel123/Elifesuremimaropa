@@ -7,23 +7,23 @@ class SMSService {
     protected $client;
 
     public function __construct() {
-        $sid = getenv('TWILIO_SID');    // Load Twilio SID from .env
-        $token = getenv('TWILIO_TOKEN'); // Load Twilio Token from .env
-        $this->client = new Client($sid, $token); // Initialize Twilio Client
+        $sid = 'ACe186affed625b3c41f27090783cc5e00';
+        $token = 'fe93296fbf986116c0a0933a58998b4f';
+        $this->client = new Client($sid, $token);
     }
 
     public function sendSMS($to, $message) {
         try {
-            $message = $this->client->messages->create(
-                $to, // Recipient's phone number
+            $this->client->messages->create(
+                $to, // The phone number you want to send to
                 [
-                    'from' => getenv('TWILIO_PHONE_NUMBER'), // Sender's Twilio number
+                    'from' => '+19705281626', // Your Twilio number
                     'body' => $message
                 ]
             );
-            return $message->sid; // Return message SID if successful
+            return true;
         } catch (\Exception $e) {
-            return $e->getMessage(); // Return error message if something goes wrong
+            return $e->getMessage(); // Return error if sending failed
         }
     }
 }
