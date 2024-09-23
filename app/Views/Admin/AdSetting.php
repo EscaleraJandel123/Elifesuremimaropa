@@ -78,13 +78,6 @@
                                 Maps
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/AdHelp">
-                                <i class="fas fa-hands-helping me-2"></i>
-                                Help Center
-                            </a>
-                        </li>
                         <hr>
                         <li class="nav-item">
                             <a class="nav-link" href="/plans">
