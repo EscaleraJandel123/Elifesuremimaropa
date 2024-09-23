@@ -5,7 +5,7 @@ namespace App\Controllers;
 use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
-
+use App\Libraries\SMSService;
 class NotifController extends BaseController
 {
     private $notif;
@@ -51,6 +51,20 @@ class NotifController extends BaseController
             }
         }
         return $data;
+    }
+    public function sendNotification() {
+        $smsService = new SMSService(); // Load the SMS library
+
+        $to = '+639XXXXXXXXX'; // The recipient's phone number
+        $message = 'Your custom notification message.';
+
+        $result = $smsService->sendSMS($to, $message);
+
+        if ($result === true) {
+            return 'SMS sent successfully!';
+        } else {
+            return 'Failed to send SMS: ' . $result;
+        }
     }
     
 }
