@@ -176,10 +176,10 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label ">Full Name</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php if (isset($client['lastname']) && isset($client['firstname']) && isset($client['middlename'])): ?>
-                                                    <?= $client['lastname'] ?>,
-                                                    <?= $client['firstname'] ?>
-                                                    <?= $client['middlename'] ?>
+                                                <?php if (isset($client['lastName']) && isset($client['firstName']) && isset($client['middleName'])): ?>
+                                                    <?= $client['lastName'] ?>,
+                                                    <?= $client['firstName'] ?>
+                                                    <?= $client['middleName'] ?>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
