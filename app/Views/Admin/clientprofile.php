@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <?= view('head') ?>
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
 <body>
     <?= view('Admin/chop/header') ?>
@@ -100,19 +99,19 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3">
                     <h1 class="h2 mb-0">
-                        <?= $agent['username'] ?>'s Profile
+                        <?= $client['username'] ?>'s Profile
                     </h1>
                 </div>
                 <div class="row">
                     <div class="col-xl-4 mb-1">
                         <div class="card">
                             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                                <img src="<?= isset($agent['agentprofile']) && !empty($agent['agentprofile']) ? base_url('/uploads/' . $agent['agentprofile']) : base_url('/uploads/def.png') ?>"
+                                <img src="<?= isset($client['clientprofile']) && !empty($client['clientprofile']) ? base_url('/uploads/' . $client['clientprofile']) : base_url('/uploads/def.png') ?>"
                                     alt="Profile" class="rounded-circle"
                                     style="width: 150px; height: 150px; cursor: pointer;" data-bs-placement="bottom"
                                     title="Click to see QR code">
                                 <h5>
-                                    <?= $agent['username'] ?>
+                                    <?= $client['username'] ?>
                                 </h5>
                                 <div class="social-links mt-2">
                                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -170,10 +169,10 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label ">Full Name</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php if (isset($agent['lastname']) && isset($agent['firstname']) && isset($agent['middlename'])): ?>
-                                                    <?= $agent['lastname'] ?>,
-                                                    <?= $agent['firstname'] ?>
-                                                    <?= $agent['middlename'] ?>
+                                                <?php if (isset($client['lastname']) && isset($client['firstname']) && isset($client['middlename'])): ?>
+                                                    <?= $client['lastname'] ?>,
+                                                    <?= $client['firstname'] ?>
+                                                    <?= $client['middlename'] ?>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -181,50 +180,43 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Username</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['username']) ? $agent['username'] : '' ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label">Agent Code</div>
-                                            <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['AgentCode']) ? $agent['AgentCode'] : '' ?>
+                                                <?php echo isset($client['username']) ? $client['username'] : '' ?>
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Email</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['email']) ? $agent['email'] : '' ?>
+                                                <?php echo isset($client['email']) ? $client['email'] : '' ?>
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Phone</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['number']) ? $agent['number'] : '' ?>
+                                                <?php echo isset($client['number']) ? $client['number'] : '' ?>
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Birthday</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['birthday']) ? date('M j, Y', strtotime($agent['birthday'])) : ''; ?>
+                                                <?php echo isset($client['birthday']) ? date('M j, Y', strtotime($client['birthday'])) : ''; ?>
                                             </div>
                                         </div>
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Adress</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?= isset($agent['province']) ? $agent['province'] : '' ?>,
-                                                <?= isset($agent['city']) ? $agent['city'] : '' ?>,
-                                                <?= isset($agent['barangay']) ? $agent['barangay'] : '' ?>,
-                                                <?= isset($agent['street']) ? $agent['street'] : '' ?>
+                                                <?= isset($client['province']) ? $client['province'] : '' ?>,
+                                                <?= isset($client['city']) ? $client['city'] : '' ?>,
+                                                <?= isset($client['barangay']) ? $client['barangay'] : '' ?>,
+                                                <?= isset($client['street']) ? $client['street'] : '' ?>
                                             </div>
                                         </div>
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Zip Code</div>
                                             <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['zipcode']) ? $agent['zipcode'] : '' ?>
+                                                <?php echo isset($client['zipcode']) ? $client['zipcode'] : '' ?>
                                             </div>
                                         </div>
                                     </div>
@@ -240,18 +232,6 @@
                                                             <th scope="col">Date</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <?php foreach ($FA as $sub): ?>
-                                                            <tr>
-                                                                <td>
-                                                                    <?= $sub['username'] ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?= date('M j, Y', strtotime($sub['created_at'])); ?>
-                                                                </td>
-                                                            </tr>
-                                                        <?php endforeach ?>
-                                                    </tbody>
                                                 </table>
                                                 <nav aria-label="Page navigation">
                                                     <ul class="pagination justify-content-center">
@@ -265,83 +245,23 @@
                                         <h1 class="h2 mb-0">Forms</h1>
                                         <div class="row text-center">
                                             <div class="col-lg-2 col-4 my-3">
-                                                <a href="/ViewAppForm/<?= $agent['agent_token'] ?>">
-                                                    <img src="<?= base_url(); ?>uploads/forms/life_changer.png"
-                                                        class="card-img-top" alt="form">
-                                                    LIFE
-                                                </a>
+
                                             </div>
                                             <div class="col-lg-2 col-4 my-3">
-                                                <a href="/ViewAppForm2/<?= $agent['agent_token'] ?>">
-                                                    <img src="<?= base_url(); ?>uploads/forms/aial.png"
-                                                        class="card-img-top" alt="AIAL">
-                                                    AIAL
-                                                </a>
+
                                             </div>
                                             <div class="col-lg-2 col-4 my-3">
-                                                <a href="/ViewAppForm3/<?= $agent['agent_token'] ?>">
-                                                    <img src=" <?= base_url(); ?>uploads/forms/grouplife.png"
-                                                        class="card-img-top" alt="form">
-                                                    GLI
-                                                </a>
+
                                             </div>
                                             <div class="col-lg-2 col-4 my-3">
-                                                <a href="/ViewAppForm4/<?= $agent['agent_token'] ?>">
-                                                    <img src=" <?= base_url(); ?>uploads/forms/affidavit.png"
-                                                        class="card-img-top" alt="form">
-                                                    AONF
-                                                </a>
+
                                             </div>
                                             <div class="col-lg-2 col-4 my-3">
-                                                <a href="/ViewAppForm5/<?= $agent['agent_token'] ?>">
-                                                    <img src=" <?= base_url(); ?>uploads/forms/statement.png"
-                                                        class="card-img-top" alt="form">
-                                                    SOU
-                                                </a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade pt-3" id="files">
-                                        <h1 class="h2 mb-0">Files</h1>
-                                        <div class="row text-center">
-                                            <?php foreach (range(1, 6) as $i): ?>
-                                                <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
-                                                    <?php
-                                                    // Determine the file type for icon
-                                                    $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
-                                                    $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
-                                                    $iconClass = 'fa-file'; // Default icon
-                                            
-                                                    // Set icon class based on file extension
-                                                    if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])) {
-                                                        $iconClass = 'fa-file-image';
-                                                    } elseif ($fileExt === 'pdf') {
-                                                        $iconClass = 'fa-file-pdf';
-                                                    } elseif (in_array($fileExt, ['doc', 'docx'])) {
-                                                        $iconClass = 'fa-file-word';
-                                                    } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
-                                                        $iconClass = 'fa-file-powerpoint';
-                                                    }
-                                                    ?>
-                                                    <div class="col-lg-2 col-4">
-                                                        <div class="card">
-                                                            <div class="card-body text-center">
-                                                                <p class="">File <?= $i ?></p>
-                                                                <p class="card-text">
-                                                                    <a href="<?= $filePath ?>" target="_blank">
-                                                                        <i class="fas <?= $iconClass ?> fa-3x"></i>
-                                                                    </a>
-                                                                </p>
-                                                                <!-- <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
-                                                                    <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
-                                                                </a> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
+
                                 </div><!-- End Bordered Tabs -->
                             </div>
                         </div>
@@ -358,48 +278,7 @@
     </div>
 
     <?= view('js'); ?>
-    <script>
-        // I-create ang QR code gamit ang actual na data
-        var profileData = JSON.stringify({
-            username: "<?= $agent['username'] ?>",
-            fullname: "<?= $agent['Agentfullname'] ?>",
-            email: "<?= $agent['email'] ?>",
-            number: "<?= $agent['number'] ?>",
-            code: "<?= $agent['AgentCode'] ?>",
-            birthday: "<?= date('M j, Y', strtotime($agent['birthday'])); ?>"
-        });
 
-        // Set ang data ng QR code container gamit ang profileData
-        var qrCodeContainer = document.getElementById("qrCodeContainer");
-
-        // Set the size of the QR code (adjust as needed)
-
-        new QRCode(qrCodeContainer, {
-            text: profileData,
-        });
-
-        // Kung gusto mo i-download ang QR code
-        var downloadButton = document.getElementById("downloadButton");
-        downloadButton.addEventListener("click", function () {
-            // Kunin ang data URL ng QR code at gawing anchor link
-            var dataURL = qrCodeContainer.querySelector("img").src;
-            var downloadLink = document.createElement("a");
-            downloadLink.href = dataURL;
-            downloadLink.download = "profile_qr_code_" + "<?= $agent['username'] ?>.png";
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        });
-
-
-        // JavaScript code to show the modal when the profile image is clicked
-        $(document).ready(function () {
-            $('.profile-card img').on('click', function () {
-                $('#profileModal').modal('show');
-            });
-        });
-
-    </script>
 </body>
 
 </html>

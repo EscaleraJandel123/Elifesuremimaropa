@@ -212,7 +212,7 @@ class ProfileController extends BaseController
             return redirect()->to('some_error_page')->with('error', 'client not found');
         }
 
-        // return view("Admin/applicantprofile", $data);
-        var_dump($data['client']);
+        return view("Admin/clientprofile", $data);
+        // var_dump($data['client']);
     }
 }
