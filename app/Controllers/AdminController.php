@@ -210,7 +210,7 @@ class AdminController extends BaseController
         $filterUser = $this->request->getPost('filterClient');
         $client = $this->client->like('username', $filterUser)->paginate(10, 'group1');
         $data['pager'] = $this->client->pager; // Use $agentModel->pager
-        $data['client'] = $client;
+        $data['clients'] = $client;
         return view('Admin/ManageClient', $data);
     }
 
