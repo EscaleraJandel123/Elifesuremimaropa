@@ -233,11 +233,7 @@
                                                         </tr>
                                                     </thead>
                                                 </table>
-                                                <nav aria-label="Page navigation">
-                                                    <ul class="pagination justify-content-center">
-                                                        <?= $pager->only(['previous', 'first', 'links', 'last', 'next'])->links() ?>
-                                                    </ul>
-                                                </nav>
+                                                
                                             </div>
                                         </div>
                                     </div>
