@@ -179,7 +179,7 @@
                                                 <?php if (isset($client['lastName']) && isset($client['firstName']) && isset($client['middleName'])): ?>
                                                     <?= $client['lastName'] ?>,
                                                     <?= $client['firstName'] ?>
-                                                    <?= $client['middleName'] ?>
+                                                    <?= $client['middleName'] ?>.
                                                 <?php endif; ?>
                                             </div>
                                         </div>
