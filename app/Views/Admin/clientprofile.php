@@ -59,7 +59,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/ManageAgent">
+                            <a class="nav-link" aria-current="page" href="/ManageAgent">
                                 <i class="fas fa-user-tie me-2"></i>
                                 Agents
                             </a>
