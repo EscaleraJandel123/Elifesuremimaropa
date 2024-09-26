@@ -196,12 +196,21 @@ class AdminController extends BaseController
     // Controller method for searching agents by full name
     public function agentSearch()
     {
-        $agentModel = new AgentModel();
         $data = array_merge($this->notifcont->notification(), $this->usermerge());
         $filterUser = $this->request->getPost('filterAgent');
         $agents = $this->agent->like('username', $filterUser)->paginate(10, 'group1');
         $data['pager'] = $this->agent->pager; // Use $agentModel->pager
         $data['agent'] = $agents;
+        return view('Admin/ManageAgent', $data);
+    }
+
+    public function aclientSearch()
+    {
+        $data = array_merge($this->notifcont->notification(), $this->usermerge());
+        $filterUser = $this->request->getPost('filterClient');
+        $client = $this->client->like('username', $filterUser)->paginate(10, 'group1');
+        $data['pager'] = $this->agent->pager; // Use $agentModel->pager
+        $data['client'] = $client;
         return view('Admin/ManageAgent', $data);
     }
 

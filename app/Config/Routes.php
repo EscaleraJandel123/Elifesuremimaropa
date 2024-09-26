@@ -33,6 +33,7 @@ $routes->match(['get', 'post'], '/promotion', 'AdminController::promotion', ['fi
 $routes->get('/ManageApplicant', 'AdminController::ManageApplicant', ['filter' => 'adminFilter']);
 $routes->post('/userSearch', 'AdminController::userSearch', ['filter' => 'adminFilter']);
 $routes->post('/agentSearch', 'AdminController::agentSearch', ['filter' => 'adminFilter']);
+$routes->post('/clientSearch', 'AdminController::clientSearch', ['filter' => 'adminFilter']);
 $routes->post('/svad', 'AdminController::svad', ['filter' => 'adminFilter']);
 $routes->get('/RTC', 'AdminController::RTC', ['filter' => 'adminFilter']);
 $routes->match(['get', 'post'], '/agentprofile/(:any)', 'ProfileController::agentprofile/$1', ['filter' => 'adminFilter']);

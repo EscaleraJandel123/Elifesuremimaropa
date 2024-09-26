@@ -61,7 +61,7 @@
                                 Clients
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/ManageAgent">
                                 <i class="fas fa-user-tie me-2"></i>
@@ -114,10 +114,10 @@
                     <div class="col-lg-12 col-12">
                         <div class="custom-block bg-white">
 
-                            <form class="custom-form search-form" action="/agentSearch" method="post" role="form">
+                            <form class="custom-form search-form" action="/clientSearch" method="post" role="form">
                                 <div class="row">
                                     <div class="col-lg-4 col-8">
-                                        <input class="form-control mb-lg-0 mb-md-0" name="filterAgent" type="text"
+                                        <input class="form-control mb-lg-0 mb-md-0" name="filterClient" type="text"
                                             placeholder="Search" aria-label="Search" required>
                                     </div>
                                     <div class="col-lg-1 col-4">
