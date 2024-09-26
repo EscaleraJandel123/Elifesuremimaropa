@@ -40,6 +40,8 @@ $routes->match(['get', 'post'], '/applicantprofile/(:any)', 'ProfileController::
 $routes->get('/map', 'MapController::map', ['filter' => 'adminFilter']);
 $routes->get('/reports', 'ReportsController::reports', ['filter' => 'adminFilter']);
 
+$routes->get('/manageclients', 'ReportsController::clients', ['filter' => 'adminFilter']);
+
 
 $routes->get('/AppDash', 'AppController::AppDash', ['filter' => 'applicantFilter']);
 $routes->get('/AppProfile', 'AppController::AppProfile', ['filter' => 'applicantFilter']);

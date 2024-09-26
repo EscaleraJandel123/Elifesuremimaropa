@@ -545,4 +545,18 @@ class AdminController extends BaseController
         $this->scheduleModel->insert($data);
         return redirect()->back()->with('success', 'Schedule submitted successfully.');
     }
+
+    public function ManageClients()
+    {
+        $data = array_merge($this->notifcont->notification(), $this->usermerge());
+        $data['clients'] = $this->client->paginate(10, 'group1'); // Change 10 to the number of items per page
+        $data['pager'] = $this->client->pager;
+        return view('Admin/ManageClient', $data);
+    }
+
+    private function getclients()
+    {
+        $data['clients'] = $this->client->findAll();
+        return $data;
+    }
 }
