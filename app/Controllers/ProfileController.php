@@ -199,4 +199,20 @@ class ProfileController extends BaseController
             ->first();
         return $data;
     }
+
+    public function clientprofile($token)
+    {
+        $data = array_merge($this->getDataAd(), $this->notifcont->notification());
+        $data['client'] = $this->client->where('clinet_token', $token)->first();
+
+        if ($data['client']) {
+            $data = $this->files($data, $data['client']['client_id'], 'client'); // Pass $data to the files method
+        } else {
+            // Handle the case where the client is not found
+            return redirect()->to('some_error_page')->with('error', 'client not found');
+        }
+
+        // return view("Admin/applicantprofile", $data);
+        var_dump($data);
+    }
 }
