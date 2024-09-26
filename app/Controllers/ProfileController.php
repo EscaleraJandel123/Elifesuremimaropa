@@ -203,7 +203,7 @@ class ProfileController extends BaseController
     public function clientprofile($token)
     {
         $data = array_merge($this->getDataAd(), $this->notifcont->notification());
-        $data['client'] = $this->client->where('clinet_token', $token)->first();
+        $data['client'] = $this->client->where('client_token', $token)->first();
 
         if ($data['client']) {
             $data = $this->files($data, $data['client']['client_id'], 'client'); // Pass $data to the files method
