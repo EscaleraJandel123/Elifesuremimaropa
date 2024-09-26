@@ -209,7 +209,7 @@ class AdminController extends BaseController
         $data = array_merge($this->notifcont->notification(), $this->usermerge());
         $filterUser = $this->request->getPost('filterClient');
         $client = $this->client->like('username', $filterUser)->paginate(10, 'group1');
-        $data['pager'] = $this->agent->pager; // Use $agentModel->pager
+        $data['pager'] = $this->client->pager; // Use $agentModel->pager
         $data['client'] = $client;
         return view('Admin/ManageAgent', $data);
     }
