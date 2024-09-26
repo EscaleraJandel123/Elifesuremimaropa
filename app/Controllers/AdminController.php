@@ -204,7 +204,7 @@ class AdminController extends BaseController
         return view('Admin/ManageAgent', $data);
     }
 
-    public function aclientSearch()
+    public function clientSearch()
     {
         $data = array_merge($this->notifcont->notification(), $this->usermerge());
         $filterUser = $this->request->getPost('filterClient');
