@@ -213,6 +213,6 @@ class ProfileController extends BaseController
         }
 
         // return view("Admin/applicantprofile", $data);
-        var_dump($data);
+        var_dump($data['client']);
     }
 }
