@@ -126,7 +126,7 @@
                                     <div class="col-lg-2 col-md-4 mb-3">
                                         <div class="custom-block-profile-front text-center">
                                             <div class="custom-block-profile-image-wrap mb-1">
-                                                <!-- <a href="/agentprofile/<?= $client['client_token']; ?>"> -->
+                                                <a href="/clientprofile/<?= $client['client_token']; ?>">
                                                     <img src="<?= isset($client['profile']) && !empty($client['profile']) ? base_url('/uploads/' . $client['profile']) : base_url('/uploads/def.png') ?>"
                                                         class="img-fluid" alt="" style="height: 100px; width: auto">
                                                 </a>

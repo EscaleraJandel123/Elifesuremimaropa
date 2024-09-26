@@ -41,7 +41,7 @@ $routes->get('/map', 'MapController::map', ['filter' => 'adminFilter']);
 $routes->get('/reports', 'ReportsController::reports', ['filter' => 'adminFilter']);
 
 $routes->get('/ManageClients', 'AdminController::ManageClients', ['filter' => 'adminFilter']);
-
+$routes->match(['get', 'post'], '/clientprofile/(:any)', 'ProfileController::clientprofile/$1', ['filter' => 'adminFilter']);
 
 $routes->get('/AppDash', 'AppController::AppDash', ['filter' => 'applicantFilter']);
 $routes->get('/AppProfile', 'AppController::AppProfile', ['filter' => 'applicantFilter']);
