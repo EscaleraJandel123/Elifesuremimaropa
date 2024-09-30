@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->set404Override(); // This will use the default CodeIgniter 404 error page
+
 $routes->get('/AdDash', 'AdminController::AdDash', ['filter' => 'adminFilter']);
 $routes->get('/ManageAgent', 'AdminController::ManageAgent', ['filter' => 'adminFilter']);
 $routes->get('/AdProfile', 'AdminController::AdProfile', ['filter' => 'adminFilter']);
