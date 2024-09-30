@@ -157,7 +157,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sub-agents">Active plan</button>
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sub-agents">Plan</button>
                                     </li>
 
                                     <!-- <li class="nav-item">
@@ -228,19 +228,22 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade sub-agents " id="sub-agents">
-                                        <h5 class="card-title">Sub Agents</h5>
+                                        <h5 class="card-title">Plan</h5>
                                         <div class="table-responsive">
                                             <!-- Table with hoverable rows -->
                                             <div class="table-container mx-auto">
                                                 <table class="table table-hover">
                                                     <thead class="thead-light bg-white">
                                                         <tr>
-                                                            <th scope="col">User Name</th>
-                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Plan</th>
+                                                            <th scope="col">Status</th>
+                                                            <th scope="col">Date pay</th>
+                                                            <th scope="col">Due date</th>
+                                                            <th scope="col">Agent</th>
                                                         </tr>
                                                     </thead>
+
                                                 </table>
-                                                
                                             </div>
                                         </div>
                                     </div>
