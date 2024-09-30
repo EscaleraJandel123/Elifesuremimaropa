@@ -265,7 +265,6 @@ class AdminController extends BaseController
 
     public function viewAppForm($token)
     {
-        $token = $this->user->find('token');
         $data['lifechangerform'] = $this->form1->where('app_life_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
         return view('Admin/Forms/details', $data);
