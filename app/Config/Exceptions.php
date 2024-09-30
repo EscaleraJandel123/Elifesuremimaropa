@@ -42,7 +42,7 @@ class Exceptions extends BaseConfig
      *
      * Default: APPPATH.'Views/errors'
      */
-    public string $errorViewPath = APPPATH . 'Views/errors/html/error_404';
+    public string $errorViewPath = APPPATH . 'Views/errors';
 
     /**
      * --------------------------------------------------------------------------
@@ -99,6 +99,6 @@ class Exceptions extends BaseConfig
      */
     public function handler(int $statusCode, Throwable $exception): ExceptionHandlerInterface
     {
-        return new ExceptionHandler($this); 
+        return new ExceptionHandler($this);
     }
 }
