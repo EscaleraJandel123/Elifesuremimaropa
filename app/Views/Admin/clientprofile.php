@@ -248,7 +248,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="forms">
-                                        <h1 class="h2 mb-0">Forms</h1>
+                                        <h5 class="h2 mb-0">Payment history</h5>
                                         <div class="table-responsive">
                                             <!-- Table with hoverable rows -->
                                             <div class="table-container mx-auto">
@@ -257,9 +257,8 @@
                                                         <tr>
                                                             <th scope="col">Plan</th>
                                                             <th scope="col">Status</th>
-                                                            <th scope="col">Date pay</th>
-                                                            <th scope="col">Due date</th>
-                                                            <th scope="col">Agent</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Receipt</th>
                                                         </tr>
                                                     </thead>
 
