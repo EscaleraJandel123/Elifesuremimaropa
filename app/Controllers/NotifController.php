@@ -52,19 +52,19 @@ class NotifController extends BaseController
         }
         return $data;
     }
-    public function sendNotification() {
-        $smsService = new SMSService(); // Load the SMS library
+    // public function sendNotification() {
+    //     $smsService = new SMSService(); // Load the SMS library
 
-        $to = '+639945428697'; // The recipient's phone number
-        $message = 'Your custom notification message.';
+    //     $to = '+639945428697'; // The recipient's phone number
+    //     $message = 'Your custom notification message.';
 
-        $result = $smsService->sendSMS($to, $message);
+    //     $result = $smsService->sendSMS($to, $message);
 
-        if ($result === true) {
-            return 'SMS sent successfully!';
-        } else {
-            return 'Failed to send SMS: ' . $result;
-        }
-    }
+    //     if ($result === true) {
+    //         return 'SMS sent successfully!';
+    //     } else {
+    //         return 'Failed to send SMS: ' . $result;
+    //     }
+    // }
     
 }
