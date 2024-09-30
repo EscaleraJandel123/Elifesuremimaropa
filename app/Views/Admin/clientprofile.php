@@ -162,7 +162,7 @@
 
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#forms">Forms</button>
+                                            data-bs-target="#forms">Log</button>
                                     </li>
                                     <!-- <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
