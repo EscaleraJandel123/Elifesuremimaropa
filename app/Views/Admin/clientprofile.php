@@ -256,8 +256,8 @@
                                                     <thead class="thead-light bg-white">
                                                         <tr>
                                                             <th scope="col">Plan</th>
-                                                            <th scope="col">Status</th>
                                                             <th scope="col">Date</th>
+                                                            <th scope="col">Cost</th>
                                                             <th scope="col">Receipt</th>
                                                         </tr>
                                                     </thead>
