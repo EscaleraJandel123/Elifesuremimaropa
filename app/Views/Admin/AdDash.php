@@ -118,31 +118,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Table with hoverable rows</h5>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">User name</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($allagents as $usersss): ?>
-                                                        <tr>
-                                                            <th scope="row">1</th>
-                                                            <td><?= $usersss['username'] ?></td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- end of left side -->
@@ -177,21 +153,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-sm-12">
-                                <div class="row">
-                                    <div class="col-lg-12 col-12">
-                                        <div class="card mb-3">
-                                            <div class="card-body text-center">
-                                                <i class="fas fa-file-alt fa-2x"></i>
-                                                <small class="d-block mt-2">Generate Reports</small>
-                                                <h3 class="card-title mt-2"></h3>
-                                                <button class="btn btn-primary mt-3" id="generateReportBtn">Generate
-                                                    Report</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card mb-3 text-center">
