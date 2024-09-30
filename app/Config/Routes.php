@@ -168,7 +168,7 @@ $routes->post('sched/schedsave', 'AdminController::schedsave', ['filter' => 'adm
 $routes->get('sched/edit/(:num)', 'AdminController::edit/$1', ['filter' => 'adminFilter']);
 $routes->post('sched/update/(:num)', 'AdminController::update/$1', ['filter' => 'adminFilter']);
 $routes->get('sched/delete/(:num)', 'AdminController::delete/$1', ['filter' => 'adminFilter']);
-$routes->get('/agentsched', 'AgentController::sched', ['filter' => 'adminFilter']);
+$routes->get('/agentsched', 'AgentController::sched', ['filter' => 'agentFilter']);
 
 //notification
 $routes->get('/clearnotif', 'NotifController::clearnotif', ['filter' => 'authGuard']);
