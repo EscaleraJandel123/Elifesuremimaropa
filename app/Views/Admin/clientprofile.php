@@ -157,18 +157,17 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sub-agents">Sub
-                                            Agents</button>
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sub-agents">Active plan</button>
                                     </li>
 
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
                                             data-bs-target="#forms">Forms</button>
                                     </li>
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
                                             data-bs-target="#files">Files</button>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 
                                 <div class="tab-content">
@@ -245,7 +244,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="forms">
+                                    <!-- <div class="tab-pane fade" id="forms">
                                         <h1 class="h2 mb-0">Forms</h1>
                                         <div class="row text-center">
                                             <div class="col-lg-2 col-4 my-3">
@@ -264,7 +263,7 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div><!-- End Bordered Tabs -->
                             </div>
