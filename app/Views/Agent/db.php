@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'erecruit';
+$username = 'u311273531_elifesure';
+$password = '@Elifesure123';
+$dbname = 'u311273531_elifesure';
 
 $conn = new mysqli($host, $username, $password, $dbname);
 if (!$conn) {
