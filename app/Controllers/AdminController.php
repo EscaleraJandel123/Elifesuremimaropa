@@ -77,15 +77,8 @@ class AdminController extends BaseController
         $totalAgents = count($this->agent->findAll());
         $totalApplicants = count($this->applicant->findAll());
         $pendingApplicants = $this->applicant->where('status', 'pending')->countAllResults();
-        $data = array_merge(
-            $this->getData(),
-            $this->getDataAd(),
-            $this->topagent(),
-            $this->getagent(),
-            $this->topcommi(),
-            $this->notifcont->notification(),
-            $this->reportscont->usersreportdata()
-        );
+        $data = array_merge($this->getData(), $this->getDataAd(), $this->topagent(), $this->getagent(),
+         $this->topcommi(), $this->notifcont->notification(), $this->reportscont->usersreportdata());
         $data['totalAgents'] = $totalAgents;
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
@@ -277,26 +270,31 @@ class AdminController extends BaseController
     //     $data['sign'] = $this->esign->where('user_token', $token)->first();
     //     return view('Admin/Forms/details', $data);
     // }
-
     public function viewAppForm($token)
     {
-        // Assuming the token is being passed correctly
-        $token = $this->user->find($token); // Make sure to pass the correct argument
-
-        // Fetch data using the token
+        // Find user based on the token
+        $user = $this->user->find($token);
+        
+        // Check if user exists
+        if (!$user) {
+            // Handle the case where the user is not found
+            return redirect()->to('/error')->with('message', 'User not found.');
+        }
+    
+        // Retrieve the lifechanger form and signature based on the token
         $data['lifechangerform'] = $this->form1->where('app_life_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
-
-        // Check if the token is present in the data
-        if (empty($data['lifechangerform']) || empty($data['sign'])) {
-            // Handle the case where the token is not found
-            return redirect()->back()->with('error', 'Token not found or invalid.');
+    
+        // Check if the form and sign data are present
+        if (!$data['lifechangerform'] || !$data['sign']) {
+            // Handle the case where the form or sign is not found
+            return redirect()->to('/error')->with('message', 'Application form or signature not found.');
         }
-
+    
+        // Load the view with the data
         return view('Admin/Forms/details', $data);
     }
-
-
+    
     public function viewAppForm2($token)
     {
         $data['aial'] = $this->form2->where('aial_token', $token)->first();
