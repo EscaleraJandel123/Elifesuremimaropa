@@ -65,6 +65,13 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/ManageClients">
+                                <i class="fas fa-user-tie me-2"></i>
+                                Clients
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/ManageAgent">
                                 <i class="fas fa-user-tie me-2"></i>
                                 Agents
