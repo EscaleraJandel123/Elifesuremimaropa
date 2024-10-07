@@ -458,21 +458,17 @@ class AppController extends BaseController
         $token = $session->get('token');
         $role = $session->get('role');
 
-        $refcodeData = $this->applicant->select('refcode')->where('applicant_id', $userId)->first();
+        $refcode = $this->applicant->select('refcode')->where('applicant_id', $userId)->first()['refcode'] ?? null;
 
-        // Extract the refcode if it exists
-        if ($refcodeData && isset($refcodeData['refcode'])) {
-            $refcode = $refcodeData['refcode'];
+        // Proceed only if refcode is found
+        $referalby = $refcode
+            ? $this->agent->select("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) as fullname")
+                ->where('AgentCode', $refcode)->first()['fullname'] ?? null
+            : null;
 
-            // Use CONCAT to combine lastname, firstname, and middlename
-            $referalby = $this->agent->select("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) as fullname")
-                ->where('AgentCode', $refcode)->first();
+        // Output the concatenated name or null if no agent found
+        var_dump($referalby);
 
-            // Output the concatenated name
-            var_dump($referalby['fullname']);
-        } else {
-            echo "No refcode found for this applicant.";
-        }
 
         // // Check if user_id exists in the database
         // $existingUser = $this->form1->select('user_id')->where('user_id', $userId)->first();
