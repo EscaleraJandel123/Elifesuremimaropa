@@ -105,11 +105,11 @@
                                                         <?php endforeach; ?>
                                                     </select> -->
 
-                                                    <!-- <input type="text" id="referralBy" name="referralBy"
+                                                    <input type="text" id="referralBy" name="referralBy"
                                                         class="form-control"
                                                         value="<?= isset($referalby) ? $referalby : '' ?>" readonly>
 
-                                                    <input type="checkbox" id="onlineAd" name="onlineAd"
+                                                    <!-- <input type="checkbox" id="onlineAd" name="onlineAd"
                                                         value="Online Advertisement" disabled
                                                         <?= isset($lifechangerform['onlineAd']) && $lifechangerform['onlineAd'] === 'Online Advertisement' ? 'checked' : '' ?>>
                                                     <label for="onlineAd">Online Advertisement</label>
@@ -120,7 +120,8 @@
 
                                                     <input type="checkbox" id="others" name="othersRef" value="yes" disabled
                                                         <?= isset($lifechangerform['othersRef']) && $lifechangerform['othersRef'] === 'yes' ? 'checked' : '' ?>>
-                                                    <label for="others">Others</label><br><br> -->
+                                                    <label for="others">Others</label> -->
+                                                    <br><br>
 
                                                 </div>
 
