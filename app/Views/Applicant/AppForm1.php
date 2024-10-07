@@ -107,8 +107,7 @@
 
                                                     <input type="text" id="referralBy" name="referralBy"
                                                         class="form-control"
-                                                        value="<?= isset($referalby['agentname']) ? $referalby['agentname'] : '' ?>"
-                                                        required>
+                                                        value="<?= isset($referalby) ? $referalby : '' ?>">
 
                                                     <input type="checkbox" id="onlineAd" name="onlineAd"
                                                         value="Online Advertisement" disabled

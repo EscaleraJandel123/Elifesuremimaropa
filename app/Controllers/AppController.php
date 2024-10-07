@@ -303,7 +303,7 @@ class AppController extends BaseController
             : null;
 
         // Output the concatenated name or null if no agent found
-        return $referalby['agentname'];
+        return $referalby;
     }
 
     // public function form1sv()
