@@ -458,122 +458,128 @@ class AppController extends BaseController
         $token = $session->get('token');
         $role = $session->get('role');
 
-        // Check if user_id exists in the database
-        $existingUser = $this->form1->select('user_id')->where('user_id', $userId)->first();
+        $agent = $this->applicant->select('refcode')->where('applicant_id', $$userId)->find();
 
-        // Prepare data for insertion/updating
-        $data = [
-            'user_id' => $userId,
-            'app_life_token' => $token,
-            'position' => $this->request->getVar('positionApplying'),
-            'preferredArea' => $this->request->getVar('preferredArea'),
-            'referral' => $this->request->getVar('referral') ?? 'No',
-            'referralBy' => $this->request->getVar('referralBy'),
-            'onlineAd' => $this->request->getVar('onlineAd') ?? 'No',
-            'walkIn' => $this->request->getVar('walkIn') ?? 'No',
-            'othersRef' => $this->request->getVar('othersRef') ?? 'No',
-            'fname' => $this->request->getVar('fullname'),
-            'nickname' => $this->request->getVar('nickname'),
-            'birthdate' => $this->request->getVar('birthdate'),
-            'placeOfBirth' => $this->request->getVar('placeOfBirth'),
-            'gender' => $this->request->getVar('gender'),
-            'bloodType' => $this->request->getVar('bloodType'),
-            'homeAddress' => $this->request->getVar('homeAddress'),
-            'mobileNo' => $this->request->getVar('mobileNo'),
-            'landline' => $this->request->getVar('landline') ?? 'N/A',
-            'email' => $this->request->getVar('email'),
-            'citizenship' => $this->request->getVar('citizenship'),
-            'othersCitizenship' => $this->request->getVar('othersCitizenship') ?? 'N/A',
-            'naturalizationInfo' => $this->request->getVar('naturalizationInfo') ?? 'N/A',
-            'maritalStatus' => $this->request->getVar('maritalStatus'),
-            'maidenName' => $this->request->getVar('maidenName') ?? 'N/A',
-            'spouseName' => $this->request->getVar('spouseName') ?? 'N/A',
-            'sssNo' => $this->request->getVar('sssNo'),
-            'tin' => $this->request->getVar('tin'),
-            'lifeInsuranceExperience' => $this->request->getVar('lifeInsuranceExperience') ?? 'No',
-            'traditional' => $this->request->getVar('traditional') ?? 'No',
-            'variable' => $this->request->getVar('variable') ?? 'No',
-            'recentInsuranceCompany' => $this->request->getVar('recentInsuranceCompany') ?? 'N/A',
-            'highSchool' => $this->request->getVar('highSchool') ?? 'N/A',
-            'highSchoolCourse' => $this->request->getVar('highSchoolCourse') ?? 'N/A',
-            'highSchoolYear' => $this->request->getVar('highSchoolYear') ?? 'N/A',
-            'college' => $this->request->getVar('college') ?? 'N/A',
-            'collegeCourse' => $this->request->getVar('collegeCourse') ?? 'N/A',
-            'collegeYear' => $this->request->getVar('collegeYear') ?? 'N/A',
-            'graduateSchool' => $this->request->getVar('graduateSchool') ?? 'N/A',
-            'graduateCourse' => $this->request->getVar('graduateCourse') ?? 'N/A',
-            'graduateYear' => $this->request->getVar('graduateYear') ?? 'N/A',
-            'companyName1' => $this->request->getVar('companyName1') ?? 'N/A',
-            'position1' => $this->request->getVar('position1') ?? 'N/A',
-            'employmentFrom1' => $this->request->getVar('employmentFrom1') ?? 'N/A',
-            'employmentTo1' => $this->request->getVar('employmentTo1') ?? 'N/A',
-            'reason1' => $this->request->getVar('reason1') ?? 'N/A',
-            'companyName2' => $this->request->getVar('companyName2') ?? 'N/A',
-            'position2' => $this->request->getVar('position2') ?? 'N/A',
-            'employmentFrom2' => $this->request->getVar('employmentFrom2') ?? 'N/A',
-            'employmentTo2' => $this->request->getVar('employmentTo2') ?? 'N/A',
-            'reason2' => $this->request->getVar('reason2') ?? 'N/A',
-            'companyName3' => $this->request->getVar('companyName3') ?? 'N/A',
-            'position3' => $this->request->getVar('position3') ?? 'N/A',
-            'employmentFrom3' => $this->request->getVar('employmentFrom3') ?? 'N/A',
-            'employmentTo3' => $this->request->getVar('employmentTo3') ?? 'N/A',
-            'reason3' => $this->request->getVar('reason3') ?? 'N/A',
-            'companyName' => $this->request->getVar('companyName') ?? 'N/A',
-            'resposition' => $this->request->getVar('position') ?? 'N/A',
-            'contactName' => $this->request->getVar('contactName') ?? 'N/A',
-            'contactPosition' => $this->request->getVar('contactPosition') ?? 'N/A',
-            'emailAddress' => $this->request->getVar('emailAddress') ?? 'N/A',
-            'contactNumber' => $this->request->getVar('contactNumber') ?? 'N/A',
-            'yescuremployed' => $this->request->getVar('yescuremployed') ?? 'N/A',
-            'nocuremployed' => $this->request->getVar('nocuremployed') ?? 'N/A',
-            'allowed' => $this->request->getVar('allowed') ?? 'N/A',
-            'notallowed' => $this->request->getVar('notallowed') ?? 'N/A',
-            'ifnoProvdtls' => $this->request->getVar('ifnoProvdtls') ?? 'N/A',
-            'persontonotif' => $this->request->getVar('persontonotif'),
-            'moNo' => $this->request->getVar('moNo'),
-            'n1' => $this->request->getVar('n1'),
-            'p1' => $this->request->getVar('p1'),
-            'c1' => $this->request->getVar('c1'),
-            'e1' => $this->request->getVar('e1'),
-            'n2' => $this->request->getVar('n2'),
-            'p2' => $this->request->getVar('p2'),
-            'c2' => $this->request->getVar('c2'),
-            'e2' => $this->request->getVar('e2'),
-            'n3' => $this->request->getVar('n3'),
-            'p3' => $this->request->getVar('p3'),
-            'c3' => $this->request->getVar('c3'),
-            'e3' => $this->request->getVar('e3'),
-            'g1y' => $this->request->getVar('g1y'),
-            'g1n' => $this->request->getVar('g1n'),
-            'accused' => $this->request->getVar('accused'),
-            'g2y' => $this->request->getVar('g2y'),
-            'g2n' => $this->request->getVar('g2n'),
-            'bankruptcy' => $this->request->getVar('bankruptcy'),
-            'g3y' => $this->request->getVar('g3y'),
-            'g3n' => $this->request->getVar('g3n'),
-            'investigated' => $this->request->getVar('investigated'),
-            'g4y' => $this->request->getVar('g4y'),
-            'g4n' => $this->request->getVar('g4n'),
-            'terminat' => $this->request->getVar('terminated'),
-            'printedName' => $this->request->getVar('printedName'),
-            'botdate' => $this->request->getVar('botdate')
-        ];
-        if ($existingUser) {
-            $link = 'ViewAppForm/'.$token.'';
-            $message = $role . ' ' . $username .' has updated their form. Please click the link to see';
-            $r = 'admin';
-            $this->notificationcontroller->newnotif($userId, $link, $message, $r);
-            // Insert new record
-            $this->form1->set($data)->where('user_id', $userId)->update();
-        } else {
-            $link = 'ViewAppForm/'.$token.'';
-            $message = $role . ' ' . $username .' has save their form. Please click the link to see';
-            $r = 'admin';
-            $this->notificationcontroller->newnotif($userId, $link, $message, $r);
-            $this->form1->insert($data);
-        }
-        // Redirect back with a status message
-        return redirect()->back()->with('status', 'Form saved successfully');
+        var_dump($agent);
+
+        // // Check if user_id exists in the database
+        // $existingUser = $this->form1->select('user_id')->where('user_id', $userId)->first();
+
+        // // Prepare data for insertion/updating
+        // $data = [
+        //     'user_id' => $userId,
+        //     'app_life_token' => $token,
+        //     'position' => $this->request->getVar('positionApplying'),
+        //     'preferredArea' => $this->request->getVar('preferredArea'),
+        //     'referral' => $this->request->getVar('referral') ?? 'No',
+
+        //     'referralBy' => $this->request->getVar('referralBy'),
+
+        //     'onlineAd' => $this->request->getVar('onlineAd') ?? 'No',
+        //     'walkIn' => $this->request->getVar('walkIn') ?? 'No',
+        //     'othersRef' => $this->request->getVar('othersRef') ?? 'No',
+        //     'fname' => $this->request->getVar('fullname'),
+        //     'nickname' => $this->request->getVar('nickname'),
+        //     'birthdate' => $this->request->getVar('birthdate'),
+        //     'placeOfBirth' => $this->request->getVar('placeOfBirth'),
+        //     'gender' => $this->request->getVar('gender'),
+        //     'bloodType' => $this->request->getVar('bloodType'),
+        //     'homeAddress' => $this->request->getVar('homeAddress'),
+        //     'mobileNo' => $this->request->getVar('mobileNo'),
+        //     'landline' => $this->request->getVar('landline') ?? 'N/A',
+        //     'email' => $this->request->getVar('email'),
+        //     'citizenship' => $this->request->getVar('citizenship'),
+        //     'othersCitizenship' => $this->request->getVar('othersCitizenship') ?? 'N/A',
+        //     'naturalizationInfo' => $this->request->getVar('naturalizationInfo') ?? 'N/A',
+        //     'maritalStatus' => $this->request->getVar('maritalStatus'),
+        //     'maidenName' => $this->request->getVar('maidenName') ?? 'N/A',
+        //     'spouseName' => $this->request->getVar('spouseName') ?? 'N/A',
+        //     'sssNo' => $this->request->getVar('sssNo'),
+        //     'tin' => $this->request->getVar('tin'),
+        //     'lifeInsuranceExperience' => $this->request->getVar('lifeInsuranceExperience') ?? 'No',
+        //     'traditional' => $this->request->getVar('traditional') ?? 'No',
+        //     'variable' => $this->request->getVar('variable') ?? 'No',
+        //     'recentInsuranceCompany' => $this->request->getVar('recentInsuranceCompany') ?? 'N/A',
+        //     'highSchool' => $this->request->getVar('highSchool') ?? 'N/A',
+        //     'highSchoolCourse' => $this->request->getVar('highSchoolCourse') ?? 'N/A',
+        //     'highSchoolYear' => $this->request->getVar('highSchoolYear') ?? 'N/A',
+        //     'college' => $this->request->getVar('college') ?? 'N/A',
+        //     'collegeCourse' => $this->request->getVar('collegeCourse') ?? 'N/A',
+        //     'collegeYear' => $this->request->getVar('collegeYear') ?? 'N/A',
+        //     'graduateSchool' => $this->request->getVar('graduateSchool') ?? 'N/A',
+        //     'graduateCourse' => $this->request->getVar('graduateCourse') ?? 'N/A',
+        //     'graduateYear' => $this->request->getVar('graduateYear') ?? 'N/A',
+        //     'companyName1' => $this->request->getVar('companyName1') ?? 'N/A',
+        //     'position1' => $this->request->getVar('position1') ?? 'N/A',
+        //     'employmentFrom1' => $this->request->getVar('employmentFrom1') ?? 'N/A',
+        //     'employmentTo1' => $this->request->getVar('employmentTo1') ?? 'N/A',
+        //     'reason1' => $this->request->getVar('reason1') ?? 'N/A',
+        //     'companyName2' => $this->request->getVar('companyName2') ?? 'N/A',
+        //     'position2' => $this->request->getVar('position2') ?? 'N/A',
+        //     'employmentFrom2' => $this->request->getVar('employmentFrom2') ?? 'N/A',
+        //     'employmentTo2' => $this->request->getVar('employmentTo2') ?? 'N/A',
+        //     'reason2' => $this->request->getVar('reason2') ?? 'N/A',
+        //     'companyName3' => $this->request->getVar('companyName3') ?? 'N/A',
+        //     'position3' => $this->request->getVar('position3') ?? 'N/A',
+        //     'employmentFrom3' => $this->request->getVar('employmentFrom3') ?? 'N/A',
+        //     'employmentTo3' => $this->request->getVar('employmentTo3') ?? 'N/A',
+        //     'reason3' => $this->request->getVar('reason3') ?? 'N/A',
+        //     'companyName' => $this->request->getVar('companyName') ?? 'N/A',
+        //     'resposition' => $this->request->getVar('position') ?? 'N/A',
+        //     'contactName' => $this->request->getVar('contactName') ?? 'N/A',
+        //     'contactPosition' => $this->request->getVar('contactPosition') ?? 'N/A',
+        //     'emailAddress' => $this->request->getVar('emailAddress') ?? 'N/A',
+        //     'contactNumber' => $this->request->getVar('contactNumber') ?? 'N/A',
+        //     'yescuremployed' => $this->request->getVar('yescuremployed') ?? 'N/A',
+        //     'nocuremployed' => $this->request->getVar('nocuremployed') ?? 'N/A',
+        //     'allowed' => $this->request->getVar('allowed') ?? 'N/A',
+        //     'notallowed' => $this->request->getVar('notallowed') ?? 'N/A',
+        //     'ifnoProvdtls' => $this->request->getVar('ifnoProvdtls') ?? 'N/A',
+        //     'persontonotif' => $this->request->getVar('persontonotif'),
+        //     'moNo' => $this->request->getVar('moNo'),
+        //     'n1' => $this->request->getVar('n1'),
+        //     'p1' => $this->request->getVar('p1'),
+        //     'c1' => $this->request->getVar('c1'),
+        //     'e1' => $this->request->getVar('e1'),
+        //     'n2' => $this->request->getVar('n2'),
+        //     'p2' => $this->request->getVar('p2'),
+        //     'c2' => $this->request->getVar('c2'),
+        //     'e2' => $this->request->getVar('e2'),
+        //     'n3' => $this->request->getVar('n3'),
+        //     'p3' => $this->request->getVar('p3'),
+        //     'c3' => $this->request->getVar('c3'),
+        //     'e3' => $this->request->getVar('e3'),
+        //     'g1y' => $this->request->getVar('g1y'),
+        //     'g1n' => $this->request->getVar('g1n'),
+        //     'accused' => $this->request->getVar('accused'),
+        //     'g2y' => $this->request->getVar('g2y'),
+        //     'g2n' => $this->request->getVar('g2n'),
+        //     'bankruptcy' => $this->request->getVar('bankruptcy'),
+        //     'g3y' => $this->request->getVar('g3y'),
+        //     'g3n' => $this->request->getVar('g3n'),
+        //     'investigated' => $this->request->getVar('investigated'),
+        //     'g4y' => $this->request->getVar('g4y'),
+        //     'g4n' => $this->request->getVar('g4n'),
+        //     'terminat' => $this->request->getVar('terminated'),
+        //     'printedName' => $this->request->getVar('printedName'),
+        //     'botdate' => $this->request->getVar('botdate')
+        // ];
+        // if ($existingUser) {
+        //     $link = 'ViewAppForm/'.$token.'';
+        //     $message = $role . ' ' . $username .' has updated their form. Please click the link to see';
+        //     $r = 'admin';
+        //     $this->notificationcontroller->newnotif($userId, $link, $message, $r);
+        //     // Insert new record
+        //     $this->form1->set($data)->where('user_id', $userId)->update();
+        // } else {
+        //     $link = 'ViewAppForm/'.$token.'';
+        //     $message = $role . ' ' . $username .' has save their form. Please click the link to see';
+        //     $r = 'admin';
+        //     $this->notificationcontroller->newnotif($userId, $link, $message, $r);
+        //     $this->form1->insert($data);
+        // }
+        // // Redirect back with a status message
+        // return redirect()->back()->with('status', 'Form saved successfully');
     }
 
     public function form3sv()
