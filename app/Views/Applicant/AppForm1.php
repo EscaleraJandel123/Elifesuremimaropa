@@ -89,7 +89,7 @@
                                                 <div class="form-group">
                                                     <label>Source:</label><br>
                                                     <input type="checkbox" id="referral" name="referral" value="yes"
-                                                        <?= isset($lifechangerform['referral']) && $lifechangerform['referral'] === 'yes' ? 'checked' : '' ?>>
+                                                        <?= isset($lifechangerform['referral']) && $lifechangerform['referral'] === 'yes' ? 'checked' : 'checked' ?>>
                                                     <label for="referral">Referral</label>
                                                     <label for="referralBy">by whom:</label>
 
