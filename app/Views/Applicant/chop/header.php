@@ -45,7 +45,7 @@
                     </li>
 
 
-                    <li class="notifications-block">
+                    <!-- <li class="notifications-block">
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <div class="notifications-icon-wrap bg-danger">
                                 <i class="notifications-icon bi-question-circle"></i>
@@ -55,7 +55,7 @@
                                 <span>Account verification is <?= $applicant['status'] ?>.</span>
                             </div>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
