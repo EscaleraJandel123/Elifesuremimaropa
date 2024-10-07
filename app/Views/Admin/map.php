@@ -15,26 +15,6 @@
     }
 </style> -->
 
-<style>
-    .map-container {
-        padding-top: 70px; /* Adjust this value to match the height of your navbar */
-    }
-
-    #map, #map2, #map3 {
-        width: 100%;
-        height: 500px; /* Keep the height as needed */
-    }
-
-    @media (max-width: 768px) {
-    .map-container {
-        padding-top: 80px; /* Increase for mobile if navbar is larger */
-    }
-}
-
-</style>
-
-
-
 <body>
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
@@ -160,27 +140,30 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="row justify-content-center">
-    <div class="card col-lg-11 m-2 map-container">
-        <div class="card-body text-center">
-            <h6>Applicants</h6>
-            <div id="map"></div> <!-- Make sure each map ID is unique -->
-        </div>
-    </div>
-    <div class="card col-lg-11 m-2 map-container">
-        <div class="card-body text-center">
-            <h6>Agents</h6>
-            <div id="map2"></div>
-        </div>
-    </div>
-    <div class="card col-lg-11 m-2 map-container">
-        <div class="card-body text-center">
-            <h6>Clients</h6>
-            <div id="map3"></div>
-        </div>
-    </div>
-</div>
-
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row justify-content-center">
+                            <div class="card col-lg-11 m-2">
+                                <div class="card-body text-center">
+                                    <h6>Applicants</h6>
+                                    <div id="map" style="height: 500px;"></div>
+                                </div>
+                            </div>
+                            <div class="card col-lg-11 m-2">
+                                <div class="card-body text-center">
+                                    <h6>Agents</h6>
+                                    <div id="map2" style="height: 500px;"></div>
+                                </div>
+                            </div>
+                            <div class="card col-lg-11 m-2">
+                                <div class="card-body text-center">
+                                    <h6>Clients</h6>
+                                    <div id="map3" style="height: 500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- end of left side -->
             </main>
         </div>
