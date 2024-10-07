@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="row justify-content-center">
                             <div class="card col-lg-11 m-2">
@@ -163,7 +163,28 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <div class="row justify-content-center">
+    <div class="card col-lg-11 m-2 map-container">
+        <div class="card-body text-center">
+            <h6>Applicants</h6>
+            <div id="map" class="map" style="height: 500px;"></div>
+        </div>
+    </div>
+    <div class="card col-lg-11 m-2 map-container">
+        <div class="card-body text-center">
+            <h6>Agents</h6>
+            <div id="map2" class="map" style="height: 500px;"></div>
+        </div>
+    </div>
+    <div class="card col-lg-11 m-2 map-container">
+        <div class="card-body text-center">
+            <h6>Clients</h6>
+            <div id="map3" class="map" style="height: 500px;"></div>
+        </div>
+    </div>
+</div>
+
                 <!-- end of left side -->
             </main>
         </div>
