@@ -296,15 +296,17 @@ class AppController extends BaseController
         $session = session();
         $userId = $session->get('id');
         $refcode = $this->applicant->select('refcode')->where('applicant_id', $userId)->first()['refcode'] ?? null;
+
         // Proceed only if refcode is found
         $referalby = $refcode
             ? $this->agent->select("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) as fullname")
                 ->where('AgentCode', $refcode)->first()['fullname'] ?? null
             : null;
 
-        // Output the concatenated name or null if no agent found
-        return $referalby;
+        // Return an array with the referral name
+        return ['referalby' => $referalby];
     }
+
 
     // public function form1sv()
     // {
