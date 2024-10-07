@@ -77,8 +77,8 @@
                                                     <label for="position">Position applying for:</label>
                                                     <input type="text" id="position" name="positionApplying"
                                                         class="form-control"
-                                                        value="<?= isset($lifechangerform['position']) ? $lifechangerform['position'] : 'Agent' ?>"
-                                                        required readonly>
+                                                        value="<?= isset($lifechangerform['position']) ? $lifechangerform['position'] : '' ?>"
+                                                        required>
                                                     <label for="preferredArea">Preferred area:</label>
                                                     <input type="text" id="preferredArea" name="preferredArea"
                                                         class="form-control"
@@ -107,7 +107,7 @@
 
                                                     <input type="text" id="referralBy" name="referralBy"
                                                         class="form-control"
-                                                        value="<?= isset($referalby) ? $referalby : '' ?>">
+                                                        value="<?= isset($referalby) ? $referalby : '' ?>" readonly>
 
                                                     <input type="checkbox" id="onlineAd" name="onlineAd"
                                                         value="Online Advertisement" disabled
