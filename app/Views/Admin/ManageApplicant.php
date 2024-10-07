@@ -67,12 +67,6 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/ManageApplicant">
-                                <i class="fa fa-users me-2"></i>
-                                Applicants
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/reports">
                                 <i class="fas fa-file-alt me-2"></i></i>
                                 Reports
