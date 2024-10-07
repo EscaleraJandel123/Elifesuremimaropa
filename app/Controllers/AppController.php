@@ -459,7 +459,7 @@ class AppController extends BaseController
         $role = $session->get('role');
 
         $refcode = $this->applicant->select('refcode')->where('applicant_id', $userId)->find();
-        $referalby = $this->agent->select(['lastname','firstname','middlename'])->where('AgentCode' ,$refcode)->find();
+        $referalby = $this->agent->where('AgentCode' ,$refcode)->findAll();
 
 
         var_dump($referalby);
