@@ -93,7 +93,7 @@
                                                     <label for="referral">Referral</label>
                                                     <label for="referralBy">by whom:</label>
 
-                                                    <select id="referralBy" name="referralBy" class="form-control"
+                                                    <!-- <select id="referralBy" name="referralBy" class="form-control"
                                                         required>
                                                         <option value="" selected>Select Agent</option>
                                                         <?php foreach ($agents as $agent): ?>
@@ -103,7 +103,12 @@
                                                             <?= $agentFullName; ?>
                                                         </option>
                                                         <?php endforeach; ?>
-                                                    </select>
+                                                    </select> -->
+
+                                                    <input type="text" id="referralBy" name="referralBy"
+                                                        class="form-control"
+                                                        value="<?= isset($referalby['agentname']) ? $referalby['agentname'] : '' ?>"
+                                                        required>
 
                                                     <input type="checkbox" id="onlineAd" name="onlineAd"
                                                         value="Online Advertisement" disabled

@@ -287,10 +287,24 @@ class AppController extends BaseController
     {
         $data['agents'] = $this->agent->findAll();
         // Merge arrays while retaining the 'agents' key
-        $data = array_merge($this->getData(), $this->getDataApp(), $this->getform1Data(), $this->esign(), $data);
+        $data = array_merge($this->getData(), $this->getDataApp(), $this->getform1Data(), $this->esign(), $this->refbywhom(), $data);
         return view('Applicant/AppForm1', $data);
     }
 
+    public function refbywhom()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $refcode = $this->applicant->select('refcode')->where('applicant_id', $userId)->first()['refcode'] ?? null;
+        // Proceed only if refcode is found
+        $referalby = $refcode
+            ? $this->agent->select("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) as fullname")
+                ->where('AgentCode', $refcode)->first()['fullname'] ?? null
+            : null;
+
+        // Output the concatenated name or null if no agent found
+        return $referalby['agentname'];
+    }
 
     // public function form1sv()
     // {
@@ -573,15 +587,15 @@ class AppController extends BaseController
             'botdate' => $this->request->getVar('botdate')
         ];
         if ($existingUser) {
-            $link = 'ViewAppForm/'.$token.'';
-            $message = $role . ' ' . $username .' has updated their form. Please click the link to see';
+            $link = 'ViewAppForm/' . $token . '';
+            $message = $role . ' ' . $username . ' has updated their form. Please click the link to see';
             $r = 'admin';
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
             // Insert new record
             $this->form1->set($data)->where('user_id', $userId)->update();
         } else {
-            $link = 'ViewAppForm/'.$token.'';
-            $message = $role . ' ' . $username .' has save their form. Please click the link to see';
+            $link = 'ViewAppForm/' . $token . '';
+            $message = $role . ' ' . $username . ' has save their form. Please click the link to see';
             $r = 'admin';
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
             $this->form1->insert($data);
