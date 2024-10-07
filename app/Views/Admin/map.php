@@ -4,16 +4,24 @@
 <?= view('head') ?>
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<!-- <style>
-    .card {
-        transition: transform 0.3s ease;
-        cursor: pointer;
+<style>
+    /* Additional styles to prevent map overlap */
+    .map-container {
+        position: relative; /* Ensure positioning is relative */
+        padding-top: 70px; /* Push down to prevent overlap with navbar */
     }
 
-    .card:hover {
-        transform: scale(1.05);
+    @media (max-width: 768px) {
+        .map-container {
+            padding-top: 80px; /* Increase padding for smaller screens if needed */
+        }
     }
-</style> -->
+
+    #map, #map2, #map3 {
+        width: 100%; /* Full width */
+        height: 500px; /* Fixed height */
+    }
+</style>
 
 <body>
     <?= view('Admin/chop/header') ?>
@@ -28,56 +36,48 @@
                                 Overview
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/usermanagement">
                                 <i class="fa fa-user me-2"></i>
                                 User Management
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/Forms">
                                 <i class="bi bi-file-earmark-slides me-2"></i>
                                 Forms
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/promotion">
                                 <i class="fa fa-user me-2"></i>
                                 Promotion
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/confirmation">
                                 <i class="bi bi-check-lg me-2"></i>
                                 Confirmation
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/sched">
                                 <i class="bi bi-check-lg me-2"></i>
                                 Schedule
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/ManageClients">
                                 <i class="fas fa-user-tie me-2"></i>
                                 Clients
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/ManageAgent">
                                 <i class="fas fa-user-tie me-2"></i>
                                 Agents
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/ManageApplicant">
                                 <i class="fa fa-users me-2"></i>
@@ -86,7 +86,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/reports">
-                                <i class="fas fa-file-alt me-2"></i></i>
+                                <i class="fas fa-file-alt me-2"></i>
                                 Reports
                             </a>
                         </li>
@@ -96,7 +96,6 @@
                                 Maps
                             </a>
                         </li>
-
                         <hr>
                         <li class="nav-item">
                             <a class="nav-link" href="/plans">
@@ -104,7 +103,6 @@
                                 Plans
                             </a>
                         </li>
-
                         <li class="nav-item border-top mt-auto pt-2">
                             <a class="nav-link" href="/logout">
                                 <i class="bi-box-arrow-left me-2"></i>
@@ -115,56 +113,26 @@
                 </div>
             </nav>
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
-                <!-- <div class="title-group mb-3">
-                    <h1 class="h2 mb-0">Map</h1>
-                </div> -->
-                <!-- <div class="row m-2">
-
-                    <div class="col-lg-12">
-                        <div class="row justify-content-center">
-                            <div class="card col-lg-6 m-3">
-                                <div class="card-body text-center">
-      
-                                    <h6>Applicants</h6>
-                                    <div id="map" style="height: 500px;"></div>
-                                </div>
-                            </div>
-
-                            <div class="card col-lg-6 m-3">
-                                <div class="card-body text-center">
-                                
-                                    <h6>Applicants</h6>
-                                    <div id="map" style="height: 500px;"></div>
-                                </div>
-                            </div>
+                <div class="row justify-content-center">
+                    <div class="card col-lg-11 m-2 map-container">
+                        <div class="card-body text-center">
+                            <h6>Applicants</h6>
+                            <div id="map"></div>
                         </div>
                     </div>
-                </div> -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row justify-content-center">
-                            <div class="card col-lg-11 m-2">
-                                <div class="card-body text-center">
-                                    <h6>Applicants</h6>
-                                    <div id="map" style="height: 500px;"></div>
-                                </div>
-                            </div>
-                            <div class="card col-lg-11 m-2">
-                                <div class="card-body text-center">
-                                    <h6>Agents</h6>
-                                    <div id="map2" style="height: 500px;"></div>
-                                </div>
-                            </div>
-                            <div class="card col-lg-11 m-2">
-                                <div class="card-body text-center">
-                                    <h6>Clients</h6>
-                                    <div id="map3" style="height: 500px;"></div>
-                                </div>
-                            </div>
+                    <div class="card col-lg-11 m-2 map-container">
+                        <div class="card-body text-center">
+                            <h6>Agents</h6>
+                            <div id="map2"></div>
+                        </div>
+                    </div>
+                    <div class="card col-lg-11 m-2 map-container">
+                        <div class="card-body text-center">
+                            <h6>Clients</h6>
+                            <div id="map3"></div>
                         </div>
                     </div>
                 </div>
-                <!-- end of left side -->
             </main>
         </div>
     </div>
@@ -179,7 +147,7 @@
                 var map = L.map(mapId, {
                     center: [12.345, 121.0],
                     zoom: 7,
-                    scrollWheelZoom: false  // Disable scroll zoom
+                    scrollWheelZoom: false // Disable scroll zoom
                 });
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -188,11 +156,24 @@
 
                 Object.keys(counts).forEach(function(city) {
                     if (counts[city].count > 0) {
-                        var marker = L.marker([counts[city].lat, counts[city].lng])
+                        L.marker([counts[city].lat, counts[city].lng])
                             .addTo(map)
-                            .bindPopup(city + ': ' + counts[city].count + ' users')
-                            .openPopup();
+                            .bindPopup(city + ': ' + counts[city].count + ' users');
                     }
+                });
+                
+                // Adjust map size on window resize
+                window.addEventListener('resize', function() {
+                    map.invalidateSize();
+                });
+                
+                // Event listeners for sidebar menu
+                var sidebar = document.getElementById('sidebarMenu');
+                sidebar.addEventListener('shown.bs.collapse', function () {
+                    map.invalidateSize(); // Adjust map size when navbar opens
+                });
+                sidebar.addEventListener('hidden.bs.collapse', function () {
+                    map.invalidateSize(); // Adjust map size when navbar closes
                 });
             }
 
@@ -202,7 +183,6 @@
         });
     </script>
     <?= view('js'); ?>
-
 </body>
 
 </html>
