@@ -15,6 +15,26 @@
     }
 </style> -->
 
+<style>
+    .map-container {
+        position: relative; /* Ensure positioning is relative */
+        margin-top: 60px; /* Add a top margin to push the maps down */
+    }
+
+    @media (max-width: 768px) {
+        .map-container {
+            margin-top: 70px; /* Increase margin for smaller screens if needed */
+        }
+    }
+
+    #map, #map2, #map3 {
+        position: relative; /* Keep maps relative */
+        width: 100%; /* Full width */
+        height: 500px; /* Set a height */
+    }
+</style>
+
+
 <body>
     <?= view('Admin/chop/header') ?>
     <div class="container-fluid">
@@ -140,7 +160,7 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="row justify-content-center">
                             <div class="card col-lg-11 m-2">
@@ -163,28 +183,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <div class="row justify-content-center">
-    <div class="card col-lg-11 m-2 map-container">
-        <div class="card-body text-center">
-            <h6>Applicants</h6>
-            <div id="map" class="map" style="height: 500px;"></div>
-        </div>
-    </div>
-    <div class="card col-lg-11 m-2 map-container">
-        <div class="card-body text-center">
-            <h6>Agents</h6>
-            <div id="map2" class="map" style="height: 500px;"></div>
-        </div>
-    </div>
-    <div class="card col-lg-11 m-2 map-container">
-        <div class="card-body text-center">
-            <h6>Clients</h6>
-            <div id="map3" class="map" style="height: 500px;"></div>
-        </div>
-    </div>
-</div>
-
+                </div>
                 <!-- end of left side -->
             </main>
         </div>
