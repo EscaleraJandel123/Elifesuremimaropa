@@ -459,10 +459,10 @@ class AppController extends BaseController
         $role = $session->get('role');
 
         $refcode = $this->applicant->select('refcode')->where('applicant_id', $userId)->find();
-        $referalby = $this->agent->where('AgentCode' ,$refcode)->findAll();
+        $referalby['ref'] = $this->agent->where('AgentCode' ,$refcode)->findAll();
 
 
-        var_dump($referalby);
+        var_dump($referalby['ref']);
 
         // // Check if user_id exists in the database
         // $existingUser = $this->form1->select('user_id')->where('user_id', $userId)->first();
