@@ -464,15 +464,16 @@ class AppController extends BaseController
         if ($refcodeData && isset($refcodeData['refcode'])) {
             $refcode = $refcodeData['refcode'];
 
-            // Use the refcode to find the agent details
-            $referalby = $this->agent->select(['lastname', 'firstname', 'middlename'])
+            // Use CONCAT to combine lastname, firstname, and middlename
+            $referalby = $this->agent->select("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) as fullname")
                 ->where('AgentCode', $refcode)->first();
 
-            // Output the agent details
-            var_dump($referalby);
+            // Output the concatenated name
+            var_dump($referalby['fullname']);
         } else {
             echo "No refcode found for this applicant.";
         }
+
         // // Check if user_id exists in the database
         // $existingUser = $this->form1->select('user_id')->where('user_id', $userId)->first();
 
