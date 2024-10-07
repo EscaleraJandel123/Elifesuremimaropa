@@ -458,7 +458,7 @@ class AppController extends BaseController
         $token = $session->get('token');
         $role = $session->get('role');
 
-        $agent = $this->applicant->select('refcode')->where('applicant_id', $$userId)->find();
+        $agent = $this->applicant->select('refcode')->where('applicant_id', $userId)->find();
 
         var_dump($agent);
 
