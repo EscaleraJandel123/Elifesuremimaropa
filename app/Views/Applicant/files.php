@@ -228,13 +228,17 @@
                                                             <div class="card-body text-center">
                                                                 <h5 class="card-title"><?= $fileName ?></h5>
                                                                 <p class="card-text">
-                                                                    <a href="<?= $filePath ?>" target="_blank">
+                                                                    <!-- <a href="<?= $filePath ?>" target="_blank">
+                                                                        <i class="fas <?= $iconClass ?> fa-3x"></i>
+                                                                    </a> -->
+                                                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                                                        data-bs-target="#receipt<?= $files['id'] ?>">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
-                                                                <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
+                                                                <!-- <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
                                                                     <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
-                                                                </a>
+                                                                </a> -->
                                                             </div>
                                                         </div>
                                                     </div>
