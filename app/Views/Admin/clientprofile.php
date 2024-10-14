@@ -144,8 +144,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col-xl-8">
                         <div class="card">
                             <div class="card-body pt-3">
@@ -232,17 +230,30 @@
                                         <div class="table-responsive">
                                             <!-- Table with hoverable rows -->
                                             <div class="table-container mx-auto">
-                                                <table class="table table-hover">
-                                                    <thead class="thead-light bg-white">
+                                            <table class="table">
+                                                    <thead>
                                                         <tr>
                                                             <th scope="col">Plan</th>
+                                                            <th scope="col">Start Date</th>
+                                                            <th scope="col">Due Dates</th>
+                                                            <th scope="col">Terms</th>
                                                             <th scope="col">Status</th>
-                                                            <th scope="col">Date pay</th>
-                                                            <th scope="col">Due date</th>
-                                                            <th scope="col">Agent</th>
+                                                            <th scope="col"></th>
                                                         </tr>
                                                     </thead>
-
+                                                    <tbody>
+                                                        <?php foreach ($myplan as $payment): ?>
+                                                            <tr>
+                                                                <td><?= $payment['plan_name'] ?></td>
+                                                                <!-- Assuming plan name is retrieved from the join -->
+                                                                <td><?= date('M j, Y', strtotime($payment['created_at'])); ?>
+                                                                </td>
+                                                                <td><?= $payment['mode_payment'] ?></td>
+                                                                <td><?= $payment['term'] ?></td>
+                                                                <td><?= $payment['status'] ?></td>
+                                                            </tr>
+                                                        <?php endforeach ?>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>
