@@ -233,7 +233,7 @@
                                                                     </a> -->
                                                                     <a href="#" class="btn btn-outline-primary"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#files<?= $files['id'] ?>">
+                                                                        data-bs-target="#files<?= $files["file$i"] ?>">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
