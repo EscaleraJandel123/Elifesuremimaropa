@@ -46,7 +46,6 @@ class FilesController extends BaseController
         $data['files'] = $fileData;
         $data['userIdExists'] = $files ? true : false;
         return view('Applicant/files', $data);
-        // var_dump($data['username']);
     }
 
     public function fileuploads()
