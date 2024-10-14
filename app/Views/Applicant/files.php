@@ -221,9 +221,6 @@
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
-                                                                <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
-                                                                    <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
-                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
