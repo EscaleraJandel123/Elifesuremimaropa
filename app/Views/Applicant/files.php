@@ -245,14 +245,7 @@
                                                     </div>
 
                                                 <?php endif; ?>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="files<?= $files['id'] ?>" tabindex="-1">
+                                                <div class="modal fade" id="files<?= $files['id'] ?>" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -262,6 +255,13 @@
                                 <div class="modal-body">
                                     <?php $image_path = base_url('uploads/files/' . $username . '/' . $files["file$i"]); ?>
                                     <img src="<?= $image_path ?>" alt="Receipt Image" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
