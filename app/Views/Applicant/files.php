@@ -201,78 +201,51 @@
                                                 5 => 'Boss 3'
                                             ];
                                             ?>
+                                            <?php foreach (range(1, 6) as $i): ?>
+                                                <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
+                                                    <?php
+                                                    // Determine the file type for icon
+                                                    $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
+                                                    $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
+                                                    $iconClass = 'fa-file'; // Default icon
+                                            
+                                                    // Set icon class based on file extension
+                                                    if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])) {
+                                                        $iconClass = 'fa-file-image';
+                                                    } elseif ($fileExt === 'pdf') {
+                                                        $iconClass = 'fa-file-pdf';
+                                                    } elseif (in_array($fileExt, ['doc', 'docx'])) {
+                                                        $iconClass = 'fa-file-word';
+                                                    } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
+                                                        $iconClass = 'fa-file-powerpoint';
+                                                    }
 
-<?php foreach (range(1, 6) as $i): ?>
-    <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
-        <?php
-        // Determine the file type for icon
-        $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
-        $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
-        $iconClass = 'fa-file'; // Default icon
-
-        // Set icon class based on file extension
-        if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])) {
-            $iconClass = 'fa-file-image';
-        } elseif ($fileExt === 'pdf') {
-            $iconClass = 'fa-file-pdf';
-        } elseif (in_array($fileExt, ['doc', 'docx'])) {
-            $iconClass = 'fa-file-word';
-        } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
-            $iconClass = 'fa-file-powerpoint';
-        }
-
-        // Determine the file name from the array, default to "File $i" if not set
-        $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
-        ?>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title"><?= $fileName ?></h5>
-                    <p class="card-text">
-                        <?php if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])): ?>
-                            <a href="javascript:void(0)" 
-                               data-bs-toggle="modal" 
-                               data-bs-target="#imageModal" 
-                               onclick="showImageModal('<?= $filePath ?>')">
-                                <i class="fas <?= $iconClass ?> fa-3x"></i>
-                            </a>
-                        <?php else: ?>
-                            <a href="<?= $filePath ?>" target="_blank">
-                                <i class="fas <?= $iconClass ?> fa-3x"></i>
-                            </a>
-                        <?php endif; ?>
-                    </p>
-                    <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
-                        <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-<?php endforeach; ?>
-
+                                                    // Determine the file name from the array, default to "File $i" if not set
+                                                    $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
+                                                    ?>
+                                                    <div class="col-6">
+                                                        <div class="card">
+                                                            <div class="card-body text-center">
+                                                                <h5 class="card-title"><?= $fileName ?></h5>
+                                                                <p class="card-text">
+                                                                    <a href="<?= $filePath ?>" target="_blank">
+                                                                        <i class="fas <?= $iconClass ?> fa-3x"></i>
+                                                                    </a>
+                                                                </p>
+                                                                <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
+                                                                    <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Image Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">View Image</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" class="img-fluid" alt="Selected File Image">
-            </div>
-        </div>
-    </div>
-</div>
-
                 </div>
             </main>
         </div>
@@ -314,13 +287,6 @@
             }
         });
     </script>
-    <script>
-    function showImageModal(imageUrl) {
-        // Set the modal image source to the clicked image's URL
-        document.getElementById('modalImage').src = imageUrl;
-    }
-</script>
-
 </body>
 
 </html>
