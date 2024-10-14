@@ -204,15 +204,17 @@ class ProfileController extends BaseController
     {
         $data = array_merge($this->getDataAd(), $this->notifcont->notification());
         $data['client'] = $this->client->where('client_token', $token)->first();
-        $data['myplan'] = $this->client_plan->where('client_token', $token)->first();
+        if ($data['client']) {
+            $data['myplan'] = $this->client_plan->select('agent.username as agent_name, plan.plan_name, client_plan.created_at, 
+                client_plan.mode_payment, client_plan.term, client_plan.status, client_plan.id, client_plan.token ')
+                ->join('agent', 'agent.agent_id = client_plan.agent')
+                ->join('plan', 'plan.token = client_plan.plan')
+                ->where('client_plan.client_id', $data['client']['client_id'])
+                ->findAll();
+        }
         if ($data['client']) {
             $data = $this->files($data, $data['client']['client_id'], 'client'); // Pass $data to the files method
-        } else {
-            // Handle the case where the client is not found
-            return redirect()->to('some_error_page')->with('error', 'client not found');
         }
-
         return view("Admin/clientprofile", $data);
-        // var_dump($data['client']);
     }
 }
