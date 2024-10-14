@@ -95,9 +95,9 @@
                                         <?= session()->getFlashdata('success') ?>
                                     </div>
                                 <?php endif; ?>
-                                
+
                                 <div class="card-body">
-                                <?= $userIdExists ? '<button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                    <?= $userIdExists ? '<button type="button" class="btn btn-info" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i class="bi bi-eye"></i></button>' : '' ?>
                                     <form action="fileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
@@ -179,8 +179,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-md">
@@ -193,7 +191,18 @@
                                 <div class="modal-body">
                                     <div class="container">
                                         <div class="row">
-                                        <?php 
+                                            <?php
+                                            // Array of file names
+                                            $fileNames = [
+                                                1 => 'TIN',
+                                                2 => 'Affidavit of Verification',
+                                                3 => 'SSS',
+                                                4 => 'Valid ID',
+                                                5 => 'Boss 3'
+                                            ];
+                                            ?>
+
+<?php 
 // Array of file names
 $fileNames = [
     1 => 'TIN',
@@ -231,13 +240,36 @@ $fileNames = [
                 <div class="card-body text-center">
                     <h5 class="card-title"><?= $fileName ?></h5>
                     <p class="card-text">
-                        <a href="<?= $filePath ?>" target="_blank">
+                        <!-- Trigger the modal with this link -->
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#fileModal<?= $i ?>">
                             <i class="fas <?= $iconClass ?> fa-3x"></i>
                         </a>
                     </p>
                     <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
                         <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for displaying the image -->
+        <div class="modal fade" id="fileModal<?= $i ?>" tabindex="-1" aria-labelledby="fileModalLabel<?= $i ?>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="fileModalLabel<?= $i ?>"><?= $fileName ?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <?php if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])): ?>
+                            <img src="<?= $filePath ?>" alt="<?= $fileName ?>" class="img-fluid">
+                        <?php else: ?>
+                            <p>This file type is not an image. You can <a href="<?= $filePath ?>" target="_blank">download it here</a>.</p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -250,8 +282,6 @@ $fileNames = [
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </main>
         </div>
