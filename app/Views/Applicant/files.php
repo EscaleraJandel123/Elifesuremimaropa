@@ -231,14 +231,30 @@
                                                                     <!-- <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a> -->
-                                                                    <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                                                        data-bs-target="#receipt<?= $files['id'] ?>">
+                                                                    <a href="#" class="btn btn-outline-primary"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#files<?= $files['id'] ?>">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
                                                                 <!-- <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
                                                                     <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
                                                                 </a> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="files<?= $files['id'] ?>" tabindex="-1">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <?php $image_path = base_url('uploads/files/' . $username . '/' . $files["file$i"]); ?>
+                                                                    <img src="<?= $image_path ?>" alt="Receipt Image"
+                                                                        class="img-fluid">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
