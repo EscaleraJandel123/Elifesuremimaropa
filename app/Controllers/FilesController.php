@@ -126,8 +126,6 @@ class FilesController extends BaseController
         return redirect()->to('/appfiles')->with('success', 'Files uploaded successfully.');
     }
 
-
-
     private function getData()
     {
         $session = session();
