@@ -231,9 +231,9 @@
                                                                     <!-- <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a> -->
-                                                                    <a href="#" class="btn btn-outline-primary"
+                                                                    <a href="#"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#files<?= $files["file$i"] ?>">
+                                                                        data-bs-target="#files<?= $i ?>">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
@@ -245,7 +245,7 @@
                                                     </div>
 
                                                 <?php endif; ?>
-                                                <div class="modal fade" id="files<?= $files["file$i"] ?>" tabindex="-1">
+                                                <div class="modal fade" id="files<?= $i ?>" tabindex="-1">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
