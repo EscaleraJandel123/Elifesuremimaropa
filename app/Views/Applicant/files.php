@@ -1,13 +1,6 @@
 <!doctype html>
 <html lang="en">
 <?= view('head'); ?>
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap JS (make sure to include Popper.js) -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
 <style>
     .file-upload {
         position: relative;
@@ -209,17 +202,6 @@
                                             ];
                                             ?>
 
-<?php 
-// Array of file names
-$fileNames = [
-    1 => 'TIN',
-    2 => 'Affidavit of Verification',
-    3 => 'SSS',
-    4 => 'Valid ID',
-    5 => 'Boss 3'
-];
-?>
-
 <?php foreach (range(1, 6) as $i): ?>
     <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
         <?php
@@ -247,36 +229,22 @@ $fileNames = [
                 <div class="card-body text-center">
                     <h5 class="card-title"><?= $fileName ?></h5>
                     <p class="card-text">
-                        <!-- Trigger the modal with this link -->
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#fileModal<?= $i ?>">
-                            <i class="fas <?= $iconClass ?> fa-3x"></i>
-                        </a>
+                        <?php if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])): ?>
+                            <a href="javascript:void(0)" 
+                               data-bs-toggle="modal" 
+                               data-bs-target="#imageModal" 
+                               onclick="showImageModal('<?= $filePath ?>')">
+                                <i class="fas <?= $iconClass ?> fa-3x"></i>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?= $filePath ?>" target="_blank">
+                                <i class="fas <?= $iconClass ?> fa-3x"></i>
+                            </a>
+                        <?php endif; ?>
                     </p>
                     <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
                         <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
                     </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal for displaying the image -->
-        <div class="modal fade" id="fileModal<?= $i ?>" tabindex="-1" aria-labelledby="fileModalLabel<?= $i ?>" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="fileModalLabel<?= $i ?>"><?= $fileName ?></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <?php if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])): ?>
-                            <img src="<?= $filePath ?>" alt="<?= $fileName ?>" class="img-fluid">
-                        <?php else: ?>
-                            <p>This file type is not an image. You can <a href="<?= $filePath ?>" target="_blank">download it here</a>.</p>
-                        <?php endif; ?>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -289,6 +257,22 @@ $fileNames = [
                             </div>
                         </div>
                     </div>
+
+                    <!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">View Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid" alt="Selected File Image">
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
             </main>
         </div>
