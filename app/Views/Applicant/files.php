@@ -95,9 +95,9 @@
                                         <?= session()->getFlashdata('success') ?>
                                     </div>
                                 <?php endif; ?>
-                                
+
                                 <div class="card-body">
-                                <?= $userIdExists ? '<button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                    <?= $userIdExists ? '<button type="button" class="btn btn-info" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i class="bi bi-eye"></i></button>' : '' ?>
                                     <form action="fileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
@@ -193,6 +193,17 @@
                                 <div class="modal-body">
                                     <div class="container">
                                         <div class="row">
+                                            <?php
+                                            // Array of file names
+                                            $fileNames = [
+                                                1 => 'TIN',
+                                                2 => 'Affidavit of Verification',
+                                                3 => 'SSS',
+                                                4 => 'Valid ID',
+                                                5 => 'Boss 3'
+                                            ];
+                                            ?>
+
                                             <?php foreach (range(1, 6) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
@@ -211,29 +222,34 @@
                                                     } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
                                                         $iconClass = 'fa-file-powerpoint';
                                                     }
+
+                                                    // Determine the file name from the array, default to "File $i" if not set
+                                                    $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
                                                     ?>
                                                     <div class="col-6">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <h5 class="card-title">File <?= $i ?></h5>
+                                                                <h5 class="card-title"><?= $fileName ?></h5>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
+                                                                <!-- <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
+                                                                    <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
+                                                                </a> -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                 <?php endif; ?>
                                             <?php endforeach; ?>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </main>
         </div>
