@@ -374,7 +374,7 @@
                     value="<?= isset ($lifechangerform['landline']) ? $lifechangerform['landline'] : '' ?>">
 
                 <label for="email">Email Address:</label>
-                <input type="text" style="width: 140px;" id="email" name="email" readonly
+                <input type="text" style="width: 140px; font-size: 7pt;" id="email" name="email" readonly
                     value="<?= isset ($lifechangerform['email']) ? $lifechangerform['email'] : '' ?>">
             </div>
             <div class="line">
@@ -603,9 +603,9 @@
                                     placeholder="Position:"></td>
                         </tr>
                         <tr>
-                            <td>Email Address: <input type="text" name="emailAddress" class="form-control" readonly
-                                    value="<?= isset($lifechangerform['emailAddress']) ? $lifechangerform['emailAddress'] : '' ?>"
-                                    placeholder="Email Address:" style="font-size: 1pt;"></td>
+                            <td>Email Address:: <input type="text" name="emailAddress" class="form-control" readonly
+                                    value="<?= isset ($lifechangerform['emailAddress']) ? $lifechangerform['emailAddress'] : '' ?>"
+                                    placeholder="Email Address:"></td>
                             <td>Contact Number: <input type="text" name="contactNumber" class="form-control" readonly
                                     value="<?= isset ($lifechangerform['contactNumber']) ? $lifechangerform['contactNumber'] : '' ?>"
                                     placeholder="Contact Number:"></td>
