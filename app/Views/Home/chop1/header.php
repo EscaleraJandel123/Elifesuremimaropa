@@ -12,7 +12,7 @@
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-sm-3 col-md-3">
 					<div class="header-left-bar-text">
-						<ul class="list-inline">
+						<!-- <ul class="list-inline">
 							<li>
 								<a href="https://www.facebook.com/" target="_blank">
 									<i class="bx bxl-facebook"></i>
@@ -33,11 +33,11 @@
 									<i class="bx bxl-google"></i>
 								</a>
 							</li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 				<div class="col-lg-6 col-sm-9 col-md-9">
-					<div class="header-right-content text-end">
+					<!-- <div class="header-right-content text-end">
 						<ul class="list-inline">
 							<li class="d-inline">
 								<img src="<?php base_url()?>/allhome/assets/images/phone.svg" alt="Phone">
@@ -51,7 +51,7 @@
 										data-cfemail="0940676f6649606766677d616c646c7a276a6664"></span></a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

@@ -249,9 +249,6 @@ class AppController extends BaseController
         }
     }
 
-
-
-
     public function svap()
     {
         $session = session();
