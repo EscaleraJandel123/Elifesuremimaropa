@@ -315,7 +315,7 @@
                                             // Array of file names
                                             $fileNames = [
                                                 1 => 'TIN',
-                                                2 => 'Affidavit of Verification',
+                                                2 => 'AofV',
                                                 3 => 'SSS',
                                                 4 => 'Valid ID',
                                                 5 => 'Boss 3',
@@ -348,7 +348,7 @@
                                                     <div class="col-lg-2 col-4">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <p class="" style="font-size: 9pt"><?= $fileName ?></p>
+                                                                <p class=""><?= $fileName ?></p>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
