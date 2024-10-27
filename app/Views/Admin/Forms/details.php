@@ -603,7 +603,7 @@
                                     placeholder="Position:"></td>
                         </tr>
                         <tr>
-                            <td>Email Address:: <input type="text" name="emailAddress" class="form-control" readonly
+                            <td>Email Address:: <input style="font-size: 7pt;" type="text" name="emailAddress" class="form-control" readonly
                                     value="<?= isset ($lifechangerform['emailAddress']) ? $lifechangerform['emailAddress'] : '' ?>"
                                     placeholder="Email Address:"></td>
                             <td>Contact Number: <input type="text" name="contactNumber" class="form-control" readonly
