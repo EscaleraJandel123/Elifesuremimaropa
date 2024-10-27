@@ -151,11 +151,11 @@
                             information about Allianz services.</p>
                     </div>
                     <div class="call-experts">
-                        <div class="phone-call">
+                        <!-- <div class="phone-call">
                             <img src="<?= base_url() ?>client/assets/images/phone-call.svg" alt="phone-call">
                             <span>Call To Our Experts</span>
                             <a href="tel:(+0188)76898708">(+0188) 768 98708</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
