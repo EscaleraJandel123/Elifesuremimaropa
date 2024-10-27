@@ -136,7 +136,7 @@
         .line {
             /* display: flex; */
             justify-content: space-between;
-            font-size: 4pt;
+            font-size: 9pt;
             padding-bottom: 10px;
             /* background-color: #e3eaf1; */
         }
@@ -250,7 +250,7 @@
             width: 98%;
             font-size: 9pt;
             /* background-color: #333; */
-        }
+        }   
 
 
         /* Media Query for Responsive Design */
