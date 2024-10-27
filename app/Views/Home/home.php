@@ -229,8 +229,8 @@
 							</div>
 							<div class="single-team-content">
 								<h5><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?> 	<?= $agent['middlename'] ?>.</h5>
-								<p><?= $agent['email'] ?></p>
-								<ul class="d-flex align-items-center justify-content-center">
+								<!-- <p><?= $agent['email'] ?></p> -->
+								<!-- <ul class="d-flex align-items-center justify-content-center">
 									<li class="list-inline">
 										<a href="https://www.facebook.com/" target="_blank">
 											<i class="bx bxl-facebook"></i>
@@ -251,7 +251,7 @@
 											<i class="bx bxl-google"></i>
 										</a>
 									</li>
-								</ul>
+								</ul> -->
 							</div>
 						</div>
 					</div>
