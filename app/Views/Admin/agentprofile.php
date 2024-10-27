@@ -318,7 +318,8 @@
                                                 2 => 'Affidavit of Verification',
                                                 3 => 'SSS',
                                                 4 => 'Valid ID',
-                                                5 => 'Boss 3'
+                                                5 => 'Boss 3',
+                                                6 => 'file 6',
                                             ];
                                             ?>
                                             <?php foreach (range(1, 6) as $i): ?>
