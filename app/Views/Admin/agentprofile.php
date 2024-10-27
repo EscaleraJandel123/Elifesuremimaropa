@@ -311,9 +311,20 @@
                                     <div class="tab-pane fade pt-3" id="files">
                                         <h1 class="h2 mb-0">Files</h1>
                                         <div class="row text-center">
+                                        <?php
+                                            // Array of file names
+                                            $files = [
+                                                1 => 'TIN',
+                                                2 => 'Affidavit of Verification',
+                                                3 => 'SSS',
+                                                4 => 'Valid ID',
+                                                5 => 'Boss 3'
+                                            ];
+                                            ?>
                                             <?php foreach (range(1, 6) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
+                                                    
                                                     // Determine the file type for icon
                                                     $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
                                                     $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
