@@ -403,7 +403,7 @@
                     <input type="text" style="width: 220px;" id="naturalizationInfo" name="naturalizationInfo">
                 </div>
 
-                <div style=" font-size: 9pt; margin-left: 50px;">
+                <div style=" font-size: 7pt; margin-left: 50px;">
                     <label for="maidenName">If Married, a) Maiden Name</label>
                     <input type="text" style="width: 130px;" id="maidenName" name="maidenName" readonly
                         value="<?= isset ($lifechangerform['maidenName']) ? $lifechangerform['maidenName'] : '' ?>"><br>
