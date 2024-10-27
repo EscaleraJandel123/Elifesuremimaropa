@@ -136,7 +136,7 @@
         .line {
             /* display: flex; */
             justify-content: space-between;
-            font-size: 7pt;
+            font-size: 4pt;
             padding-bottom: 10px;
             /* background-color: #e3eaf1; */
         }
