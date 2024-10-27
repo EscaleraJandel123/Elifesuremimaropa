@@ -374,7 +374,7 @@
                     value="<?= isset ($lifechangerform['landline']) ? $lifechangerform['landline'] : '' ?>">
 
                 <label for="email">Email Address:</label>
-                <input type="text" style="width: 140px; font-size: 7pt;" id="email" name="email" readonly
+                <input type="text" style="width: 140px; font-size: 6pt;" id="email" name="email" readonly
                     value="<?= isset ($lifechangerform['email']) ? $lifechangerform['email'] : '' ?>">
             </div>
             <div class="line">
