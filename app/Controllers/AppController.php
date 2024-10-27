@@ -168,19 +168,54 @@ class AppController extends BaseController
         $session = session();
         $userId = $session->get('id');
         $token = $session->get('token');
+
         // Decode the base64 signature data
         $base64Image = $this->request->getVar('sign');
+        if (!$base64Image) {
+            return redirect()->back()->with('error', 'No signature data received.');
+        }
+
+        // Decode the base64 data to get the image content
         $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64Image));
+        if ($imageData === false) {
+            return redirect()->back()->with('error', 'Invalid signature data.');
+        }
 
         // Define the upload path and filename
-        $uploadPath = FCPATH . 'uploads/signatures/'; // Adjust the path as needed
-        $filename = 'signature_' . time() . '.png'; // Generate a unique filename
+        $uploadPath = FCPATH . 'uploads/signatures/';
+        $filename = 'signature_' . time() . '.png';
 
-        // Check if the user_id exists in the e-signature table
-        $existingSignature = $this->esign->where('user_id', $userId)->first();
+        // Ensure the directory exists
+        if (!is_dir($uploadPath) && !mkdir($uploadPath, 0755, true)) {
+            return redirect()->back()->with('error', 'Failed to create directory for signature uploads.');
+        }
 
-        // Save the signature image to the server
-        if (file_put_contents($uploadPath . $filename, $imageData)) {
+        // Create an image resource from the decoded data
+        $signatureImage = imagecreatefromstring($imageData);
+        if (!$signatureImage) {
+            return redirect()->back()->with('error', 'Failed to create image from signature data.');
+        }
+
+        // Get the dimensions of the signature image
+        $width = imagesx($signatureImage);
+        $height = imagesy($signatureImage);
+
+        // Create a white background image with the same dimensions
+        $backgroundImage = imagecreatetruecolor($width, $height);
+        $white = imagecolorallocate($backgroundImage, 255, 255, 255); // White color
+        imagefill($backgroundImage, 0, 0, $white); // Fill the background with white
+
+        // Merge the signature image onto the white background
+        imagecopy($backgroundImage, $signatureImage, 0, 0, 0, 0, $width, $height);
+
+        // Save the final image with the white background
+        $saved = imagepng($backgroundImage, $uploadPath . $filename);
+
+        // Clean up resources
+        imagedestroy($signatureImage);
+        imagedestroy($backgroundImage);
+
+        if ($saved) {
             // Prepare data for insertion/updation
             $signatureData = [
                 'user_id' => $userId,
@@ -188,6 +223,8 @@ class AppController extends BaseController
                 'signature' => $filename,
             ];
 
+            // Check if the user_id exists in the e-signature table
+            $existingSignature = $this->esign->where('user_id', $userId)->first();
             if ($existingSignature) {
                 // Update the existing record
                 $this->esign->where('user_id', $userId)->set($signatureData)->update();
@@ -211,6 +248,7 @@ class AppController extends BaseController
             return redirect()->back()->with('error', 'Failed to save signature image');
         }
     }
+
 
 
 
