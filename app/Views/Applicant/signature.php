@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="en">
 <?= view('head'); ?>
-
+<style>
+    #signaturePreview img {
+        background-color: white;
+    }
+</style>
 <body>
     <?= view('Applicant/chop/header'); ?>
     <div class="container-fluid">
