@@ -190,7 +190,7 @@
 							<div class="testimonials-client d-flex align-items-center">
 								<img src="allhome/assets/images/testimonials/def.jpg" alt="testimonials">
 								<div class="testimonials-text">
-									<h3><?= $feedback['name'] ?></h3>
+									<!-- <h3><?= $feedback['name'] ?></h3> -->
 								</div>
 							</div>
 							<div class="testimonials-card testimonials-card-three">
@@ -200,8 +200,8 @@
 										<img src="allhome/assets/images/quote-two.svg" alt="quote">
 									</div>
 								</div>
-								<p><?= date('M j, Y', strtotime($feedback['created_at'])) ?></p><br><br>
-								<p><?= $feedback['content'] ?></p>
+								<!-- <p><?= date('M j, Y', strtotime($feedback['created_at'])) ?></p><br><br>
+								<p><?= $feedback['content'] ?></p> -->
 							</div>
 						</div>
 					<?php endforeach; ?>
