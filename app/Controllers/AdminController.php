@@ -267,6 +267,7 @@ class AdminController extends BaseController
     {
         $data['lifechangerform'] = $this->form1->where('app_life_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
+        $data['user'] = $this->user->where('user_token', $token)->first();
         return view('Admin/Forms/details', $data);
     }
 

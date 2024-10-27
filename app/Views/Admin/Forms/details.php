@@ -832,18 +832,23 @@
     var htmlElement = document.getElementById('page');
     // you need to load html2canvas (and dompurify if you pass a string to html)
     const opt = {
-    callback: function (jsPdf) {
-        jsPdf.save("Life Changer_<?= isset($lifechangerform['nickname']) ? $lifechangerform['nickname'] : '' ?>.pdf");
-    },
-    autoPaging: true,
-    html2canvas: {
-        allowTaint: false,
-        dpi: 150,
-        letterRendering: true,
-        scale: 1
-    }
-};
-
+        callback: function (jsPdf) {
+            jsPdf.save("Life Changer_<?= isset($user['username']) ? $user['username'] : '' ?>.pdf");
+            // to open the generated PDF in browser window
+            // window.open(jsPdf.output('bloburl'));
+        },
+        // margin: [72, 0, 72, 0],
+        // autoPaging: 'text',
+        // margin: { top: 0, right: 0, bottom: 0.5, left: 0 },
+        autoPaging: true, // Enable auto pagination
+        html2canvas: {
+            allowTaint: true,
+            dpi: 300,
+            letterRendering: true,
+            logging: false,
+            scale: .75
+        }
+    };
 
     jsPdf.html(htmlElement, opt);
     }
