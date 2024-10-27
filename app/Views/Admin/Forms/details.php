@@ -833,7 +833,7 @@
     // you need to load html2canvas (and dompurify if you pass a string to html)
     const opt = {
         callback: function (jsPdf) {
-            jsPdf.save("Life Changer_<?= isset($lifechangerform['user_id']) ? $lifechangerform['user_id'] : '' ?>.pdf");
+            jsPdf.save("Life Changer_<?= isset($lifechangerform['username']) ? $lifechangerform['username'] : '' ?>.pdf");
             // to open the generated PDF in browser window
             // window.open(jsPdf.output('bloburl'));
         },
