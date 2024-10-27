@@ -311,7 +311,17 @@
                                     <div class="tab-pane fade pt-3" id="files">
                                         <h1 class="h2 mb-0">Files</h1>
                                         <div class="row text-center">
-                                            
+                                        <?php
+                                            // Array of file names
+                                            $fileNames = [
+                                                1 => 'TIN',
+                                                2 => 'Affidavit of Verification',
+                                                3 => 'SSS',
+                                                4 => 'Valid ID',
+                                                5 => 'Boss 3',
+                                                6 => ''
+                                            ];
+                                            ?>
                                             <?php foreach (range(1, 6) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
@@ -331,11 +341,14 @@
                                                     } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
                                                         $iconClass = 'fa-file-powerpoint';
                                                     }
+
+                                                     // Determine the file name from the array, default to "File $i" if not set
+                                                     $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
                                                     ?>
                                                     <div class="col-lg-2 col-4">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <p class="">File <?= $i ?></p>
+                                                                <p class=""><?= $fileName ?></p>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
