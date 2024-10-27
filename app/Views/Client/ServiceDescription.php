@@ -36,7 +36,7 @@
 
 
                         <h3>Title basta about Benefits​</h3>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-6 col-sm-6 col-md-6">
                                 <ul class="blog-details-list">
                                     <li><img src="<?= base_url() ?>client/assets/images/services/services-check.svg"
@@ -57,7 +57,7 @@
                                             alt="blog-check">Benefits lalagay dito mula database</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
 
                         <h4>We Help To Get Solutions</h4>
                         <div class="faqs-content">
