@@ -408,7 +408,7 @@
                     <input type="text" style="width: 130px;" id="maidenName" name="maidenName"; readonly
                         value="<?= isset ($lifechangerform['maidenName']) ? $lifechangerform['maidenName'] : '' ?>"><br>
                     <label for="spouseName" style="margin-left: 57px;">b) Name of Spouse:</label>
-                    <input type="text" style="width: 100px; font-size: 7pt;" id="spouseName" name="spouseName" readonly
+                    <input type="text" style="width: 100px; font-size: 6pt;" id="spouseName" name="spouseName" readonly
                         value="<?= isset ($lifechangerform['spouseName']) ? $lifechangerform['spouseName'] : '' ?>">
                 </div>
             </div>
