@@ -307,7 +307,7 @@
                                                     <div class="col-6">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <h6 style="font-size: 12pt" class="card-title"><?= $fileName ?>
+                                                                <h6 style="font-size: 10pt" class="card-title"><?= $fileName ?>
                                                                 </h6>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
