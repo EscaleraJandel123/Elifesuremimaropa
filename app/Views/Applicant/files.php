@@ -85,25 +85,26 @@
                     <div class="row justify-content-center m-2">
                         <div class="col-lg-12">
                             <div class="card">
-                                <?php if (session()->getFlashdata('error')): ?>
-                                    <div class="alert alert-danger mt-3 text-center" role="alert">
-                                        <?= session()->getFlashdata('error') ?>
-                                    </div>
-                                <?php endif; ?>
-                                <?php if (session()->getFlashdata('success')): ?>
-                                    <div class="alert alert-success mt-3 text-center" role="alert">
-                                        <?= session()->getFlashdata('success') ?>
-                                    </div>
-                                <?php endif; ?>
+
 
                                 <div class="card-body">
+                                    <?php if (session()->getFlashdata('error')): ?>
+                                        <div class="alert alert-danger mt-3 text-center" role="alert">
+                                            <?= session()->getFlashdata('error') ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if (session()->getFlashdata('success')): ?>
+                                        <div class="alert alert-success mt-3 text-center" role="alert">
+                                            <?= session()->getFlashdata('success') ?>
+                                        </div>
+                                    <?php endif; ?>
                                     <?= $userIdExists ? '<button type="button" class="btn btn-info" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i class="bi bi-eye"></i></button>' : '' ?>
                                     <form action="fileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload1">
-                                                <p>Traning Certificate (Boss 3)</p>
+                                                    <p>Traning Certificate (Boss 3)</p>
                                                     <p id="uploadText1">
                                                         <?= isset($files['file1']) && $files['file1'] ? $files['file1'] : 'Drag file' ?>
                                                     </p>
@@ -114,7 +115,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload2">
-                                                <p>Government Valid ID (With 3 specimen signature)</p>
+                                                    <p>Government Valid ID (With 3 specimen signature)</p>
                                                     <p id="uploadText2">
                                                         <?= isset($files['file2']) && $files['file2'] ? $files['file2'] : 'Drag file' ?>
                                                     </p>
@@ -127,7 +128,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload3">
-                                                <p>2x2 Picture (With 3 white background)</p>
+                                                    <p>2x2 Picture (With 3 white background)</p>
                                                     <p id="uploadText3">
                                                         <?= isset($files['file3']) && $files['file3'] ? $files['file3'] : 'Drag file' ?>
                                                     </p>
@@ -138,7 +139,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload4">
-                                                <p>Copy of Exam Result</p>
+                                                    <p>Copy of Exam Result</p>
                                                     <p id="uploadText4">
                                                         <?= isset($files['file4']) && $files['file4'] ? $files['file4'] : 'Drag file' ?>
                                                     </p>
@@ -151,7 +152,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload5">
-                                                <p>Notarized AIAL Form</p>
+                                                    <p>Notarized AIAL Form</p>
                                                     <p id="uploadText5">
                                                         <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
                                                     </p>
@@ -162,7 +163,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload6">
-                                                <p>Group Life Insurance Form</p>
+                                                    <p>Group Life Insurance Form</p>
                                                     <p id="uploadText6">
                                                         <?= isset($files['file6']) && $files['file6'] ? $files['file6'] : 'Drag file' ?>
                                                     </p>
@@ -180,7 +181,8 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload7">
-                                                <p>Copy Of clearance (from previous employer) even not insurance related</p>
+                                                    <p>Copy Of clearance (from previous employer) even not insurance
+                                                        related</p>
                                                     <p id="uploadText7">
                                                         <?= isset($files['file7']) && $files['file7'] ? $files['file7'] : 'Drag file' ?>
                                                     </p>
@@ -191,7 +193,7 @@
                                             </div>
                                             <div class="col-6"><br>
                                                 <div class="file-upload" id="fileUpload8">
-                                                <p class="pt-2">Statement of Undertaking</p>
+                                                    <p>Statement of Undertaking</p>
                                                     <p id="uploadText8">
                                                         <?= isset($files['file8']) && $files['file8'] ? $files['file8'] : 'Drag file' ?>
                                                     </p>
@@ -205,7 +207,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload9">
-                                                <p>Proof of License Fee/s Payment:</p>
+                                                    <p>Proof of License Fee/s Payment:</p>
                                                     <p id="uploadText9">
                                                         <?= isset($files['file9']) && $files['file9'] ? $files['file9'] : 'Drag file' ?>
                                                     </p>
@@ -216,7 +218,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload10">
-                                                <p>ITR or Affidavit of Non-Filing</p>
+                                                    <p>ITR or Affidavit of Non-Filing</p>
                                                     <p id="uploadText10">
                                                         <?= isset($files['file10']) && $files['file10'] ? $files['file10'] : 'Drag file' ?>
                                                     </p>
@@ -229,7 +231,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="file-upload" id="fileUpload11">
-                                                <p>BIRT CERTIFICATE OF REGISTRATION</p>
+                                                    <p>BIRT CERTIFICATE OF REGISTRATION</p>
                                                     <p id="uploadText11">
                                                         <?= isset($files['file11']) && $files['file11'] ? $files['file11'] : 'Drag file' ?>
                                                     </p>
@@ -279,7 +281,7 @@
                                                 9 => 'Proof of License Fee/s Payment',
                                                 10 => 'ITR or Affidavit of Non-Filing',
                                                 11 => 'BIRT CERTIFICATE OF REGISTRATION',
-                                        
+
                                             ];
                                             ?>
                                             <?php foreach (range(1, 11) as $i): ?>
@@ -307,7 +309,8 @@
                                                     <div class="col-6">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <h6 style="font-size: 12pt" class="card-title"><?= $fileName ?></h6>
+                                                                <h6 style="font-size: 12pt" class="card-title"><?= $fileName ?>
+                                                                </h6>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
