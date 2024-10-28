@@ -243,8 +243,9 @@ class FilesController extends BaseController
     {
         $session = session();
         $userId = $session->get('id');
-        $data['applicant'] = $this->agent->where('agent_id', $userId)
-            ->orderBy('id', 'desc')
+        $agentModel = new AgentModel();
+        $data['agent'] = $this->agent->where('agent_id', $userId)
+            // ->orderBy('id', 'desc')
             ->first();
         return $data;
     }
@@ -254,7 +255,6 @@ class FilesController extends BaseController
         $session = session();
         $userId = $session->get('id');
         $data = array_merge($this->getData(), $this->getDataAgent());
-
         // Fetch user's files
         $files = $this->file->where('user_id', $userId)->first();
 
