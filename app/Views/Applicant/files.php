@@ -191,7 +191,7 @@
                                             </div>
                                             <div class="col-6"><br>
                                                 <div class="file-upload" id="fileUpload8">
-                                                <p><br>Statement of Undertaking</p>
+                                                <p class="pt-2">Statement of Undertaking</p>
                                                     <p id="uploadText8">
                                                         <?= isset($files['file8']) && $files['file8'] ? $files['file8'] : 'Drag file' ?>
                                                     </p>
