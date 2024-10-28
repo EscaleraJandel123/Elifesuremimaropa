@@ -220,9 +220,9 @@
                                                     <p id="uploadText10">
                                                         <?= isset($files['file10']) && $files['file10'] ? $files['file10'] : 'Drag file' ?>
                                                     </p>
-                                                    <input type="file" id="fileInput9" name="file10" multiple>
+                                                    <input type="file" id="fileInput10" name="file10" multiple>
                                                     <button class="btn btn-primary mt-2" type="button"
-                                                        onclick="document.getElementById('fileInput9').click()">Upload</button>
+                                                        onclick="document.getElementById('fileInput10').click()">Upload</button>
                                                 </div>
                                             </div>
                                         </div>
