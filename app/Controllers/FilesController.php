@@ -22,7 +22,7 @@ class FilesController extends BaseController
         $this->file = new FilesModel();
         $this->agent = new AgentModel();
     }
-    
+
     public function applicantfiles()
     {
         $session = session();
@@ -61,6 +61,7 @@ class FilesController extends BaseController
     {
         $session = session();
         $userId = $session->get('id');
+        $role = $session->get('role');
         $data = $this->getData();
         $username = $data['user']['username'];
 
@@ -135,9 +136,11 @@ class FilesController extends BaseController
             // Debugging output
             // var_dump($fileData);
         }
-
-        // Redirect after upload
-        return redirect()->to('/appfiles')->with('success', 'Files uploaded successfully.');
+        if($role == 'agent') {
+            return redirect()->to('/agfiles')->with('success', 'Files uploaded successfully.');
+        } else {
+            return redirect()->to('/appfiles')->with('success', 'Files uploaded successfully.');
+        }
     }
 
     private function getData()
@@ -193,14 +196,12 @@ class FilesController extends BaseController
         ];
 
         if ($files) {
-            // Merge existing files into the array
             $fileData = array_merge($fileData, $files);
         }
         $data['username'] = $data['user']['username'];
         $data['files'] = $fileData;
         $data['userIdExists'] = $files ? true : false;
 
-        var_dump($data);
-        // return view('Agent/files');
+        return view('Agent/files', $data);
     }
 }
