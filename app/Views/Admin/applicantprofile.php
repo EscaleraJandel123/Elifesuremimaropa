@@ -223,7 +223,6 @@
                                     </div>
 
                                     <div class="tab-pane fade pt-3" id="forms">
-                                        <h1 class="h2 mb-0">Forms</h1>
                                         <div class="row text-center">
                                             <div class="col-lg-2 col-4 my-3">
                                                 <a href="/ViewAppForm/<?= $applicant['app_token'] ?>">
