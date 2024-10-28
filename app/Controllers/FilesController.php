@@ -243,9 +243,8 @@ class FilesController extends BaseController
     {
         $session = session();
         $userId = $session->get('id');
-        $agentModel = new AgentModel();
         $data['agent'] = $this->agent->where('agent_id', $userId)
-            // ->orderBy('id', 'desc')
+            ->orderBy('id', 'desc')
             ->first();
         return $data;
     }
