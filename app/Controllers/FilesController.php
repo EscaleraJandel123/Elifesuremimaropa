@@ -200,7 +200,7 @@ class FilesController extends BaseController
         // $data['files'] = $fileData;
         // $data['userIdExists'] = $files ? true : false;
 
-        var_dump($data);
+        var_dump($files);
         // return view('Agent/files');
     }
 }
