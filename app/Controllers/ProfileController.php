@@ -116,10 +116,11 @@ class ProfileController extends BaseController
         // Set file data based on user type
         if ($userType === 'applicant') {
             $data['username'] = $data['applicant']['username'];
+        }else if ($userType === 'agent') {
+            $data['username'] = $data['agent']['username'];
         } else {
             $data['username'] = $data[$userType]['username'];
         }
-
         $data['files'] = $fileData;
         $data['userIdExists'] = $files ? true : false;
 
