@@ -3,20 +3,24 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AgentModel;
 use App\Models\UserModel;
 use App\Models\ApplicantModel;
 use App\Models\FilesModel;
+use App\Models\AdminModel;
 
 class FilesController extends BaseController
 {
     private $user;
     private $app;
     private $file;
+    private $agent;
     public function __construct()
     {
         $this->user = new UserModel();
         $this->app = new ApplicantModel();
         $this->file = new FilesModel();
+        $this->agent = new AgentModel();
     }
     
     public function applicantfiles()
@@ -152,5 +156,51 @@ class FilesController extends BaseController
             ->orderBy('id', 'desc')
             ->first();
         return $data;
+    }
+
+    private function getDataAgent()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data['applicant'] = $this->agent->where('agent_id', $userId)
+            ->orderBy('id', 'desc')
+            ->first();
+        return $data;
+    }
+
+    public function agfiles()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data = array_merge($this->getData(), $this->getDataAgent());
+
+        // Fetch user's files
+        $files = $this->file->where('user_id', $userId)->first();
+
+        // // Initialize an array with null values to handle non-existing files
+        // $fileData = [
+        //     'file1' => null,
+        //     'file2' => null,
+        //     'file3' => null,
+        //     'file4' => null,
+        //     'file5' => null,
+        //     'file6' => null,
+        //     'file7' => null,
+        //     'file8' => null,
+        //     'file9' => null,
+        //     'file10' => null,
+        //     'file11' => null,
+        // ];
+
+        // if ($files) {
+        //     // Merge existing files into the array
+        //     $fileData = array_merge($fileData, $files);
+        // }
+        // $data['username'] = $data['user']['username'];
+        // $data['files'] = $fileData;
+        // $data['userIdExists'] = $files ? true : false;
+
+        var_dump($data);
+        // return view('Agent/files');
     }
 }
