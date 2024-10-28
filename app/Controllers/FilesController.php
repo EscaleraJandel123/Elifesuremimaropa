@@ -36,6 +36,11 @@ class FilesController extends BaseController
             'file4' => null,
             'file5' => null,
             'file6' => null,
+            'file7' => null,
+            'file8' => null,
+            'file9' => null,
+            'file10' => null,
+            'file11' => null,
         ];
 
         if ($files) {
@@ -70,7 +75,12 @@ class FilesController extends BaseController
             'file3' => $this->request->getFile('file3'),
             'file4' => $this->request->getFile('file4'),
             'file5' => $this->request->getFile('file5'),
-            'file6' => $this->request->getFile('file6')
+            'file6' => $this->request->getFile('file6'),
+            'file7' => $this->request->getFile('file7'),
+            'file8' => $this->request->getFile('file8'),
+            'file9' => $this->request->getFile('file9'),
+            'file10' => $this->request->getFile('file10'),
+            'file11' => $this->request->getFile('file11'),
         ];
 
         $fileData = [];

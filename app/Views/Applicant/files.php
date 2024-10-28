@@ -180,63 +180,63 @@
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="file-upload" id="fileUpload5">
+                                                <div class="file-upload" id="fileUpload7">
                                                 <p>Copy Of clearance (from previous employer) even not insurance related</p>
                                                     <p id="uploadText5">
-                                                        <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
+                                                        <?= isset($files['file7']) && $files['file7'] ? $files['file7'] : 'Drag file' ?>
                                                     </p>
-                                                    <input type="file" id="fileInput5" name="file5" multiple>
+                                                    <input type="file" id="fileInput7" name="file7" multiple>
                                                     <button class="btn btn-primary mt-2" type="button"
-                                                        onclick="document.getElementById('fileInput5').click()">Upload</button>
+                                                        onclick="document.getElementById('fileInput7').click()">Upload</button>
                                                 </div>
                                             </div>
                                             <div class="col-6"><br>
-                                                <div class="file-upload" id="fileUpload6">
+                                                <div class="file-upload" id="fileUpload8">
                                                 <p>Statement of Undertaking</p>
                                                     <p id="uploadText6">
-                                                        <?= isset($files['file6']) && $files['file6'] ? $files['file6'] : 'Drag file' ?>
+                                                        <?= isset($files['file8']) && $files['file8'] ? $files['file8'] : 'Drag file' ?>
                                                     </p>
-                                                    <input type="file" id="fileInput6" name="file6" multiple>
+                                                    <input type="file" id="fileInput8" name="file8" multiple>
                                                     <button class="btn btn-primary mt-2" type="button"
-                                                        onclick="document.getElementById('fileInput6').click()">Upload</button>
+                                                        onclick="document.getElementById('fileInput8').click()">Upload</button>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="file-upload" id="fileUpload5">
+                                                <div class="file-upload" id="fileUpload9">
                                                 <p>Proof of License Fee/s Payment:</p>
                                                     <p id="uploadText5">
-                                                        <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
+                                                        <?= isset($files['file9']) && $files['file9'] ? $files['file9'] : 'Drag file' ?>
                                                     </p>
-                                                    <input type="file" id="fileInput5" name="file5" multiple>
+                                                    <input type="file" id="fileInput9" name="file9" multiple>
                                                     <button class="btn btn-primary mt-2" type="button"
-                                                        onclick="document.getElementById('fileInput5').click()">Upload</button>
+                                                        onclick="document.getElementById('fileInput9').click()">Upload</button>
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="file-upload" id="fileUpload6">
+                                                <div class="file-upload" id="fileUpload10">
                                                 <p>ITR or Affidavit of Non-Filing</p>
                                                     <p id="uploadText6">
-                                                        <?= isset($files['file6']) && $files['file6'] ? $files['file6'] : 'Drag file' ?>
+                                                        <?= isset($files['file10']) && $files['file10'] ? $files['file10'] : 'Drag file' ?>
                                                     </p>
-                                                    <input type="file" id="fileInput6" name="file6" multiple>
+                                                    <input type="file" id="fileInput9" name="file10" multiple>
                                                     <button class="btn btn-primary mt-2" type="button"
-                                                        onclick="document.getElementById('fileInput6').click()">Upload</button>
+                                                        onclick="document.getElementById('fileInput9').click()">Upload</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="file-upload" id="fileUpload5">
+                                                <div class="file-upload" id="fileUpload11">
                                                 <p>BIRT CERTIFICATE OF REGISTRATION</p>
                                                     <p id="uploadText5">
-                                                        <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
+                                                        <?= isset($files['file11']) && $files['file11'] ? $files['file11'] : 'Drag file' ?>
                                                     </p>
-                                                    <input type="file" id="fileInput5" name="file5" multiple>
+                                                    <input type="file" id="fileInput11" name="file11" multiple>
                                                     <button class="btn btn-primary mt-2" type="button"
-                                                        onclick="document.getElementById('fileInput5').click()">Upload</button>
+                                                        onclick="document.getElementById('fileInput11').click()">Upload</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -253,7 +253,6 @@
                             </div>
                         </div>
                     </div>
-
 
 
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -278,7 +277,6 @@
                                                 5 => 'Boss 3'
                                             ];
                                             ?>
-
                                             <?php foreach (range(1, 6) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
