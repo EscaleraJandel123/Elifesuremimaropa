@@ -172,6 +172,75 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <!-- new -->
+
+
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p>Copy Of clearance (from previous employer) even not insurance related</p>
+                                                <div class="file-upload" id="fileUpload5">
+                                                    <p id="uploadText5">
+                                                        <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
+                                                    </p>
+                                                    <input type="file" id="fileInput5" name="file5" multiple>
+                                                    <button class="btn btn-primary mt-2" type="button"
+                                                        onclick="document.getElementById('fileInput5').click()">Upload</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <p>Statement of Undertaking</p>
+                                                <div class="file-upload" id="fileUpload6">
+                                                    <p id="uploadText6">
+                                                        <?= isset($files['file6']) && $files['file6'] ? $files['file6'] : 'Drag file' ?>
+                                                    </p>
+                                                    <input type="file" id="fileInput6" name="file6" multiple>
+                                                    <button class="btn btn-primary mt-2" type="button"
+                                                        onclick="document.getElementById('fileInput6').click()">Upload</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p>Proof of License Fee/s Payment:</p>
+                                                <div class="file-upload" id="fileUpload5">
+                                                    <p id="uploadText5">
+                                                        <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
+                                                    </p>
+                                                    <input type="file" id="fileInput5" name="file5" multiple>
+                                                    <button class="btn btn-primary mt-2" type="button"
+                                                        onclick="document.getElementById('fileInput5').click()">Upload</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <p>ITR or Affidavit of Non-Filing</p>
+                                                <div class="file-upload" id="fileUpload6">
+                                                    <p id="uploadText6">
+                                                        <?= isset($files['file6']) && $files['file6'] ? $files['file6'] : 'Drag file' ?>
+                                                    </p>
+                                                    <input type="file" id="fileInput6" name="file6" multiple>
+                                                    <button class="btn btn-primary mt-2" type="button"
+                                                        onclick="document.getElementById('fileInput6').click()">Upload</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p>BIRT CERTIFICATE OF REGISTRATION</p>
+                                                <div class="file-upload" id="fileUpload5">
+                                                    <p id="uploadText5">
+                                                        <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
+                                                    </p>
+                                                    <input type="file" id="fileInput5" name="file5" multiple>
+                                                    <button class="btn btn-primary mt-2" type="button"
+                                                        onclick="document.getElementById('fileInput5').click()">Upload</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         <div class="row">
                                             <div class="col-12">
                                                 <button type="submit" class="btn btn-success mt-3">
