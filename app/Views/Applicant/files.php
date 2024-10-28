@@ -102,8 +102,9 @@
                                     <form action="fileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-6">
-                                                <p>Traning Certificate (Boss 3)</p>
+                                                
                                                 <div class="file-upload" id="fileUpload1">
+                                                <p>Traning Certificate (Boss 3)</p>
                                                     <p id="uploadText1">
                                                         <?= isset($files['file1']) && $files['file1'] ? $files['file1'] : 'Drag file' ?>
                                                     </p>
