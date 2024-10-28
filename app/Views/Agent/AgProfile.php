@@ -85,7 +85,7 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3">
                     <h1 class="h2 mb-0">
-                        My Profile
+                        Profile
                     </h1>
                 </div>
                 <div class="row">
