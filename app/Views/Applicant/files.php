@@ -214,10 +214,10 @@
                                                         onclick="document.getElementById('fileInput9').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-10">
+                                            <div class="col-6">
                                                 <div class="file-upload" id="fileUpload10">
                                                 <p>ITR or Affidavit of Non-Filing</p>
-                                                    <p id="uploadText6">
+                                                    <p id="uploadText10">
                                                         <?= isset($files['file10']) && $files['file10'] ? $files['file10'] : 'Drag file' ?>
                                                     </p>
                                                     <input type="file" id="fileInput9" name="file10" multiple>
