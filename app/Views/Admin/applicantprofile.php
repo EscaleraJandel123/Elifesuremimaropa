@@ -157,7 +157,7 @@
 
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#forms">Applicants Data</button>
+                                            data-bs-target="#forms">Applicant Data</button>
                                     </li>
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
@@ -265,9 +265,23 @@
 
 
                                     <div class="tab-pane fade pt-3" id="files">
-                                        <h1 class="h2 mb-0">Files</h1>
                                         <div class="row text-center">
-                                            <?php foreach (range(1, 6) as $i): ?>
+                                        <?php
+                                            $fileNames = [
+                                                1 => 'Traning Certificate (Boss 3)',
+                                                2 => 'Government Valid ID',
+                                                3 => '2x2 Picture',
+                                                4 => 'Copy of Exam Result',
+                                                5 => 'Notarized AIAL Form',
+                                                6 => 'Group Life Insurance Form',
+                                                7 => 'Copy Of clearance ',
+                                                8 => 'Statement of Undertaking',
+                                                9 => 'Proof of License Fee/s Payment',
+                                                10 => 'ITR or Affidavit of Non-Filing',
+                                                11 => 'BIRT CERTIFICATE OF REGISTRATION',
+                                            ];
+                                            ?>
+                                            <?php foreach (range(1, 11) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
                                                     // Determine the file type for icon
@@ -285,19 +299,19 @@
                                                     } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
                                                         $iconClass = 'fa-file-powerpoint';
                                                     }
+
+                                                     // Determine the file name from the array, default to "File $i" if not set
+                                                     $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
                                                     ?>
                                                     <div class="col-lg-2 col-4">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <p class="">File <?= $i ?></p>
+                                                                <p style="font-size: 5pt"><?= $fileName ?></p>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
                                                                     </a>
                                                                 </p>
-                                                                <!-- <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
-                                                                    <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
-                                                                </a> -->
                                                             </div>
                                                         </div>
                                                     </div>
