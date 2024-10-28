@@ -1,7 +1,34 @@
 <!doctype html>
 <html lang="en">
 <?= view('head') ?>
+<style>
+    .file-upload {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        /* max-width: 600px; */
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px dashed #ddd;
+        border-radius: 10px;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
 
+    .file-upload.dragover {
+        background-color: #f0f0f0;
+    }
+
+    .file-upload input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+</style>
 <body>
     <?= view('Agent/chop/header') ?>
 
@@ -44,7 +71,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="/clients">
+                            <a class="nav-link" href="/clients">
                                 <i class="bi-person me-2"></i>
                                 Clients
                             </a>
