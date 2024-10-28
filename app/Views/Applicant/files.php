@@ -85,8 +85,6 @@
                     <div class="row justify-content-center m-2">
                         <div class="col-lg-12">
                             <div class="card">
-
-
                                 <div class="card-body">
                                     <?php if (session()->getFlashdata('error')): ?>
                                         <div class="alert alert-danger mt-3 text-center" role="alert">
