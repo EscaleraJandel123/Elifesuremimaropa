@@ -22,7 +22,7 @@ class FilesController extends BaseController
         $this->file = new FilesModel();
         $this->agent = new AgentModel();
     }
-
+    
     public function applicantfiles()
     {
         $session = session();
@@ -136,11 +136,89 @@ class FilesController extends BaseController
             // Debugging output
             // var_dump($fileData);
         }
-        if($role == 'agent') {
-            return redirect()->to('/agfiles')->with('success', 'Files uploaded successfully.');
-        } else {
-            return redirect()->to('/appfiles')->with('success', 'Files uploaded successfully.');
+        return redirect()->to('/appfiles')->with('success', 'Files uploaded successfully.');
+    }
+
+    public function agentfileuploads()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $role = $session->get('role');
+        $data = $this->getData();
+        $username = $data['user']['username'];
+
+        // Directory to store files
+        $uploadPath = FCPATH . 'uploads/files/' . $username;
+
+        // Create the directory if it doesn't exist
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0777, true);
         }
+
+        // Get files
+        $files = [
+            'file1' => $this->request->getFile('file1'),
+            'file2' => $this->request->getFile('file2'),
+            'file3' => $this->request->getFile('file3'),
+            'file4' => $this->request->getFile('file4'),
+            'file5' => $this->request->getFile('file5'),
+            'file6' => $this->request->getFile('file6'),
+            'file7' => $this->request->getFile('file7'),
+            'file8' => $this->request->getFile('file8'),
+            'file9' => $this->request->getFile('file9'),
+            'file10' => $this->request->getFile('file10'),
+            'file11' => $this->request->getFile('file11'),
+        ];
+
+        $fileData = [];
+
+        // Check if user_id exists in the database
+        $existingRecord = $this->file->where('user_id', $userId)->first();
+
+        if ($existingRecord) {
+            // Delete old files from the filesystem and debug output
+            foreach ($files as $key => $file) {
+                if ($file->isValid() && !$file->hasMoved() && !empty($existingRecord[$key])) {
+                    $oldFilePath = $uploadPath . '/' . $existingRecord[$key];
+                    if (file_exists($oldFilePath)) {
+                        $deleteResult = unlink($oldFilePath); // Attempt to delete file
+                        if ($deleteResult) {
+                            echo 'File deleted successfully: ' . $oldFilePath . '<br>';
+                        } else {
+                            echo 'Failed to delete file: ' . $oldFilePath . '<br>';
+                        }
+                    } else {
+                        echo 'File not found: ' . $oldFilePath . '<br>';
+                    }
+                }
+            }
+        }
+
+        // Process each file
+        foreach ($files as $key => $file) {
+            if ($file->isValid() && !$file->hasMoved()) {
+                $newFileName = $file->getRandomName();
+                $file->move($uploadPath, $newFileName);
+                $fileData[$key] = $newFileName;
+            }
+        }
+
+        if (!empty($fileData)) {
+            $fileData['user_id'] = $userId;
+            $fileData['token'] = bin2hex(random_bytes(16));
+
+            if ($existingRecord) {
+                // Update the existing record
+                $this->file->where('user_id', $userId)->set($fileData)->update();
+            } else {
+                // Insert a new record
+                $this->file->insert($fileData);
+            }
+
+            // Debugging output
+            // var_dump($fileData);
+        }
+        return redirect()->to('/agfiles')->with('success', 'Files uploaded successfully.');
     }
 
     private function getData()

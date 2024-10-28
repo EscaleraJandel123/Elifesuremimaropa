@@ -88,6 +88,7 @@ $routes->match(['get', 'post'], '/myclientprofile/(:any)', 'ProfileController::m
 $routes->post('/upstatusplan/(:any)', 'AgentController::upstatusplan/$1', ['filter' => 'agentFilter']);
 $routes->get('/mycommi', 'AgentController::mycommi', ['filter' => 'agentFilter']);
 $routes->get('/agfiles', 'FilesController::agfiles', ['filter' => 'agentFilter']);
+$routes->post('/agentfileuploads', 'FilesController::agentfileuploads', ['filter' => 'agentFilter']);
 
 $routes->get('/cliSched', 'AgentController::cliSched', ['filter' => 'agentFilter']);
 $routes->get('/con/(:any)', 'AgentController::con/$1', ['filter' => 'agentFilter']);

@@ -128,7 +128,7 @@
                                     <?php endif; ?>
                                     <?= $userIdExists ? '<button type="button" class="btn btn-info" data-bs-toggle="modal"
                                                 data-bs-target="#myModal"><i class="bi bi-eye"></i></button>' : '' ?>
-                                    <form action="fileuploads" method="post" enctype="multipart/form-data">
+                                    <form action="agentfileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload1">
