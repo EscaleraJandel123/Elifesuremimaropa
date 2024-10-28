@@ -253,80 +253,55 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-md">
+                    <!-- File Preview Modal -->
+                    <div class="modal fade" id="filePreviewModal" tabindex="-1" aria-labelledby="filePreviewModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Files</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <h5 class="modal-title" id="filePreviewModalLabel">File Preview</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <?php
-                                            // Array of file names
-                                            $fileNames = [
-                                                1 => 'Traning Certificate (Boss 3)',
-                                                2 => 'Government Valid ID',
-                                                3 => '2x2 Picture',
-                                                4 => 'Copy of Exam Result',
-                                                5 => 'Notarized AIAL Form',
-                                                6 => 'Group Life Insurance Form',
-                                                7 => 'Copy Of clearance ',
-                                                8 => 'Statement of Undertaking',
-                                                9 => 'Proof of License Fee/s Payment',
-                                                10 => 'ITR or Affidavit of Non-Filing',
-                                                11 => 'BIRT CERTIFICATE OF REGISTRATION',
-                                        
-                                            ];
-                                            ?>
-                                            <?php foreach (range(1, 11) as $i): ?>
-                                                <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
-                                                    <?php
-                                                    // Determine the file type for icon
-                                                    $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
-                                                    $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
-                                                    $iconClass = 'fa-file'; // Default icon
-                                            
-                                                    // Set icon class based on file extension
-                                                    if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])) {
-                                                        $iconClass = 'fa-file-image';
-                                                    } elseif ($fileExt === 'pdf') {
-                                                        $iconClass = 'fa-file-pdf';
-                                                    } elseif (in_array($fileExt, ['doc', 'docx'])) {
-                                                        $iconClass = 'fa-file-word';
-                                                    } elseif (in_array($fileExt, ['ppt', 'pptx'])) {
-                                                        $iconClass = 'fa-file-powerpoint';
-                                                    }
-
-                                                    // Determine the file name from the array, default to "File $i" if not set
-                                                    $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
-                                                    ?>
-                                                    <div class="col-6">
-                                                        <div class="card">
-                                                            <div class="card-body text-center">
-                                                                <h6 style="font-size: 6pt" class="card-title"><?= $fileName ?></h6>
-                                                                <p class="card-text">
-                                                                    <a href="<?= $filePath ?>" target="_blank">
-                                                                        <i class="fas <?= $iconClass ?> fa-3x"></i>
-                                                                    </a>
-                                                                </p>
-                                                                <!-- <a href="<?= $filePath ?>" target="_blank" class="btn btn-link">
-                                                                    <span style="font-size: 9px;"><?= $files["file$i"] ?></span>
-                                                                </a> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
+                                    <iframe id="filePreviewIframe" src="" frameborder="0" style="width: 100%; height: 500px;" hidden></iframe>
+                                    <img id="filePreviewImage" src="" style="width: 100%;" hidden>
+                                    <p id="filePreviewText" class="text-center">No preview available</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <?php foreach (range(1, 11) as $i): ?>
+                            <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
+                                <?php
+                                $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
+                                $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
+                                $iconClass = 'fa-file'; // Default icon
+
+                                // Icon class based on file extension
+                                if (in_array($fileExt, ['jpg', 'jpeg', 'png', 'gif'])) {
+                                    $iconClass = 'fa-file-image';
+                                } elseif ($fileExt === 'pdf') {
+                                    $iconClass = 'fa-file-pdf';
+                                }
+
+                                // Determine file name
+                                $fileName = $fileNames[$i] ?? "File $i";
+                                ?>
+                                <div class="col-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h6 style="font-size: 6pt"><?= $fileName ?></h6>
+                                            <p class="card-text">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#filePreviewModal" data-file-path="<?= $filePath ?>" data-file-ext="<?= $fileExt ?>">
+                                                    <i class="fas <?= $iconClass ?> fa-3x"></i>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </main>
