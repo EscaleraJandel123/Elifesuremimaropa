@@ -30,6 +30,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="/agfiles">
+                                <i class="bi bi-files me-2"></i></i>
+                                Files
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active" href="/subagent">
                                 <i class="bi-person me-2"></i>
                                 Sub Agents
