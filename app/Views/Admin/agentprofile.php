@@ -145,8 +145,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col-xl-8">
                         <div class="card">
                             <div class="card-body pt-3">
