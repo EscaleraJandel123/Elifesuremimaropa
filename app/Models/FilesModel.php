@@ -22,6 +22,11 @@ class FilesModel extends Model
         'file4',
         'file5',
         'file6',
+        'file7',
+        'file8',
+        'file9',
+        'file10',
+        'file11',
         'created_at'
     ];
 

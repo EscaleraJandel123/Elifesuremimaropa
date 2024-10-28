@@ -177,7 +177,6 @@
                                         <!-- new -->
 
 
-
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload7">
@@ -253,7 +252,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
