@@ -282,7 +282,7 @@
                                         
                                             ];
                                             ?>
-                                            <?php foreach (range(1, 6) as $i): ?>
+                                            <?php foreach (range(1, 11) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
                                                     // Determine the file type for icon
@@ -307,7 +307,7 @@
                                                     <div class="col-6">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <h5 class="card-title"><?= $fileName ?></h5>
+                                                                <h6 style="font-size: 6pt" class="card-title"><?= $fileName ?></h6>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
