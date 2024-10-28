@@ -6,7 +6,7 @@
         position: relative;
         display: inline-block;
         width: 100%;
-        max-width: 600px;
+        /* max-width: 600px; */
         margin: 20px auto;
         padding: 20px;
         border: 2px dashed #ddd;
@@ -226,7 +226,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        <div class="row">
                                             <div class="col-12">
                                                 <div class="file-upload" id="fileUpload11">
                                                 <p>BIRT CERTIFICATE OF REGISTRATION</p>
