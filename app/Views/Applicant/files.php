@@ -100,7 +100,7 @@
                                                 data-bs-target="#myModal"><i class="bi bi-eye"></i></button>' : '' ?>
                                     <form action="fileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload1">
                                                     <p>Traning Certificate (Boss 3)</p>
                                                     <p id="uploadText1">
@@ -111,7 +111,7 @@
                                                         onclick="document.getElementById('fileInput1').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload2">
                                                     <p>Government Valid ID (With 3 specimen signature)</p>
                                                     <p id="uploadText2">
@@ -124,7 +124,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload3">
                                                     <p>2x2 Picture (With 3 white background)</p>
                                                     <p id="uploadText3">
@@ -135,7 +135,7 @@
                                                         onclick="document.getElementById('fileInput3').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload4">
                                                     <p>Copy of Exam Result</p>
                                                     <p id="uploadText4">
@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload5">
                                                     <p>Notarized AIAL Form</p>
                                                     <p id="uploadText5">
@@ -159,7 +159,7 @@
                                                         onclick="document.getElementById('fileInput5').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload6">
                                                     <p>Group Life Insurance Form</p>
                                                     <p id="uploadText6">
@@ -177,7 +177,7 @@
 
 
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload7">
                                                     <p>Copy Of clearance (from previous employer) even not insurance
                                                         related</p>
@@ -189,7 +189,7 @@
                                                         onclick="document.getElementById('fileInput7').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6"><br>
+                                            <div class="col-12 col-md-6 mb-3"><br>
                                                 <div class="file-upload" id="fileUpload8">
                                                     <p>Statement of Undertaking</p>
                                                     <p id="uploadText8">
@@ -203,7 +203,7 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload9">
                                                     <p>Proof of License Fee/s Payment:</p>
                                                     <p id="uploadText9">
@@ -214,7 +214,7 @@
                                                         onclick="document.getElementById('fileInput9').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-12 col-md-6 mb-3">
                                                 <div class="file-upload" id="fileUpload10">
                                                     <p>ITR or Affidavit of Non-Filing</p>
                                                     <p id="uploadText10">
@@ -304,7 +304,7 @@
                                                     // Determine the file name from the array, default to "File $i" if not set
                                                     $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
                                                     ?>
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-md-6 mb-3">
                                                         <div class="card">
                                                             <div class="card-body text-center">
                                                                 <h6 style="font-size: 10pt" class="card-title"><?= $fileName ?>
