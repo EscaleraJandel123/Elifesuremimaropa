@@ -102,7 +102,7 @@
                                     <form action="fileuploads" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-6">
-                                                <h6>Traning Certificate (Boss 3)</h6>
+                                                <p>Traning Certificate (Boss 3)</p>
                                                 <div class="file-upload" id="fileUpload1">
                                                     <p id="uploadText1">
                                                         <?= isset($files['file1']) && $files['file1'] ? $files['file1'] : 'Drag file' ?>
@@ -113,7 +113,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <h6>Government Valid ID (With 3 specimen signature)</h6>
+                                                <p>Government Valid ID (With 3 specimen signature)</p>
                                                 <div class="file-upload" id="fileUpload2">
                                                     <p id="uploadText2">
                                                         <?= isset($files['file2']) && $files['file2'] ? $files['file2'] : 'Drag file' ?>
@@ -126,7 +126,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
-                                                <h6>2x2 Picture (With 3 white background)</h6>
+                                                <p>2x2 Picture (With 3 white background)</p>
                                                 <div class="file-upload" id="fileUpload3">
                                                     <p id="uploadText3">
                                                         <?= isset($files['file3']) && $files['file3'] ? $files['file3'] : 'Drag file' ?>
@@ -137,7 +137,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <h6>Copy of Exam Result</h6>
+                                                <p>Copy of Exam Result</p>
                                                 <div class="file-upload" id="fileUpload4">
                                                     <p id="uploadText4">
                                                         <?= isset($files['file4']) && $files['file4'] ? $files['file4'] : 'Drag file' ?>
@@ -150,7 +150,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
-                                                <h6>Notarized AIAL Form</h6>
+                                                <p>Notarized AIAL Form</p>
                                                 <div class="file-upload" id="fileUpload5">
                                                     <p id="uploadText5">
                                                         <?= isset($files['file5']) && $files['file5'] ? $files['file5'] : 'Drag file' ?>
@@ -161,7 +161,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <h6>Group Life Insurance Form</h6>
+                                                <p>Group Life Insurance Form</p>
                                                 <div class="file-upload" id="fileUpload6">
                                                     <p id="uploadText6">
                                                         <?= isset($files['file6']) && $files['file6'] ? $files['file6'] : 'Drag file' ?>
