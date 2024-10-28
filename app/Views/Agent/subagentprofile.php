@@ -146,7 +146,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#files">My Files</button>
+                                            data-bs-target="#files">Files</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
