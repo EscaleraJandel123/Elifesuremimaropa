@@ -268,11 +268,18 @@
                                             <?php
                                             // Array of file names
                                             $fileNames = [
-                                                1 => 'TIN',
-                                                2 => 'Affidavit of Verification',
-                                                3 => 'SSS',
-                                                4 => 'Valid ID',
-                                                5 => 'Boss 3'
+                                                1 => 'Traning Certificate (Boss 3)',
+                                                2 => 'Government Valid ID',
+                                                3 => '2x2 Picture',
+                                                4 => 'Copy of Exam Result',
+                                                5 => 'Notarized AIAL Form',
+                                                6 => 'Group Life Insurance Form',
+                                                7 => 'Copy Of clearance ',
+                                                8 => 'Statement of Undertaking',
+                                                9 => 'Proof of License Fee/s Payment',
+                                                10 => 'ITR or Affidavit of Non-Filing',
+                                                11 => 'BIRT CERTIFICATE OF REGISTRATION',
+                                        
                                             ];
                                             ?>
                                             <?php foreach (range(1, 6) as $i): ?>
