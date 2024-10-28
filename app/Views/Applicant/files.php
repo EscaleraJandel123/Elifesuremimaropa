@@ -190,7 +190,7 @@
                                                         onclick="document.getElementById('fileInput5').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6"><br><br>
+                                            <div class="col-6"><br>
                                                 <p>Statement of Undertaking</p>
                                                 <div class="file-upload" id="fileUpload6">
                                                     <p id="uploadText6">
