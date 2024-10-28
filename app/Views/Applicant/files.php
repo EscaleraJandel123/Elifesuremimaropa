@@ -180,7 +180,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload7">
-                                                <p>Copy Of clearance (from previous employer) even not insurance related</p>
+                                                <p style="font-size: 10pt">Copy Of clearance (from previous employer) even not insurance related</p>
                                                     <p id="uploadText7">
                                                         <?= isset($files['file7']) && $files['file7'] ? $files['file7'] : 'Drag file' ?>
                                                     </p>
