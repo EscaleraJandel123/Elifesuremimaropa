@@ -46,8 +46,9 @@ class ProfileController extends BaseController
             $agentid = $data['agent']['agent_id'];
             $data['FA'] = $agentModel->where('FA', $agentid)->paginate(10); // Change 10 to the number of items per page
             $data['pager'] = $agentModel->pager;
-            $data = $this->files($data, $data['agent']['agent_id'], 'agent'); // Pass $data to the files method
 
+            // Retrieve files and add to $data
+            $data = $this->files($data, $agentid, 'agent');
         } else {
             // Handle the case where the agent is not found
             return redirect()->to('some_error_page')->with('error', 'Agent not found');

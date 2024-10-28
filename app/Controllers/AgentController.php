@@ -13,6 +13,7 @@ use App\Models\ClientModel;
 use App\Models\PlanModel;
 use App\Models\ClientPlanModel;
 use App\Models\CommiModel;
+use App\Controllers\FilesController;
 
 class AgentController extends BaseController
 {
@@ -26,6 +27,7 @@ class AgentController extends BaseController
     private $applicant;
     private $agent;
     protected $scheduleModel;
+    private $filescont;
     // protected $cache;
     public function __construct()
     {
@@ -39,6 +41,7 @@ class AgentController extends BaseController
         $this->plan = new PlanModel();
         $this->client_plan = new ClientPlanModel();
         $this->commission = new CommiModel();
+        $this->filescont = new FilesController();
         // $this->cache = \Config\Services::cache();
     }
     public function AgDash()
@@ -62,7 +65,7 @@ class AgentController extends BaseController
     public function AgProfile()
     {
         $agentModel = new AgentModel();
-        $data = array_merge($this->getData(), $this->getDataAge());
+        $data = array_merge($this->getData(), $this->getDataAge(), $this->filescont->getFiles());
         $agentid = $data['agent']['agent_id'];
         $data['FA'] = $agentModel->where('FA', $agentid)->findAll();
         return view('Agent/AgProfile', $data);

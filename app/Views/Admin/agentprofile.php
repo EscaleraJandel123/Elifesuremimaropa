@@ -323,7 +323,6 @@
                                             <?php foreach (range(1, 6) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
-                                                    
                                                     // Determine the file type for icon
                                                     $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
                                                     $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);

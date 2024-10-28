@@ -281,4 +281,36 @@ class FilesController extends BaseController
 
         return view('Agent/files', $data);
     }
+
+    public function getFiles(){
+        $session = session();
+        $userId = $session->get('id');
+        $data = array_merge($this->getData(), $this->getDataAgent());
+        // Fetch user's files
+        $files = $this->file->where('user_id', $userId)->first();
+
+        // Initialize an array with null values to handle non-existing files
+        $fileData = [
+            'file1' => null,
+            'file2' => null,
+            'file3' => null,
+            'file4' => null,
+            'file5' => null,
+            'file6' => null,
+            'file7' => null,
+            'file8' => null,
+            'file9' => null,
+            'file10' => null,
+            'file11' => null,
+        ];
+
+        if ($files) {
+            $fileData = array_merge($fileData, $files);
+        }
+        $data['username'] = $data['user']['username'];
+        $data['files'] = $fileData;
+        $data['userIdExists'] = $files ? true : false;
+
+        return $data;
+    }
 }
