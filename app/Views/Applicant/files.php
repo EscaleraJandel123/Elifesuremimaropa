@@ -190,7 +190,7 @@
                                                         onclick="document.getElementById('fileInput5').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-6"><br><br>
                                                 <p>Statement of Undertaking</p>
                                                 <div class="file-upload" id="fileUpload6">
                                                     <p id="uploadText6">
@@ -202,6 +202,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-6">
                                                 <p>Proof of License Fee/s Payment:</p>
@@ -239,7 +240,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="row">
                                             <div class="col-12">
