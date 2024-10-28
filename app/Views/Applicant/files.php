@@ -226,7 +226,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="col">
                                             <div class="col-12">
                                                 <div class="file-upload" id="fileUpload11">
                                                 <p>BIRT CERTIFICATE OF REGISTRATION</p>
