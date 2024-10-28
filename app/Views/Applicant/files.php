@@ -181,7 +181,7 @@
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload7">
                                                 <p>Copy Of clearance (from previous employer) even not insurance related</p>
-                                                    <p id="uploadText5">
+                                                    <p id="uploadText7">
                                                         <?= isset($files['file7']) && $files['file7'] ? $files['file7'] : 'Drag file' ?>
                                                     </p>
                                                     <input type="file" id="fileInput7" name="file7" multiple>
@@ -192,7 +192,7 @@
                                             <div class="col-6"><br>
                                                 <div class="file-upload" id="fileUpload8">
                                                 <p>Statement of Undertaking</p>
-                                                    <p id="uploadText6">
+                                                    <p id="uploadText8">
                                                         <?= isset($files['file8']) && $files['file8'] ? $files['file8'] : 'Drag file' ?>
                                                     </p>
                                                     <input type="file" id="fileInput8" name="file8" multiple>
@@ -206,7 +206,7 @@
                                             <div class="col-6">
                                                 <div class="file-upload" id="fileUpload9">
                                                 <p>Proof of License Fee/s Payment:</p>
-                                                    <p id="uploadText5">
+                                                    <p id="uploadText9">
                                                         <?= isset($files['file9']) && $files['file9'] ? $files['file9'] : 'Drag file' ?>
                                                     </p>
                                                     <input type="file" id="fileInput9" name="file9" multiple>
@@ -214,7 +214,7 @@
                                                         onclick="document.getElementById('fileInput9').click()">Upload</button>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-10">
                                                 <div class="file-upload" id="fileUpload10">
                                                 <p>ITR or Affidavit of Non-Filing</p>
                                                     <p id="uploadText6">
@@ -230,7 +230,7 @@
                                             <div class="col-12">
                                                 <div class="file-upload" id="fileUpload11">
                                                 <p>BIRT CERTIFICATE OF REGISTRATION</p>
-                                                    <p id="uploadText5">
+                                                    <p id="uploadText11">
                                                         <?= isset($files['file11']) && $files['file11'] ? $files['file11'] : 'Drag file' ?>
                                                     </p>
                                                     <input type="file" id="fileInput11" name="file11" multiple>
