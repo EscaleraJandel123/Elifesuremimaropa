@@ -206,27 +206,41 @@
                                         </div>
                                     </div>                                   
                                     <div class="tab-pane fade" id="forms">
-                                    <h5 class="card-title">Forms</h5>
+                                        <h1 class="h2 mb-0">Forms</h1>
                                         <div class="row text-center">
-                                            <div class="col-xl-2 my-3">
+                                            <div class="col-lg-2 col-4 my-3">
                                                 <a href="/ViewAppForm/<?= $agent['agent_token'] ?>">
-                                                    <img src="<?= base_url(); ?>uploads/folder.png" class="card-img-top"
-                                                        alt="Life Changer Form Image">
+                                                    <img src="<?= base_url(); ?>uploads/forms/life_changer.png"
+                                                        class="card-img-top" alt="form">
                                                     LIFE
                                                 </a>
                                             </div>
-                                            <div class="col-xl-2 my-3">
+                                            <div class="col-lg-2 col-4 my-3">
                                                 <a href="/ViewAppForm2/<?= $agent['agent_token'] ?>">
-                                                    <img src="<?= base_url(); ?>uploads/folder.png" class="card-img-top"
-                                                        alt="AIAL">
+                                                    <img src="<?= base_url(); ?>uploads/forms/aial.png"
+                                                        class="card-img-top" alt="AIAL">
                                                     AIAL
                                                 </a>
                                             </div>
-                                            <div class="col-xl-2 my-3">
+                                            <div class="col-lg-2 col-4 my-3">
                                                 <a href="/ViewAppForm3/<?= $agent['agent_token'] ?>">
-                                                    <img src="<?= base_url(); ?>uploads/folder.png" class="card-img-top"
-                                                        alt="Life Changer Form Image">
+                                                    <img src=" <?= base_url(); ?>uploads/forms/grouplife.png"
+                                                        class="card-img-top" alt="form">
                                                     GLI
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-2 col-4 my-3">
+                                                <a href="/ViewAppForm4/<?= $agent['agent_token'] ?>">
+                                                    <img src=" <?= base_url(); ?>uploads/forms/affidavit.png"
+                                                        class="card-img-top" alt="form">
+                                                    AONF
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-2 col-4 my-3">
+                                                <a href="/ViewAppForm5/<?= $agent['agent_token'] ?>">
+                                                    <img src=" <?= base_url(); ?>uploads/forms/statement.png"
+                                                        class="card-img-top" alt="form">
+                                                    SOU
                                                 </a>
                                             </div>
                                         </div>
