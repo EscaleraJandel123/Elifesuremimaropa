@@ -297,7 +297,7 @@
                                                     <div class="col-lg-2 col-4">
                                                         <div class="card">
                                                             <div class="card-body text-center">
-                                                                <p class=""><?= $fileName ?></p>
+                                                                <p style="font-size: 9pt"><?= $fileName ?></p>
                                                                 <p class="card-text">
                                                                     <a href="<?= $filePath ?>" target="_blank">
                                                                         <i class="fas <?= $iconClass ?> fa-3x"></i>
