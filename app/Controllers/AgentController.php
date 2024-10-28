@@ -52,7 +52,7 @@ class AgentController extends BaseController
 
         $data['FA'] = $this->agent->where('FA', $agentid)->findAll();
         $data['applicants'] = $this->applicant->where('refcode', $agentcode)->countAllResults();
-        $data['ranking'] = $this->agent->where('FA', $agentid)->countAllResults();
+        $data['ranking'] = 90;
         $data['clients'] = $this->client_plan->where('agent', $agentid)->countAllResults();
         $totalCommis = $this->client_plan->selectSum('commission')->where('agent', $agentid)->findAll();
         $data['totalcommi'] = !empty($totalCommis) ? $totalCommis[0]['commission'] : 0;
