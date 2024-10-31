@@ -81,8 +81,8 @@
                   <div class="col-md-6 col-6">
                     <label for="yourUsername" class="form-label">Username</label>
                     <div class="input-group has-validation">
-                      <input type="text" name="username" class="form-control" id="yourUsername" required>
-                      <div class="invalid-feedback">Please Enter your username!</div>
+                      <input type="text" name="username" class="form-control" id="yourUsername" required minlength="5">
+                      <div class="invalid-feedback">Please enter a username with at least 5 characters!</div>
                     </div>
                   </div>
 
