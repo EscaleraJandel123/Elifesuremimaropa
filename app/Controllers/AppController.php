@@ -17,7 +17,6 @@ use \App\Controllers\NotifController;
 
 class AppController extends BaseController
 {
-    private $RTC;
     private $agent;
     private $form1;
     private $form2;
@@ -49,7 +48,7 @@ class AppController extends BaseController
 
     public function AppDash()
     {
-        $data = array_merge($this->getData(), $this->getDataApp(), $this->RTC->RTC());
+        $data = array_merge($this->getData(), $this->getDataApp());
         return view('Applicant/AppDash', $data);
         // var_dump($data);
     }

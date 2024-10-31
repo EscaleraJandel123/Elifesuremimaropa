@@ -15,7 +15,6 @@ use App\Controllers\NotifController;
 
 class UsersManageController extends BaseController
 {
-    private $rtc;
     private $agent;
     private $user;
     private $applicant;
@@ -48,7 +47,7 @@ class UsersManageController extends BaseController
             $data['validation'] = session('validation');
             session()->remove('validation'); // Clear the session variable
         }
-        $data = array_merge($this->getDataAd(), $this->alluser(), $this->rtc->RTC(), $this->notifcont->notification());
+        $data = array_merge($this->getDataAd(), $this->alluser(), $this->notifcont->notification());
         $filterroles = $this->request->getPost('filterDropdown');
         $search = $this->request->getPost('searchusers');
         // Check if filter roles are selected
