@@ -181,7 +181,7 @@
                         },
                         plotOptions: {
                             bar: {
-                                borderRadius: 4,
+                                borderRadius: 12,
                                 horizontal: false,
                             }
                         },
