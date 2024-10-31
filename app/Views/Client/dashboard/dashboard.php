@@ -65,14 +65,13 @@
                                                 <div class="table-responsive">
                                                     <div class="card-body">
                                                         <h5 class="card-title">Schedules</h5>
-                                                        <table class="table datatable">
+                                                        <table class="table">
                                                             <thead>
                                                                 <tr>
                                                                     <th scope="col">Date Schedule</th>
                                                                     <th scope="col">Time</th>
                                                                     <th scope="col">Meeting Type</th>
                                                                     <th scope="col">Status</th>
-                                                                    <th scope="col">Created</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -84,8 +83,6 @@
                                                                         </td>
                                                                         <td><?= $sched['meeting_type'] ?></td>
                                                                         <td><?= $sched['status'] ?></td>
-                                                                        <td><?= date('M j, Y', strtotime($sched['created_at'])); ?>
-                                                                        </td>
                                                                     </tr>
                                                                 <?php endforeach ?>
                                                             </tbody>
