@@ -126,7 +126,7 @@
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
                         <img id="profilePreview"
-                          src="<?= isset($client['profile']) ? base_url('/uploads/' . $client['profile']) : '' ?>"
+                          src="<?= isset($client['profile']) ? base_url('/uploads/' . $client['profile']) : base_url('/uploads/def.png') ?>"
                           alt="Profile" style="max-width: 150px; max-height: 150px;">
                         <div class="pt-2">
                           <!-- Trigger file input -->
