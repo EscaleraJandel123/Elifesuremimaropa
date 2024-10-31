@@ -91,7 +91,7 @@ class HomepageController extends BaseController
         $usertoken = bin2hex(random_bytes(50));
         if ($this->validate($rules)) {
             $userModel = new UserModel();
-            $agent = $this->agent->where('AgentCode', $ref)->findAll();
+            $agent = $this->agent->where('AgentCode', $ref)->first();
             if ($agent) {
                 $userData = [
                     'username' => $this->request->getVar('username'),
