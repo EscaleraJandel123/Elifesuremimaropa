@@ -175,6 +175,7 @@ class ClientController extends BaseController
         $data['myplan'] = $this->client_plan->where('client_id', $data['client']['client_id'])->limit(3)->findAll();
         // $data['myplan'] = $this->client_plan->where('client_id', $data['client']['client_id'])->where('status', 'paid')->limit(3)->findAll();
         $data['history'] = $this->commission->where('client_id', $data['client']['client_id'])->limit(3)->findAll();
+        $data['schedule'] = $this->sched->where('client_id', $data['client']['client_id'])->limit(3)->findAll();
         $data['activeinsurances'] = [];
 
         foreach ($data['myplan'] as $plan) {

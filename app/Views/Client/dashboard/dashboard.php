@@ -28,7 +28,6 @@
                                 <!-- Left side columns -->
                                 <div class="col-lg-8">
                                     <div class="row">
-
                                         <!-- Billing and Payment History -->
                                         <div class="col-lg-12">
                                             <div class="card">
@@ -57,6 +56,41 @@
                                                         </table>
                                                         <a href="/history" class="btn btn-primary">View Payment
                                                             History</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="table-responsive">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Schedules</h5>
+                                                        <table class="table datatable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">Date Schedule</th>
+                                                                    <th scope="col">Time</th>
+                                                                    <th scope="col">Meeting Type</th>
+                                                                    <th scope="col">Status</th>
+                                                                    <th scope="col">Created</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php foreach ($schedule as $sched): ?>
+                                                                    <tr>
+                                                                        <td><?= date('M j, Y', strtotime($sched['selected_date'])); ?>
+                                                                        </td>
+                                                                        <td><?= date('h:i A', strtotime($sched['schedule_time'])) ?>
+                                                                        </td>
+                                                                        <td><?= $sched['meeting_type'] ?></td>
+                                                                        <td><?= $sched['status'] ?></td>
+                                                                        <td><?= date('M j, Y', strtotime($sched['created_at'])); ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endforeach ?>
+                                                            </tbody>
+                                                        </table>
+                                                        <a href="/history" class="btn btn-primary">View Schedules</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,34 +130,35 @@
                 </div><!-- End Left side columns -->
                 <!-- Right side columns -->
                 <div class="col-lg-4">
-                <div class="col-lg-12">
-    <div class="card mb-4">
-        <div class="card-body">
-            <?php if (!empty($activeinsurances)): ?>
-                <h5 class="card-title">My Insurance</h5>
-                <?php foreach ($activeinsurances as $insurance): ?>
-                    <div class="image-container">
-                        <img src="<?= base_url('/uploads/plans/' . $insurance['image']) ?>"
-                            class="card-img-top img-fluid" alt="...">
+                    <div class="col-lg-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <?php if (!empty($activeinsurances)): ?>
+                                    <h5 class="card-title">My Insurance</h5>
+                                    <?php foreach ($activeinsurances as $insurance): ?>
+                                        <div class="image-container">
+                                            <img src="<?= base_url('/uploads/plans/' . $insurance['image']) ?>"
+                                                class="card-img-top img-fluid" alt="...">
+                                        </div>
+                                        <h6 class="title"><?= $insurance['plan_name'] ?></h6>
+                                        <?php if ($insurance['status'] == 'unpaid'): ?>
+                                            <h6 class="title">Status: Unpaid</h6>
+                                            <!-- Add other content related to unpaid status -->
+                                        <?php else: ?>
+                                            <h6 class="title">Due Date: <?= date('M j, Y', strtotime($insurance['duedate'])); ?>
+                                            </h6>
+                                            <!-- Add other content related to paid status -->
+                                        <?php endif; ?>
+                                        <hr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <h5 class="card-title">No Active Insurance Available</h5>
+                                    <p class="card-text">Click below to view available plans.</p>
+                                    <a href="/viewplans" class="btn btn-primary">View Plans</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
-                    <h6 class="title"><?= $insurance['plan_name'] ?></h6>
-                    <?php if ($insurance['status'] == 'unpaid'): ?>
-                        <h6 class="title">Status: Unpaid</h6>
-                        <!-- Add other content related to unpaid status -->
-                    <?php else: ?>
-                        <h6 class="title">Due Date: <?= date('M j, Y', strtotime($insurance['duedate'])); ?></h6>
-                        <!-- Add other content related to paid status -->
-                    <?php endif; ?>
-                    <hr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <h5 class="card-title">No Active Insurance Available</h5>
-                <p class="card-text">Click below to view available plans.</p>
-                <a href="/viewplans" class="btn btn-primary">View Plans</a>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
 
                 </div><!-- End Right side columns -->
             </div>
