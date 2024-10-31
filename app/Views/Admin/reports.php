@@ -118,18 +118,8 @@
                     <h1 class="h2 mb-0">Reports</h1>
                     <button id="generate-pdf" class="btn btn-primary">Generate Report</button>
                 </div>
-                <div class="col-lg-6 mb-3">
-                    <form method="get" action="/reports">
-                        <div class="form-group">
-                            <label for="date-filter">Select Month and Year:</label>
-                            <input type="text" id="date-filter" name="date" class="form-control" placeholder="Choose Month and Year">
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-2">Filter</button>
-                    </form>
-                </div>
                 <div class="row">
                     <!-- left and right table columns -->
-                     
                     <div class="col-lg-6 mb-3">
                         <div class="card">
                             <div class="table-responsive mx-3">
