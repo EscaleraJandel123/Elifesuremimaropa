@@ -121,6 +121,8 @@ $routes->get('/monthlyAgentCount', 'ChartsController::monthlyAgentCount', ['filt
 $routes->get('/getApplicantsCount', 'ChartsController::getApplicantsCount', ['filter' => 'authGuard']);
 $routes->get('/getMonthlyCommissions', 'ChartsController::getMonthlyCommissions', ['filter' => 'authGuard']);
 $routes->get('/getYearlyCommissions', 'ChartsController::getYearlyCommissions', ['filter' => 'authGuard']);
+$routes->get('/getoverallMonthlyCommissions', 'ChartsController::getoverallMonthlyCommissions', ['filter' => 'authGuard']);
+$routes->get('/getoverallYearlyCommissions', 'ChartsController::getoverallYearlyCommissions', ['filter' => 'authGuard']);
 
 //RTC
 // $routes->get('/homechat', 'RTCController::RTC');
