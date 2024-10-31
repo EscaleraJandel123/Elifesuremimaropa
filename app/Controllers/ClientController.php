@@ -259,7 +259,7 @@ class ClientController extends BaseController
         $userId = $session->get('id');
 
         $data = [];
-        $img = '';
+        $img = []; // Initialize $img as an array to store image information
 
         // Get the old image file name from the database
         $oldpic = $this->client->select('profile')->where('client_id', $userId)->first();
@@ -276,7 +276,7 @@ class ClientController extends BaseController
 
                 // Move the uploaded image to the upload directory
                 if ($imageFile->move($uploadPath, $imageName)) {
-                    // Image upload successful, store the image filename in the database
+                    // Image upload successful, store the image filename in the $img array
                     $img['profile'] = $imageName;
 
                     // Delete the old image file if it exists
@@ -304,19 +304,24 @@ class ClientController extends BaseController
             'region' => $this->request->getVar('region_text'),
             'province' => $this->request->getVar('province_text'),
             'city' => $this->request->getVar('city_text'),
-            'profile' => $img,
             'barangay' => $this->request->getVar('barangay_text'),
             'street' => $this->request->getVar('street'),
             'zipcode' => $this->request->getVar('zipcode'),
         ];
 
+        // If an image was uploaded, include it in the data array
+        if (!empty($img['profile'])) {
+            $data['profile'] = $img['profile'];
+        }
+
         // Check if $data array is not empty before updating the database
         if (!empty($data)) {
-            // Update the admin data
+            // Update the client data
             $this->client->set($data)->where('client_id', $userId)->update();
         }
         return redirect()->to('/clientprofile');
     }
+
 
     public function agents()
     {
