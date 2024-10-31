@@ -180,8 +180,8 @@
                             height: 250
                         },
                         plotOptions: {
-                            bar: {
-                                borderRadius: 12,
+                            line: {
+                                borderRadius: 4,
                                 horizontal: false,
                             }
                         },
