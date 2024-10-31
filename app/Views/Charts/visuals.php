@@ -176,7 +176,7 @@
                             data: applicantCounts
                         }],
                         chart: {
-                            type: 'column',
+                            type: 'bar',
                             height: 250
                         },
                         plotOptions: {
