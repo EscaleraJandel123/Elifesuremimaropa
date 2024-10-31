@@ -259,7 +259,7 @@
                             categories: months
                         },
                         title: {
-                            text: 'Monthly Commissions',
+                            text: 'Over all Monthly Commissions',
                             // align: 'center',
                         }
                     }).render();
@@ -309,7 +309,7 @@
                             categories: years
                         },
                         title: {
-                            text: 'Yearly Commissions',
+                            text: 'Over all Yearly Commissions',
                             // align: 'center',
                         }
                     }).render();
