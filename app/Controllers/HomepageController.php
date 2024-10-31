@@ -106,7 +106,7 @@ class HomepageController extends BaseController
                 ];
                 $this->user->save($userData);
             } else {
-                return redirect()->to('/register/' . $ref)->with('error', 'Invalid Referal Code');
+                return redirect()->to('/register/' . $ref)->with('error', 'Invalid Registration Link');
             }
             $userId = $this->user->insertID();
 
