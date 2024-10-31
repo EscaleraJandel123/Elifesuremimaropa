@@ -304,7 +304,7 @@ class ClientController extends BaseController
             'region' => $this->request->getVar('region_text'),
             'province' => $this->request->getVar('province_text'),
             'city' => $this->request->getVar('city_text'),
-            'image' => $img,
+            'profile' => $img,
             'barangay' => $this->request->getVar('barangay_text'),
             'street' => $this->request->getVar('street'),
             'zipcode' => $this->request->getVar('zipcode'),
