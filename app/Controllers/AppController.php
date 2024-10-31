@@ -857,7 +857,7 @@ class AppController extends BaseController
         $existingRecord = $this->form2->where('user_id', $userId)->first();
 
         if ($existingRecord) {
-            $link = 'ViewAppForm2/' . $token . '';
+            $link = 'ViewAppForm2/';
             $message = $role . ' ' . $username . ' has updated their form. Please click the link to see';
             $r = 'admin';
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
@@ -866,7 +866,7 @@ class AppController extends BaseController
         } else {
             // Insert new record
             $data['user_id'] = $userId;
-            $link = 'ViewAppForm2/' . $token . '';
+            $link = 'ViewAppForm2/';
             $message = $role . ' ' . $username . ' has save their form. Please click the link to see';
             $r = 'admin';
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
