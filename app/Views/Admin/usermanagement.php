@@ -182,14 +182,14 @@
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-md">
                                             <div class="modal-content">
-                                                <div class="modal-header">
+                                                <!-- <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Add new User</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
+                                                </div> -->
+                                                <!-- <div class="modal-body">
 
-                                                    <!-- Your registration form goes here -->
+                                                    
                                                     <form action="/newuser" method="post" role="form">
                                                         <div class="mb-3">
                                                             <label for="username" class="form-label">User Name</label>
@@ -239,7 +239,7 @@
                                                             data-bs-dismiss="modal">Close</button>
                                                         <button type="submit" class="btn btn-primary">Save</button>
                                                     </form>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
