@@ -124,10 +124,10 @@
                                     <div id="ApplicantChart"></div>
                                 </div>
                                 <div class="custom-block bg-white">
-                                    <div id="ApplicantChart"></div>
+                                    <div id="ovmonthlycommi"></div>
                                 </div>
                                 <div class="custom-block bg-white">
-                                    <div id="ApplicantChart"></div>
+                                    <div id="ovyearlyComm"></div>
                                 </div>
                             </div>
                         </div>
