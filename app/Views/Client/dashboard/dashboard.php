@@ -28,31 +28,6 @@
                                 <!-- Left side columns -->
                                 <div class="col-lg-8">
                                     <div class="row">
-                                        <!-- Policy Information -->
-                                        <div class="col-lg-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Policy Information</h5>
-                                                    <p class="card-text">Policy Number:
-                                                        <?= isset($client['applicationNo']) ? $client['applicationNo'] : '' ?>
-                                                    </p>
-                                                    <p class="card-text">Coverage: Comprehensive</p>
-                                                    <a href="#" class="btn btn-primary">View Policy Details</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Claims Management -->
-                                        <div class="col-lg-6">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Claims Management</h5>
-                                                    <p class="card-text">Total Claims: 5</p>
-                                                    <p class="card-text">Last Claim Status: In Progress</p>
-                                                    <a href="#" class="btn btn-primary">View Claims</a>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <!-- Billing and Payment History -->
                                         <div class="col-lg-12">
