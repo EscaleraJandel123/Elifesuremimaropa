@@ -531,9 +531,7 @@ class AppController extends BaseController
             'position' => $this->request->getVar('positionApplying'),
             'preferredArea' => $this->request->getVar('preferredArea'),
             'referral' => $this->request->getVar('referral') ?? 'No',
-
             'referralBy' => $this->request->getVar('referralBy'),
-
             'onlineAd' => $this->request->getVar('onlineAd') ?? 'No',
             'walkIn' => $this->request->getVar('walkIn') ?? 'No',
             'othersRef' => $this->request->getVar('othersRef') ?? 'No',
@@ -637,7 +635,6 @@ class AppController extends BaseController
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
             $this->form1->insert($data);
         }
-        // Redirect back with a status message
         return redirect()->back()->with('status', 'Form saved successfully');
     }
 
