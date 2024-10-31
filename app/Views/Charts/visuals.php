@@ -176,11 +176,11 @@
                             data: applicantCounts
                         }],
                         chart: {
-                            type: 'line',
+                            type: 'column',
                             height: 250
                         },
                         plotOptions: {
-                            line: {
+                            bar: {
                                 borderRadius: 4,
                                 horizontal: false,
                             }
