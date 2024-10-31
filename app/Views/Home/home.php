@@ -217,7 +217,7 @@
 	<div class="team-page-area pt-50 pb-100">
 		<div class="container">
 			<div class="section-title">
-				<h2>Meet Our Great Agent</h2>
+				<h2>Meet Our Great Agency Partners</h2>
 			</div>
 			<div class="row">
 				<?php foreach ($agents as $agent): ?>
