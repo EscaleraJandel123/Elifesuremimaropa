@@ -16,7 +16,7 @@
                             colors: ['#002379'] // Specify custom color here
                         }],
                         chart: {
-                            type: 'line',
+                            type: 'bar',
                             height: 250
                         },
                         plotOptions: {
@@ -176,7 +176,7 @@
                             data: applicantCounts
                         }],
                         chart: {
-                            type: 'bar',
+                            type: 'line',
                             height: 250
                         },
                         plotOptions: {
