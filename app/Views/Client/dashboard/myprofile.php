@@ -119,22 +119,25 @@
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
                   <!-- Profile Edit Form -->
                   <form class="custom-form profile-form" action="/svclient" method="post" enctype="multipart/form-data"
                     onsubmit="return confirmSubmit()">
                     <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
-                        Image</label>
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="<?= isset($client['profile']) ? base_url('/uploads/' . $client['profile']) : '' ?>"
-                          alt="Profile">
+                        <img id="profilePreview"
+                          src="<?= isset($client['profile']) ? base_url('/uploads/' . $client['profile']) : '' ?>"
+                          alt="Profile" style="max-width: 150px; max-height: 150px;">
                         <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
-                              class="bi bi-upload"></i></a>
+                          <!-- Trigger file input -->
+                          <a href="#" id="uploadButton" class="btn btn-primary btn-sm"
+                            title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
                               class="bi bi-trash"></i></a>
                         </div>
+                        <!-- Hidden file input -->
+                        <input type="file" name="profile" id="profileImageInput" accept="image/*"
+                          style="display: none;">
                       </div>
                     </div>
 
@@ -318,3 +321,21 @@
 <?= view('/Home/chop/jsh'); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<?php base_url() ?>add/ph-address-selector.js"></script>
+
+<script>
+  document.getElementById("uploadButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default link behavior
+    document.getElementById("profileImageInput").click(); // Trigger file input click
+  });
+
+  document.getElementById("profileImageInput").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("profilePreview").src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
