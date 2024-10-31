@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Controllers\RTCController;
 use App\Models\ApplicantModel;
 use App\Models\Form1Model;
 use App\Models\Form2Model;
@@ -42,7 +41,6 @@ class AppController extends BaseController
         $this->form5 = new Form5Model();
         $this->esign = new SignatureModel();
         $this->user = new UserModel();
-        $this->RTC = new RTCController();
         $this->applicant = new ApplicantModel();
         $this->notif = new NotifModel();
         $this->notificationcontroller = new NotifController();

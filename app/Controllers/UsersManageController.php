@@ -32,7 +32,6 @@ class UsersManageController extends BaseController
         $this->agent = new AgentModel();
         $this->admin = new AdminModel();
         $this->form = new Form1Model();
-        $this->rtc = new RTCController();
         $this->notifcont = new NotifController();
         $this->admincon = new AdminController();
         // $this->cache = \Config\Services::cache();

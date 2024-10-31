@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Controllers\RTCController;
 use App\Controllers\HomepageController;
 use App\Models\AdminModel;
 use App\Models\ClientModel;
@@ -30,7 +29,6 @@ class AdminController extends BaseController
     private $confirm;
     private $db;
     private $homecon;
-    private $rtc;
     private $agent;
     private $user;
     private $applicant;
@@ -51,7 +49,6 @@ class AdminController extends BaseController
     {
         $this->db = \Config\Database::connect();
         $this->confirm = new ConfirmModel();
-        $this->rtc = new RTCController();
         $this->user = new UserModel();
         $this->applicant = new ApplicantModel();
         $this->agent = new AgentModel();
