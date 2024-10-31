@@ -141,6 +141,7 @@ class HomepageController extends BaseController
 
             if ($this->request->getVar('role') === 'client') {
                 return redirect()->to('/ClientRegister')->with('error', $errorList);
+                
             } else {
                 return redirect()->to('/register/' . $ref)->with('error', $errorList);
             }
