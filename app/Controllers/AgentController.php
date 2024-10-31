@@ -545,6 +545,7 @@ class AgentController extends BaseController
         }
 
         $this->client_plan->set($stats)->where('token', $token)->update();
+        // pwede ko ditong lagyan ng add para ma filters yung monthly nya
 
         $commiS = [
             'token' => $tokens,
