@@ -124,11 +124,6 @@ $routes->get('/getYearlyCommissions', 'ChartsController::getYearlyCommissions', 
 $routes->get('/getoverallMonthlyCommissions', 'ChartsController::getoverallMonthlyCommissions', ['filter' => 'authGuard']);
 $routes->get('/getoverallYearlyCommissions', 'ChartsController::getoverallYearlyCommissions', ['filter' => 'authGuard']);
 
-//RTC
-// $routes->get('/homechat', 'RTCController::RTC');
-// $routes->post('/chat', 'RTCController::chat');
-// $routes->get('/send', 'RTCController::send');
-
 //pdf
 $routes->get('/generatePdf/(:num)', 'AdminController::generatePdf/$1', ['filter' => 'adminFilter']);
 $routes->get('/generatePdf3/(:num)', 'AdminController::generatePdf3/$1', ['filter' => 'adminFilter']);
