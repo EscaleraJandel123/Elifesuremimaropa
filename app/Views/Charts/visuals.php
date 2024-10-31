@@ -222,3 +222,98 @@
         return months[monthNumber - 1];
     }
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch('/getoverallMonthlyCommissions')
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    document.querySelector("#ovmonthlycommi").innerHTML = '<div style="text-align: center; padding: 20px;">No Commissions yet</div>';
+                } else {
+                    const months = data.map(item => getMonthName(item.month));
+                    const commissions = data.map(item => item.total_commission);
+
+                    new ApexCharts(document.querySelector("#ovmonthlycommi"), {
+                        series: [{
+                            data: commissions
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 250
+                        },
+                        plotOptions: {
+                            bar: {
+                                borderRadius: 4,
+                                horizontal: true,
+                            }
+                        },
+                        grid: {
+                            show: false // Hide grid lines
+                        },
+                        dataLabels: {
+                            enabled: true
+                        },
+                        xaxis: {
+                            categories: months
+                        },
+                        title: {
+                            text: 'Monthly Commissions',
+                            // align: 'center',
+                        }
+                    }).render();
+                }
+            });
+    });
+
+    function getMonthName(monthNumber) {
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        return months[monthNumber - 1];
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch('/getoverallYearlyCommissions')
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    document.querySelector("#ovyearlyComm").innerHTML = '<div style="text-align: center; padding: 20px;">No Commissions yet</div>';
+                } else {
+                    const years = data.map(item => item.year);
+                    const commissions = data.map(item => item.total_commission);
+
+                    new ApexCharts(document.querySelector("#ovyearlyComm"), {
+                        series: [{
+                            data: commissions
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 250
+                        },
+                        plotOptions: {
+                            bar: {
+                                borderRadius: 4,
+                                // horizontal: true,
+                                horizontal: false,
+                            }
+                        },
+                        dataLabels: {
+                            enabled: true
+                        },
+                        grid: {
+                            show: false // Hide grid lines
+                        },
+                        xaxis: {
+                            categories: years
+                        },
+                        title: {
+                            text: 'Yearly Commissions',
+                            // align: 'center',
+                        }
+                    }).render();
+                }
+            });
+    });
+</script>

@@ -123,9 +123,13 @@
                                 <div class="custom-block bg-white">
                                     <div id="ApplicantChart"></div>
                                 </div>
+                                <div class="custom-block bg-white">
+                                    <div id="ApplicantChart"></div>
+                                </div>
+                                <div class="custom-block bg-white">
+                                    <div id="ApplicantChart"></div>
+                                </div>
                             </div>
-
-                            
                         </div>
                     </div>
                     <!-- end of left side -->
