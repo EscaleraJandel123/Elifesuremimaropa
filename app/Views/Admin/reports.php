@@ -160,7 +160,7 @@
                                     <thead class="table-light sticky-top">
                                         <tr>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Birth Day</th>
+                                            <th scope="col">Birthday</th>
                                             <th scope="col">Contact</th>
                                         </tr>
                                     </thead>
