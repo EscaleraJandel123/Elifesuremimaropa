@@ -141,12 +141,12 @@
                                                 </form>
                                             </div>
 
-                                            <div class="col-lg-2 col-md-2 col-2">
+                                            <!-- <div class="col-lg-2 col-md-2 col-2">
                                                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
                                                     data-bs-target="#myModal">
                                                     <i class="bi bi-person-plus"></i>
                                                 </button>
-                                            </div>
+                                            </div> -->
 
                                             <div class="col-lg-7 col-md-8 col-12">
                                                 <form class="custom-form search-form" action="usermanagement"
@@ -178,7 +178,7 @@
                                         }
                                     </script>
 
-                                    <div class="modal fade" id="myModal" tabindex="-1"
+                                    <!-- <div class="modal fade" id="myModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-md">
                                             <div class="modal-content">
@@ -188,8 +188,6 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-
-                                                    <!-- Your registration form goes here -->
                                                     <form action="/newuser" method="post" role="form">
                                                         <div class="mb-3">
                                                             <label for="username" class="form-label">User Name</label>
@@ -242,7 +240,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <hr>
                                     <!-- Table with hoverable rows -->
                                     <div class="table-responsive mx-3">
