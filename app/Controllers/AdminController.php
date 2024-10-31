@@ -336,7 +336,7 @@ class AdminController extends BaseController
             'barangay' => $data['applicant']['barangay'],
             'street' => $data['applicant']['street'],
             'number' => $data['applicant']['number'],
-            'agent  profile' => $data['applicant']['profile'],
+            'agentprofile' => $data['applicant']['profile'],
             'zipcode' => $data['applicant']['zipcode'],
             'agent_token' => $data['applicant']['app_token'],
             'AgentCode' => $agentCode,
