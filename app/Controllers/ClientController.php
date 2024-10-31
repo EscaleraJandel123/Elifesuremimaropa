@@ -259,7 +259,7 @@ class ClientController extends BaseController
         $userId = $session->get('id');
 
         $data = [];
-        $img = [];
+        $img = '';
 
         // Get the old image file name from the database
         $oldpic = $this->client->select('profile')->where('client_id', $userId)->first();
