@@ -16,7 +16,7 @@
                             colors: ['#002379'] // Specify custom color here
                         }],
                         chart: {
-                            type: 'bar',
+                            type: 'line',
                             height: 250
                         },
                         plotOptions: {
