@@ -96,8 +96,6 @@ $routes->get('/inprog', 'AgentController::inprog', ['filter' => 'agentFilter']);
 $routes->get('/comp', 'AgentController::comp', ['filter' => 'agentFilter']);
 $routes->post('/compost', 'AgentController::compost', ['filter' => 'agentFilter']);
 
-
-
 $routes->get('/', 'HomepageController::home', ['filter' => 'online']);
 
 $routes->get('/register/(:any)', 'HomepageController::register/$1', ['filter' => 'online']);

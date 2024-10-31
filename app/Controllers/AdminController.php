@@ -300,7 +300,7 @@ class AdminController extends BaseController
     }
 
 
-    public function random($length = 6)
+    public function random($length = 200)
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $code = '';
@@ -336,7 +336,7 @@ class AdminController extends BaseController
             'barangay' => $data['applicant']['barangay'],
             'street' => $data['applicant']['street'],
             'number' => $data['applicant']['number'],
-            'profile' => $data['applicant']['profile'],
+            'agent  profile' => $data['applicant']['profile'],
             'zipcode' => $data['applicant']['zipcode'],
             'agent_token' => $data['applicant']['app_token'],
             'AgentCode' => $agentCode,
