@@ -141,12 +141,12 @@
                                                 </form>
                                             </div>
 
-                                            <!-- <div class="col-lg-2 col-md-2 col-2">
-                                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                            <div class="col-lg-2 col-md-2 col-2">
+                                                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
                                                     data-bs-target="#myModal">
                                                     <i class="bi bi-person-plus"></i>
-                                                </button>
-                                            </div> -->
+                                                </button> -->
+                                            </div>
 
                                             <div class="col-lg-7 col-md-8 col-12">
                                                 <form class="custom-form search-form" action="usermanagement"
