@@ -121,6 +121,30 @@
                 <div class="row">
                     <!-- left and right table columns -->
                     <div class="col-lg-6 mb-3">
+                        <!-- Filter Form -->
+                        <form method="get" action="/reports">
+                            <div class="form-group">
+                                <label for="month">Month:</label>
+                                <select id="month" name="month" class="form-control">
+                                    <option value="">All</option>
+                                    <?php for ($m = 1; $m <= 12; $m++): ?>
+                                        <option value="<?= $m ?>"><?= date("F", mktime(0, 0, 0, $m, 1)) ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Year:</label>
+                                <select id="year" name="year" class="form-control">
+                                    <option value="">All</option>
+                                    <?php for ($y = 2020; $y <= date("Y"); $y++): ?>
+                                        <option value="<?= $y ?>"><?= $y ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Filter</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 mb-3">
                         <div class="card">
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Agents</h5>

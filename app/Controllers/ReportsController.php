@@ -100,20 +100,6 @@ class ReportsController extends BaseController
         // Return the data
         return $data;
     }
-
-    // private function topagentrecruters()
-    // {
-    //     // Load the database service
-    //     $builder = \Config\Database::connect()->table('agent a');
-    //     $builder->select('a.username, a.FA, a.rank, a.agentprofile, a.agent_token, (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
-    //     $builder->orderBy('total_fa', 'DESC');
-    //     $builder->limit(3); // change for your desire
-    //     // Get the result as an array
-    //     $result = $builder->get()->getResultArray();
-    //     // Pass the data to your view or perform any other actions
-    //     $data['top'] = $result;
-    //     return $data;
-    // }
     private function topagentrecruters()
     {
         // Load the database service
