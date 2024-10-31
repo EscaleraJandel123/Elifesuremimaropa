@@ -104,11 +104,11 @@ class HomepageController extends BaseController
                     'token' => $usertoken,
                     'confirm' => 'false',
                 ];
-                $userModel->save($userData);
+                $this->user->save($userData);
             } else {
                 return redirect()->to('/register/' . $ref)->with('error', 'Invalid Referal Code');
             }
-            $userId = $userModel->insertID();
+            $userId = $this->user->insertID();
 
             if ($this->request->getVar('role') === 'applicant') {
                 // Prepare applicant data
