@@ -624,14 +624,14 @@ class AppController extends BaseController
             'botdate' => $this->request->getVar('botdate')
         ];
         if ($existingUser) {
-            $link = 'formsTable/ViewAppForm1';
+            $link = 'formsTable/ViewAppForm';
             $message = $role . ' ' . $username . ' has updated their form. Please click the link to see';
             $r = 'admin';
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
             // Insert new record
             $this->form1->set($data)->where('user_id', $userId)->update();
         } else {
-            $link = 'formsTable/ViewAppForm1';
+            $link = 'formsTable/ViewAppForm';
             $message = $role . ' ' . $username . ' has save their form. Please click the link to see';
             $r = 'admin';
             $this->notificationcontroller->newnotif($userId, $link, $message, $r);
