@@ -360,10 +360,9 @@
                 doc.text(`${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}. Commissions: ${awardee.total_commissions}`, 10, 120 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10) + (index * 10));
             });
 
-            // Save the PDF
+            console.log("Saving PDF");
             doc.save(`report_${month}_${year}.pdf`);
         }
-
     </script>
 </body>
 
