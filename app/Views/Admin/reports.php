@@ -329,7 +329,8 @@
 
     // Function to draw a colored table
     function drawTable(headers, rows, startY) {
-        
+        const colWidth = 10; // Width of each column
+        const rowHeight = 10; // Height of each row
         let y = startY;
 
         // Draw headers with a background color
