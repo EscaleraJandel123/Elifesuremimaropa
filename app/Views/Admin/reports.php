@@ -330,8 +330,7 @@
     // Function to draw a simple table with borders and background colors
     function drawTable(headers, rows, startY) {
         const colWidth = 60; // Width of each column
-        const rowHeight = 10; // Height of each row (increased for padding)
-        const textOffset = 2; // Padding between text and top of the cell
+        const rowHeight = 8; // Height of each row
         let y = startY;
 
         // Draw headers
@@ -343,7 +342,7 @@
         headers.forEach((header, index) => {
             // Center the text in the header
             const headerX = 10 + index * colWidth + colWidth / 2; // Center X position
-            doc.text(header, headerX, y - textOffset, { align: 'center' }); // Center align
+            doc.text(header, headerX, y, { align: 'center' }); // Center align
         });
         y += rowHeight; // Move down for rows
 
@@ -353,7 +352,7 @@
             row.forEach((cell, index) => {
                 // Center the text in each cell
                 const cellX = 10 + index * colWidth + colWidth / 2; // Center X position
-                doc.text(cell, cellX, y - textOffset, { align: 'center' }); // Center align
+                doc.text(cell, cellX, y, { align: 'center' }); // Center align
             });
             doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
             y += rowHeight; // Move down for the next row
@@ -409,7 +408,6 @@
     console.log("Saving PDF");
     doc.save(`report_${month}_${year}.pdf`);
 }
-
 
     </script>
 </body>
