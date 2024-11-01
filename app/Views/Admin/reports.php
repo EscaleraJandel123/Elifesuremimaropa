@@ -333,7 +333,7 @@
         doc.setTextColor(40, 40, 90); // Dark blue color for title
         doc.text(`Report for the Month of ${monthName} ${year}`, 10, 15);
 
-        // Define function to add a styled table
+        // Define function to add a styled table with headers
         function addStyledTable(title, headers, dataRows, startY) {
             doc.setFontSize(16);
             doc.setTextColor(255, 255, 255); // White text for title
@@ -365,7 +365,7 @@
             });
         }
 
-        // Prepare data for each table
+        // Prepare data for each table with headers
         const agentsData = data.agents.map((agent, index) => [
             `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
             agent.birthday,
