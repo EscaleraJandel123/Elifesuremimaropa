@@ -371,7 +371,6 @@
 
                 return y; // Return the new Y position for the next section
             }
-
             // Add Agents section
             doc.setFontSize(16);
             doc.text('Agents', 10, 20);
@@ -392,7 +391,7 @@
                 applicant.birthday,
                 applicant.number
             ]);
-            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
+            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 20);
 
             // Add Top Recruiters section
             doc.setFontSize(16);
