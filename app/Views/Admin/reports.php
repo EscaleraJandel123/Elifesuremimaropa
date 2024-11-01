@@ -327,13 +327,16 @@
     doc.setFontSize(20);
     doc.text(`Report for ${month}/${year}`, 10, 10);
 
-    // Function to draw a simple table
+    // Function to draw a colored table
     function drawTable(headers, rows, startY) {
         const colWidth = 60; // Width of each column
         const rowHeight = 10; // Height of each row
         let y = startY;
 
-        // Draw headers
+        // Draw headers with a background color
+        doc.setFillColor(200, 200, 255); // Light blue for headers
+        doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Draw header background
+
         doc.setFontSize(12);
         doc.setTextColor(0, 0, 0); // Black text
         headers.forEach((header, index) => {
@@ -341,10 +344,13 @@
         });
         y += rowHeight; // Move down for rows
 
-        // Draw rows
-        rows.forEach((row) => {
+        // Draw rows with a light background color
+        rows.forEach((row, rowIndex) => {
+            doc.setFillColor(rowIndex % 2 === 0 ? 240 : 255); // Light gray for even rows
+            doc.rect(10, y, colWidth * row.length + 10, rowHeight, 'F'); // Draw row background
             row.forEach((cell, index) => {
-                doc.text(cell, 10 + index * colWidth + 5, y); // Offset for padding
+                doc.setTextColor(0, 0, 0); // Black text for cells
+                doc.text(cell, 10 + index * colWidth + 5, y + 7); // Offset for padding and text alignment
             });
             y += rowHeight; // Move down for the next row
         });
