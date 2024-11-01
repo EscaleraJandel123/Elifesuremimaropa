@@ -334,25 +334,34 @@
         let y = startY;
 
         // Draw headers
+        doc.setFillColor(100, 149, 237); // Cornflower Blue
+        doc.rect(10, y - rowHeight, headers.length * colWidth, rowHeight, 'F'); // Fill header background
+        doc.setTextColor(255, 255, 255); // White text
         doc.setFontSize(12);
         headers.forEach((header, index) => {
-            doc.text(header, 10 + index * colWidth, y);
+            doc.text(header, 10 + index * colWidth + 5, y - 2); // Offset for padding
         });
+        doc.setTextColor(0, 0, 0); // Reset text color to black
         y += rowHeight;
 
-        // Draw separator
-        doc.line(10, y, 10 + headers.length * colWidth, y);
-        y += 2; // Adding space after the line
-
         // Draw rows
-        rows.forEach(row => {
+        rows.forEach((row, rowIndex) => {
             row.forEach((cell, index) => {
-                doc.text(cell, 10 + index * colWidth, y);
+                // Draw cell border
+                doc.rect(10 + index * colWidth, y, colWidth, rowHeight);
+                // Fill alternate rows with light gray
+                if (rowIndex % 2 === 0) {
+                    doc.setFillColor(240, 240, 240); // Light Gray
+                    doc.rect(10 + index * colWidth, y, colWidth, rowHeight, 'F');
+                }
+                doc.setTextColor(0, 0, 0); // Black text
+                doc.text(cell, 10 + index * colWidth + 2, y + 7); // Offset for padding
             });
             y += rowHeight;
         });
 
         // Draw separator at the end of the table
+        doc.setDrawColor(0); // Black
         doc.line(10, y, 10 + headers.length * colWidth, y);
         y += 5; // Adding space after the table
 
@@ -406,6 +415,7 @@
     console.log("Saving PDF");
     doc.save(`report_${month}_${year}.pdf`);
 }
+
 
 
     </script>
