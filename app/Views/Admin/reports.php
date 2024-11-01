@@ -397,7 +397,7 @@
 
             // Add Top Recruiters section
             doc.setFontSize(16);
-            doc.text('Top Recruiters', 10, yPosition);
+            doc.text('Top_Recruiters', 10, yPosition);
             const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
             const recruiterRows = data.top_recruiters.map((recruiter, index) => [
                 (index + 1).toString(),
