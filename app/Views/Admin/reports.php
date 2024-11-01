@@ -222,7 +222,7 @@
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Awardee</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                    <table class="table table-hover" id="awardees-table">
+                                    <table class="table table-hover" id="awardee-table">
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Top</th>
