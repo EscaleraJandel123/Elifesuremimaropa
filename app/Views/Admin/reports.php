@@ -203,7 +203,6 @@
                                             <?php foreach ($top as $topagent): ?>
                                                 <tr>
                                                     <td><?= $topagent['rank'] ?></td>
-                                                    <td><?= $topagent['ranking'] ?></td>
                                                     <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?>
                                                         <?= $topagent['middlename'] ?>.
                                                     </td>
