@@ -276,7 +276,49 @@
     });
 
     function updateTables(data) {
-        // Similar table update code as before (not included for brevity)
+        const agentsTableBody = document.querySelector('#agents-table tbody');
+        agentsTableBody.innerHTML = '';
+        data.agents.forEach(agent => {
+            const row = `<tr>
+                    <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                    <td>${agent.birthday}</td>
+                    <td>${agent.number}</td>
+                 </tr>`;
+            agentsTableBody.innerHTML += row;
+        });
+
+        const applicantsTableBody = document.querySelector('#applicants-table tbody');
+        applicantsTableBody.innerHTML = '';
+        data.applicants.forEach(applicant => {
+            const row = `<tr>
+                    <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                    <td>${applicant.birthday}</td>
+                    <td>${applicant.number}</td>
+                 </tr>`;
+            applicantsTableBody.innerHTML += row;
+        });
+
+        const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
+        recruitersTableBody.innerHTML = '';
+        data.top_recruiters.forEach((recruiter, index) => {
+            const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                    <td>${recruiter.total_fA}</td>
+                 </tr>`;
+            recruitersTableBody.innerHTML += row;
+        });
+
+        const awardeesTableBody = document.querySelector('#awardee-table tbody');
+        awardeesTableBody.innerHTML = '';
+        data.top_awardees.forEach((awardee, index) => {
+            const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                    <td>${awardee.total_commissions}</td>
+                 </tr>`;
+            awardeesTableBody.innerHTML += row;
+        });
     }
 
     function generatePDF(data, month, year) {
@@ -294,10 +336,9 @@
 
         // Define function to add a styled table with headers
         function addStyledTable(title, headers, dataRows, startY) {
-            // Section title with background
             doc.setFontSize(16);
-            doc.setTextColor(255, 255, 255); // White text for section title
-            doc.setFillColor(70, 130, 180); // Steel blue background for section title
+            doc.setTextColor(255, 255, 255); // White text for title
+            doc.setFillColor(70, 130, 180); // Steel blue background for title
             doc.rect(10, startY, 190, 10, 'F');
             doc.text(title, 12, startY + 7);
 
@@ -307,9 +348,8 @@
             doc.setFillColor(100, 149, 237); // Light steel blue for headers
             let posY = startY + 15;
             headers.forEach((header, index) => {
-                const width = index === 0 ? 80 : 55; // First column wider
-                doc.rect(10 + index * width, posY, width, 8, 'F');
-                doc.text(header, 12 + index * width, posY + 6);
+                doc.rect(10 + index * 60, posY, 60, 8, 'F');
+                doc.text(header, 12 + index * 60, posY + 6);
             });
 
             // Data rows with alternating row colors
@@ -319,15 +359,14 @@
                 row.forEach((cell, cellIndex) => {
                     doc.setTextColor(0, 0, 0); // Black text for data
                     doc.setFillColor(...fillColor);
-                    const width = cellIndex === 0 ? 80 : 55; // First column wider
-                    doc.rect(10 + cellIndex * width, posY, width, 8, 'F');
-                    doc.text(cell, 12 + cellIndex * width, posY + 6);
+                    doc.rect(10 + cellIndex * 60, posY, 60, 8, 'F');
+                    doc.text(cell, 12 + cellIndex * 60, posY + 6);
                 });
                 posY += 10;
             });
         }
 
-        // Prepare data for each table section
+        // Prepare data for each table with headers
         const agentsData = data.agents.map((agent, index) => [
             `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
             agent.birthday,
@@ -360,7 +399,6 @@
         doc.save(`report_${monthName}_${year}.pdf`);
     }
 </script>
-
 
 </body>
 
