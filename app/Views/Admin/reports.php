@@ -323,9 +323,19 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
+            // Function to get month name from month number
+            function getMonthName(monthNumber) {
+                const monthNames = [
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                return monthNames[monthNumber - 1]; // Month numbers are 1-based
+            }
+
             // Add title
+            const monthName = getMonthName(parseInt(month)); // Convert month to integer and get name
             doc.setFontSize(20);
-            doc.text(`Report for ${month}/${year}`, 10, 10);
+            doc.text(`Month of ${monthName} ${year}`, 10, 10); // Updated title
 
             // Function to draw a simple table with borders and background colors
             function drawTable(headers, rows, startY) {
@@ -409,6 +419,7 @@
             console.log("Saving PDF");
             doc.save(`report_${month}_${year}.pdf`);
         }
+
     </script>
 </body>
 
