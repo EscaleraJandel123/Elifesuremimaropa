@@ -169,4 +169,26 @@ class ReportsController extends BaseController
         );
         return view('Admin/reports', $data);
     }
+
+    public function generateReport($year, $month)
+    {
+        $startDate = "$year-$month-01";
+        $endDate = date("Y-m-t", strtotime($startDate));
+
+        // Filter agents and applicants by the selected month and year
+        $agents = $this->agent->where('created_at >=', $startDate)
+                              ->where('created_at <=', $endDate)
+                              ->findAll();
+
+        $applicants = $this->applicant->where('created_at >=', $startDate)
+                                      ->where('created_at <=', $endDate)
+                                      ->where('status', 'confirmed')
+                                      ->findAll();
+
+        // Prepare and return JSON response with filtered data
+        return $this->response->setJSON([
+            'agents' => $agents,
+            'applicants' => $applicants,
+        ]);
+    }
 }

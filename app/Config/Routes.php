@@ -36,6 +36,7 @@ $routes->post('/userSearch', 'AdminController::userSearch', ['filter' => 'adminF
 $routes->post('/agentSearch', 'AdminController::agentSearch', ['filter' => 'adminFilter']);
 
 $routes->post('/clientSearch', 'AdminController::clientSearch', ['filter' => 'adminFilter']);
+$routes->get('/reports/generateReport/(:num)/(:num)', 'ReportsController::generateReport/$1/$2');
 
 $routes->post('/svad', 'AdminController::svad', ['filter' => 'adminFilter']);
 $routes->get('/RTC', 'AdminController::RTC', ['filter' => 'adminFilter']);

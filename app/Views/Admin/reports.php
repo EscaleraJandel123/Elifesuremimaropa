@@ -113,12 +113,13 @@
                     </ul>
                 </div>
             </nav>
+
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
                     <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
-                        <button id="generate-pdf" class="btn btn-primary ms-2">Generate Report</button>
+                        <button id="generate-report-btn" class="btn btn-primary ms-2">Generate Report</button>
                     </div>
                 </div>
                 <div class="row">
@@ -137,15 +138,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($agents as $agent): ?>
-                                                <tr>
-                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?>
-                                                        <?= $agent['middlename'] ?>.
-                                                    </td>
-                                                    <td><?= $agent['birthday'] ?></td>
-                                                    <td><?= $agent['number'] ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
+                                            <!-- Dynamic content will be inserted here -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -158,27 +151,20 @@
                         <div class="card">
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Applicants</h5>
-                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;"></div>
-                                <table class="table table-hover" id="applicants-table">
-                                    <thead class="table-light sticky-top">
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Birthday</th>
-                                            <th scope="col">Contact</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($applicants as $applicant): ?>
+                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                    <table class="table table-hover" id="applicants-table">
+                                        <thead class="table-light sticky-top">
                                             <tr>
-                                                <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?>
-                                                    <?= $applicant['middlename'] ?>.
-                                                </td>
-                                                <td><?= $applicant['birthday'] ?></td>
-                                                <td><?= $applicant['number'] ?></td>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Birthday</th>
+                                                <th scope="col">Contact</th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Dynamic content will be inserted here -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -249,77 +235,82 @@
             </main>
         </div>
     </div>
-    <!-- jsPDF library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- jsPDF AutoTable plugin for tables -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
 
+    <?= view('js'); ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        document.getElementById('generate-pdf').addEventListener('click', function () {
-            const { jsPDF } = window.jspdf;
+        document.getElementById('generate-report-btn').addEventListener('click', function () {
+            const monthYear = document.getElementById('report-month').value;
+            if (monthYear) {
+                const [year, month] = monthYear.split('-');
+                fetch(`/reports/generateReport/${year}/${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update tables with data
+                        updateTables(data);
+
+                        // Generate PDF
+                        generatePDF(data, month, year);
+                    })
+                    .catch(error => console.error('Error fetching report:', error));
+            } else {
+                alert("Please select a month and year.");
+            }
+        });
+
+        function updateTables(data) {
+            const agentsTableBody = document.querySelector('#agents-table tbody');
+            agentsTableBody.innerHTML = ''; // Clear existing rows
+            data.agents.forEach(agent => {
+                const row = `<tr>
+                            <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                            <td>${agent.birthday}</td>
+                            <td>${agent.number}</td>
+                         </tr>`;
+                agentsTableBody.innerHTML += row;
+            });
+
+            const applicantsTableBody = document.querySelector('#applicants-table tbody');
+            applicantsTableBody.innerHTML = ''; // Clear existing rows
+            data.applicants.forEach(applicant => {
+                const row = `<tr>
+                            <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                            <td>${applicant.birthday}</td>
+                            <td>${applicant.number}</td>
+                         </tr>`;
+                applicantsTableBody.innerHTML += row;
+            });
+        }
+
+        function generatePDF(data, month, year) {
+            const { jsPDF } = window.jspdf; // Access jsPDF
             const doc = new jsPDF();
 
-            // Add a main title for the PDF
-            doc.text('Reports - Agents, Applicants, Recruiters & Awardees', 10, 10);
+            // Add title
+            doc.setFontSize(20);
+            doc.text(`Report for ${month}/${year}`, 10, 10);
 
-            // Adding the label for Agents table
+            // Add Agents section
+            doc.setFontSize(16);
             doc.text('Agents', 10, 20);
-
-            // Agents Table
-            doc.autoTable({
-                html: '#agents-table',
-                startY: 25, // Start just after the "Agents" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
+            doc.setFontSize(12);
+            data.agents.forEach((agent, index) => {
+                doc.text(`${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}. Contact: ${agent.number}`, 10, 30 + (index * 10));
             });
 
-            // Get the final position after the first table
-            let finalY = doc.lastAutoTable.finalY + 10;
-
-            // Adding the label for Applicants table
-            doc.text('Applicants', 10, finalY);
-
-            // Applicants Table
-            doc.autoTable({
-                html: '#applicants-table',
-                startY: finalY + 5, // Start just after the "Applicants" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
-            });
-
-            // Get the final position after the second table
-            finalY = doc.lastAutoTable.finalY + 10;
-
-            // Adding the label for Top Recruiters table
-            doc.text('Top Recruiters', 10, finalY);
-
-            // Top Recruiters Table
-            doc.autoTable({
-                html: '#top-recruiters-table',
-                startY: finalY + 5, // Start just after the "Top Recruiters" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
-            });
-
-            // Get the final position after the third table
-            finalY = doc.lastAutoTable.finalY + 10;
-
-            // Adding the label for Awardee table
-            doc.text('Awardee', 10, finalY);
-
-            // Awardee Table
-            doc.autoTable({
-                html: '#awardee-table',
-                startY: finalY + 5, // Start just after the "Awardee" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
+            // Add Applicants section
+            doc.setFontSize(16);
+            doc.text('Applicants', 10, 50 + (data.agents.length * 10));
+            doc.setFontSize(12);
+            data.applicants.forEach((applicant, index) => {
+                doc.text(`${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}. Contact: ${applicant.number}`, 10, 60 + (data.agents.length * 10) + (index * 10));
             });
 
             // Save the PDF
-            doc.save('report.pdf');
-        });
+            doc.save(`report_${month}_${year}.pdf`);
+        }
     </script>
-    <?= view('js'); ?>
 </body>
 
 </html>
