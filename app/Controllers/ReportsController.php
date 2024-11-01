@@ -183,7 +183,7 @@ class ReportsController extends BaseController
 
         $applicants = $this->applicant->where('created_at >=', $startDate)
             ->where('created_at <=', $endDate)
-            ->where('status', 'confirmed')
+            ->where('status', 'pending')
             ->findAll();
 
         // Get Top Recruiters
