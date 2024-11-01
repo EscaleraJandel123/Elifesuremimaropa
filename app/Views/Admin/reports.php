@@ -386,7 +386,7 @@
                 `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
                 recruiter.total_fA,
             ]);
-            currentY = addSection("Top Recruiters", ["Rank", "Name", "No. of Recruits"], recruitersData, currentY);
+            currentY = addSection("Top Recruiters", ["Rank", "Top", "Name", "No. of Recruits"], recruitersData, currentY);
 
             const awardeesData = data.top_awardees.map(awardee => [
                 awardee.rank, // You might want to calculate rank if not provided
@@ -399,9 +399,6 @@
             doc.save(`report_${monthName}_${year}.pdf`);
         }
     </script>
-
-
-
 </body>
 
 </html>
