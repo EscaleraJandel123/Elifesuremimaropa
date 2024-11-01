@@ -329,14 +329,14 @@
 
             // Function to draw a simple table
             function drawTable(headers, rows, startY) {
-    const colWidth = 60; // Width of each column
-    const rowHeight = 12; // Increased height for better spacing
+    const colWidth = 50; // Adjusted width of each column
+    const rowHeight = 8; // Reduced height for smaller rows
     let y = startY;
 
     // Draw headers
     doc.setFillColor(200, 200, 255); // Light blue for headers
     doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Draw header background
-    doc.setFontSize(12);
+    doc.setFontSize(10); // Smaller font size for headers
     doc.setTextColor(0, 0, 0); // Black text
     headers.forEach((header, index) => {
         doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
@@ -347,15 +347,16 @@
     rows.forEach((row, rowIndex) => {
         doc.setFillColor(rowIndex % 2 === 0 ? 240 : 255); // Light gray for even rows
         doc.rect(10, y, colWidth * row.length + 10, rowHeight, 'F'); // Draw row background
+        doc.setFontSize(10); // Smaller font size for cells
         row.forEach((cell, index) => {
             doc.setTextColor(0, 0, 0); // Black text for cells
             const cellText = doc.splitTextToSize(cell, colWidth - 10); // Wrap text to fit column
-            const cellY = y + 7; // Vertical position for text
+            const cellY = y + 5; // Adjust vertical position for text
             cellText.forEach((line, lineIndex) => {
-                doc.text(line, 10 + index * colWidth + 5, cellY + (lineIndex * 5)); // Offset for padding and text alignment
+                doc.text(line, 10 + index * colWidth + 5, cellY + (lineIndex * 4)); // Offset for padding and text alignment
             });
         });
-        y += rowHeight + 5; // Add extra space between rows
+        y += rowHeight; // Add space for the next row
     });
 
     return y; // Return the new Y position for the next section
