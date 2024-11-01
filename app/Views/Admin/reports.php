@@ -331,16 +331,13 @@
         // Add Agents section
         doc.setFontSize(16);
         doc.text('Agents', 10, 20);
-
-        const agentsData = data.agents.map((agent, index) => [
-            `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}.`,
-            agent.birthday,
-            agent.number,
-        ]);
-
         doc.autoTable({
             head: [['Name', 'Birthday', 'Contact']],
-            body: agentsData,
+            body: data.agents.map(agent => [
+                `${agent.lastname}, ${agent.firstname} ${agent.middlename}.`,
+                agent.birthday,
+                agent.number
+            ]),
             startY: 30,
             theme: 'grid',
             styles: {
@@ -351,16 +348,13 @@
         // Add Applicants section
         doc.setFontSize(16);
         doc.text('Applicants', 10, doc.lastAutoTable.finalY + 10);
-
-        const applicantsData = data.applicants.map((applicant, index) => [
-            `${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.`,
-            applicant.birthday,
-            applicant.number,
-        ]);
-
         doc.autoTable({
             head: [['Name', 'Birthday', 'Contact']],
-            body: applicantsData,
+            body: data.applicants.map(applicant => [
+                `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.`,
+                applicant.birthday,
+                applicant.number
+            ]),
             startY: doc.lastAutoTable.finalY + 20,
             theme: 'grid',
             styles: {
@@ -371,15 +365,12 @@
         // Add Top Recruiters section
         doc.setFontSize(16);
         doc.text('Top Recruiters', 10, doc.lastAutoTable.finalY + 10);
-
-        const recruitersData = data.top_recruiters.map((recruiter, index) => [
-            `${index + 1}. ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}.`,
-            recruiter.total_fA,
-        ]);
-
         doc.autoTable({
             head: [['Name', 'No. of Recruits']],
-            body: recruitersData,
+            body: data.top_recruiters.map(recruiter => [
+                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}.`,
+                recruiter.total_fA
+            ]),
             startY: doc.lastAutoTable.finalY + 20,
             theme: 'grid',
             styles: {
@@ -390,15 +381,12 @@
         // Add Awardees section
         doc.setFontSize(16);
         doc.text('Awardees', 10, doc.lastAutoTable.finalY + 10);
-
-        const awardeesData = data.top_awardees.map((awardee, index) => [
-            `${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}.`,
-            awardee.total_commissions,
-        ]);
-
         doc.autoTable({
             head: [['Name', 'Total Commissions']],
-            body: awardeesData,
+            body: data.top_awardees.map(awardee => [
+                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}.`,
+                awardee.total_commissions
+            ]),
             startY: doc.lastAutoTable.finalY + 20,
             theme: 'grid',
             styles: {
