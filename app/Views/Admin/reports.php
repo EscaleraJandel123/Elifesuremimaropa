@@ -255,140 +255,150 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        document.getElementById('generate-report-btn').addEventListener('click', function () {
-            const monthYear = document.getElementById('report-month').value;
-            if (monthYear) {
-                const [year, month] = monthYear.split('-');
-                fetch(`/reports/generateReport/${year}/${month}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Update tables with data
-                        updateTables(data);
+    document.getElementById('generate-report-btn').addEventListener('click', function () {
+        const monthYear = document.getElementById('report-month').value;
+        if (monthYear) {
+            const [year, month] = monthYear.split('-');
+            fetch(`/reports/generateReport/${year}/${month}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update tables with data
+                    updateTables(data);
 
-                        // Generate PDF
-                        generatePDF(data, month, year);
-                    })
-                    .catch(error => console.error('Error fetching report:', error));
-            } else {
-                alert("Please select a month and year.");
-            }
-        });
+                    // Generate PDF
+                    generatePDF(data, month, year);
+                })
+                .catch(error => console.error('Error fetching report:', error));
+        } else {
+            alert("Please select a month and year.");
+        }
+    });
 
-        function updateTables(data) {
-            const agentsTableBody = document.querySelector('#agents-table tbody');
-            agentsTableBody.innerHTML = '';
-            data.agents.forEach(agent => {
-                const row = `<tr>
+    function updateTables(data) {
+        const agentsTableBody = document.querySelector('#agents-table tbody');
+        agentsTableBody.innerHTML = '';
+        data.agents.forEach(agent => {
+            const row = `<tr>
                     <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
                     <td>${agent.birthday}</td>
                     <td>${agent.number}</td>
                  </tr>`;
-                agentsTableBody.innerHTML += row;
-            });
+            agentsTableBody.innerHTML += row;
+        });
 
-            const applicantsTableBody = document.querySelector('#applicants-table tbody');
-            applicantsTableBody.innerHTML = '';
-            data.applicants.forEach(applicant => {
-                const row = `<tr>
+        const applicantsTableBody = document.querySelector('#applicants-table tbody');
+        applicantsTableBody.innerHTML = '';
+        data.applicants.forEach(applicant => {
+            const row = `<tr>
                     <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
                     <td>${applicant.birthday}</td>
                     <td>${applicant.number}</td>
                  </tr>`;
-                applicantsTableBody.innerHTML += row;
-            });
+            applicantsTableBody.innerHTML += row;
+        });
 
-            const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
-            recruitersTableBody.innerHTML = '';
-            data.top_recruiters.forEach((recruiter, index) => {
-                const row = `<tr>
+        const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
+        recruitersTableBody.innerHTML = '';
+        data.top_recruiters.forEach((recruiter, index) => {
+            const row = `<tr>
                     <td>${index + 1}</td>
                     <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
                     <td>${recruiter.total_fA}</td>
                  </tr>`;
-                recruitersTableBody.innerHTML += row;
-            });
+            recruitersTableBody.innerHTML += row;
+        });
 
-            const awardeesTableBody = document.querySelector('#awardee-table tbody');
-            awardeesTableBody.innerHTML = '';
-            data.top_awardees.forEach((awardee, index) => {
-                const row = `<tr>
+        const awardeesTableBody = document.querySelector('#awardee-table tbody');
+        awardeesTableBody.innerHTML = '';
+        data.top_awardees.forEach((awardee, index) => {
+            const row = `<tr>
                     <td>${index + 1}</td>
                     <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
                     <td>${awardee.total_commissions}</td>
                  </tr>`;
-                awardeesTableBody.innerHTML += row;
+            awardeesTableBody.innerHTML += row;
+        });
+    }
+
+    function generatePDF(data, month, year) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Convert month number to name
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const monthName = monthNames[parseInt(month) - 1];
+
+        // Add title with color
+        doc.setFontSize(22);
+        doc.setTextColor(40, 40, 90); // Dark blue color for title
+        doc.text(`Report for the Month of ${monthName} ${year}`, 10, 15);
+
+        // Define function to add a styled table
+        function addStyledTable(title, headers, dataRows, startY) {
+            doc.setFontSize(16);
+            doc.setTextColor(255, 255, 255); // White text for title
+            doc.setFillColor(70, 130, 180); // Steel blue background for title
+            doc.rect(10, startY, 190, 10, 'F');
+            doc.text(title, 12, startY + 7);
+
+            // Headers with background color
+            doc.setFontSize(12);
+            doc.setTextColor(255, 255, 255);
+            doc.setFillColor(100, 149, 237); // Light steel blue for headers
+            let posY = startY + 15;
+            headers.forEach((header, index) => {
+                doc.rect(10 + index * 60, posY, 60, 8, 'F');
+                doc.text(header, 12 + index * 60, posY + 6);
+            });
+
+            // Data rows with alternating row colors
+            posY += 10;
+            dataRows.forEach((row, rowIndex) => {
+                const fillColor = rowIndex % 2 === 0 ? [245, 245, 245] : [255, 255, 255]; // Alternating row colors
+                row.forEach((cell, cellIndex) => {
+                    doc.setTextColor(0, 0, 0); // Black text for data
+                    doc.setFillColor(...fillColor);
+                    doc.rect(10 + cellIndex * 60, posY, 60, 8, 'F');
+                    doc.text(cell, 12 + cellIndex * 60, posY + 6);
+                });
+                posY += 10;
             });
         }
 
-        function generatePDF(data, month, year) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+        // Prepare data for each table
+        const agentsData = data.agents.map((agent, index) => [
+            `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+            agent.birthday,
+            agent.number,
+        ]);
+        addStyledTable("Agents", ["Name", "Birthday", "Contact"], agentsData, 30);
 
-            // Convert month number to name
-            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            const monthName = monthNames[parseInt(month) - 1];
+        const applicantsData = data.applicants.map((applicant, index) => [
+            `${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+            applicant.birthday,
+            applicant.number,
+        ]);
+        addStyledTable("Applicants", ["Name", "Birthday", "Contact"], applicantsData, 90 + agentsData.length * 10);
 
-            // Add title
-            doc.setFontSize(20);
-            doc.text(`Report for the Month of ${monthName} ${year}`, 10, 10);
+        const recruitersData = data.top_recruiters.map((recruiter, index) => [
+            `${index + 1}`,
+            `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+            recruiter.total_fA,
+        ]);
+        addStyledTable("Top Recruiters", ["Rank", "Name", "No. of Recruits"], recruitersData, 150 + (agentsData.length + applicantsData.length) * 10);
 
-            // Define function to add a table
-            function addTable(title, headers, dataRows, startY) {
-                doc.setFontSize(16);
-                doc.text(title, 10, startY);
-                doc.setFontSize(12);
+        const awardeesData = data.top_awardees.map((awardee, index) => [
+            `${index + 1}`,
+            `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+            awardee.total_commissions,
+        ]);
+        addStyledTable("Awardees", ["Top", "Name", "Total Commissions"], awardeesData, 210 + (agentsData.length + applicantsData.length + recruitersData.length) * 10);
 
-                // Table Headers
-                let posY = startY + 10;
-                headers.forEach((header, index) => {
-                    doc.text(header, 10 + index * 60, posY);
-                });
+        // Save the PDF
+        doc.save(`report_${monthName}_${year}.pdf`);
+    }
+</script>
 
-                // Table Rows
-                posY += 10;
-                dataRows.forEach((row, rowIndex) => {
-                    row.forEach((cell, cellIndex) => {
-                        doc.text(cell, 10 + cellIndex * 60, posY + rowIndex * 10);
-                    });
-                });
-            }
-
-            // Agents Table
-            const agentsData = data.agents.map((agent, index) => [
-                `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
-                agent.birthday,
-                agent.number,
-            ]);
-            addTable("Agents", ["Name", "Birthday", "Contact"], agentsData, 30);
-
-            // Applicants Table
-            const applicantsData = data.applicants.map((applicant, index) => [
-                `${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
-                applicant.birthday,
-                applicant.number,
-            ]);
-            addTable("Applicants", ["Name", "Birthday", "Contact"], applicantsData, 80 + agentsData.length * 10);
-
-            // Top Recruiters Table
-            const recruitersData = data.top_recruiters.map((recruiter, index) => [
-                `${index + 1}`,
-                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
-                recruiter.total_fA,
-            ]);
-            addTable("Top Recruiters", ["Rank", "Name", "No. of Recruits"], recruitersData, 130 + (agentsData.length + applicantsData.length) * 10);
-
-            // Awardees Table
-            const awardeesData = data.top_awardees.map((awardee, index) => [
-                `${index + 1}`,
-                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
-                awardee.total_commissions,
-            ]);
-            addTable("Awardees", ["Top", "Name", "Total Commissions"], awardeesData, 180 + (agentsData.length + applicantsData.length + recruitersData.length) * 10);
-
-            // Save the PDF
-            doc.save(`report_${monthName}_${year}.pdf`);
-        }
-    </script>
 </body>
 
 </html>
