@@ -344,8 +344,8 @@
 
     headers.forEach((header, index) => {
         const textWidth = doc.getTextWidth(header);
-        const x = 10 + index * colWidth + (colWidth - textWidth) / 2 + 5; // Center text
-        doc.text(header, x, y);
+        const x = 10 + index * colWidth + (colWidth - textWidth) / 2 + 5; // Center text horizontally
+        doc.text(header, x, y + (rowHeight / 2)); // Center text vertically
     });
     y += rowHeight; // Move down for rows
 
@@ -354,8 +354,8 @@
         doc.setTextColor(0, 0, 0); // Black text
         row.forEach((cell, index) => {
             const textWidth = doc.getTextWidth(cell);
-            const x = 10 + index * colWidth + (colWidth - textWidth) / 2 + 5; // Center text
-            doc.text(cell, x, y); // Centered text
+            const x = 10 + index * colWidth + (colWidth - textWidth) / 2 + 5; // Center text horizontally
+            doc.text(cell, x, y + (rowHeight / 2)); // Center text vertically
         });
         doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
         y += rowHeight; // Move down for the next row
