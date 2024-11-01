@@ -153,7 +153,8 @@ class ReportsController extends BaseController
 
     private function getapplicants()
     {
-        $data['applicants'] = $this->applicant->where('status', 'pending')->findAll();
+        // $data['applicants'] = $this->applicant->where('status', 'pending')->findAll();
+        $data['applicants'] = $this->applicant->findAll();
         return $data;
     }
 

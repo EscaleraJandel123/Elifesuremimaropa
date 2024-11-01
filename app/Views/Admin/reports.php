@@ -303,6 +303,7 @@
         data.top_recruiters.forEach((recruiter, index) => {
             const row = `<tr>
                     <td>${index + 1}</td>
+                    <td>${recruiter.ranking}</td> 
                     <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
                     <td>${recruiter.total_fA}</td>
                  </tr>`;
@@ -399,8 +400,6 @@
         doc.save(`report_${monthName}_${year}.pdf`);
     }
 </script>
-
-
 </body>
 
 </html>
