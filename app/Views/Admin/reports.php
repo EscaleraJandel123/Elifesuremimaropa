@@ -329,8 +329,8 @@
 
             // Function to draw a simple table with borders and background colors
             function drawTable(headers, rows, startY) {
-                const colWidth = 40; // Width of each column
-                const rowHeight = 10; // Height of each row
+                const colWidth = 70; // Width of each column
+                const rowHeight = 8; // Height of each row
                 let y = startY;
 
                 // Draw headers
