@@ -329,28 +329,38 @@
 
             // Function to draw a simple table
             function drawTable(headers, rows, startY) {
-                const colWidth = 60; // Width of each column
-                const rowHeight = 10; // Height of each row
-                let y = startY;
+    const colWidth = 60; // Width of each column
+    const rowHeight = 12; // Increased height for better spacing
+    let y = startY;
 
-                // Draw headers
-                doc.setFontSize(12);
-                doc.setTextColor(0, 0, 0); // Black text
-                headers.forEach((header, index) => {
-                    doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
-                });
-                y += rowHeight; // Move down for rows
+    // Draw headers
+    doc.setFillColor(200, 200, 255); // Light blue for headers
+    doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Draw header background
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0); // Black text
+    headers.forEach((header, index) => {
+        doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
+    });
+    y += rowHeight; // Move down for rows
 
-                // Draw rows
-                rows.forEach((row) => {
-                    row.forEach((cell, index) => {
-                        doc.text(cell, 10 + index * colWidth + 5, y); // Offset for padding
-                    });
-                    y += rowHeight; // Move down for the next row
-                });
+    // Draw rows
+    rows.forEach((row, rowIndex) => {
+        doc.setFillColor(rowIndex % 2 === 0 ? 240 : 255); // Light gray for even rows
+        doc.rect(10, y, colWidth * row.length + 10, rowHeight, 'F'); // Draw row background
+        row.forEach((cell, index) => {
+            doc.setTextColor(0, 0, 0); // Black text for cells
+            const cellText = doc.splitTextToSize(cell, colWidth - 10); // Wrap text to fit column
+            const cellY = y + 7; // Vertical position for text
+            cellText.forEach((line, lineIndex) => {
+                doc.text(line, 10 + index * colWidth + 5, cellY + (lineIndex * 5)); // Offset for padding and text alignment
+            });
+        });
+        y += rowHeight + 5; // Add extra space between rows
+    });
 
-                return y; // Return the new Y position for the next section
-            }
+    return y; // Return the new Y position for the next section
+}
+
 
             // Add Agents section
             doc.setFontSize(16);
