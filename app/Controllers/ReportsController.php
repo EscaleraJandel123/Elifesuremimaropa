@@ -106,7 +106,7 @@ class ReportsController extends BaseController
         $builder = \Config\Database::connect()->table('agent a');
         $builder->select('a.username, a.lastname, a.firstname, a.middlename, a.FA, a.rank, a.agentprofile, a.agent_token, 
             (SELECT COUNT(*) FROM agent b WHERE b.FA = a.agent_id) AS total_fA');
-        $builder->having('total_fA > 0'); 
+        $builder->having('total_fA > 0');
         $builder->orderBy('total_fA', 'DESC');
         $builder->limit(3); // change for your desired number of top agents
 
@@ -177,18 +177,26 @@ class ReportsController extends BaseController
 
         // Filter agents and applicants by the selected month and year
         $agents = $this->agent->where('created_at >=', $startDate)
-                              ->where('created_at <=', $endDate)
-                              ->findAll();
+            ->where('created_at <=', $endDate)
+            ->findAll();
 
         $applicants = $this->applicant->where('created_at >=', $startDate)
-                                      ->where('created_at <=', $endDate)
-                                      ->where('status', 'confirmed')
-                                      ->findAll();
+            ->where('created_at <=', $endDate)
+            ->where('status', 'confirmed')
+            ->findAll();
+
+        // Get Top Recruiters
+        $topRecruiters = $this->topagentrecruters();
+
+        // Get Top Awardees based on commissions
+        $topAwardees = $this->topcommissioner();
 
         // Prepare and return JSON response with filtered data
         return $this->response->setJSON([
             'agents' => $agents,
             'applicants' => $applicants,
+            'top_recruiters' => $topRecruiters['top'],    // Include top recruiters
+            'top_awardees' => $topAwardees['top_commi'],  // Include top awardees
         ]);
     }
 }
