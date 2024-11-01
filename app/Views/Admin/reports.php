@@ -308,7 +308,7 @@
                 recruitersTableBody.innerHTML += row;
             });
 
-            const awardeesTableBody = document.querySelector('#awardees-table tbody');
+            const awardeesTableBody = document.querySelector('#awardee-table tbody');
             awardeesTableBody.innerHTML = '';
             data.top_awardees.forEach((awardee, index) => {
                 const row = `<tr>
