@@ -258,7 +258,7 @@
             const monthYear = document.getElementById('report-month').value;
             if (monthYear) {
                 const [year, month] = monthYear.split('-');
-                fetch(/reports/generateReport / ${ year } / ${ month })
+                fetch(/reports/generateReport/${year}/${month})
                     .then(response => response.json())
                     .then(data => {
                         // Update tables with data
@@ -278,10 +278,10 @@
             agentsTableBody.innerHTML = '';
             data.agents.forEach(agent => {
                 const row = <tr>
-                    <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
-                    <td>${agent.birthday}</td>
-                    <td>${agent.number}</td>
-                </tr>;
+                        <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                        <td>${agent.birthday}</td>
+                        <td>${agent.number}</td>
+                     </tr>;
                 agentsTableBody.innerHTML += row;
             });
 
@@ -289,10 +289,10 @@
             applicantsTableBody.innerHTML = '';
             data.applicants.forEach(applicant => {
                 const row = <tr>
-                    <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
-                    <td>${applicant.birthday}</td>
-                    <td>${applicant.number}</td>
-                </tr>;
+                        <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                        <td>${applicant.birthday}</td>
+                        <td>${applicant.number}</td>
+                     </tr>;
                 applicantsTableBody.innerHTML += row;
             });
 
@@ -300,10 +300,10 @@
             recruitersTableBody.innerHTML = '';
             data.top_recruiters.forEach((recruiter, index) => {
                 const row = <tr>
-                    <td>${index + 1}</td>
-                    <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
-                    <td>${recruiter.total_fA}</td>
-                </tr>;
+                        <td>${index + 1}</td>
+                        <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                        <td>${recruiter.total_fA}</td>
+                     </tr>;
                 recruitersTableBody.innerHTML += row;
             });
 
@@ -311,10 +311,10 @@
             awardeesTableBody.innerHTML = '';
             data.top_awardees.forEach((awardee, index) => {
                 const row = <tr>
-                    <td>${index + 1}</td>
-                    <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
-                    <td>${awardee.total_commissions}</td>
-                </tr>;
+                        <td>${index + 1}</td>
+                        <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                        <td>${awardee.total_commissions}</td>
+                     </tr>;
                 awardeesTableBody.innerHTML += row;
             });
         }
@@ -325,7 +325,7 @@
 
             // Add title
             doc.setFontSize(20);
-            doc.text(Report for ${ month } / ${ year }, 10, 10);
+            doc.text(Report for ${month}/${year}, 10, 10);
 
             // Function to draw a simple table
             function drawTable(headers, rows, startY) {
@@ -357,7 +357,7 @@
             doc.text('Agents', 10, 20);
             const agentHeaders = ['Name', 'Birthday', 'Contact'];
             const agentRows = data.agents.map(agent => [
-                ${ agent.lastname }, ${ agent.firstname } ${ agent.middlename },
+                ${agent.lastname}, ${agent.firstname} ${agent.middlename},
                 agent.birthday,
                 agent.number
             ]);
@@ -368,7 +368,7 @@
             doc.text('Applicants', 10, yPosition);
             const applicantHeaders = ['Name', 'Birthday', 'Contact'];
             const applicantRows = data.applicants.map(applicant => [
-                ${ applicant.lastname }, ${ applicant.firstname } ${ applicant.middlename },
+                ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename},
                 applicant.birthday,
                 applicant.number
             ]);
@@ -380,7 +380,7 @@
             const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
             const recruiterRows = data.top_recruiters.map((recruiter, index) => [
                 (index + 1).toString(),
-                ${ recruiter.lastname }, ${ recruiter.firstname } ${ recruiter.middlename },
+                ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename},
                 recruiter.total_fA.toString()
             ]);
             yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
@@ -391,13 +391,13 @@
             const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
             const awardeeRows = data.top_awardees.map((awardee, index) => [
                 (index + 1).toString(),
-                ${ awardee.lastname }, ${ awardee.firstname } ${ awardee.middlename },
+                ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename},
                 awardee.total_commissions.toString()
             ]);
             drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
 
             console.log("Saving PDF");
-            doc.save(report_${ month }_${ year }.pdf);
+            doc.save(report_${month}_${year}.pdf);
         }
 
     </script>
