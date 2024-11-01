@@ -113,10 +113,14 @@
                     </ul>
                 </div>
             </nav>
+
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
-                    <button id="generate-pdf" class="btn btn-primary">Generate Report</button>
+                    <div>
+                        <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
+                        <button id="generate-report-btn" class="btn btn-primary ms-2">Generate Report</button>
+                    </div>
                 </div>
                 <div class="row">
                     <!-- left and right table columns -->
@@ -155,27 +159,28 @@
                         <div class="card">
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Applicants</h5>
-                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;"></div>
-                                <table class="table table-hover" id="applicants-table">
-                                    <thead class="table-light sticky-top">
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Birthday</th>
-                                            <th scope="col">Contact</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($applicants as $applicant): ?>
+                                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                    <table class="table table-hover" id="applicants-table">
+                                        <thead class="table-light sticky-top">
                                             <tr>
-                                                <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?>
-                                                    <?= $applicant['middlename'] ?>.
-                                                </td>
-                                                <td><?= $applicant['birthday'] ?></td>
-                                                <td><?= $applicant['number'] ?></td>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Birthday</th>
+                                                <th scope="col">Contact</th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($applicants as $applicant): ?>
+                                                <tr>
+                                                    <td><?= $applicant['lastname'] ?>, <?= $applicant['firstname'] ?>
+                                                        <?= $applicant['middlename'] ?>.
+                                                    </td>
+                                                    <td><?= $applicant['birthday'] ?></td>
+                                                    <td><?= $applicant['number'] ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,15 +195,13 @@
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Rank</th>
-                                                <th scope="col">Top</th>
                                                 <th scope="col">Name</th>
-                                                <th scope="col">No. of Reqruits</th>
+                                                <th scope="col">No. of Recruits</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach ($top as $topagent): ?>
                                                 <tr>
-                                                    <td><?= $topagent['rank'] ?></td>
                                                     <td><?= $topagent['ranking'] ?></td>
                                                     <td><?= $topagent['lastname'] ?>, <?= $topagent['firstname'] ?>
                                                         <?= $topagent['middlename'] ?>.
@@ -246,77 +249,174 @@
             </main>
         </div>
     </div>
-    <!-- jsPDF library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <!-- jsPDF AutoTable plugin for tables -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.16/jspdf.plugin.autotable.min.js"></script>
 
-    <script>
-        document.getElementById('generate-pdf').addEventListener('click', function () {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Add a main title for the PDF
-            doc.text('Reports - Agents, Applicants, Recruiters & Awardees', 10, 10);
-
-            // Adding the label for Agents table
-            doc.text('Agents', 10, 20);
-
-            // Agents Table
-            doc.autoTable({
-                html: '#agents-table',
-                startY: 25, // Start just after the "Agents" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
-            });
-
-            // Get the final position after the first table
-            let finalY = doc.lastAutoTable.finalY + 10;
-
-            // Adding the label for Applicants table
-            doc.text('Applicants', 10, finalY);
-
-            // Applicants Table
-            doc.autoTable({
-                html: '#applicants-table',
-                startY: finalY + 5, // Start just after the "Applicants" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
-            });
-
-            // Get the final position after the second table
-            finalY = doc.lastAutoTable.finalY + 10;
-
-            // Adding the label for Top Recruiters table
-            doc.text('Top Recruiters', 10, finalY);
-
-            // Top Recruiters Table
-            doc.autoTable({
-                html: '#top-recruiters-table',
-                startY: finalY + 5, // Start just after the "Top Recruiters" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
-            });
-
-            // Get the final position after the third table
-            finalY = doc.lastAutoTable.finalY + 10;
-
-            // Adding the label for Awardee table
-            doc.text('Awardee', 10, finalY);
-
-            // Awardee Table
-            doc.autoTable({
-                html: '#awardee-table',
-                startY: finalY + 5, // Start just after the "Awardee" label
-                theme: 'striped',
-                headStyles: { fillColor: [22, 160, 133] }
-            });
-
-            // Save the PDF
-            doc.save('report.pdf');
-        });
-    </script>
     <?= view('js'); ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById('generate-report-btn').addEventListener('click', function () {
+            const monthYear = document.getElementById('report-month').value;
+            if (monthYear) {
+                const [year, month] = monthYear.split('-');
+                fetch(`/reports/generateReport/${year}/${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update tables with data
+                        updateTables(data);
+
+                        // Generate PDF
+                        generatePDF(data, month, year);
+                    })
+                    .catch(error => console.error('Error fetching report:', error));
+            } else {
+                alert("Please select a month and year.");
+            }
+        });
+
+        function updateTables(data) {
+            const agentsTableBody = document.querySelector('#agents-table tbody');
+            agentsTableBody.innerHTML = '';
+            data.agents.forEach(agent => {
+                const row = `<tr>
+                        <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                        <td>${agent.birthday}</td>
+                        <td>${agent.number}</td>
+                     </tr>`;
+                agentsTableBody.innerHTML += row;
+            });
+
+            const applicantsTableBody = document.querySelector('#applicants-table tbody');
+            applicantsTableBody.innerHTML = '';
+            data.applicants.forEach(applicant => {
+                const row = `<tr>
+                        <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                        <td>${applicant.birthday}</td>
+                        <td>${applicant.number}</td>
+                     </tr>`;
+                applicantsTableBody.innerHTML += row;
+            });
+
+            const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
+            recruitersTableBody.innerHTML = '';
+            data.top_recruiters.forEach((recruiter, index) => {
+                const row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                        <td>${recruiter.total_fA}</td>
+                     </tr>`;
+                recruitersTableBody.innerHTML += row;
+            });
+
+            const awardeesTableBody = document.querySelector('#awardee-table tbody');
+            awardeesTableBody.innerHTML = '';
+            data.top_awardees.forEach((awardee, index) => {
+                const row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                        <td>${awardee.total_commissions}</td>
+                     </tr>`;
+                awardeesTableBody.innerHTML += row;
+            });
+        }
+
+        function generatePDF(data, month, year) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Add title
+    doc.setFontSize(20);
+    doc.text(`Report for ${month}/${year}`, 10, 10);
+
+    // Function to draw a table
+    function drawTable(headers, rows, startY) {
+        const colWidth = 60; // Width of each column
+        const rowHeight = 10; // Height of each row
+        let y = startY;
+
+        // Draw headers
+        doc.setFillColor(100, 149, 237); // Cornflower Blue
+        doc.rect(10, y - rowHeight, headers.length * colWidth, rowHeight, 'F'); // Fill header background
+        doc.setTextColor(255, 255, 255); // White text
+        doc.setFontSize(12);
+        headers.forEach((header, index) => {
+            doc.text(header, 10 + index * colWidth + 5, y - 2); // Offset for padding
+        });
+        doc.setTextColor(0, 0, 0); // Reset text color to black
+        y += rowHeight;
+
+        // Draw rows
+        rows.forEach((row, rowIndex) => {
+            row.forEach((cell, index) => {
+                // Draw cell border
+                doc.rect(10 + index * colWidth, y, colWidth, rowHeight);
+                // Fill alternate rows with light gray
+                if (rowIndex % 2 === 0) {
+                    doc.setFillColor(240, 240, 240); // Light Gray
+                    doc.rect(10 + index * colWidth, y, colWidth, rowHeight, 'F');
+                }
+                doc.setTextColor(0, 0, 0); // Black text
+                doc.text(cell, 10 + index * colWidth + 2, y + 7); // Offset for padding
+            });
+            y += rowHeight;
+        });
+
+        // Draw separator at the end of the table
+        doc.setDrawColor(0); // Black
+        doc.line(10, y, 10 + headers.length * colWidth, y);
+        y += 5; // Adding space after the table
+
+        return y; // Return the new Y position for the next section
+    }
+
+    // Add Agents section
+    doc.setFontSize(16);
+    doc.text('Agents', 10, 20);
+    const agentHeaders = ['Name', 'Birthday', 'Contact'];
+    const agentRows = data.agents.map(agent => [
+        `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+        agent.birthday,
+        agent.number
+    ]);
+    let yPosition = drawTable(agentHeaders, agentRows, 30);
+
+    // Add Applicants section
+    doc.setFontSize(16);
+    doc.text('Applicants', 10, yPosition);
+    const applicantHeaders = ['Name', 'Birthday', 'Contact'];
+    const applicantRows = data.applicants.map(applicant => [
+        `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+        applicant.birthday,
+        applicant.number
+    ]);
+    yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
+
+    // Add Top Recruiters section
+    doc.setFontSize(16);
+    doc.text('Top Recruiters', 10, yPosition);
+    const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
+    const recruiterRows = data.top_recruiters.map((recruiter, index) => [
+        (index + 1).toString(),
+        `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+        recruiter.total_fA.toString()
+    ]);
+    yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
+
+    // Add Awardees section
+    doc.setFontSize(16);
+    doc.text('Awardees', 10, yPosition);
+    const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
+    const awardeeRows = data.top_awardees.map((awardee, index) => [
+        (index + 1).toString(),
+        `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+        awardee.total_commissions.toString()
+    ]);
+    drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
+
+    console.log("Saving PDF");
+    doc.save(`report_${month}_${year}.pdf`);
+}
+
+    </script>
 </body>
 
 </html>
