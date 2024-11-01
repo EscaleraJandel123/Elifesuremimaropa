@@ -329,7 +329,7 @@
 
             // Function to draw a simple table with borders and background colors
             function drawTable(headers, rows, startY) {
-                const colWidth = 60; // Width of each column
+                const colWidth = 40; // Width of each column
                 const rowHeight = 10; // Height of each row
                 let y = startY;
 
@@ -340,7 +340,7 @@
                 doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
 
                 headers.forEach((header, index) => {
-                    doc.text(header, 5 + index * colWidth + 5, y); // Offset for padding
+                    doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
                 });
                 y += rowHeight; // Move down for rows
 
