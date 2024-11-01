@@ -279,10 +279,10 @@
             agentsTableBody.innerHTML = '';
             data.agents.forEach(agent => {
                 const row = `<tr>
-                        <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
-                        <td>${agent.birthday}</td>
-                        <td>${agent.number}</td>
-                     </tr>`;
+                    <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                    <td>${agent.birthday}</td>
+                    <td>${agent.number}</td>
+                 </tr>`;
                 agentsTableBody.innerHTML += row;
             });
 
@@ -290,10 +290,10 @@
             applicantsTableBody.innerHTML = '';
             data.applicants.forEach(applicant => {
                 const row = `<tr>
-                        <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
-                        <td>${applicant.birthday}</td>
-                        <td>${applicant.number}</td>
-                     </tr>`;
+                    <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                    <td>${applicant.birthday}</td>
+                    <td>${applicant.number}</td>
+                 </tr>`;
                 applicantsTableBody.innerHTML += row;
             });
 
@@ -301,10 +301,10 @@
             recruitersTableBody.innerHTML = '';
             data.top_recruiters.forEach((recruiter, index) => {
                 const row = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
-                        <td>${recruiter.total_fA}</td>
-                     </tr>`;
+                    <td>${index + 1}</td>
+                    <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                    <td>${recruiter.total_fA}</td>
+                 </tr>`;
                 recruitersTableBody.innerHTML += row;
             });
 
@@ -312,10 +312,10 @@
             awardeesTableBody.innerHTML = '';
             data.top_awardees.forEach((awardee, index) => {
                 const row = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
-                        <td>${awardee.total_commissions}</td>
-                     </tr>`;
+                    <td>${index + 1}</td>
+                    <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                    <td>${awardee.total_commissions}</td>
+                 </tr>`;
                 awardeesTableBody.innerHTML += row;
             });
         }
@@ -324,44 +324,69 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
+            // Convert month number to name
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const monthName = monthNames[parseInt(month) - 1];
+
             // Add title
             doc.setFontSize(20);
-            doc.text(`Report for ${month}/${year}`, 10, 10);
+            doc.text(`Report for the Month of ${monthName} ${year}`, 10, 10);
 
-            // Add Agents section
-            doc.setFontSize(16);
-            doc.text('Agents', 10, 20);
-            doc.setFontSize(12);
-            data.agents.forEach((agent, index) => {
-                doc.text(`${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}. Contact: ${agent.number}`, 10, 30 + (index * 10));
-            });
+            // Define function to add a table
+            function addTable(title, headers, dataRows, startY) {
+                doc.setFontSize(16);
+                doc.text(title, 10, startY);
+                doc.setFontSize(12);
 
-            // Add Applicants section
-            doc.setFontSize(16);
-            doc.text('Applicants', 10, 50 + (data.agents.length * 10));
-            doc.setFontSize(12);
-            data.applicants.forEach((applicant, index) => {
-                doc.text(`${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}. Contact: ${applicant.number}`, 10, 60 + (data.agents.length * 10) + (index * 10));
-            });
+                // Table Headers
+                let posY = startY + 10;
+                headers.forEach((header, index) => {
+                    doc.text(header, 10 + index * 60, posY);
+                });
 
-            // Add Top Recruiters section
-            doc.setFontSize(16);
-            doc.text('Top Recruiters', 10, 80 + ((data.agents.length + data.applicants.length) * 10));
-            doc.setFontSize(12);
-            data.top_recruiters.forEach((recruiter, index) => {
-                doc.text(`${index + 1}. ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}. Recruits: ${recruiter.total_fA}`, 10, 90 + ((data.agents.length + data.applicants.length) * 10) + (index * 10));
-            });
+                // Table Rows
+                posY += 10;
+                dataRows.forEach((row, rowIndex) => {
+                    row.forEach((cell, cellIndex) => {
+                        doc.text(cell, 10 + cellIndex * 60, posY + rowIndex * 10);
+                    });
+                });
+            }
 
-            // Add Awardees section
-            doc.setFontSize(16);
-            doc.text('Awardees', 10, 110 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10));
-            doc.setFontSize(12);
-            data.top_awardees.forEach((awardee, index) => {
-                doc.text(`${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}. Commissions: ${awardee.total_commissions}`, 10, 120 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10) + (index * 10));
-            });
+            // Agents Table
+            const agentsData = data.agents.map((agent, index) => [
+                `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+                agent.birthday,
+                agent.number,
+            ]);
+            addTable("Agents", ["Name", "Birthday", "Contact"], agentsData, 30);
 
-            console.log("Saving PDF");
-            doc.save(`report_${month}_${year}.pdf`);
+            // Applicants Table
+            const applicantsData = data.applicants.map((applicant, index) => [
+                `${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+                applicant.birthday,
+                applicant.number,
+            ]);
+            addTable("Applicants", ["Name", "Birthday", "Contact"], applicantsData, 80 + agentsData.length * 10);
+
+            // Top Recruiters Table
+            const recruitersData = data.top_recruiters.map((recruiter, index) => [
+                `${index + 1}`,
+                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+                recruiter.total_fA,
+            ]);
+            addTable("Top Recruiters", ["Rank", "Name", "No. of Recruits"], recruitersData, 130 + (agentsData.length + applicantsData.length) * 10);
+
+            // Awardees Table
+            const awardeesData = data.top_awardees.map((awardee, index) => [
+                `${index + 1}`,
+                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+                awardee.total_commissions,
+            ]);
+            addTable("Awardees", ["Top", "Name", "Total Commissions"], awardeesData, 180 + (agentsData.length + applicantsData.length + recruitersData.length) * 10);
+
+            // Save the PDF
+            doc.save(`report_${monthName}_${year}.pdf`);
         }
     </script>
 </body>
