@@ -253,116 +253,164 @@
     <?= view('js'); ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
-        document.getElementById('generate-report-btn').addEventListener('click', function () {
-            const monthYear = document.getElementById('report-month').value;
-            if (monthYear) {
-                const [year, month] = monthYear.split('-');
-                fetch(`/reports/generateReport/${year}/${month}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Update tables with data
-                        updateTables(data);
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.12/jspdf.plugin.autotable.min.js"></script>
+<script>
+    document.getElementById('generate-report-btn').addEventListener('click', function () {
+        const monthYear = document.getElementById('report-month').value;
+        if (monthYear) {
+            const [year, month] = monthYear.split('-');
+            fetch(`/reports/generateReport/${year}/${month}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update tables with data
+                    updateTables(data);
 
-                        // Generate PDF
-                        generatePDF(data, month, year);
-                    })
-                    .catch(error => console.error('Error fetching report:', error));
-            } else {
-                alert("Please select a month and year.");
-            }
+                    // Generate PDF
+                    generatePDF(data, month, year);
+                })
+                .catch(error => console.error('Error fetching report:', error));
+        } else {
+            alert("Please select a month and year.");
+        }
+    });
+
+    function updateTables(data) {
+        const agentsTableBody = document.querySelector('#agents-table tbody');
+        agentsTableBody.innerHTML = '';
+        data.agents.forEach(agent => {
+            const row = `<tr>
+                    <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                    <td>${agent.birthday}</td>
+                    <td>${agent.number}</td>
+                 </tr>`;
+            agentsTableBody.innerHTML += row;
         });
 
-        function updateTables(data) {
-            const agentsTableBody = document.querySelector('#agents-table tbody');
-            agentsTableBody.innerHTML = '';
-            data.agents.forEach(agent => {
-                const row = `<tr>
-                        <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
-                        <td>${agent.birthday}</td>
-                        <td>${agent.number}</td>
-                     </tr>`;
-                agentsTableBody.innerHTML += row;
-            });
+        const applicantsTableBody = document.querySelector('#applicants-table tbody');
+        applicantsTableBody.innerHTML = '';
+        data.applicants.forEach(applicant => {
+            const row = `<tr>
+                    <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                    <td>${applicant.birthday}</td>
+                    <td>${applicant.number}</td>
+                 </tr>`;
+            applicantsTableBody.innerHTML += row;
+        });
 
-            const applicantsTableBody = document.querySelector('#applicants-table tbody');
-            applicantsTableBody.innerHTML = '';
-            data.applicants.forEach(applicant => {
-                const row = `<tr>
-                        <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
-                        <td>${applicant.birthday}</td>
-                        <td>${applicant.number}</td>
-                     </tr>`;
-                applicantsTableBody.innerHTML += row;
-            });
+        const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
+        recruitersTableBody.innerHTML = '';
+        data.top_recruiters.forEach((recruiter, index) => {
+            const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                    <td>${recruiter.total_fA}</td>
+                 </tr>`;
+            recruitersTableBody.innerHTML += row;
+        });
 
-            const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
-            recruitersTableBody.innerHTML = '';
-            data.top_recruiters.forEach((recruiter, index) => {
-                const row = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
-                        <td>${recruiter.total_fA}</td>
-                     </tr>`;
-                recruitersTableBody.innerHTML += row;
-            });
+        const awardeesTableBody = document.querySelector('#awardee-table tbody');
+        awardeesTableBody.innerHTML = '';
+        data.top_awardees.forEach((awardee, index) => {
+            const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                    <td>${awardee.total_commissions}</td>
+                 </tr>`;
+            awardeesTableBody.innerHTML += row;
+        });
+    }
 
-            const awardeesTableBody = document.querySelector('#awardee-table tbody');
-            awardeesTableBody.innerHTML = '';
-            data.top_awardees.forEach((awardee, index) => {
-                const row = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
-                        <td>${awardee.total_commissions}</td>
-                     </tr>`;
-                awardeesTableBody.innerHTML += row;
-            });
-        }
+    function generatePDF(data, month, year) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
-        function generatePDF(data, month, year) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+        // Add title
+        doc.setFontSize(20);
+        doc.text(`Report for ${month}/${year}`, 10, 10);
 
-            // Add title
-            doc.setFontSize(20);
-            doc.text(`Report for ${month}/${year}`, 10, 10);
+        // Add Agents section
+        doc.setFontSize(16);
+        doc.text('Agents', 10, 20);
 
-            // Add Agents section
-            doc.setFontSize(16);
-            doc.text('Agents', 10, 20);
-            doc.setFontSize(12);
-            data.agents.forEach((agent, index) => {
-                doc.text(`${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}. Contact: ${agent.number}`, 10, 30 + (index * 10));
-            });
+        const agentsData = data.agents.map((agent, index) => [
+            `${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}.`,
+            agent.birthday,
+            agent.number,
+        ]);
 
-            // Add Applicants section
-            doc.setFontSize(16);
-            doc.text('Applicants', 10, 50 + (data.agents.length * 10));
-            doc.setFontSize(12);
-            data.applicants.forEach((applicant, index) => {
-                doc.text(`${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}. Contact: ${applicant.number}`, 10, 60 + (data.agents.length * 10) + (index * 10));
-            });
+        doc.autoTable({
+            head: [['Name', 'Birthday', 'Contact']],
+            body: agentsData,
+            startY: 30,
+            theme: 'grid',
+            styles: {
+                fontSize: 12,
+            },
+        });
 
-            // Add Top Recruiters section
-            doc.setFontSize(16);
-            doc.text('Top Recruiters', 10, 80 + ((data.agents.length + data.applicants.length) * 10));
-            doc.setFontSize(12);
-            data.top_recruiters.forEach((recruiter, index) => {
-                doc.text(`${index + 1}. ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}. Recruits: ${recruiter.total_fA}`, 10, 90 + ((data.agents.length + data.applicants.length) * 10) + (index * 10));
-            });
+        // Add Applicants section
+        doc.setFontSize(16);
+        doc.text('Applicants', 10, doc.lastAutoTable.finalY + 10);
 
-            // Add Awardees section
-            doc.setFontSize(16);
-            doc.text('Awardees', 10, 110 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10));
-            doc.setFontSize(12);
-            data.top_awardees.forEach((awardee, index) => {
-                doc.text(`${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}. Commissions: ${awardee.total_commissions}`, 10, 120 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10) + (index * 10));
-            });
+        const applicantsData = data.applicants.map((applicant, index) => [
+            `${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.`,
+            applicant.birthday,
+            applicant.number,
+        ]);
 
-            console.log("Saving PDF");
-            doc.save(`report_${month}_${year}.pdf`);
-        }
-    </script>
+        doc.autoTable({
+            head: [['Name', 'Birthday', 'Contact']],
+            body: applicantsData,
+            startY: doc.lastAutoTable.finalY + 20,
+            theme: 'grid',
+            styles: {
+                fontSize: 12,
+            },
+        });
+
+        // Add Top Recruiters section
+        doc.setFontSize(16);
+        doc.text('Top Recruiters', 10, doc.lastAutoTable.finalY + 10);
+
+        const recruitersData = data.top_recruiters.map((recruiter, index) => [
+            `${index + 1}. ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}.`,
+            recruiter.total_fA,
+        ]);
+
+        doc.autoTable({
+            head: [['Name', 'No. of Recruits']],
+            body: recruitersData,
+            startY: doc.lastAutoTable.finalY + 20,
+            theme: 'grid',
+            styles: {
+                fontSize: 12,
+            },
+        });
+
+        // Add Awardees section
+        doc.setFontSize(16);
+        doc.text('Awardees', 10, doc.lastAutoTable.finalY + 10);
+
+        const awardeesData = data.top_awardees.map((awardee, index) => [
+            `${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}.`,
+            awardee.total_commissions,
+        ]);
+
+        doc.autoTable({
+            head: [['Name', 'Total Commissions']],
+            body: awardeesData,
+            startY: doc.lastAutoTable.finalY + 20,
+            theme: 'grid',
+            styles: {
+                fontSize: 12,
+            },
+        });
+
+        console.log("Saving PDF");
+        doc.save(`report_${month}_${year}.pdf`);
+    }
+</script>
+
 </body>
 
 </html>
