@@ -373,7 +373,7 @@
             }
             // Add Agents section
             doc.setFontSize(16);
-            doc.text('Agents', 15, 20);
+            doc.text('Agents', 10, 20);
             const agentHeaders = ['Name', 'Birthday', 'Contact'];
             const agentRows = data.agents.map(agent => [
                 `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
@@ -391,7 +391,7 @@
                 applicant.birthday,
                 applicant.number
             ]);
-            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 15);
+            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
 
             // Add Top Recruiters section
             doc.setFontSize(16);
@@ -402,7 +402,7 @@
                 `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
                 recruiter.total_fA.toString()
             ]);
-            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 15);
+            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
 
             // Add Awardees section
             doc.setFontSize(16);
@@ -413,7 +413,7 @@
                 `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
                 awardee.total_commissions.toString()
             ]);
-            drawTable(awardeeHeaders, awardeeRows, yPosition + 15);
+            drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
 
             console.log("Saving PDF");
             doc.save(`report_${month}_${year}.pdf`);
