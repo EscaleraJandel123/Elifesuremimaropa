@@ -373,15 +373,16 @@
             }
 
             // Add Agents section
+            let yPosition = 30; // Start position for the first section
             doc.setFontSize(16);
-            doc.text('Agents', 10, 20);
+            doc.text('Agents', 10, yPosition);
             const agentHeaders = ['Name', 'Birthday', 'Contact'];
             const agentRows = data.agents.map(agent => [
                 `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
                 agent.birthday,
                 agent.number
             ]);
-            let yPosition = drawTable(agentHeaders, agentRows, 30);
+            yPosition = drawTable(agentHeaders, agentRows, yPosition + 10); // Update yPosition
 
             // Add Applicants section
             doc.setFontSize(16);
@@ -392,7 +393,7 @@
                 applicant.birthday,
                 applicant.number
             ]);
-            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
+            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10); // Update yPosition
 
             // Add Top Recruiters section
             doc.setFontSize(16);
@@ -403,7 +404,7 @@
                 `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
                 recruiter.total_fA.toString()
             ]);
-            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
+            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10); // Update yPosition
 
             // Add Awardees section
             doc.setFontSize(16);
@@ -414,12 +415,11 @@
                 `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
                 awardee.total_commissions.toString()
             ]);
-            drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
+            drawTable(awardeeHeaders, awardeeRows, yPosition + 10); // Final yPosition adjustment
 
             console.log("Saving PDF");
             doc.save(`report_${month}_${year}.pdf`);
         }
-
     </script>
 </body>
 
