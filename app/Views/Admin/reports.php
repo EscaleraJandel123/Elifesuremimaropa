@@ -397,8 +397,7 @@
             doc.setFontSize(16);
             doc.text('Top Recruiters', 10, yPosition);
             const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
-            const recruiterRows = data.top_recruiters.map((recruiter, index) => [
-                (index + 1).toString(),
+            const recruiterRows = data.top_recruiters.map(recruiter => [
                 `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
                 recruiter.total_fA.toString()
             ]);
