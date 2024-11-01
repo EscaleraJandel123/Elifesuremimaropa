@@ -340,7 +340,7 @@
                 doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
 
                 headers.forEach((header, index) => {
-                    doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
+                    doc.text(header, 5 + index * colWidth + 5, y); // Offset for padding
                 });
                 y += rowHeight; // Move down for rows
 
