@@ -129,7 +129,7 @@
                             <div class="table-responsive mx-3">
                                 <h5 class="card-title mt-3">Agents</h5>
                                 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                    <table class="table table-hover" id="agents-table">
+                                <table class="table table-hover" id="agents-table">
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Name</th>
@@ -138,7 +138,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- Dynamic content will be inserted here -->
+                                            <?php foreach ($agents as $agent): ?>
+                                                <tr>
+                                                    <td><?= $agent['lastname'] ?>, <?= $agent['firstname'] ?>
+                                                        <?= $agent['middlename'] ?>.
+                                                    </td>
+                                                    <td><?= $agent['birthday'] ?></td>
+                                                    <td><?= $agent['number'] ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
