@@ -320,106 +320,114 @@
         }
 
         function generatePDF(data, month, year) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-            // Function to get month name from month number
-            function getMonthName(monthNumber) {
-                const monthNames = [
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-                ];
-                return monthNames[monthNumber - 1]; // Month numbers are 1-based
-            }
+    // Function to get month name from month number
+    function getMonthName(monthNumber) {
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        return monthNames[monthNumber - 1]; // Month numbers are 1-based
+    }
 
-            // Add title
-            const monthName = getMonthName(parseInt(month)); // Convert month to integer and get name
-            doc.setFontSize(20);
-            doc.text(`Month of ${monthName} ${year}`, 10, 10); // Updated title
+    // Add title
+    const monthName = getMonthName(parseInt(month)); // Convert month to integer and get name
+    doc.setFontSize(20);
+    doc.text(`Month of ${monthName} ${year}`, 10, 10); // Updated title
 
-            // Function to draw a simple table with borders and background colors
-            function drawTable(headers, rows, startY) {
-                const colWidth = 60; // Width of each column
-                const rowHeight = 10; // Height of each row (increased for padding)
-                const textOffset = 2; // Padding between text and top of the cell
-                let y = startY;
+    // Function to draw a simple table with borders and background colors
+    function drawTable(headers, rows, startY) {
+        const colWidth = 60; // Width of each column
+        const rowHeight = 10; // Height of each row (increased for padding)
+        const textOffset = 2; // Padding between text and top of the cell
+        let y = startY;
 
-                // Draw headers
-                doc.setFontSize(12);
-                doc.setTextColor(255, 255, 255); // White text
-                doc.setFillColor(0, 102, 204); // Blue background
-                doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
+        // Draw headers
+        doc.setFontSize(12);
+        doc.setTextColor(255, 255, 255); // White text
+        doc.setFillColor(0, 102, 204); // Blue background
+        doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
 
-                headers.forEach((header, index) => {
-                    // Center the text in the header
-                    const headerX = 10 + index * colWidth + colWidth / 2; // Center X position
-                    doc.text(header, headerX, y - textOffset, { align: 'center' }); // Center align
+        headers.forEach((header, index) => {
+            // Center the text in the header
+            const headerX = 10 + index * colWidth + colWidth / 2; // Center X position
+            doc.text(header, headerX, y - textOffset, { align: 'center' }); // Center align
+        });
+        y += rowHeight; // Move down for rows
+
+        // Draw rows
+        if (rows.length === 0) {
+            doc.setTextColor(0, 0, 0); // Black text
+            const noDataX = 10 + colWidth / 2; // Center X position for "No Data"
+            doc.text("No data available", noDataX, y - textOffset, { align: 'center' });
+            y += rowHeight; // Move down after "No data"
+        } else {
+            rows.forEach((row) => {
+                doc.setTextColor(0, 0, 0); // Black text
+                row.forEach((cell, index) => {
+                    // Center the text in each cell
+                    const cellX = 10 + index * colWidth + colWidth / 2; // Center X position
+                    doc.text(cell, cellX, y - textOffset, { align: 'center' }); // Center align
                 });
-                y += rowHeight; // Move down for rows
-
-                // Draw rows
-                rows.forEach((row) => {
-                    doc.setTextColor(0, 0, 0); // Black text
-                    row.forEach((cell, index) => {
-                        // Center the text in each cell
-                        const cellX = 10 + index * colWidth + colWidth / 2; // Center X position
-                        doc.text(cell, cellX, y - textOffset, { align: 'center' }); // Center align
-                    });
-                    doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
-                    y += rowHeight; // Move down for the next row
-                });
-
-                return y; // Return the new Y position for the next section
-            }
-
-            // Add Agents section
-            let yPosition = 30; // Start position for the first section
-            doc.setFontSize(16);
-            doc.text('Agents', 10, yPosition);
-            const agentHeaders = ['Name', 'Birthday', 'Contact'];
-            const agentRows = data.agents.map(agent => [
-                `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
-                agent.birthday,
-                agent.number
-            ]);
-            yPosition = drawTable(agentHeaders, agentRows, yPosition + 10); // Update yPosition
-
-            // Add Applicants section
-            doc.setFontSize(16);
-            doc.text('Applicants', 10, yPosition);
-            const applicantHeaders = ['Name', 'Birthday', 'Contact'];
-            const applicantRows = data.applicants.map(applicant => [
-                `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
-                applicant.birthday,
-                applicant.number
-            ]);
-            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10); // Update yPosition
-
-            // Add Top Recruiters section
-            doc.setFontSize(16);
-            doc.text('Top_Recruiters', 10, yPosition);
-            const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
-            const recruiterRows = data.top_recruiters.map((recruiter, index) => [
-                (index + 1).toString(),
-                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
-                recruiter.total_fA.toString()
-            ]);
-            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10); // Update yPosition
-
-            // Add Awardees section
-            doc.setFontSize(16);
-            doc.text('Awardees', 10, yPosition);
-            const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
-            const awardeeRows = data.top_awardees.map((awardee, index) => [
-                (index + 1).toString(),
-                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
-                awardee.total_commissions.toString()
-            ]);
-            drawTable(awardeeHeaders, awardeeRows, yPosition + 10); // Final yPosition adjustment
-
-            console.log("Saving PDF");
-            doc.save(`report_${month}_${year}.pdf`);
+                doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
+                y += rowHeight; // Move down for the next row
+            });
         }
+
+        return y; // Return the new Y position for the next section
+    }
+
+    // Add Agents section
+    let yPosition = 30; // Start position for the first section
+    doc.setFontSize(16);
+    doc.text('Agents', 10, yPosition);
+    const agentHeaders = ['Name', 'Birthday', 'Contact'];
+    const agentRows = data.agents.map(agent => [
+        `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+        agent.birthday,
+        agent.number
+    ]);
+    yPosition = drawTable(agentHeaders, agentRows, yPosition + 15); // 15 for extra space after section
+
+    // Add Applicants section
+    doc.setFontSize(16);
+    doc.text('Applicants', 10, yPosition);
+    const applicantHeaders = ['Name', 'Birthday', 'Contact'];
+    const applicantRows = data.applicants.map(applicant => [
+        `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+        applicant.birthday,
+        applicant.number
+    ]);
+    yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 15); // 15 for extra space after section
+
+    // Add Top Recruiters section
+    doc.setFontSize(16);
+    doc.text('Top Recruiters', 10, yPosition);
+    const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
+    const recruiterRows = data.top_recruiters.map((recruiter, index) => [
+        (index + 1).toString(),
+        `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+        recruiter.total_fA.toString()
+    ]);
+    yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 15); // 15 for extra space after section
+
+    // Add Awardees section
+    doc.setFontSize(16);
+    doc.text('Awardees', 10, yPosition);
+    const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
+    const awardeeRows = data.top_awardees.map((awardee, index) => [
+        (index + 1).toString(),
+        `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+        awardee.total_commissions.toString()
+    ]);
+    yPosition = drawTable(awardeeHeaders, awardeeRows, yPosition + 15); // 15 for extra space after section
+
+    console.log("Saving PDF");
+    doc.save(`report_${month}_${year}.pdf`);
+}
+
     </script>
 </body>
 
