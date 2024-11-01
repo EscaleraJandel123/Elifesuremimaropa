@@ -331,39 +331,39 @@
     const titleX = (doc.internal.pageSize.getWidth() - titleWidth) / 2; // Centering the title
     doc.text(title, titleX, 10);
 
-    function drawTable(headers, rows, startY) {
-    const colWidth = 60; // Width of each column
-    const rowHeight = 10; // Height of each row
-    let y = startY;
+    // // Function to draw a simple table with borders and background colors
+    // function drawTable(headers, rows, startY) {
+    //     const colWidth = 60; // Width of each column
+    //     const rowHeight = 10; // Height of each row
+    //     let y = startY;
 
-    // Draw headers
-    doc.setFontSize(12);
-    doc.setTextColor(255, 255, 255); // White text
-    doc.setFillColor(0, 102, 204); // Blue background
-    doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
+    //     // Draw headers
+    //     doc.setFontSize(12);
+    //     doc.setTextColor(255, 255, 255); // White text
+    //     doc.setFillColor(0, 102, 204); // Blue background
+    //     doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
 
-    headers.forEach((header, index) => {
-        const textWidth = doc.getTextWidth(header);
-        const x = 10 + index * colWidth + (colWidth - textWidth) / 2 + 5; // Center text horizontally
-        doc.text(header, x, y + (rowHeight / 2)); // Center text vertically
-    });
-    y += rowHeight; // Move down for rows
+    //     headers.forEach((header, index) => {
+    //         const headerWidth = doc.getTextWidth(header);
+    //         const headerX = 10 + (index * colWidth) + (colWidth - headerWidth) / 2; // Centering the header
+    //         doc.text(header, headerX, y); // Offset for padding
+    //     });
+    //     y += rowHeight; // Move down for rows
 
-    // Draw rows
-    rows.forEach((row) => {
-        doc.setTextColor(0, 0, 0); // Black text
-        row.forEach((cell, index) => {
-            const textWidth = doc.getTextWidth(cell);
-            const x = 10 + index * colWidth + (colWidth - textWidth) / 2 + 5; // Center text horizontally
-            doc.text(cell, x, y + (rowHeight / 2)); // Center text vertically
-        });
-        doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
-        y += rowHeight; // Move down for the next row
-    });
+    //     // Draw rows
+    //     rows.forEach((row) => {
+    //         doc.setTextColor(0, 0, 0); // Black text
+    //         row.forEach((cell, index) => {
+    //             const cellWidth = doc.getTextWidth(cell);
+    //             const cellX = 10 + (index * colWidth) + (colWidth - cellWidth) / 2; // Centering the cell
+    //             doc.text(cell, cellX, y); // Offset for padding
+    //         });
+    //         doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
+    //         y += rowHeight; // Move down for the next row
+    //     });
 
-    return y; // Return the new Y position for the next section
-}
-
+    //     return y; // Return the new Y position for the next section
+    // }
 
     // Add Agents section
     doc.setFontSize(16);
