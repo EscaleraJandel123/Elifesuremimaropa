@@ -195,6 +195,7 @@
                                         <thead class="table-light sticky-top">
                                             <tr>
                                                 <th scope="col">Rank</th>
+                                                <th scope="col">Top</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">No. of Recruits</th>
                                             </tr>
