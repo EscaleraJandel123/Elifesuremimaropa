@@ -372,59 +372,53 @@
                 return y; // Return the new Y position for the next section
             }
 
-            // Function to check data and add "No data available" if necessary
-            function addDataSection(title, headers, rows, yPosition) {
-                doc.setFontSize(16);
-                doc.text(title, 10, yPosition);
-                if (rows.length === 0) {
-                    doc.setFontSize(12);
-                    doc.setTextColor(255, 0, 0); // Red text
-                    doc.text('No data available', 10, yPosition + 10); // Add no data message
-                    return yPosition + 20; // Increase yPosition for the next section
-                }
-                return drawTable(headers, rows, yPosition + 10); // Draw table and return new position
-            }
-
             // Add Agents section
+            doc.setFontSize(16);
+            doc.text('Agents', 10, 20);
             const agentHeaders = ['Name', 'Birthday', 'Contact'];
             const agentRows = data.agents.map(agent => [
                 `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
                 agent.birthday,
                 agent.number
             ]);
-            let yPosition = addDataSection('Agents', agentHeaders, agentRows, 30);
+            let yPosition = drawTable(agentHeaders, agentRows, 30);
 
             // Add Applicants section
+            doc.setFontSize(16);
+            doc.text('Applicants', 10, yPosition);
             const applicantHeaders = ['Name', 'Birthday', 'Contact'];
             const applicantRows = data.applicants.map(applicant => [
                 `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
                 applicant.birthday,
                 applicant.number
             ]);
-            yPosition = addDataSection('Applicants', applicantHeaders, applicantRows, yPosition);
+            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
 
             // Add Top Recruiters section
+            doc.setFontSize(16);
+            doc.text('Top Recruiters', 10, yPosition);
             const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
             const recruiterRows = data.top_recruiters.map((recruiter, index) => [
                 (index + 1).toString(),
                 `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
                 recruiter.total_fA.toString()
             ]);
-            yPosition = addDataSection('Top Recruiters', recruiterHeaders, recruiterRows, yPosition);
+            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
 
             // Add Awardees section
+            doc.setFontSize(16);
+            doc.text('Awardees', 10, yPosition);
             const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
             const awardeeRows = data.top_awardees.map((awardee, index) => [
                 (index + 1).toString(),
                 `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
                 awardee.total_commissions.toString()
             ]);
-            addDataSection('Awardees', awardeeHeaders, awardeeRows, yPosition);
+            drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
 
             console.log("Saving PDF");
             doc.save(`report_${month}_${year}.pdf`);
         }
-
 
     </script>
 </body>
