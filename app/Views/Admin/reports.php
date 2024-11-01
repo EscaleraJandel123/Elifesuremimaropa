@@ -327,43 +327,27 @@
     doc.setFontSize(20);
     doc.text(`Report for ${month}/${year}`, 10, 10);
 
-    // Function to draw a table
+    // Function to draw a simple table
     function drawTable(headers, rows, startY) {
         const colWidth = 60; // Width of each column
         const rowHeight = 10; // Height of each row
         let y = startY;
 
         // Draw headers
-        doc.setFillColor(100, 149, 237); // Cornflower Blue
-        doc.rect(10, y - rowHeight, headers.length * colWidth, rowHeight, 'F'); // Fill header background
-        doc.setTextColor(255, 255, 255); // White text
         doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0); // Black text
         headers.forEach((header, index) => {
-            doc.text(header, 10 + index * colWidth + 5, y - 2); // Offset for padding
+            doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
         });
-        doc.setTextColor(0, 0, 0); // Reset text color to black
-        y += rowHeight;
+        y += rowHeight; // Move down for rows
 
         // Draw rows
-        rows.forEach((row, rowIndex) => {
+        rows.forEach((row) => {
             row.forEach((cell, index) => {
-                // Draw cell border
-                doc.rect(10 + index * colWidth, y, colWidth, rowHeight);
-                // Fill alternate rows with light gray
-                if (rowIndex % 2 === 0) {
-                    doc.setFillColor(240, 240, 240); // Light Gray
-                    doc.rect(10 + index * colWidth, y, colWidth, rowHeight, 'F');
-                }
-                doc.setTextColor(0, 0, 0); // Black text
-                doc.text(cell, 10 + index * colWidth + 2, y + 7); // Offset for padding
+                doc.text(cell, 10 + index * colWidth + 5, y); // Offset for padding
             });
-            y += rowHeight;
+            y += rowHeight; // Move down for the next row
         });
-
-        // Draw separator at the end of the table
-        doc.setDrawColor(0); // Black
-        doc.line(10, y, 10 + headers.length * colWidth, y);
-        y += 5; // Adding space after the table
 
         return y; // Return the new Y position for the next section
     }
@@ -415,7 +399,6 @@
     console.log("Saving PDF");
     doc.save(`report_${month}_${year}.pdf`);
 }
-
 
 
     </script>
