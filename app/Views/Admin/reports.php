@@ -116,7 +116,10 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
-                    <button id="generate-pdf" class="btn btn-primary">Generate Report</button>
+                    <div>
+                        <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
+                        <button id="generate-pdf" class="btn btn-primary ms-2">Generate Report</button>
+                    </div>
                 </div>
                 <div class="row">
                     <!-- left and right table columns -->
