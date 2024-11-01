@@ -320,85 +320,91 @@
         }
 
         function generatePDF(data, month, year) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-            // Add title
-            doc.setFontSize(20);
-            doc.text(`Report for ${month}/${year}`, 10, 10);
+    // Add title
+    doc.setFontSize(20);
+    doc.text(`Report for ${month}/${year}`, 10, 10);
 
-            // Function to draw a simple table
-            function drawTable(headers, rows, startY) {
-                const colWidth = 60; // Width of each column
-                const rowHeight = 10; // Height of each row
-                let y = startY;
+    // Function to draw a colored table
+    function drawTable(headers, rows, startY) {
+        
+        let y = startY;
 
-                // Draw headers
-                doc.setFontSize(12);
-                doc.setTextColor(0, 0, 0); // Black text
-                headers.forEach((header, index) => {
-                    doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
-                });
-                y += rowHeight; // Move down for rows
+        // Draw headers with a background color
+        doc.setFillColor(200, 200, 255); // Light blue for headers
+        doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Draw header background
 
-                // Draw rows
-                rows.forEach((row) => {
-                    row.forEach((cell, index) => {
-                        doc.text(cell, 10 + index * colWidth + 5, y); // Offset for padding
-                    });
-                    y += rowHeight; // Move down for the next row
-                });
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0); // Black text
+        headers.forEach((header, index) => {
+            doc.text(header, 10 + index * colWidth + 5, y); // Offset for padding
+        });
+        y += rowHeight; // Move down for rows
 
-                return y; // Return the new Y position for the next section
-            }
+        // Draw rows with a light background color
+        rows.forEach((row, rowIndex) => {
+            doc.setFillColor(rowIndex % 2 === 0 ? 240 : 255); // Light gray for even rows
+            doc.rect(10, y, colWidth * row.length + 10, rowHeight, 'F'); // Draw row background
+            row.forEach((cell, index) => {
+                doc.setTextColor(0, 0, 0); // Black text for cells
+                doc.text(cell, 10 + index * colWidth + 5, y + 7); // Offset for padding and text alignment
+            });
+            y += rowHeight; // Move down for the next row
+        });
 
-            // Add Agents section
-            doc.setFontSize(16);
-            doc.text('Agents', 10, 20);
-            const agentHeaders = ['Name', 'Birthday', 'Contact'];
-            const agentRows = data.agents.map(agent => [
-                `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
-                agent.birthday,
-                agent.number
-            ]);
-            let yPosition = drawTable(agentHeaders, agentRows, 30);
+        return y; // Return the new Y position for the next section
+    }
 
-            // Add Applicants section
-            doc.setFontSize(16);
-            doc.text('Applicants', 10, yPosition);
-            const applicantHeaders = ['Name', 'Birthday', 'Contact'];
-            const applicantRows = data.applicants.map(applicant => [
-                `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
-                applicant.birthday,
-                applicant.number
-            ]);
-            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
+    // Add Agents section
+    doc.setFontSize(16);
+    doc.text('Agents', 10, 20);
+    const agentHeaders = ['Name', 'Birthday', 'Contact'];
+    const agentRows = data.agents.map(agent => [
+        `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+        agent.birthday,
+        agent.number
+    ]);
+    let yPosition = drawTable(agentHeaders, agentRows, 30);
 
-            // Add Top Recruiters section
-            doc.setFontSize(16);
-            doc.text('Top Recruiters', 10, yPosition);
-            const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
-            const recruiterRows = data.top_recruiters.map((recruiter, index) => [
-                (index + 1).toString(),
-                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
-                recruiter.total_fA.toString()
-            ]);
-            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
+    // Add Applicants section
+    doc.setFontSize(16);
+    doc.text('Applicants', 10, yPosition);
+    const applicantHeaders = ['Name', 'Birthday', 'Contact'];
+    const applicantRows = data.applicants.map(applicant => [
+        `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+        applicant.birthday,
+        applicant.number
+    ]);
+    yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 10);
 
-            // Add Awardees section
-            doc.setFontSize(16);
-            doc.text('Awardees', 10, yPosition);
-            const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
-            const awardeeRows = data.top_awardees.map((awardee, index) => [
-                (index + 1).toString(),
-                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
-                awardee.total_commissions.toString()
-            ]);
-            drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
+    // Add Top Recruiters section
+    doc.setFontSize(16);
+    doc.text('Top Recruiters', 10, yPosition);
+    const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
+    const recruiterRows = data.top_recruiters.map((recruiter, index) => [
+        (index + 1).toString(),
+        `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+        recruiter.total_fA.toString()
+    ]);
+    yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 10);
 
-            console.log("Saving PDF");
-            doc.save(`report_${month}_${year}.pdf`);
-        }
+    // Add Awardees section
+    doc.setFontSize(16);
+    doc.text('Awardees', 10, yPosition);
+    const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
+    const awardeeRows = data.top_awardees.map((awardee, index) => [
+        (index + 1).toString(),
+        `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+        awardee.total_commissions.toString()
+    ]);
+    drawTable(awardeeHeaders, awardeeRows, yPosition + 10);
+
+    console.log("Saving PDF");
+    doc.save(`report_${month}_${year}.pdf`);
+}
+
 
     </script>
 </body>
