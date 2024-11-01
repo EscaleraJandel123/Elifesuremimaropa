@@ -320,48 +320,49 @@
         }
 
         function generatePDF(data, month, year) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-            // Add title
-            doc.setFontSize(20);
-            doc.text(`Report for ${month}/${year}`, 10, 10);
+    // Add title
+    doc.setFontSize(20);
+    doc.text(`Report for ${month}/${year}`, 10, 10);
 
-            // Add Agents section
-            doc.setFontSize(16);
-            doc.text('Agents', 10, 20);
-            doc.setFontSize(12);
-            data.agents.forEach((agent, index) => {
-                doc.text(`${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}. Contact: ${agent.number}`, 10, 30 + (index * 10));
-            });
+    // Add Agents section
+    doc.setFontSize(16);
+    doc.text('Agents', 10, 20);
+    doc.setFontSize(12);
+    data.agents.forEach((agent, index) => {
+        doc.text(`${index + 1}. ${agent.lastname}, ${agent.firstname} ${agent.middlename}. Birthday: ${agent.birthday}, Contact: ${agent.number}`, 10, 30 + (index * 10));
+    });
 
-            // Add Applicants section
-            doc.setFontSize(16);
-            doc.text('Applicants', 10, 50 + (data.agents.length * 10));
-            doc.setFontSize(12);
-            data.applicants.forEach((applicant, index) => {
-                doc.text(`${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}. Contact: ${applicant.number}`, 10, 60 + (data.agents.length * 10) + (index * 10));
-            });
+    // Add Applicants section
+    doc.setFontSize(16);
+    doc.text('Applicants', 10, 50 + (data.agents.length * 10));
+    doc.setFontSize(12);
+    data.applicants.forEach((applicant, index) => {
+        doc.text(`${index + 1}. ${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}. Birthday: ${applicant.birthday}, Contact: ${applicant.number}`, 10, 60 + (data.agents.length * 10) + (index * 10));
+    });
 
-            // Add Top Recruiters section
-            doc.setFontSize(16);
-            doc.text('Top Recruiters', 10, 80 + ((data.agents.length + data.applicants.length) * 10));
-            doc.setFontSize(12);
-            data.top_recruiters.forEach((recruiter, index) => {
-                doc.text(`${index + 1}. ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}. Recruits: ${recruiter.total_fA}`, 10, 90 + ((data.agents.length + data.applicants.length) * 10) + (index * 10));
-            });
+    // Add Top Recruiters section
+    doc.setFontSize(16);
+    doc.text('Top Recruiters', 10, 80 + ((data.agents.length + data.applicants.length) * 10));
+    doc.setFontSize(12);
+    data.top_recruiters.forEach((recruiter, index) => {
+        doc.text(`${index + 1}. ${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}. Recruits: ${recruiter.total_fA}`, 10, 90 + ((data.agents.length + data.applicants.length) * 10) + (index * 10));
+    });
 
-            // Add Awardees section
-            doc.setFontSize(16);
-            doc.text('Awardees', 10, 110 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10));
-            doc.setFontSize(12);
-            data.top_awardees.forEach((awardee, index) => {
-                doc.text(`${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}. Commissions: ${awardee.total_commissions}`, 10, 120 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10) + (index * 10));
-            });
+    // Add Awardees section
+    doc.setFontSize(16);
+    doc.text('Awardees', 10, 110 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10));
+    doc.setFontSize(12);
+    data.top_awardees.forEach((awardee, index) => {
+        doc.text(`${index + 1}. ${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}. Total Commissions: ${awardee.total_commissions}`, 10, 120 + ((data.agents.length + data.applicants.length + data.top_recruiters.length) * 10) + (index * 10));
+    });
 
-            console.log("Saving PDF");
-            doc.save(`report_${month}_${year}.pdf`);
-        }
+    console.log("Saving PDF");
+    doc.save(`report_${month}_${year}.pdf`);
+}
+
     </script>
 </body>
 
