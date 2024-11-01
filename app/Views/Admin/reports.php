@@ -330,7 +330,7 @@
     // Function to draw a simple table with borders and background colors
     function drawTable(headers, rows, startY) {
         const colWidth = 60; // Width of each column
-        const rowHeight = 10; // Height of each row
+        const rowHeight = 10; // Height of each row (increased for padding)
         const textOffset = 2; // Padding between text and top of the cell
         let y = startY;
 
@@ -364,18 +364,18 @@
 
     // Add Agents section
     doc.setFontSize(16);
-    doc.text('Agents', 10, 20); // Adjust Y position as needed
+    doc.text('Agents', 10, 20);
     const agentHeaders = ['Name', 'Birthday', 'Contact'];
     const agentRows = data.agents.map(agent => [
         `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
         agent.birthday,
         agent.number
     ]);
-    let yPosition = drawTable(agentHeaders, agentRows, 30); // Adjust starting position for the table
+    let yPosition = drawTable(agentHeaders, agentRows, 30);
 
     // Add Applicants section
     doc.setFontSize(16);
-    doc.text('Applicants', 10, yPosition + 10); // Add space between the title and the table
+    doc.text('Applicants', 10, yPosition);
     const applicantHeaders = ['Name', 'Birthday', 'Contact'];
     const applicantRows = data.applicants.map(applicant => [
         `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
@@ -386,7 +386,7 @@
 
     // Add Top Recruiters section
     doc.setFontSize(16);
-    doc.text('Top Recruiters', 10, yPosition + 10); // Add space between the title and the table
+    doc.text('Top Recruiters', 10, yPosition);
     const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
     const recruiterRows = data.top_recruiters.map((recruiter, index) => [
         (index + 1).toString(),
@@ -397,7 +397,7 @@
 
     // Add Awardees section
     doc.setFontSize(16);
-    doc.text('Awardees', 10, yPosition + 10); // Add space between the title and the table
+    doc.text('Awardees', 10, yPosition);
     const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
     const awardeeRows = data.top_awardees.map((awardee, index) => [
         (index + 1).toString(),
@@ -409,7 +409,6 @@
     console.log("Saving PDF");
     doc.save(`report_${month}_${year}.pdf`);
 }
-
 
 
     </script>
