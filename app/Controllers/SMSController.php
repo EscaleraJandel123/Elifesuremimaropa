@@ -8,22 +8,26 @@ class SMSController extends BaseController
 {
     public function sendNotification()
     {
-        helper('semaphore');
+        $ch = curl_init();
+        $parameters = array(
+            'apikey' => 'dfdb3f38323f2e2f0fca0d6ae9624fdb', //Your API KEY
+            'number' => '09945428697',
+            'message' => 'I just sent my first message with Semaphore',
+            'sendername' => 'SEMAPHORE'
+        );
+        curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
+        curl_setopt($ch, CURLOPT_POST, 1);
 
-        $number = '09945428697'; // Receive number from POST request
-        $message = 'message'; // Receive message from POST request
+        //Send the parameters set above with the request
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
 
-        if (empty($number) || empty($message)) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Number and message are required.']);
-        }
+        // Receive response from server
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
 
-        $result = send_sms($number, $message);
-
-        if ($result && isset($result['status']) && $result['status'] === 'success') {
-            return $this->response->setJSON(['status' => 'success', 'message' => 'SMS sent successfully.']);
-        } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to send SMS.']);
-        }
+        //Show the server response
+        echo $output;
     }
 }
 
