@@ -74,8 +74,15 @@ class AdminController extends BaseController
         $totalAgents = count($this->agent->findAll());
         $totalApplicants = count($this->applicant->findAll());
         $pendingApplicants = $this->applicant->where('status', 'pending')->countAllResults();
-        $data = array_merge($this->getData(), $this->getDataAd(), $this->topagent(), $this->getagent(),
-         $this->topcommi(), $this->notifcont->notification(), $this->reportscont->usersreportdata());
+        $data = array_merge(
+            $this->getData(),
+            $this->getDataAd(),
+            $this->topagent(),
+            $this->getagent(),
+            $this->topcommi(),
+            $this->notifcont->notification(),
+            $this->reportscont->usersreportdata()
+        );
         $data['totalAgents'] = $totalAgents;
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
@@ -262,6 +269,10 @@ class AdminController extends BaseController
 
     public function viewAppForm($token)
     {
+        $lifechangerForm = $this->form1->where('app_life_token', $token)->first();
+        if (!$lifechangerForm) {
+            return redirect()->back()->with('error', 'Invalid');
+        }
         $data['lifechangerform'] = $this->form1->where('app_life_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
         $data['user'] = $this->user->where('token', $token)->first();
