@@ -18,14 +18,14 @@
     <div class="navbar-nav me-lg-2">
         <div class="nav-item text-nowrap d-flex align-items-center">
             <div class="dropdown ps-3">
-                <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown"
+                <!-- <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false" id="navbarLightDropdownMenuLink">
                     <i class="bi-bell"></i>
                     <span
                         class="position-absolute start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
                         <span class="visually-hidden">New alerts</span>
                     </span>
-                </a>
+                </a> -->
 
                 <!-- <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow"
                     aria-labelledby="navbarLightDropdownMenuLink">
