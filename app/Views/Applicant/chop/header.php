@@ -44,7 +44,6 @@
                         </a>
                     </li>
 
-
                     <li class="notifications-block">
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <div class="notifications-icon-wrap bg-danger">

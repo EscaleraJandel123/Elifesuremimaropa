@@ -172,5 +172,4 @@ $routes->get('/clearnotif', 'NotifController::clearnotif', ['filter' => 'authGua
 $routes->get('/sms', 'NotifController::sendNotification');
 
 
-
-
+$routes->post('/send-notification', 'SMSController::sendNotification');
