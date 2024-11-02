@@ -271,7 +271,7 @@ class AdminController extends BaseController
     {
         $lifechangerForm = $this->form1->where('app_life_token', $token)->first();
         if (!$lifechangerForm) {
-            return redirect()->back()->with('error', 'Invalid');
+            return redirect()->back()->with('error', 'No valid Data');
         }
         $data['lifechangerform'] = $this->form1->where('app_life_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
