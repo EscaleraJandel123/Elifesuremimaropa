@@ -5,7 +5,7 @@ function send_sms($number, $message) {
         'apikey' => 'dfdb3f38323f2e2f0fca0d6ae9624fdb', // Replace with your Semaphore API key
         'number' => $number,
         'message' => $message,
-        'sendername' => 'SEMAPHORE'
+        'sendername' => 'Allianz PNB MIMAROPA'
     );
     curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
     curl_setopt($ch, CURLOPT_POST, 1);
