@@ -10,8 +10,8 @@ class SMSController extends BaseController
     {
         helper('semaphore');
 
-        $number = $this->request->getPost('09945428697'); // User's mobile number
-        $message = $this->request->getPost('This is a message'); // Message content
+        $number = '09945428697'; 
+        $message = 'This is a message';
 
         if ($number && $message) {
             $result = send_sms($number, $message);
