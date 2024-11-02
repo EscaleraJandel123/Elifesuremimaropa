@@ -11,7 +11,7 @@ class SMSController extends BaseController
         $ch = curl_init();
         $parameters = array(
             'apikey' => 'dfdb3f38323f2e2f0fca0d6ae9624fdb', //Your API KEY
-            'number' => '09945428697',
+            'number' => '09366581432',
             'message' => 'I just sent my first message with Semaphore',
             'sendername' => 'SEMAPHORE'
         );
