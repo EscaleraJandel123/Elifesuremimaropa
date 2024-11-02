@@ -87,6 +87,16 @@
                     </h1>
                 </div>
                 <div class="row">
+                    <?php if (session()->getFlashdata('error')): ?>
+                        <div class="alert alert-danger mt-3 text-center" role="alert">
+                            <?= session()->getFlashdata('error') ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (session()->getFlashdata('success')): ?>
+                        <div class="alert alert-success mt-3 text-center" role="alert">
+                            <?= session()->getFlashdata('success') ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="col-xl-4 mb-1">
                         <div class="card">
                             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
@@ -141,8 +151,8 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#forms">Sub Agent's Data</button>
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#forms">Sub
+                                            Agent's Data</button>
                                     </li>
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab"
@@ -210,7 +220,7 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-3 col-md-4 label">Zip Code</div>
                                             <div class="col-lg-8 col-md-8">
-                                            <?php echo isset ($subagent['zipcode']) ? $subagent['zipcode'] : '' ?>
+                                                <?php echo isset($subagent['zipcode']) ? $subagent['zipcode'] : '' ?>
                                             </div>
                                         </div>
 
@@ -283,7 +293,7 @@
                                     </div>
                                     <div class="tab-pane fade pt-3" id="files">
                                         <div class="row text-center">
-                                        <?php
+                                            <?php
                                             // Array of file names
                                             $fileNames = [
                                                 1 => 'Traning Certificate (Boss 3)',
@@ -302,7 +312,7 @@
                                             <?php foreach (range(1, 11) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
-                                                    
+
                                                     // Determine the file type for icon
                                                     $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
                                                     $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
@@ -319,8 +329,8 @@
                                                         $iconClass = 'fa-file-powerpoint';
                                                     }
 
-                                                     // Determine the file name from the array, default to "File $i" if not set
-                                                     $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
+                                                    // Determine the file name from the array, default to "File $i" if not set
+                                                    $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
                                                     ?>
                                                     <div class="col-lg-2 col-4">
                                                         <div class="card">

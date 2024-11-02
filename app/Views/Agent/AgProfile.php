@@ -89,16 +89,16 @@
                     </h1>
                 </div>
                 <div class="row">
-                <?php if (session()->getFlashdata('error')): ?>
-                                            <div class="alert alert-danger mt-3 text-center" role="alert">
-                                                <?= session()->getFlashdata('error') ?>
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php if (session()->getFlashdata('success')): ?>
-                                            <div class="alert alert-success mt-3 text-center" role="alert">
-                                                <?= session()->getFlashdata('success') ?>
-                                            </div>
-                                        <?php endif; ?>
+                    <?php if (session()->getFlashdata('error')): ?>
+                        <div class="alert alert-danger mt-3 text-center" role="alert">
+                            <?= session()->getFlashdata('error') ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (session()->getFlashdata('success')): ?>
+                        <div class="alert alert-success mt-3 text-center" role="alert">
+                            <?= session()->getFlashdata('success') ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="col-xl-4 mb-1">
                         <div class="card">
                             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
@@ -147,19 +147,20 @@
                                             data-bs-target="#profile-overview">Overview</button>
                                     </li>
                                     <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#forms">My Data</button>
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#forms">My
+                                            Data</button>
                                     </li>
                                     <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#files">My Files</button>
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#files">My
+                                            Files</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                         <h5 class="card-title" style="font-weight: bold;">Profile Details</h5>
                                         <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label " style="font-weight: bold;">Full Name</div>
+                                            <div class="col-lg-3 col-md-4 label " style="font-weight: bold;">Full Name
+                                            </div>
                                             <div class="col-lg-8 col-md-8">
                                                 <?php if (isset($agent['lastname']) && isset($agent['firstname']) && isset($agent['middlename'])): ?>
                                                     <?= $agent['lastname'] ?>,
@@ -170,14 +171,16 @@
                                         </div>
 
                                         <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Username</div>
+                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Username
+                                            </div>
                                             <div class="col-lg-8 col-md-8">
                                                 <?php echo isset($agent['username']) ? $agent['username'] : '' ?>
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Agent Code</div>
+                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Agent Code
+                                            </div>
                                             <div class="col-lg-8 col-md-8">
                                                 <?php echo isset($agent['AgentCode']) ? $agent['AgentCode'] : '' ?>
                                             </div>
@@ -198,7 +201,8 @@
                                         </div>
 
                                         <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Birthday</div>
+                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Birthday
+                                            </div>
                                             <div class="col-lg-8 col-md-8">
                                                 <?php echo isset($agent['birthday']) ? date('M j, Y', strtotime($agent['birthday'])) : ''; ?>
                                             </div>
@@ -213,12 +217,13 @@
                                             </div>
                                         </div>
                                         <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Zip Code</div>
+                                            <div class="col-lg-3 col-md-4 label" style="font-weight: bold;">Zip Code
+                                            </div>
                                             <div class="col-lg-8 col-md-8">
-                                            <?php echo isset ($agent['zipcode']) ? $agent['zipcode'] : '' ?>
+                                                <?php echo isset($agent['zipcode']) ? $agent['zipcode'] : '' ?>
                                             </div>
                                         </div>
-                                    </div>                                   
+                                    </div>
                                     <div class="tab-pane fade" id="forms">
                                         <div class="row text-center">
                                             <div class="col-lg-2 col-4 my-3">
@@ -260,7 +265,7 @@
                                     </div>
                                     <div class="tab-pane fade pt-3" id="files">
                                         <div class="row text-center">
-                                        <?php
+                                            <?php
                                             // Array of file names
                                             $fileNames = [
                                                 1 => 'Traning Certificate (Boss 3)',
@@ -279,7 +284,7 @@
                                             <?php foreach (range(1, 11) as $i): ?>
                                                 <?php if (isset($files["file$i"]) && $files["file$i"]): ?>
                                                     <?php
-                                                    
+
                                                     // Determine the file type for icon
                                                     $filePath = base_url('uploads/files/' . $username . '/' . $files["file$i"]);
                                                     $fileExt = pathinfo($files["file$i"], PATHINFO_EXTENSION);
@@ -296,8 +301,8 @@
                                                         $iconClass = 'fa-file-powerpoint';
                                                     }
 
-                                                     // Determine the file name from the array, default to "File $i" if not set
-                                                     $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
+                                                    // Determine the file name from the array, default to "File $i" if not set
+                                                    $fileName = isset($fileNames[$i]) ? $fileNames[$i] : "File $i";
                                                     ?>
                                                     <div class="col-lg-2 col-4">
                                                         <div class="card">
@@ -343,7 +348,7 @@
                     .then(blob => {
                         const downloadLink = document.createElement('a');
                         downloadLink.href = URL.createObjectURL(blob);
-                        downloadLink.download = '<?= $agent['username']?> referral qr-code.png';
+                        downloadLink.download = '<?= $agent['username'] ?> referral qr-code.png';
                         downloadLink.click();
                     });
             });
