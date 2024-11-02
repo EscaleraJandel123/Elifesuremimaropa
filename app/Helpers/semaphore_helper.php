@@ -2,7 +2,7 @@
 function send_sms($number, $message) {
     $ch = curl_init();
     $parameters = array(
-        'apikey' => 'YOUR_API_KEY', // Replace with your Semaphore API key
+        'apikey' => 'dfdb3f38323f2e2f0fca0d6ae9624fdb', // Replace with your Semaphore API key
         'number' => $number,
         'message' => $message,
         'sendername' => 'SEMAPHORE'
