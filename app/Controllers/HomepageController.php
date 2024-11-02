@@ -79,7 +79,8 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form']);
+        helper(['form', 'semaphore']); // Load both form and semaphore helpers
+
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
             'email' => 'required|min_length[8]|max_length[100]|valid_email|is_unique[users.email,id]',
@@ -87,11 +88,12 @@ class HomepageController extends BaseController
             'confirmpassword' => 'required|matches[password]',
         ];
 
-        // $verificationToken = bin2hex(random_bytes(50));
         $usertoken = bin2hex(random_bytes(50));
+
         if ($this->validate($rules)) {
             $userModel = new UserModel();
             $agent = $this->agent->where('AgentCode', $ref)->first();
+
             if ($agent) {
                 $userData = [
                     'username' => $this->request->getVar('username'),
@@ -99,7 +101,6 @@ class HomepageController extends BaseController
                     'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                     'role' => $this->request->getVar('role'),
                     'status' => 'unverified',
-                    // 'verification_token' => $verificationToken,
                     'accountStatus' => 'active',
                     'token' => $usertoken,
                     'confirm' => 'false',
@@ -108,10 +109,10 @@ class HomepageController extends BaseController
             } else {
                 return redirect()->to('/register/' . $ref)->with('error', 'Invalid Registration Link');
             }
+
             $userId = $this->user->insertID();
 
             if ($this->request->getVar('role') === 'applicant') {
-                // Prepare applicant data
                 $applicantData = [
                     'applicant_id' => $userId,
                     'username' => $this->request->getVar('username'),
@@ -124,29 +125,44 @@ class HomepageController extends BaseController
                     'token' => $usertoken,
                     'role' => 'applicant',
                 ];
+
                 $link = 'confirmation';
                 $message = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
                 $r = 'admin';
                 $this->notifcont->newnotif($userId, $link, $message, $r);
+
+                // Send SMS notification
+                $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
+                $number = $this->request->getVar('number');  // Recipient's phone number
+                $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
+
+                $smsResponse = send_sms($apikey, $number, $smsMessage);
+                if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
+                    log_message('info', 'SMS sent successfully to ' . $number);
+                } else {
+                    log_message('error', 'Failed to send SMS to ' . $number);
+                }
+
                 $this->confirm->save($applicantData);
             }
+
             $emailSubject = "Account Registration Confirmation";
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
             $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
-            return redirect()->to('/login')->with('success', 'Account Registered please be patient. An email has been sent to your registered email address.');
 
+            return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
         } else {
             $validation = \Config\Services::validation();
             $errorList = $validation->listErrors();
 
             if ($this->request->getVar('role') === 'client') {
                 return redirect()->to('/ClientRegister')->with('error', $errorList);
-                
             } else {
                 return redirect()->to('/register/' . $ref)->with('error', $errorList);
             }
         }
     }
+
 
     public function sendVerificationEmail($to, $subject, $message)
     {
@@ -296,8 +312,7 @@ class HomepageController extends BaseController
             } else {
                 echo 'Current password is incorrect.';
             }
-        } 
-        else {
+        } else {
             $data['validation'] = $this->validator;
             echo view('Home/register', $data);
         }
@@ -330,8 +345,7 @@ class HomepageController extends BaseController
                 // Current password does not match
                 return redirect()->back()->with('error', 'Current password is incorrect.');
             }
-        } 
-        else {
+        } else {
             // Validation failed
             $validationErrors = $this->validator->listErrors(); // Get validation errors as a string
             return redirect()->back()->with('error', $validationErrors);
