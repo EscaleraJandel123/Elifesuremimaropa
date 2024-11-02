@@ -27,7 +27,7 @@
                     </span>
                 </a>
 
-                <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow"
+                <!-- <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow"
                     aria-labelledby="navbarLightDropdownMenuLink">
                     <small>Notifications</small>
 
@@ -72,7 +72,7 @@
                             </div>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
 
             <!-- <div class="dropdown ps-1">
