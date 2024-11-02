@@ -10,7 +10,7 @@ class SMSController extends BaseController
     {
         helper('semaphore');
 
-        $number = '09945428697'; 
+        $number = '9945428697';
         $message = 'This is a message';
 
         if ($number && $message) {
