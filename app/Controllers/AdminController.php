@@ -281,6 +281,10 @@ class AdminController extends BaseController
 
     public function viewAppForm2($token)
     {
+        $aial = $this->form2->where('aial_token', $token)->first();
+        if (!$aial) {
+            return redirect()->back()->with('error', 'No valid Data');
+        }
         $data['aial'] = $this->form2->where('aial_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
         return view('Admin/Forms/details2', $data);
@@ -288,6 +292,10 @@ class AdminController extends BaseController
 
     public function viewAppForm3($token)
     {
+        $gli = $this->form3->where('app_gli_token', $token)->first();
+        if (!$gli) {
+            return redirect()->back()->with('error', 'No valid Data');
+        }
         $data['gli'] = $this->form3->where('app_gli_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
         return view('Admin/Forms/details3', $data);
@@ -295,6 +303,10 @@ class AdminController extends BaseController
 
     public function viewAppForm4($token)
     {
+        $aonff = $this->form4->where('app_aonff_token', $token)->first();
+        if (!$aonff) {
+            return redirect()->back()->with('error', 'No valid Data');
+        }
         $data['aonff'] = $this->form4->where('app_aonff_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
         return view('Admin/Forms/details4', $data);
@@ -302,6 +314,10 @@ class AdminController extends BaseController
 
     public function viewAppForm5($token)
     {
+        $sou = $this->form5->where('app_sou_token', $token)->first();
+        if (!$sou) {
+            return redirect()->back()->with('error', 'No valid Data');
+        }
         $data['sou'] = $this->form5->where('app_sou_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
         return view('Admin/Forms/details5', $data);

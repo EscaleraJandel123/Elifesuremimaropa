@@ -164,8 +164,6 @@
                                 </div>
                             </div>
 
-                            
-
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card mb-3 text-center">
                                     <h5 class="card-title mt-3">Top 3 Recruiters</h5>
