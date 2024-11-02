@@ -10,29 +10,20 @@ class SMSController extends BaseController
     {
         helper('semaphore');
 
-        $number = '9945428697';
-        $message = 'This is a message';
+        $number = '09945428697'; // Receive number from POST request
+        $message = 'message'; // Receive message from POST request
 
-        if ($number && $message) {
-            $result = send_sms($number, $message);
-
-            if (isset($result['status']) && $result['status'] === 'success') {
-                return $this->response->setJSON([
-                    'status' => 'success',
-                    'message' => 'Notification sent successfully!'
-                ]);
-            } else {
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Failed to send SMS.',
-                    'error' => $result['error'] ?? 'Unknown error'
-                ]);
-            }
+        if (empty($number) || empty($message)) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Number and message are required.']);
         }
 
-        return $this->response->setJSON([
-            'status' => 'error',
-            'message' => 'Invalid request. Number and message are required.'
-        ]);
+        $result = send_sms($number, $message);
+
+        if ($result && isset($result['status']) && $result['status'] === 'success') {
+            return $this->response->setJSON(['status' => 'success', 'message' => 'SMS sent successfully.']);
+        } else {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to send SMS.']);
+        }
     }
 }
+
