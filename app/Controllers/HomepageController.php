@@ -78,90 +78,75 @@ class HomepageController extends BaseController
         return view("Home/register", $data);
     }
     public function Authreg($ref)
-{
-    helper(['form', 'semaphore']); // Load form and semaphore helpers
+    {
+        helper(['form']);
+        $rules = [
+            'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
+            'email' => 'required|min_length[8]|max_length[100]|valid_email|is_unique[users.email,id]',
+            'password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
+            'confirmpassword' => 'required|matches[password]',
+        ];
 
-    $rules = [
-        'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
-        'email' => 'required|min_length[8]|max_length[100]|valid_email|is_unique[users.email,id]',
-        'password' => 'required|min_length[8]|max_length[50]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}$/]',
-        'confirmpassword' => 'required|matches[password]',
-    ];
+        // $verificationToken = bin2hex(random_bytes(50));
+        $usertoken = bin2hex(random_bytes(50));
+        if ($this->validate($rules)) {
+            $userModel = new UserModel();
+            $agent = $this->agent->where('AgentCode', $ref)->first();
+            if ($agent) {
+                $userData = [
+                    'username' => $this->request->getVar('username'),
+                    'email' => $this->request->getVar('email'),
+                    'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+                    'role' => $this->request->getVar('role'),
+                    'status' => 'unverified',
+                    // 'verification_token' => $verificationToken,
+                    'accountStatus' => 'active',
+                    'token' => $usertoken,
+                    'confirm' => 'false',
+                ];
+                $this->user->save($userData);
+            } else {
+                return redirect()->to('/register/' . $ref)->with('error', 'Invalid Registration Link');
+            }
+            $userId = $this->user->insertID();
 
-    $usertoken = bin2hex(random_bytes(50)); // Generate a unique token for user verification
+            if ($this->request->getVar('role') === 'applicant') {
+                // Prepare applicant data
+                $applicantData = [
+                    'applicant_id' => $userId,
+                    'username' => $this->request->getVar('username'),
+                    'number' => $this->request->getVar('number'),
+                    'firstname' => $this->request->getVar('firstname'),
+                    'lastname' => $this->request->getVar('lastname'),
+                    'middlename' => $this->request->getVar('middlename'),
+                    'email' => $this->request->getVar('email'),
+                    'refcode' => $ref,
+                    'token' => $usertoken,
+                    'role' => 'applicant',
+                ];
+                $link = 'confirmation';
+                $message = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
+                $r = 'admin';
+                $this->notifcont->newnotif($userId, $link, $message, $r);
+                $this->confirm->save($applicantData);
+            }
+            $emailSubject = "Account Registration Confirmation";
+            $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
+            $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
+            return redirect()->to('/login')->with('success', 'Account Registered please be patient. An email has been sent to your registered email address.');
 
-    if ($this->validate($rules)) {
-        $userModel = new UserModel();
-        $agent = $this->agent->where('AgentCode', $ref)->first();
-
-        if ($agent) {
-            $userData = [
-                'username' => $this->request->getVar('username'),
-                'email' => $this->request->getVar('email'),
-                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                'role' => $this->request->getVar('role'),
-                'status' => 'unverified',
-                'accountStatus' => 'active',
-                'token' => $usertoken,
-                'confirm' => 'false',
-            ];
-            $this->user->save($userData);
         } else {
-            return redirect()->to('/register/' . $ref)->with('error', 'Invalid Registration Link');
-        }
+            $validation = \Config\Services::validation();
+            $errorList = $validation->listErrors();
 
-        $userId = $this->user->insertID(); // Get the ID of the newly created user
-
-        if ($this->request->getVar('role') === 'applicant') {
-            // Prepare applicant data
-            $applicantData = [
-                'applicant_id' => $userId,
-                'username' => $this->request->getVar('username'),
-                'number' => $this->request->getVar('number'),
-                'firstname' => $this->request->getVar('firstname'),
-                'lastname' => $this->request->getVar('lastname'),
-                'middlename' => $this->request->getVar('middlename'),
-                'email' => $this->request->getVar('email'),
-                'refcode' => $ref,
-                'token' => $usertoken,
-                'role' => 'applicant',
-            ];
-
-            $this->confirm->save($applicantData);
-
-            // Send notification to admin
-            $link = 'confirmation';
-            $message = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
-            $r = 'admin';
-            $this->notifcont->newnotif($userId, $link, $message, $r);
-
-            // Send SMS notification to the applicant
-            $applicantNumber = $this->request->getVar('number');
-            $smsMessage = 'Hello ' . $this->request->getVar('username') . ', thank you for registering. Please wait for admin confirmation.';
-
-            // Call the helper function to send SMS
-            $smsResult = send_sms($applicantNumber, $smsMessage);
-        }
-
-        // Send verification email
-        $emailSubject = "Account Registration Confirmation";
-        $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
-        $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
-
-        return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
-
-    } else {
-        $validation = \Config\Services::validation();
-        $errorList = $validation->listErrors();
-
-        if ($this->request->getVar('role') === 'client') {
-            return redirect()->to('/ClientRegister')->with('error', $errorList);
-        } else {
-            return redirect()->to('/register/' . $ref)->with('error', $errorList);
+            if ($this->request->getVar('role') === 'client') {
+                return redirect()->to('/ClientRegister')->with('error', $errorList);
+                
+            } else {
+                return redirect()->to('/register/' . $ref)->with('error', $errorList);
+            }
         }
     }
-}
-
 
     public function sendVerificationEmail($to, $subject, $message)
     {
