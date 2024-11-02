@@ -89,6 +89,16 @@
                     </h1>
                 </div>
                 <div class="row">
+                <?php if (session()->getFlashdata('error')): ?>
+                                            <div class="alert alert-danger mt-3 text-center" role="alert">
+                                                <?= session()->getFlashdata('error') ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if (session()->getFlashdata('success')): ?>
+                                            <div class="alert alert-success mt-3 text-center" role="alert">
+                                                <?= session()->getFlashdata('success') ?>
+                                            </div>
+                                        <?php endif; ?>
                     <div class="col-xl-4 mb-1">
                         <div class="card">
                             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">

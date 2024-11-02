@@ -12,7 +12,7 @@
 
     <form class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#"
         method="get" role="form">
-        
+
     </form>
 
     <div class="navbar-nav me-lg-2">
@@ -136,7 +136,7 @@
                         class="profile-image img-fluid" alt="">
                 </a>
                 <ul class="dropdown-menu bg-white shadow">
-                    
+
 
                     <li>
                         <a class="dropdown-item" href="/AgProfile">
