@@ -1,30 +1,33 @@
 <?php
 
-// app/Helpers/sms_helper.php
-function send_sms($number, $message)
-{
-    // Retrieve the API key from configuration
-    $apikey = config('App')->semaphoreApiKey;
+if (!function_exists('send_sms')) {
+    /**
+     * Sends an SMS using Semaphore's API
+     *
+     * @param string $apikey Your Semaphore API key
+     * @param string $number Recipient's phone number
+     * @param string $message The message you want to send
+     * @param string $sendername Optional sender name (if your account supports this)
+     * @return mixed The API response
+     */
+    function send_sms($apikey, $number, $message, $sendername = 'SEMAPHORE')
+    {
+        $ch = curl_init();
+        $parameters = [
+            'apikey' => $apikey,
+            'number' => $number,
+            'message' => $message,
+            'sendername' => $sendername
+        ];
 
-    // Set the parameters for the Semaphore API
-    $parameters = [
-        'apikey' => $apikey,
-        'number' => $number,
-        'message' => $message,
-        'sendername' => 'SEMAPHORE'  // You can set this to your preferred sender name
-    ];
+        curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    // Initialize cURL
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
 
-    // Execute the request and close the connection
-    $output = curl_exec($ch);
-    curl_close($ch);
-
-    // Return the response from Semaphore API
-    return $output;
+        return json_decode($output, true); // Return as an associative array
+    }
 }

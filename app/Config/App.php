@@ -175,6 +175,4 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
-
-    public $semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
 }

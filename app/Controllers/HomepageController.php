@@ -79,7 +79,7 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form', 'sms']); // Load both form and semaphore helpers
+        helper(['form', 'sms_helper']); // Load both form and semaphore helpers
 
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
@@ -131,10 +131,17 @@ class HomepageController extends BaseController
                 $r = 'admin';
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
-                $number = $this->request->getVar('number');  // Replace with the recipient's number
-                $message = 'This is a test message sent using Semaphore and CodeIgniter 4';
-                // Call the send_sms function
-                $response = send_sms($number, $message);
+                // Send SMS notification
+                $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
+                $number = $this->request->getVar('number');  // Recipient's phone number
+                $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
+
+                $smsResponse = send_sms($apikey, $number, $smsMessage);
+                if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
+                    log_message('info', 'SMS sent successfully to ' . $number);
+                } else {
+                    log_message('error', 'Failed to send SMS to ' . $number);
+                }
                 $this->confirm->save($applicantData);
             }
 
@@ -142,7 +149,7 @@ class HomepageController extends BaseController
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
             $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
 
-            return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
+            // return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
         } else {
             $validation = \Config\Services::validation();
             $errorList = $validation->listErrors();
