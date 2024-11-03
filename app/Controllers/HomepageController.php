@@ -79,7 +79,7 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form']); // Load both form and semaphore helpers
+        helper(['form', 'sms']); // Load both form and semaphore helpers
 
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
@@ -131,17 +131,10 @@ class HomepageController extends BaseController
                 $r = 'admin';
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
-                // Send SMS notification
-                $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
-                $number = $this->request->getVar('number');  // Recipient's phone number
-                $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
-
-                $smsResponse = $this->notifcont->send_sms($apikey, $number, $smsMessage);
-                if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
-                    log_message('info', 'SMS sent successfully to ' . $number);
-                } else {
-                    log_message('error', 'Failed to send SMS to ' . $number);
-                }
+                $number = $this->request->getVar('number');  // Replace with the recipient's number
+                $message = 'This is a test message sent using Semaphore and CodeIgniter 4';
+                // Call the send_sms function
+                $response = send_sms($number, $message);
                 $this->confirm->save($applicantData);
             }
 
