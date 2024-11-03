@@ -14,7 +14,7 @@ class SemaphoreService
 
     public function sendSMS($to, $message)
     {
-        $formattedPhoneNumber = $this->formatPhoneNumber($to);
+        // $formattedPhoneNumber = $this->formatPhoneNumber($to);
         $fullMessage = "ALLIANZ PNP MIMAROPA- " . $message;
         return $this->sendSMSNotification($to, $fullMessage);
     }
@@ -23,12 +23,12 @@ class SemaphoreService
     {
         $ch = curl_init();
 
-        $parameters = [
+        $parameters = array(
             'apikey' => $this->semaphoreApiKey,
             'number' => $number,
             'message' => $message,
             // 'sendername' => $this->semaphoreSenderName
-        ];
+        );
 
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
         curl_setopt($ch, CURLOPT_POST, 1);
