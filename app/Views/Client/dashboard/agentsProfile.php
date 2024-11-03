@@ -25,11 +25,11 @@
               <img src="<?= isset($agent['agentprofile']) && !empty($agent['agentprofile']) ? base_url('/uploads/' . $agent['agentprofile']) : base_url('/uploads/def.png') ?>"
                 alt="Profile" class="rounded-circle">
               <h2><?php echo isset($agent['username']) ? $agent['username'] : '' ?></h2>
-              <div class="social-links mt-2">
+              <!-- <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-messenger"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="gmail"><i class="bi bi-envelope"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
