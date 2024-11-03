@@ -5,16 +5,18 @@ namespace App\Controllers;
 use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
-use App\Libraries\SMSService;
+use App\Libraries\SemaphoreService;
 class NotifController extends BaseController
 {
     private $notif;
     private $user;
+    private $sms;
 
     public function __construct()
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
+        $this->sms = new SemaphoreService();
     }
     public function clearnotif()
     {
@@ -53,20 +55,12 @@ class NotifController extends BaseController
         return $data;
     }
 
-    
-    // public function sendNotification() {
-    //     $smsService = new SMSService(); // Load the SMS library
+    public function sendNotification()
+    {
+        $to = '09945428697'; 
+        $message = 'This is a message';
 
-    //     $to = '+639945428697'; // The recipient's phone number
-    //     $message = 'Your custom notification message.';
-
-    //     $result = $smsService->sendSMS($to, $message);
-
-    //     if ($result === true) {
-    //         return 'SMS sent successfully!';
-    //     } else {
-    //         return 'Failed to send SMS: ' . $result;
-    //     }
-    // }
-
+        $response = $this->sms->sendSMS($to, $message);
+        return $this->response->setJSON(['response' => $response]);
+    }
 }
