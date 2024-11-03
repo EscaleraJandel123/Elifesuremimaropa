@@ -150,16 +150,17 @@ class HomepageController extends BaseController
             // $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
 
             // return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
-        } else {
-            $validation = \Config\Services::validation();
-            $errorList = $validation->listErrors();
+        } 
+        // else {
+        //     $validation = \Config\Services::validation();
+        //     $errorList = $validation->listErrors();
 
-            if ($this->request->getVar('role') === 'client') {
-                return redirect()->to('/ClientRegister')->with('error', $errorList);
-            } else {
-                return redirect()->to('/register/' . $ref)->with('error', $errorList);
-            }
-        }
+        //     if ($this->request->getVar('role') === 'client') {
+        //         return redirect()->to('/ClientRegister')->with('error', $errorList);
+        //     } else {
+        //         return redirect()->to('/register/' . $ref)->with('error', $errorList);
+        //     }
+        // }
     }
 
 
