@@ -4,12 +4,12 @@ namespace App\Libraries;
 class SemaphoreService
 {
     protected $semaphoreApiKey;
-    protected $semaphoreSenderName;
+    // protected $semaphoreSenderName;
 
     public function __construct()
     {
         $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
-        $this->semaphoreSenderName = 'PNB'; // Set your desired sender name here
+        // $this->semaphoreSenderName = 'PNB'; // Set your desired sender name here
     }
 
     public function sendSMS($to, $message)
@@ -27,7 +27,7 @@ class SemaphoreService
             'apikey' => $this->semaphoreApiKey,
             'number' => $number,
             'message' => $message,
-            'sendername' => $this->semaphoreSenderName
+            // 'sendername' => $this->semaphoreSenderName
         ];
 
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
