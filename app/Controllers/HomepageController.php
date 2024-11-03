@@ -138,16 +138,16 @@ class HomepageController extends BaseController
 
                 $smsResponse = send_sms($apikey, $number, $smsMessage);
                 if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
-                    log_message('info', 'SMS sent successfully to ' . $number);
+                    echo 'sent';
                 } else {
-                    log_message('error', 'Failed to send SMS to ' . $number);
+                    echo 'not sent';
                 }
-                $this->confirm->save($applicantData);
+                // $this->confirm->save($applicantData);
             }
 
-            $emailSubject = "Account Registration Confirmation";
-            $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
-            $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
+            // $emailSubject = "Account Registration Confirmation";
+            // $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
+            // $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
 
             // return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
         } else {
