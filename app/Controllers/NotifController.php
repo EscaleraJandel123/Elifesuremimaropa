@@ -57,7 +57,7 @@ class NotifController extends BaseController
 
     public function sendNotification()
 {
-    $to = '09366581432';
+    $to = '+639366581432';
     $message = 'This is a message';
 
     // Call sendSMS and capture the response
