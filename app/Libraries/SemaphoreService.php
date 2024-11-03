@@ -8,7 +8,7 @@ class SemaphoreService
 
     public function __construct()
     {
-        $this->semaphoreApiKey = getenv('SEMAPHORE_API_KEY');
+        $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
         $this->semaphoreSenderName = 'Thesis'; // Set your desired sender name here
     }
 
