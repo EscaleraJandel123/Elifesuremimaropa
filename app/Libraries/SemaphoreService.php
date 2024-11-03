@@ -9,14 +9,14 @@ class SemaphoreService
     public function __construct()
     {
         $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
-        // $this->semaphoreSenderName = 'SEMAPHORE'; // Adjust if a different approved sender name is required
+        // $this->semaphoreSenderName = 'SEMAPHORE'; // Set your desired sender name here
     }
 
     public function sendSMS($to, $message)
     {
         $formattedPhoneNumber = $this->formatPhoneNumber($to);
         $fullMessage = "ALLIANZ PNP MIMAROPA- " . $message;
-        return $this->sendSMSNotification($formattedPhoneNumber, $fullMessage);
+        return $this->sendSMSNotification($to, $fullMessage);
     }
 
     private function sendSMSNotification($number, $message)
@@ -36,19 +36,7 @@ class SemaphoreService
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        if (curl_errno($ch)) {
-            log_message('error', 'Curl error: ' . curl_error($ch));
-        }
-        
-        if ($httpCode !== 200) {
-            log_message('error', 'Semaphore API HTTP code: ' . $httpCode);
-        }
-
         curl_close($ch);
-
-        log_message('info', 'Semaphore API response: ' . print_r(json_decode($response, true), true));
 
         return $response;
     }
