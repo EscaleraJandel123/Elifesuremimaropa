@@ -25,7 +25,7 @@ class SemaphoreService
 
         $parameters = [
             'apikey' => $this->semaphoreApiKey,
-            'number' => $number,
+            'recipient' => $number,
             'message' => $message,
             'sendername' => $this->semaphoreSenderName
         ];
