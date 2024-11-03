@@ -79,7 +79,7 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form']); // Load both form and semaphore helpers
+        helper(['form', 'sms']); // Load both form and semaphore helpers
 
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
@@ -132,10 +132,11 @@ class HomepageController extends BaseController
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
                 // Send SMS notification
-                $api = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
+                $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
                 $number = $this->request->getVar('number');  // Recipient's phone number
-                $message = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
-                $smsResponse = $this->notifcont->sms_notification($api, $number, $message, 'ALLIANZ PNB MIMAROPA');
+                $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
+
+                $smsResponse = send_sms($apikey, $number, $smsMessage);
                 if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
                     log_message('info', 'SMS sent successfully to ' . $number);
                 } else {

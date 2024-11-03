@@ -10,14 +10,13 @@ if (!function_exists('send_sms')) {
      * @param string $sendername Optional sender name (if your account supports this)
      * @return mixed The API response
      */
-    function send_sms($apikey, $number, $message, $sendername = 'SEMAPHORE')
+    function send_sms($apikey, $number, $message)
     {
         $ch = curl_init();
         $parameters = [
             'apikey' => $apikey,
             'number' => $number,
             'message' => $message,
-            'sendername' => $sendername
         ];
 
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
