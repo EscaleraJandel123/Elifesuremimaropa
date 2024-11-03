@@ -28,7 +28,7 @@ class HomepageController extends BaseController
     private $conclient;
     // protected $cache;
     private $notifcont;
-    private $semaphoreService;
+    private $sms;
 
 
     public function __construct()
@@ -43,7 +43,7 @@ class HomepageController extends BaseController
         $this->conclient = new ClientController();
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
-        $this->semaphoreService = new SemaphoreService();
+        $this->sms = new SemaphoreService();
     }
     public function home()
     {
@@ -133,23 +133,30 @@ class HomepageController extends BaseController
                 $message = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
                 $r = 'admin';
                 $this->notifcont->newnotif($userId, $link, $message, $r);
-                $this->confirm->save($applicantData);
+
+                $to = $this->request->getVar('number'); 
+                $message = 'Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.';
+                $response = $this->sms->sendSMS($to, $message);
+                // $this->confirm->save($applicantData);
+
+                var_dump($response);
+                var_dump($this->request->getVar('number'));
             }
 
             $emailSubject = "Account Registration Confirmation";
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
-            $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
+            // $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
 
-            return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
+            // return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
         } else {
-            $validation = \Config\Services::validation();
-            $errorList = $validation->listErrors();
+            // $validation = \Config\Services::validation();
+            // $errorList = $validation->listErrors();
 
-            if ($this->request->getVar('role') === 'client') {
-                return redirect()->to('/ClientRegister')->with('error', $errorList);
-            } else {
-                return redirect()->to('/register/' . $ref)->with('error', $errorList);
-            }
+            // if ($this->request->getVar('role') === 'client') {
+            //     return redirect()->to('/ClientRegister')->with('error', $errorList);
+            // } else {
+            //     return redirect()->to('/register/' . $ref)->with('error', $errorList);
+            // }
         }
     }
 

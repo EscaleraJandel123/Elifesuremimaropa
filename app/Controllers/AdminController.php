@@ -21,6 +21,7 @@ use App\Models\SignatureModel;
 // use App\Models\NotifModel;
 use App\Controllers\NotifController;
 use App\Controllers\ReportsController;
+use App\Libraries\SemaphoreService;
 
 class AdminController extends BaseController
 {
@@ -42,6 +43,7 @@ class AdminController extends BaseController
     // private $notif;
     private $notifcont;
     private $reportscont;
+    private $sms;
 
     protected $scheduleModel;
     // protected $cache;
@@ -67,6 +69,7 @@ class AdminController extends BaseController
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
         $this->reportscont = new ReportsController();
+        $this->sms = new SemaphoreService();
     }
 
     public function AdDash()
@@ -379,6 +382,12 @@ class AdminController extends BaseController
         $emailMessage = "Congratulations on your promotion! We're thrilled to see your hard work and dedication pay off. 
         Please click the link below to login and access your new responsibilities: $verificationLink";
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
+
+        $to = $data['applicant']['number']; 
+        $message = "Congratulations on your promotion! We're thrilled to see your hard work and dedication pay off. 
+        Please click the link below to login and access your new responsibilities: $verificationLink";
+
+        $response = $this->sms->sendSMS($to, $message);
         return redirect()->to('promotion')->with('success', "$username was Promoted To Agent");
     }
 
@@ -467,27 +476,6 @@ class AdminController extends BaseController
 
             $this->applicant->save($appdata);
 
-            // $formdata1 = [
-            //     'user_id' => $data['applicant']['applicant_id'],
-            //     'app_life_token' => $token,
-            //     'username' => $data['applicant']['username'],
-            // ];
-
-            // $this->form1->save($formdata1);
-
-            // $formdata2 = [
-            //     'user_id' => $data['applicant']['applicant_id'],
-            //     'aial_token' => $token,
-            // ];
-            // $this->form2->save($formdata2);
-
-            // $formdata3 = [
-            //     'applicant_id' => $data['applicant']['applicant_id'],
-            //     'app_gli_token' => $token,
-            // ];
-
-            // $this->form3->save($formdata3);
-
             $this->confirm->delete($data['applicant']['id']);
             $con = ['confirm' => 'true', 'verification_token' => $verificationToken];
             $this->user->set($con)->where('token', $token)->update();
@@ -513,7 +501,10 @@ class AdminController extends BaseController
             $this->user->set($con)->where('token', $token)->update();
         }
 
-        // $verificationLink = site_url("login");
+        $to = $data['applicant']['number']; 
+        $message = 'Your account has been confirmed, Thank you for choosing ALLIANZ PNB MIMAROPA';
+        $response = $this->sms->sendSMS($to, $message);
+
         $verificationLink = site_url("verify-email/{$verificationToken}");
         $emailSubject = 'Registration Confirmation';
         $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";

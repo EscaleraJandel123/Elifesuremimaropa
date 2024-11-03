@@ -51,7 +51,6 @@ class SemaphoreService
             // Add the country code prefix (e.g., +63 for the Philippines)
             $phoneNumber = '+63' . $phoneNumber;
         }
-
         return $phoneNumber;
     }
 }
