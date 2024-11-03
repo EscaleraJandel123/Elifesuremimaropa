@@ -24,8 +24,18 @@ if (!function_exists('send_sms')) {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $output = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            // Output cURL error
+            echo 'cURL error: ' . curl_error($ch);
+        }
+
         curl_close($ch);
+
+        // Log or echo the raw API response to help with troubleshooting
+        echo 'Semaphore API Response: ' . $output;
 
         return json_decode($output, true); // Return as an associative array
     }
+
 }
