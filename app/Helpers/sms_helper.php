@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('sms_helper')) {
+if (!function_exists('send_sms')) {
     /**
      * Sends an SMS using Semaphore's API
      *
