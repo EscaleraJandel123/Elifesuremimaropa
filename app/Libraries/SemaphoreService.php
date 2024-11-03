@@ -7,7 +7,7 @@ class SemaphoreService
 
     public function __construct()
     {
-        $this->semaphoreApiKey = getenv('SEMFOR_APIKEY');
+        $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
     }
 
     public function sendSMS($to, $msg)
