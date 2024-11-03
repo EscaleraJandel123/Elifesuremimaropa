@@ -57,7 +57,7 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-        $to = '09486534370'; 
+        $to = '09366581432'; 
         $message = 'This is a message';
         $response = $this->sms->sendSMS($to, $message);
         log_message('info', 'Semaphore API response: ' . print_r(json_decode($response, true), true));
