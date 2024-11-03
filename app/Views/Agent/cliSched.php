@@ -248,12 +248,12 @@
                                                                 style=" width: 130px; height: 130px; object-fit: cover; border-radius: 50%; ">
                                                             <h4><?= isset($cli['username']) ? $cli['username'] : '' ?>
                                                             </h4>
-                                                            <h6>Client</h6>
+                                                            <!-- <h6>Client</h6>
                                                             <div class="social-links mt-2">
                                                                 <a href="#" class="twitter"><i class="bi bi-messenger"></i></a>
                                                                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                                                                 <a href="#" class="gmail"><i class="bi bi-envelope"></i></a>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                 </div>

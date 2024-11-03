@@ -35,7 +35,7 @@
                         <p><?= isset($plandesc['description']) ? $plandesc['description'] : ''; ?></p><br><br>
 
 
-                        <h3>Title basta about Benefits​</h3>
+                        <!-- <h3>Title basta about Benefits​</h3> -->
                         <!-- <div class="row">
                             <div class="col-lg-6 col-sm-6 col-md-6">
                                 <ul class="blog-details-list">
