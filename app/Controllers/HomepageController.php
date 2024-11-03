@@ -141,23 +141,23 @@ class HomepageController extends BaseController
                 } else {
                     log_message('error', 'Failed to send SMS to ' . $number);
                 }
-                $this->confirm->save($applicantData);
+                // $this->confirm->save($applicantData);
             }
 
-            $emailSubject = "Account Registration Confirmation";
-            $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
-            $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
+            // $emailSubject = "Account Registration Confirmation";
+            // $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
+            // $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
 
-            return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
+            // return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
         } else {
-            $validation = \Config\Services::validation();
-            $errorList = $validation->listErrors();
+            // $validation = \Config\Services::validation();
+            // $errorList = $validation->listErrors();
 
-            if ($this->request->getVar('role') === 'client') {
-                return redirect()->to('/ClientRegister')->with('error', $errorList);
-            } else {
-                return redirect()->to('/register/' . $ref)->with('error', $errorList);
-            }
+            // if ($this->request->getVar('role') === 'client') {
+            //     return redirect()->to('/ClientRegister')->with('error', $errorList);
+            // } else {
+            //     return redirect()->to('/register/' . $ref)->with('error', $errorList);
+            // }
         }
     }
 
