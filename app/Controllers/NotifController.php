@@ -54,7 +54,7 @@ class NotifController extends BaseController
     }
     public function sendNotification()
     {
-        helper(['sms']);
+        helper(['sms_helper']);
         $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
         $number = '09366581432';  // Recipient's phone number
         $smsMessage = 'Welcome Your registration is successful. Please wait for admin confirmation.';
