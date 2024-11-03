@@ -4,17 +4,17 @@ namespace App\Libraries;
 class SemaphoreService
 {
     protected $semaphoreApiKey;
-    // protected $semaphoreSenderName;
+    protected $semaphoreSenderName;
 
     public function __construct()
     {
         $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
-        // $this->semaphoreSenderName = 'PNB'; // Set your desired sender name here
+        $this->semaphoreSenderName = 'PNB'; // Set your desired sender name here
     }
 
     public function sendSMS($to, $message)
     {
-        // $formattedPhoneNumber = $this->formatPhoneNumber($to);
+        $formattedPhoneNumber = $this->formatPhoneNumber($to);
         $fullMessage = "ALLIANZ PNP MIMAROPA- " . $message;
         return $this->sendSMSNotification($to, $fullMessage);
     }
@@ -27,7 +27,7 @@ class SemaphoreService
             'apikey' => $this->semaphoreApiKey,
             'number' => $number,
             'message' => $message,
-            // 'sendername' => $this->semaphoreSenderName
+            'sendername' => $this->semaphoreSenderName
         ];
 
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
@@ -43,12 +43,8 @@ class SemaphoreService
 
     protected function formatPhoneNumber($phoneNumber)
     {
-        // Remove any non-numeric characters from the phone number
         $phoneNumber = preg_replace('/[^0-9]/', '', $phoneNumber);
-
-        // Check if the phone number starts with the country code, if not, prepend it
         if (!preg_match('/^\+/', $phoneNumber)) {
-            // Add the country code prefix (e.g., +63 for the Philippines)
             $phoneNumber = '+63' . $phoneNumber;
         }
         return $phoneNumber;
