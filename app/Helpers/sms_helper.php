@@ -7,7 +7,6 @@ if (!function_exists('send_sms')) {
      * @param string $apikey Your Semaphore API key
      * @param string $number Recipient's phone number
      * @param string $message The message you want to send
-     * @param string $sendername Optional sender name (if your account supports this)
      * @return mixed The API response
      */
     function send_sms($apikey, $number, $message)
