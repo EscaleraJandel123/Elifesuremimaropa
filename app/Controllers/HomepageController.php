@@ -79,7 +79,7 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form', 'sms']); // Load both form and semaphore helpers
+        helper(['form']); // Load both form and semaphore helpers
 
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
@@ -136,13 +136,12 @@ class HomepageController extends BaseController
                 $number = $this->request->getVar('number');  // Recipient's phone number
                 $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
 
-                $smsResponse = send_sms($apikey, $number, $smsMessage);
+                $smsResponse = $this->notifcont->send_sms($apikey, $number, $smsMessage);
                 if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
                     log_message('info', 'SMS sent successfully to ' . $number);
                 } else {
                     log_message('error', 'Failed to send SMS to ' . $number);
                 }
-
                 $this->confirm->save($applicantData);
             }
 
