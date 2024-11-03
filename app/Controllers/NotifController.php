@@ -52,6 +52,8 @@ class NotifController extends BaseController
         }
         return $data;
     }
+
+    
     // public function sendNotification() {
     //     $smsService = new SMSService(); // Load the SMS library
 
