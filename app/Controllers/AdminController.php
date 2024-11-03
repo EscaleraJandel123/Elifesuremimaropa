@@ -156,7 +156,6 @@ class AdminController extends BaseController
 
     public function formsTable($form)
     {
-
         $data = array_merge($this->getData(), $this->getDataAd(), $this->notifcont->notification());
         $data['user'] = $this->user->where(['role !=' => 'admin'])->Where(['role !=' => 'client'])->findAll();
         $data['link'] = $form;
@@ -386,8 +385,8 @@ class AdminController extends BaseController
         $to = $data['applicant']['number']; 
         $message = "Congratulations on your promotion! We're thrilled to see your hard work and dedication pay off. 
         Please click the link below to login and access your new responsibilities: $verificationLink";
-
         $response = $this->sms->sendSMS($to, $message);
+        
         return redirect()->to('promotion')->with('success', "$username was Promoted To Agent");
     }
 
@@ -509,6 +508,7 @@ class AdminController extends BaseController
         $emailSubject = 'Registration Confirmation';
         $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
+        
         return redirect()->to('/confirmation')->with('success', 'Acount Confirmed!');
     }
 
