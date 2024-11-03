@@ -60,6 +60,7 @@ class NotifController extends BaseController
         $to = '09486534370'; 
         $message = 'This is a message';
         $response = $this->sms->sendSMS($to, $message);
+        log_message('info', 'Semaphore API response: ' . print_r(json_decode($response, true), true));
         return $this->response->setJSON(['response' => $response]);
     }
 }
