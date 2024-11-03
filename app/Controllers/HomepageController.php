@@ -79,7 +79,7 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form', 'sms_helper']); // Load both form and semaphore helpers
+        helper(['form', 'sms']); // Load both form and semaphore helpers
 
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
@@ -131,37 +131,34 @@ class HomepageController extends BaseController
                 $r = 'admin';
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
-                
-                // $this->confirm->save($applicantData);
+                // Send SMS notification
+                $api = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
+                $number = $this->request->getVar('number');  // Recipient's phone number
+                $message = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
+                $smsResponse = $this->notifcont->sms_notification($api, $number, $message, 'ALLIANZ PNB MIMAROPA');
+                if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
+                    log_message('info', 'SMS sent successfully to ' . $number);
+                } else {
+                    log_message('error', 'Failed to send SMS to ' . $number);
+                }
+                $this->confirm->save($applicantData);
             }
-            // Send SMS notification
-            $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
-            $number = $this->request->getVar('number');  // Recipient's phone number
-            $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
 
-            $smsResponse = send_sms($apikey, $number, $smsMessage);
-            if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
-                echo 'sent';
+            $emailSubject = "Account Registration Confirmation";
+            $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
+            $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
+
+            return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
+        } else {
+            $validation = \Config\Services::validation();
+            $errorList = $validation->listErrors();
+
+            if ($this->request->getVar('role') === 'client') {
+                return redirect()->to('/ClientRegister')->with('error', $errorList);
             } else {
-                echo 'not sent';
+                return redirect()->to('/register/' . $ref)->with('error', $errorList);
             }
-
-            // $emailSubject = "Account Registration Confirmation";
-            // $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.";
-            // $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
-
-            // return redirect()->to('/login')->with('success', 'Account Registered. Please be patient. An email has been sent to your registered email address.');
-        } 
-        // else {
-        //     $validation = \Config\Services::validation();
-        //     $errorList = $validation->listErrors();
-
-        //     if ($this->request->getVar('role') === 'client') {
-        //         return redirect()->to('/ClientRegister')->with('error', $errorList);
-        //     } else {
-        //         return redirect()->to('/register/' . $ref)->with('error', $errorList);
-        //     }
-        // }
+        }
     }
 
 

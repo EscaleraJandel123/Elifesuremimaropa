@@ -52,19 +52,27 @@ class NotifController extends BaseController
         }
         return $data;
     }
-    // public function sendNotification() {
-    //     $smsService = new SMSService(); // Load the SMS library
+    public function sms_notification($api, $number, $message, $sendername)
+    {
+        $ch = curl_init();
+        $parameters = array(
+            'apikey' => $api, //Your API KEY
+            'number' => $number,
+            'message' => $message,
+            'sendername' => $sendername
+        );
+        curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
+        curl_setopt($ch, CURLOPT_POST, 1);
 
-    //     $to = '+639945428697'; // The recipient's phone number
-    //     $message = 'Your custom notification message.';
+        //Send the parameters set above with the request
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
 
-    //     $result = $smsService->sendSMS($to, $message);
+        // Receive response from server
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
+        curl_close($ch);
 
-    //     if ($result === true) {
-    //         return 'SMS sent successfully!';
-    //     } else {
-    //         return 'Failed to send SMS: ' . $result;
-    //     }
-    // }
-    
+        //Show the server response
+        return $output;
+    }
 }
