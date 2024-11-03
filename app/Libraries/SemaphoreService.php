@@ -9,7 +9,7 @@ class SemaphoreService
     public function __construct()
     {
         $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
-        $this->semaphoreSenderName = '09366581432'; // Set your desired sender name here
+        $this->semaphoreSenderName = 'ELIFESURE'; // Set your desired sender name here
     }
 
     public function sendSMS($to, $message)
