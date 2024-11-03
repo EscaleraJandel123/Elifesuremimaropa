@@ -55,24 +55,30 @@ class NotifController extends BaseController
     public function sms_notification($api, $number, $message, $sendername)
     {
         $ch = curl_init();
-        $parameters = array(
-            'apikey' => $api, //Your API KEY
-            'number' => $number,
-            'message' => $message,
+        $parameters = [
+            'apikey' => $api,         // Your API KEY
+            'number' => $number,      // Recipient's phone number
+            'message' => $message,    // Message to be sent
             'sendername' => $sendername
-        );
+        ];
+
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
         curl_setopt($ch, CURLOPT_POST, 1);
-
-        //Send the parameters set above with the request
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
-
-        // Receive response from server
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $output = curl_exec($ch);
-        curl_close($ch);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true); // Fail on HTTP error codes
+        curl_setopt($ch, CURLOPT_VERBOSE, true);     // Enable verbose mode for debugging
 
-        //Show the server response
+        $output = curl_exec($ch);
+
+        if ($output === false) {
+            log_message('error', 'CURL Error: ' . curl_error($ch));
+            curl_close($ch);
+            return false;
+        }
+
+        curl_close($ch);
         return $output;
     }
+
 }
