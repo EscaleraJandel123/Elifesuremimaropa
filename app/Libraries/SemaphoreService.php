@@ -14,7 +14,7 @@ class SemaphoreService
 
     public function sendSMS($to, $message)
     {
-        // $formattedPhoneNumber = $this->formatPhoneNumber($to);
+        $formattedPhoneNumber = $this->formatPhoneNumber($to);
         $fullMessage = "ALLIANZ PNP MIMAROPA- " . $message;
         return $this->sendSMSNotification($to, $fullMessage);
     }
