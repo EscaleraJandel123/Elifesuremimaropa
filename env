@@ -142,4 +142,4 @@ CI_ENVIRONMENT = production
 
 # curlrequest.shareOptions = true
 
-SEMAPHORE_APIKEY=your_api_key_here
+SEMFOR_APIKEY=your_api_key_here

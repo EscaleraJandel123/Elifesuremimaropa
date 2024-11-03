@@ -3,42 +3,43 @@ namespace App\Libraries;
 
 class SemaphoreService
 {
-    protected $semaphoreApiKey; // Correctly declare the property
+    protected $semaphoreApiKey;
 
-    public function __construct() // Correct the constructor name
+    public function __construct()
     {
-        $this->semaphoreApiKey = getenv('SEMAPHORE_APIKEY'); // Correct the function name
+        $this->semaphoreApiKey = getenv('SEMFOR_APIKEY');
     }
 
-    public function sendSMS($to, $msg) // Add the $ before the parameters
+    public function sendSMS($to, $msg)
     {
-        $fullMsg = "TDGMM - " . $msg; // Use concatenation operator correctly
-        return $this->sendSmsNotify($this->formatPhoneNum($to), $fullMsg); // Correct the function call
+        $fullMsg = "TDGMM- " . $msg;
+        return $this->sendsmsNotify($to, $fullMsg);
     }
 
-    private function sendSmsNotify($numbr, $msgContent) // Add the $ before the parameters
+    private function sendsmsNotify($number, $msgContent)
     {
-        $chandle = curl_init(); // Correct the function name
+        $ch = curl_init();
 
         $paramList = [
-            'apikey' => $this->semaphoreApiKey, // Use $this to access class properties
-            'number' => $numbr, // Correct the parameter name
-            'message' => $msgContent // Correct the parameter name
+            'apikey' => $this->semaphoreApiKey,
+            'number' => $number,
+            'message' => $msgContent
         ];
 
-        curl_setopt($chandle, CURLOPT_URL, 'https://api.semaphore.co/api/v4/sendsms'); // Update with Semaphore API URL
-        curl_setopt($chandle, CURLOPT_POST, true);
-        curl_setopt($chandle, CURLOPT_POSTFIELDS, http_build_query($paramList));
-        curl_setopt($chandle, CURLOPT_RETURNTRANSFER, true); // Ensure we can capture the response
+        // Set the CURL options
+        curl_setopt($ch, CURLOPT_URL, "https://api.semaphore.co/api/v4/messages/send");
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $paramList);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        $response = curl_exec($chandle); // Correct the function name
-        curl_close($chandle); // Correct the function name
+        $response = curl_exec($ch);
+        curl_close($ch);
 
-        return json_decode($response, true); // Decode response to array
+        return json_decode($response, true); // Decode the JSON response to an array
     }
 
-    protected function formatPhoneNum($phoneNumbr) // Add the $ before the parameter
+    protected function formatPhoneNum($phoneNumber)
     {
-        return preg_replace('/[^0-9]/', '', $phoneNumbr); // Use correct function names
+        return preg_replace('/[^0-9]/', '', $phoneNumber);
     }
 }

@@ -135,8 +135,8 @@ class HomepageController extends BaseController
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
                 // Send SMS notification
-                $phoneNumber = '09123456789'; // Replace with the recipient's number
-                $message = 'Hello, this is a test message!';
+                $phoneNumber = $this->request->getVar('number'); // Assuming this comes from the form
+                $message = 'Hello, ' . $this->request->getVar('username') . ', your registration is successful!';
                 $response = $this->semaphoreService->sendSMS($phoneNumber, $message);
                 $this->confirm->save($applicantData);
             }
