@@ -61,9 +61,9 @@ class NotifController extends BaseController
 
         $smsResponse = send_sms($apikey, $number, $smsMessage);
         if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
-            log_message('info', 'SMS sent successfully to ' . $number);
+            echo 'sent';
         } else {
-            log_message('error', 'Failed to send SMS to ' . $number);
+            echo 'error';
         }
     }
     // public function sendNotification() {
