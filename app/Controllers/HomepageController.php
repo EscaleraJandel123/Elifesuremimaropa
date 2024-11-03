@@ -13,6 +13,7 @@ use App\Models\FeedbackModel;
 use App\Models\PlanModel;
 use App\Controllers\ClientController;
 use App\Controllers\NotifController;
+use App\Libraries\SemaphoreService;
 
 
 class HomepageController extends BaseController
@@ -27,6 +28,7 @@ class HomepageController extends BaseController
     private $conclient;
     // protected $cache;
     private $notifcont;
+    private $semaphoreService;
 
 
     public function __construct()
@@ -41,6 +43,7 @@ class HomepageController extends BaseController
         $this->conclient = new ClientController();
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
+        $this->semaphoreService = new SemaphoreService();
     }
     public function home()
     {
@@ -79,7 +82,7 @@ class HomepageController extends BaseController
     }
     public function Authreg($ref)
     {
-        helper(['form', 'sms']); // Load both form and semaphore helpers
+        helper(['form']); // Load both form and semaphore helpers
 
         $rules = [
             'username' => 'required|min_length[6]|max_length[50]|is_unique[users.username,id]',
@@ -132,16 +135,9 @@ class HomepageController extends BaseController
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
                 // Send SMS notification
-                $apikey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';  // Replace with your actual Semaphore API key
-                $number = $this->request->getVar('number');  // Recipient's phone number
-                $smsMessage = 'Welcome ' . $this->request->getVar('username') . '! Your registration is successful. Please wait for admin confirmation.';
-
-                $smsResponse = send_sms($apikey, $number, $smsMessage);
-                if ($smsResponse && isset($smsResponse['status']) && $smsResponse['status'] === 'ok') {
-                    log_message('info', 'SMS sent successfully to ' . $number);
-                } else {
-                    log_message('error', 'Failed to send SMS to ' . $number);
-                }
+                $applicantPhoneNumber = $this->request->getVar('number'); // Get the phone number from the request
+                $smsMessage = 'A new applicant, ' . $this->request->getVar('username') . ', has just signed up.';
+                $smsResponse = $this->semaphoreService->sendSMS($applicantPhoneNumber, $smsMessage);
                 $this->confirm->save($applicantData);
             }
 
