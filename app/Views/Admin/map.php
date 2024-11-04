@@ -19,7 +19,7 @@
     #map,
     #map2,
     #map3 {
-        z-index: -500;
+        z-index: -1;
         position: relative;
     }
 </style>
