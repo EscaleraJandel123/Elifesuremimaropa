@@ -14,6 +14,22 @@
         transform: scale(1.05);
     }
 </style> -->
+<style>
+    /* Ensure the sidebar or menu is above the map */
+    #sidebarMenu {
+        z-index: 1050;
+        /* Ensure this is higher than the map's z-index */
+        position: relative;
+    }
+
+    /* Lower the z-index of the map to stay below the menu */
+    #map,
+    #map2,
+    #map3 {
+        z-index: 1;
+        position: relative;
+    }
+</style>
 
 <body>
     <?= view('Admin/chop/header') ?>
@@ -170,7 +186,7 @@
     </div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var applicantCounts = <?= json_encode($applicantCounts) ?>;
             var clientCounts = <?= json_encode($clientCounts) ?>;
             var agentCounts = <?= json_encode($agentCounts) ?>;
@@ -186,7 +202,7 @@
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
-                Object.keys(counts).forEach(function(city) {
+                Object.keys(counts).forEach(function (city) {
                     if (counts[city].count > 0) {
                         var marker = L.marker([counts[city].lat, counts[city].lng])
                             .addTo(map)
