@@ -577,7 +577,7 @@ class AdminController extends BaseController
     {
         $data = array_merge($this->getData(), $this->getDataAd(), $this->notifcont->notification());
         $data['schedules'] = $this->scheduleModel->findAll();
-        $data['sched'] = $this->scheduleModel->where('id' , $id)->find();
+        $data['schedles'] = $this->scheduleModel->where('id' , $id)->find();
         return view('Admin/Schedule', $data); // Replace 'your_view_path' with the actual view file where the form is located
     }
 

@@ -117,29 +117,29 @@
                                     style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px;">
                                     <div class="card-body text-center">
                                         <h4 style="color: #007bff;">
-                                            <?= isset($schedule) ? 'Edit Schedule' : 'Create Schedule' ?>
+                                            <?= isset($schedules) ? 'Edit Schedule' : 'Create Schedule' ?>
                                         </h4>
                                         <form method="post"
-                                            action="<?= base_url(isset($schedule) ? 'sched/update/' . $schedule['id'] : 'sched/schedsave') ?>">
+                                            action="<?= base_url(isset($schedules) ? 'sched/update/' . $schedules['id'] : 'sched/schedsave') ?>">
                                             <?= csrf_field() ?>
                                             <label for="title" style="color: #495057;">Title:</label><br>
                                             <input type="text" class="form-control text-center" id="title" name="title"
-                                                value="<?= isset($schedule) ? esc($schedule['title']) : '' ?>"><br>
+                                                value="<?= isset($schedules) ? esc($schedules['title']) : '' ?>"><br>
                                             <label for="description" style="color: #495057;">Description:</label><br>
                                             <textarea id="description" class="form-control text-center"
                                                 name="description"
-                                                style="width: 100%; padding: 5px; margin-bottom: 10px;"><?= isset($schedule) ? esc($schedule['description']) : '' ?></textarea><br>
+                                                style="width: 100%; padding: 5px; margin-bottom: 10px;"><?= isset($schedules) ? esc($schedules['description']) : '' ?></textarea><br>
                                             <label for="start_datetime" style="color: #495057;">Start Date:</label><br>
                                             <input type="datetime-local" class="form-control text-center"
                                                 id="start_datetime" name="start_datetime"
-                                                value="<?= isset($schedule) ? esc($schedule['start_datetime']) : '' ?>"><br>
+                                                value="<?= isset($schedules) ? esc($schedules['start_datetime']) : '' ?>"><br>
                                             <label for="end_datetime" style="color: #495057;">End Date:</label><br>
                                             <input type="datetime-local" class="form-control text-center"
                                                 id="end_datetime" name="end_datetime"
-                                                value="<?= isset($schedule) ? esc($schedule['end_datetime']) : '' ?>"><br><br>
+                                                value="<?= isset($schedules) ? esc($schedules['end_datetime']) : '' ?>"><br><br>
                                             <button type="submit"
                                                 style="background-color: #28a745; color: #fff; border: none; padding: 8px 20px; border-radius: 3px;">
-                                                <?= isset($schedule) ? 'Update' : 'Save' ?>
+                                                <?= isset($schedules) ? 'Update' : 'Save' ?>
                                             </button>
                                         </form>
                                     </div>
