@@ -587,7 +587,7 @@ class AdminController extends BaseController
         return view('Admin/Schedule', $data);
     }
 
-    public function update($id)
+    public function schedupdate($id)
     {
         $input = $this->request->getPost();
         $validationRules = [
@@ -612,7 +612,7 @@ class AdminController extends BaseController
         return redirect()->back()->with('success', 'Schedule updated successfully.');
     }
 
-    public function delete($id)
+    public function scheddelete($id)
     {
         $schedule = $this->scheduleModel->find($id);
 

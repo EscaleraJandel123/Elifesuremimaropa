@@ -163,8 +163,8 @@ $routes->get('/calendar', 'AdminController::calendar', ['filter' => 'adminFilter
 $routes->get('sched/create', 'AdminController::create', ['filter' => 'adminFilter']);
 $routes->post('sched/schedsave', 'AdminController::schedsave', ['filter' => 'adminFilter']);
 $routes->get('sched/edit/(:num)', 'AdminController::schededit/$1', ['filter' => 'adminFilter']);
-$routes->post('sched/update/(:num)', 'AdminController::update/$1', ['filter' => 'adminFilter']);
-$routes->get('sched/delete/(:num)', 'AdminController::delete/$1', ['filter' => 'adminFilter']);
+$routes->post('sched/update/(:num)', 'AdminController::schedupdate/$1', ['filter' => 'adminFilter']);
+$routes->get('sched/delete/(:num)', 'AdminController::scheddelete/$1', ['filter' => 'adminFilter']);
 $routes->get('/agentsched', 'AgentController::sched', ['filter' => 'agentFilter']);
 
 //notification
