@@ -43,6 +43,7 @@ class MapController extends BaseController
     public function map()
     {
         // Gather data from your models
+        
         $applicants = $this->applicants->findAll();
         $clients = $this->clients->findAll();
         $agents = $this->agents->findAll();
@@ -142,6 +143,7 @@ class MapController extends BaseController
         $data['applicantCounts'] = $applicantCounts;
         $data['clientCounts'] = $clientCounts;
         $data['agentCounts'] = $agentCounts;
+        $data = $this->getDataAd();
         return view('Admin/map', $data);
     }
 }
