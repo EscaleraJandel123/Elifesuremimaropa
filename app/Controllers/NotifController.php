@@ -99,7 +99,7 @@ class NotifController extends BaseController
         //     'response' => $decodedResponse
         // ]);
 
-        $echome = env('ECHOME');
+        $echome = env('SEMAPHORE_API_KEY');
 
         // Check if it's working
         echo "ECHOME is set to: " . ($echome ? 'true' : 'false');
