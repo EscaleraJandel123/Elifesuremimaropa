@@ -22,6 +22,7 @@ class MapController extends BaseController
         $this->agents = new AgentModel();
         $this->clients = new ClientModel();
         $this->notifcont = new NotifController();
+        $this->admin = new AdminModel();
     }
     // public function map()
     // {
