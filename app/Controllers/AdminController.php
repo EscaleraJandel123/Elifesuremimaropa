@@ -583,7 +583,7 @@ class AdminController extends BaseController
 
         $data['schedule'] = $schedule;
 
-        return view('Admin/sched', $data); // Replace 'your_view_path' with the actual view file where the form is located
+        return view('Admin/Schedule', $data); // Replace 'your_view_path' with the actual view file where the form is located
     }
 
 
