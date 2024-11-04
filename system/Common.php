@@ -380,7 +380,7 @@ if (! function_exists('env')) {
         $value = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key);
 
         // Not found? Return the default value
-        if ($value === true) {
+        if ($value === false) {
             return $default;
         }
 
