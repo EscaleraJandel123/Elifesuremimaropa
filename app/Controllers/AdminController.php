@@ -578,17 +578,50 @@ class AdminController extends BaseController
         $data = array_merge($this->getData(), $this->getDataAd(), $this->notifcont->notification());
         $data['schedules'] = $this->scheduleModel->findAll();
         $schedule = $this->scheduleModel->find($id);
-
-        // Check if the schedule exists
         if (!$schedule) {
             return redirect()->back()->with('error', 'Schedule not found.');
         }
 
-        // Pass the schedule data to the view
         $data['schedule'] = $schedule;
 
-        // Load the view, make sure to replace with your actual view path
         return view('Admin/Schedule', $data);
+    }
+
+    public function update($id)
+    {
+        $input = $this->request->getPost();
+        $validationRules = [
+            'title' => 'required',
+            'description' => 'required',
+            'start_datetime' => 'required|valid_date',
+            'end_datetime' => 'required|valid_date'
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $data = [
+            'title' => $input['title'],
+            'description' => $input['description'],
+            'start_datetime' => $input['start_datetime'],
+            'end_datetime' => $input['end_datetime'],
+        ];
+
+        $this->scheduleModel->update($id, $data);
+        return redirect()->back()->with('success', 'Schedule updated successfully.');
+    }
+
+    public function delete($id)
+    {
+        $schedule = $this->scheduleModel->find($id);
+
+        if (!$schedule) {
+            return redirect()->back()->with('error', 'Schedule not found.');
+        }
+
+        $this->scheduleModel->delete($id);
+        return redirect()->back()->with('success', 'Schedule deleted successfully.');
     }
 
     public function ManageClients()
