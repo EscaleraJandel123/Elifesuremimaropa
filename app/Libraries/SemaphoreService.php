@@ -9,7 +9,7 @@ class SemaphoreService
     public function __construct()
     {
         $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
-        // $this->semaphoreSenderName = 'SEMAPHORE'; // Set your desired sender name here
+        $this->semaphoreSenderName = '09945428697'; // Set your desired sender name here
     }
 
     public function sendSMS($to, $message)
@@ -27,7 +27,7 @@ class SemaphoreService
             'apikey' => $this->semaphoreApiKey,
             'number' => $number,
             'message' => $message,
-            // 'sendername' => $this->semaphoreSenderName
+            'sendername' => $this->semaphoreSenderName
         );
 
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
