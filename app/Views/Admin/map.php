@@ -4,7 +4,7 @@
 <?= view('head') ?>
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<!-- <style>
+<style>
     .card {
         transition: transform 0.3s ease;
         cursor: pointer;
@@ -13,7 +13,7 @@
     .card:hover {
         transform: scale(1.05);
     }
-</style> -->
+</style>
 <style>
     /* Lower the z-index of the map to stay below the menu */
     #map,
