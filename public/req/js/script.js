@@ -1,4 +1,4 @@
-    // var calendar;
+    var calendar;
     var Calendar = FullCalendar.Calendar;
     var events = [];
     $(function() {
