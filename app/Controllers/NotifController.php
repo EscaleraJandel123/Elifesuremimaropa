@@ -99,7 +99,7 @@ class NotifController extends BaseController
         //     'response' => $decodedResponse
         // ]);
 
-        var_dump(env("CI_ENVIRONMENT"));
+        var_dump(env('CI_ENVIRONMENT'));
     }
 
 }
