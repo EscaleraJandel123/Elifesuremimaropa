@@ -19,7 +19,7 @@
     #sidebarMenu {
         z-index: 1050;
         /* Ensure this is higher than the map's z-index */
-        position: relative;
+        
     }
 
     /* Lower the z-index of the map to stay below the menu */
