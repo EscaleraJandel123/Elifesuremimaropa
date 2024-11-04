@@ -575,7 +575,8 @@ class AdminController extends BaseController
 
     public function schededit($id)
     {
-        // Retrieve the schedule by ID
+        $data = array_merge($this->getData(), $this->getDataAd(), $this->notifcont->notification());
+        $data['schedules'] = $this->scheduleModel->findAll();
         $schedule = $this->scheduleModel->find($id);
 
         // Check if the schedule exists
@@ -589,8 +590,6 @@ class AdminController extends BaseController
         // Load the view, make sure to replace with your actual view path
         return view('Admin/Schedule', $data);
     }
-
-
 
     public function ManageClients()
     {
