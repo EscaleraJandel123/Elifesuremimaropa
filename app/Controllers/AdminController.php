@@ -576,7 +576,7 @@ class AdminController extends BaseController
     public function schededit($id)
     {
 
-        $data['schedules'] = $this->scheduleModel->where('id' , $id)->find();
+        $data['schedule'] = $this->scheduleModel->where('id' , $id)->find();
         return view('Admin/Schedule', $data); // Replace 'your_view_path' with the actual view file where the form is located
     }
 
