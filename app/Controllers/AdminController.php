@@ -382,11 +382,11 @@ class AdminController extends BaseController
         Please click the link below to login and access your new responsibilities: $verificationLink";
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
 
-        $to = $data['applicant']['number']; 
+        $to = $data['applicant']['number'];
         $message = "Congratulations on your promotion! We're thrilled to see your hard work and dedication pay off. 
         Please click the link below to login and access your new responsibilities: $verificationLink";
         $response = $this->sms->sendSMS($to, $message);
-        
+
         return redirect()->to('promotion')->with('success', "$username was Promoted To Agent");
     }
 
@@ -500,7 +500,7 @@ class AdminController extends BaseController
             $this->user->set($con)->where('token', $token)->update();
         }
 
-        $to = $data['applicant']['number']; 
+        $to = $data['applicant']['number'];
         $message = 'Your account has been confirmed, Thank you for choosing ALLIANZ PNB MIMAROPA';
         $response = $this->sms->sendSMS($to, $message);
 
@@ -508,7 +508,7 @@ class AdminController extends BaseController
         $emailSubject = 'Registration Confirmation';
         $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
-        
+
         return redirect()->to('/confirmation')->with('success', 'Acount Confirmed!');
     }
 
@@ -572,6 +572,20 @@ class AdminController extends BaseController
         $this->scheduleModel->insert($data);
         return redirect()->back()->with('success', 'Schedule submitted successfully.');
     }
+
+    public function schededit($id)
+    {
+        $schedule = $this->scheduleModel->find($id);
+
+        if (!$schedule) {
+            return redirect()->back()->with('error', 'Schedule not found.');
+        }
+
+        $data['schedule'] = $schedule;
+
+        return view('Admin/sched', $data); // Replace 'your_view_path' with the actual view file where the form is located
+    }
+
 
     public function ManageClients()
     {
