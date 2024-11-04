@@ -20,7 +20,6 @@
     #map2,
     #map3 {
         z-index: -1;
-        position: relative;
     }
 </style>
 
