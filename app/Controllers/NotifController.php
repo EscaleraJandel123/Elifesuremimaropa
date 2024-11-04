@@ -99,7 +99,7 @@ class NotifController extends BaseController
         //     'response' => $decodedResponse
         // ]);
 
-        $semaphoreApiKey = getenv('SEMAPHORE_API_KEY');
+        $semaphoreApiKey = env('SEMAPHORE_API_KEY');
 
         echo "SEMAPHORE_API_KEY: " . $semaphoreApiKey;
     }
