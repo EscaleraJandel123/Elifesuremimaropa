@@ -26,11 +26,11 @@
             eventClick: function(info) {
                 var _details = $('#event-details-modal')
                 var id = info.event.id
-                if (!!schedule[id]) {
-                    _details.find('#title').text(schedule[id].title)
-                    _details.find('#description').text(schedule[id].description)
-                    _details.find('#start').text(schedule[id].sdate)
-                    _details.find('#end').text(schedule[id].edate)
+                if (!!schedules[id]) {
+                    _details.find('#title').text(schedules[id].title)
+                    _details.find('#description').text(schedules[id].description)
+                    _details.find('#start').text(schedules[id].sdate)
+                    _details.find('#end').text(schedules[id].edate)
                     _details.find('#edit,#delete').attr('data-id', id)
                     _details.modal('show')
                 } else {
