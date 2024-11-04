@@ -183,7 +183,7 @@
                                                                     href="<?= site_url('sched/edit/' . $schedule['id']) ?>">Edit</a>
                                                                 |
                                                                 <a class="badge text-bg-danger"
-                                                                    href="<?= site_url('schedule/delete/' . $schedule['id']) ?>"
+                                                                    href="<?= site_url('sched/delete/' . $schedule['id']) ?>"
                                                                     onclick="return confirm('Are you sure?')">Delete</a>
                                                             </td>
                                                         </tr>
