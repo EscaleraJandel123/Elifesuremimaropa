@@ -132,7 +132,7 @@
                     </div>
 
                     <!--QR Modal-->
-                    <div class="modal fade" id="profileModal" tabindex="-1">
+                    <!-- <div class="modal fade" id="profileModal" tabindex="-1">
                         <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="d-flex align-items-center justify-content-center">
@@ -144,7 +144,27 @@
                                 </div>
                             </div>
                         </div>
+                    </div> -->
+
+                    <!--QR Modal-->
+                    <div class="modal fade" id="profileModal" tabindex="-1">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="text-center">
+                                        <div class="qr-code-container mt-3 mb-3" id="qrCodeContainer">
+                                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
+                                                alt="QR Code">
+                                        </div>
+                                        <button type="button" class="btn btn-dark" id="downloadButton"><i
+                                                class="bi bi-download"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    
                     <div class="col-xl-8">
                         <div class="card">
                             <div class="card-body pt-3">
@@ -187,13 +207,6 @@
                                             <div class="col-lg-3 col-md-4 label">Username</div>
                                             <div class="col-lg-8 col-md-8">
                                                 <?php echo isset($agent['username']) ? $agent['username'] : '' ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-2">
-                                            <div class="col-lg-3 col-md-4 label">Agent Code</div>
-                                            <div class="col-lg-8 col-md-8">
-                                                <?php echo isset($agent['AgentCode']) ? $agent['AgentCode'] : '' ?>
                                             </div>
                                         </div>
 
@@ -375,7 +388,7 @@
     </div>
 
     <?= view('js'); ?>
-    <script>
+    <!-- <script>
         // I-create ang QR code gamit ang actual na data
         var profileData = JSON.stringify({
             username: "<?= $agent['username'] ?>",
@@ -416,6 +429,30 @@
             });
         });
 
+    </script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const downloadButton = document.getElementById('downloadButton');
+            const qrCodeImage = document.querySelector('#qrCodeContainer img');
+
+            downloadButton.addEventListener('click', function () {
+                fetch(qrCodeImage.src)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = URL.createObjectURL(blob);
+                        downloadLink.download = '<?= $agent['username'] ?> referral qr-code.png';
+                        downloadLink.click();
+                    });
+            });
+        });
+
+        // JavaScript code to show the modal when the profile image is clicked
+        $(document).ready(function () {
+            $('.profile-card img').on('click', function () {
+                $('#profileModal').modal('show');
+            });
+        });
     </script>
 </body>
 
