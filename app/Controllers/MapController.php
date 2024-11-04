@@ -47,7 +47,7 @@ class MapController extends BaseController
         $applicants = $this->applicants->findAll();
         $clients = $this->clients->findAll();
         $agents = $this->agents->findAll();
-        $data = $this->getDataAd();
+        $admin = $this->getDataAd();
         // Define the coordinates for the cities
         $cities = [
             'Puerto Princesa City (Capital)' => ['lat' => 9.7392, 'lng' => 118.7353],
@@ -143,6 +143,7 @@ class MapController extends BaseController
         $data['applicantCounts'] = $applicantCounts;
         $data['clientCounts'] = $clientCounts;
         $data['agentCounts'] = $agentCounts;
+        $data['admin'] = $admin;
         return view('Admin/map', $data);
     }
 }
