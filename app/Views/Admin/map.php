@@ -15,18 +15,11 @@
     }
 </style> -->
 <style>
-    /* Ensure the sidebar or menu is above the map */
-    #sidebarMenu {
-        z-index: 1050;
-        /* Ensure this is higher than the map's z-index */
-        
-    }
-
     /* Lower the z-index of the map to stay below the menu */
     #map,
     #map2,
     #map3 {
-        z-index: 1;
+        z-index: -500;
         position: relative;
     }
 </style>
