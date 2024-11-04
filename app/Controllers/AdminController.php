@@ -598,7 +598,7 @@ class AdminController extends BaseController
         ];
 
         if (!$this->validate($validationRules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            return redirect('sched')->withInput()->with('errors', $this->validator->getErrors());
         }
 
         $data = [
@@ -609,7 +609,7 @@ class AdminController extends BaseController
         ];
 
         $this->scheduleModel->update($id, $data);
-        return redirect('Admin/Schedule')->with('success', 'Schedule updated successfully.');
+        return redirect('sched')->with('success', 'Schedule updated successfully.');
     }
 
     public function scheddelete($id)
@@ -621,7 +621,7 @@ class AdminController extends BaseController
         }
 
         $this->scheduleModel->delete($id);
-        return redirect('Admin/Schedule')->with('success', 'Schedule deleted successfully.');
+        return redirect('sched')->with('success', 'Schedule deleted successfully.');
     }
 
     public function ManageClients()
