@@ -99,7 +99,7 @@ class NotifController extends BaseController
         //     'response' => $decodedResponse
         // ]);
 
-        var_dump(env("SEMAPHORE_API_KEY"));
+        var_dump(env("CI_ENVIRONMENT"));
     }
 
 }
