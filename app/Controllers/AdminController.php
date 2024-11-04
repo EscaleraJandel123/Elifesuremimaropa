@@ -575,7 +575,15 @@ class AdminController extends BaseController
 
     public function schededit($id)
     {
-        echo $id; // Replace 'your_view_path' with the actual view file where the form is located
+        $schedule = $this->scheduleModel->find($id);
+
+        if (!$schedule) {
+            return redirect()->back()->with('error', 'Schedule not found.');
+        }
+
+        $data['schedule'] = $schedule;
+
+        return view('Admin/sched', $data); // Replace 'your_view_path' with the actual view file where the form is located
     }
 
 

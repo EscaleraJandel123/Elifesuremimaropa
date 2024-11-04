@@ -176,7 +176,7 @@
                                                             </td>
                                                             <td scope="row">
                                                                 <a class="badge text-bg-primary"
-                                                                    href="<?= site_url('schedule/edit/' . $schedule['id']) ?>">Edit</a>
+                                                                    href="<?= site_url('sched/edit/' . $schedule['id']) ?>">Edit</a>
                                                                 |
                                                                 <a class="badge text-bg-danger"
                                                                     href="<?= site_url('schedule/delete/' . $schedule['id']) ?>"
