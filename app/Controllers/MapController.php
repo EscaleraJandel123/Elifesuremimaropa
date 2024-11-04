@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
 use App\Controllers\BaseController;
 use App\Models\ApplicantModel;
 use App\Models\AgentModel;
@@ -10,12 +11,14 @@ use App\Controllers\NotifController;
 
 class MapController extends BaseController
 {
+    private $admin;
     private $applicants;
     private $agents;
     private $clients;
     private $notifcont;
     public function __construct()
     {
+        $this->admin = new AdminModel();
         $this->applicants = new ApplicantModel();
         $this->agents = new AgentModel();
         $this->clients = new ClientModel();
@@ -28,6 +31,15 @@ class MapController extends BaseController
     //     $data['agents'] = $this->agents->findAll();
     //     return view('Admin/map', $data);
     // }
+    public function getDataAd()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data['admin'] = $this->admin->where('admin_id', $userId)
+            ->orderBy('id', 'desc')
+            ->first();
+        return $data;
+    }
     public function map()
     {
         // Gather data from your models
