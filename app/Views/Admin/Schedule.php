@@ -111,6 +111,16 @@
 
                 <div class="row">
                     <div class="col-lg-4">
+                        <?php if (session()->getFlashdata('error')): ?>
+                            <div class="alert alert-danger mt-3 text-center" role="alert">
+                                <?= session()->getFlashdata('error') ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <div class="alert alert-success mt-3 text-center" role="alert">
+                                <?= session()->getFlashdata('success') ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card mb-3"
