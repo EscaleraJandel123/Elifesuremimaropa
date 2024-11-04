@@ -31,19 +31,15 @@ class MapController extends BaseController
     //     $data['agents'] = $this->agents->findAll();
     //     return view('Admin/map', $data);
     // }
-    public function getDataAd()
+    
+    public function map()
     {
+        // Gather data from your models
         $session = session();
         $userId = $session->get('id');
         $data['admin'] = $this->admin->where('admin_id', $userId)
             ->orderBy('id', 'desc')
             ->first();
-        return $data;
-    }
-    public function map()
-    {
-        // Gather data from your models
-        
         $applicants = $this->applicants->findAll();
         $clients = $this->clients->findAll();
         $agents = $this->agents->findAll();
@@ -140,10 +136,10 @@ class MapController extends BaseController
             }
         }
         $data = $this->notifcont->notification();
+
         $data['applicantCounts'] = $applicantCounts;
         $data['clientCounts'] = $clientCounts;
         $data['agentCounts'] = $agentCounts;
-        $data = $this->getDataAd();
         return view('Admin/map', $data);
     }
 }
