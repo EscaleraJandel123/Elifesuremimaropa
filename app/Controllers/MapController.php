@@ -143,7 +143,7 @@ class MapController extends BaseController
         $data['applicantCounts'] = $applicantCounts;
         $data['clientCounts'] = $clientCounts;
         $data['agentCounts'] = $agentCounts;
-        $data = $admin;
+        $data['admin'] = $admin;
         return view('Admin/map', $data);
     }
 }
