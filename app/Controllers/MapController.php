@@ -31,23 +31,13 @@ class MapController extends BaseController
     //     $data['agents'] = $this->agents->findAll();
     //     return view('Admin/map', $data);
     // }
-
-    public function getDataAd()
-    {
-        $session = session();
-        $userId = $session->get('id');
-        $data['admin'] = $this->admin->where('admin_id', $userId)
-            ->orderBy('id', 'desc')
-            ->first();
-        return $data;
-    }
     public function map()
     {
         // Gather data from your models
         $applicants = $this->applicants->findAll();
         $clients = $this->clients->findAll();
         $agents = $this->agents->findAll();
-        $admin = $this->getDataAd();
+        
         // Define the coordinates for the cities
         $cities = [
             'Puerto Princesa City (Capital)' => ['lat' => 9.7392, 'lng' => 118.7353],
@@ -140,10 +130,19 @@ class MapController extends BaseController
             }
         }
         $data = $this->notifcont->notification();
+        $data = array_merge($this->notifcont->notification(), $this->getDataAd());
         $data['applicantCounts'] = $applicantCounts;
         $data['clientCounts'] = $clientCounts;
         $data['agentCounts'] = $agentCounts;
-        $data['admin'] = $admin;
         return view('Admin/map', $data);
+    }
+    public function getDataAd()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data['admin'] = $this->admin->where('admin_id', $userId)
+            ->orderBy('id', 'desc')
+            ->first();
+        return $data;
     }
 }
