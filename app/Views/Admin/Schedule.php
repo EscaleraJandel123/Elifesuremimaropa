@@ -178,7 +178,7 @@
                                                             <td scope="row">
                                                                 <?= date('M j, Y', strtotime($schedule['end_datetime'])) ?><br><?= date('h:i A', strtotime($schedule['end_datetime'])) ?>
                                                             </td>
-                                                            <td scope="row">w
+                                                            <td scope="row">
                                                                 <a class="badge text-bg-primary"
                                                                     href="<?= site_url('sched/edit/' . $schedule['id']) ?>">Edit</a>
                                                                 |
