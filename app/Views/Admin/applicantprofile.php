@@ -114,8 +114,7 @@
                             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                                 <img src="<?= isset($applicant['profile']) && !empty($applicant['profile']) ? base_url('/uploads/' . $applicant['profile']) : base_url('/uploads/def.png') ?>"
                                     alt="Profile" class="rounded-circle"
-                                    style="width: 150px; height: 150px; cursor: pointer;" data-bs-placement="bottom"
-                                    title="Click to see QR code">
+                                    style="width: 150px; height: 150px; cursor: pointer;" data-bs-placement="bottom">
                                 <h5>
                                     <?= $applicant['username'] ?>
                                 </h5>
@@ -130,7 +129,7 @@
                     </div>
 
                     <!--QR Modal-->
-                    <div class="modal fade" id="profileModal" tabindex="-1">
+                    <!-- <div class="modal fade" id="profileModal" tabindex="-1">
                         <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="d-flex align-items-center justify-content-center">
@@ -142,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="col-xl-8">
@@ -335,7 +334,7 @@
     </div>
 
     <?= view('js'); ?>
-    <script>
+    <!-- <script>
         // I-create ang QR code gamit ang actual na data
         var profileData = JSON.stringify({
             username: "<?= $applicant['username'] ?>",
@@ -375,7 +374,7 @@
             });
         });
 
-    </script>
+    </script> -->
 </body>
 
 </html>
