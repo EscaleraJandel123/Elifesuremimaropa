@@ -581,7 +581,7 @@ class AdminController extends BaseController
             return redirect()->back()->with('error', 'Schedule not found.');
         }
 
-        $data['schedule'] = $schedule;
+        $data['schedules'] = $schedule;
 
         return view('Admin/Schedule', $data); // Replace 'your_view_path' with the actual view file where the form is located
     }
