@@ -142,4 +142,4 @@ CI_ENVIRONMENT = production
 
 # curlrequest.shareOptions = true
 
-
+SEMAPHORE_API_KEY=dfdb3f38323f2e2f0fca0d6ae9624fdb
