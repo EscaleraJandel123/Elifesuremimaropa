@@ -570,7 +570,7 @@ class AdminController extends BaseController
         ];
 
         $this->scheduleModel->insert($data);
-        return redirect()->back()->with('success', 'Schedule submitted successfully.');
+        return redirect()->back()->with('success', 'Schedule Added!.');
     }
 
     public function schededit($id)
