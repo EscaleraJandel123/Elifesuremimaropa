@@ -7,6 +7,7 @@ use App\Models\ApplicantModel;
 use App\Models\AgentModel;
 use App\Models\ClientModel;
 use App\Controllers\NotifController;
+use App\Models\AdminModel;
 
 class MapController extends BaseController
 {
@@ -14,6 +15,7 @@ class MapController extends BaseController
     private $agents;
     private $clients;
     private $notifcont;
+    private $admin;
     public function __construct()
     {
         $this->applicants = new ApplicantModel();
@@ -28,12 +30,23 @@ class MapController extends BaseController
     //     $data['agents'] = $this->agents->findAll();
     //     return view('Admin/map', $data);
     // }
+
+    public function getDataAd()
+    {
+        $session = session();
+        $userId = $session->get('id');
+        $data['admin'] = $this->admin->where('admin_id', $userId)
+            ->orderBy('id', 'desc')
+            ->first();
+        return $data;
+    }
     public function map()
     {
         // Gather data from your models
         $applicants = $this->applicants->findAll();
         $clients = $this->clients->findAll();
         $agents = $this->agents->findAll();
+        $admin = $this->getDataAd();
 
         // Define the coordinates for the cities
         $cities = [
@@ -130,6 +143,7 @@ class MapController extends BaseController
         $data['applicantCounts'] = $applicantCounts;
         $data['clientCounts'] = $clientCounts;
         $data['agentCounts'] = $agentCounts;
+        $data = $admin;
         return view('Admin/map', $data);
     }
 }
