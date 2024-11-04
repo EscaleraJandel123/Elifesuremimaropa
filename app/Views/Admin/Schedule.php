@@ -220,28 +220,6 @@
     </div>
 
     <?= view('js'); ?>
-    <script>
-        // JavaScript to toggle password visibility
-        const passwordInput = document.getElementById('password');
-        const confirmInput = document.getElementById('confirmpassword');
-        const showPasswordToggle = document.getElementById('showPasswordToggle');
-        const showConfirmPasswordToggle = document.getElementById('showConfirmPasswordToggle');
-
-        function togglePasswordVisibility(input, toggleButton) {
-            const type = input.type === 'password' ? 'text' : 'password';
-            input.type = type;
-            toggleButton.innerHTML = type === 'text' ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
-        }
-
-        showPasswordToggle.addEventListener('click', function () {
-            togglePasswordVisibility(passwordInput, showPasswordToggle);
-        });
-
-        showConfirmPasswordToggle.addEventListener('click', function () {
-            togglePasswordVisibility(confirmInput, showConfirmPasswordToggle);
-        });
-    </script>
-
 
     <?php
     $schedules = $conn->query("SELECT * FROM `schedules`");
