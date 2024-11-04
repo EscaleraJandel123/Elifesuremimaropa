@@ -577,8 +577,7 @@ class AdminController extends BaseController
     {
 
         $data['schedules'] = $this->scheduleModel->where('id' , $id)->find();
-        var_dump($data);
-        // return view('Admin/Schedule', $data); // Replace 'your_view_path' with the actual view file where the form is located
+        return view('Admin/Schedule', $data); // Replace 'your_view_path' with the actual view file where the form is located
     }
 
 

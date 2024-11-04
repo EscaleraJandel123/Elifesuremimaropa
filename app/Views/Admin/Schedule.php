@@ -117,27 +117,27 @@
                                     style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px;">
                                     <div class="card-body text-center">
                                         <h4 style="color: #007bff;">
-                                            <?= isset($schedule) ? 'Edit Schedule' : 'Create Schedule' ?>
+                                            <?= isset($schedules) ? 'Edit Schedule' : 'Create Schedule' ?>
                                         </h4>
                                         <form method="post" action="<?= base_url('sched/schedsave') ?>">
                                             <?= csrf_field() ?>
                                             <label for="title" style="color: #495057;">Title:</label><br>
                                             <input type="text" class="form-control text-center" id="title" name="title"
-                                                value="<?= isset($schedule) ? esc($schedule['title']) : '' ?>"><br>
+                                                value="<?= isset($schedules['title']) ? $schedules['title'] : '' ?>"><br>
                                             <label for="description" style="color: #495057;">Description:</label><br>
                                             <textarea id="description" class="form-control text-center"
                                                 name="description"
-                                                style="width: 100%; padding: 5px; margin-bottom: 10px;"><?= isset($schedule) ? esc($schedule['description']) : '' ?></textarea><br>
+                                                style="width: 100%; padding: 5px; margin-bottom: 10px;"><?= isset($schedules['description']) ? $schedules['description'] : '' ?></textarea><br>
                                             <label for="start_datetime" style="color: #495057;">Start Date:</label><br>
                                             <input type="datetime-local" class="form-control text-center"
                                                 id="start_datetime" name="start_datetime"
-                                                value="<?= isset($schedule) ? esc($schedule['start_datetime']) : '' ?>"><br>
+                                                value="<?= isset($schedules['start_datetime']) ? $schedules['start_datetime'] : '' ?>"><br>
                                             <label for="end_datetime" style="color: #495057;">End Date:</label><br>
                                             <input type="datetime-local" class="form-control text-center"
                                                 id="end_datetime" name="end_datetime"
-                                                value="<?= isset($schedule) ? esc($schedule['end_datetime']) : '' ?>"><br><br>
+                                                value="<?= isset($schedules['end_datetime']) ? $schedules['end_datetime'] : '' ?>"><br><br>
                                             <button type="submit"
-                                                style="background-color: #28a745; color: #fff; border: none; padding: 8px 20px; border-radius: 3px;"><?= isset($schedule) ? 'Update' : 'Save' ?></button>
+                                                style="background-color: #28a745; color: #fff; border: none; padding: 8px 20px; border-radius: 3px;"><?= isset($schedules) ? 'Update' : 'Save' ?></button>
                                         </form>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                                             <td scope="row">
                                                                 <?= date('M j, Y', strtotime($schedule['end_datetime'])) ?><br><?= date('h:i A', strtotime($schedule['end_datetime'])) ?>
                                                             </td>
-                                                            <td scope="row">
+                                                            <td scope="row">w
                                                                 <a class="badge text-bg-primary"
                                                                     href="<?= site_url('sched/edit/' . $schedule['id']) ?>">Edit</a>
                                                                 |
