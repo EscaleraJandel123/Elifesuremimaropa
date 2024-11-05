@@ -122,10 +122,10 @@
                                 </button>
                             </div> -->
 							<div class="option-item mx-1">
-                                <a href="/ClientRegister" class="btn-style-2">Register   </a>
+                                <a href="/ClientRegister" class="default-btn btn-style-2">Register   </a>
                             </div>
                             <div class="option-item mx-1">
-                                <a href="/login" class="btn-style-2">Login   </a>
+                                <a href="/login" class="default-btn btn-style-2">Login   </a>
                             </div>
                         </div>
                     </div>
