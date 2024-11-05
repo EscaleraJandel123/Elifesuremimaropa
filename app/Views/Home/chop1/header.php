@@ -89,6 +89,9 @@
 							<li class="nav-item">
                                 <a href="/login" class="nav-link">Login  </a>
                             </li>
+							<li class="nav-item">
+                                <a href="/ClientRegister" class="nav-link">Register  </a>
+                            </li>
 						</ul>
 						<div class="others-options d-flex align-items-center">
 							<!-- <div class="option-item">
