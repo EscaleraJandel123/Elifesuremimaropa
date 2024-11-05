@@ -87,11 +87,11 @@
 								<a href="/contactus" class="nav-link">Contact Us</a>
 							</li>
 							<li class="nav-item">
+                                <a href="/login" class="nav-link">Login  </a>
+                            </li>
+							<li class="nav-item">
                                 <a href="/ClientRegister" class="nav-link">Register  </a>
                             </li>
-							<div class="option-item">
-								<a href="/login" class="default-btn btn-style-2">Login</a>
-							</div>
 						</ul>
 						<!-- <div class="others-options d-flex align-items-center">
 							<div class="option-item">
