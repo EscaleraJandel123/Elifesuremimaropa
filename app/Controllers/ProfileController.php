@@ -51,7 +51,7 @@ class ProfileController extends BaseController
             $data = $this->files($data, $agentid, 'agent');
         } else {
             // Handle the case where the agent is not found
-            return redirect()->to('some_error_page')->with('error', 'Agent not found');
+            return redirect()->back()->with('error', 'Agent not found');
         }
 
         return view("Admin/agentprofile", $data);

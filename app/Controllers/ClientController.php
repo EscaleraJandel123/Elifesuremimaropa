@@ -340,7 +340,6 @@ class ClientController extends BaseController
         return view('Client/dashboard/agentsProfile', $data);
     }
 
-
     public function createSchedule()
     {
         $data = array_merge($this->getData(), $this->ClientData());
