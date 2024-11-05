@@ -335,6 +335,7 @@ class ClientController extends BaseController
     public function seeprofile($token)
     {
         $decodedToken = base64_decode($token);
+        $data = array_merge($this->getData(), $this->ClientData());
         $data['agent'] = $this->agent->where('agent_token', $decodedToken)->first();
         return view('Client/dashboard/agentsProfile', $data);
     }
