@@ -161,12 +161,32 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
 
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="card mb-3 text-center">
-                                        <h5 class="card-title mt-3">Top 3 Recruiters</h5>
-                                        <?php foreach ($top as $topagent): ?>
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="card mb-3 text-center">
+                                    <h5 class="card-title mt-3">Top 3 Recruiters</h5>
+                                    <?php foreach ($top as $topagent): ?>
+                                        <div class="card-body">
+                                            <a href="<?= base_url() ?>/agentprofile/<?= $topagent['agent_token']; ?>">
+                                                <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
+                                                    class="card-img-top img-fluid rounded-circle mx-auto" alt="Agent Image"
+                                                    style="width: 80px; height: 80px;"></a>
+                                            <h5 class="card-title mt-2 small">
+                                                <?= $topagent['username'] ?>
+                                                <!-- <?= $topagent['total_fA'] ?> -->
+                                            </h5>
+                                            <!-- Add other relevant information as needed -->
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="card mb-3 text-center">
+                                    <h6 class="card-title mt-3">Top 3 Awardies</>
+                                        <?php foreach ($top_commi as $topagent): ?>
                                             <div class="card-body">
                                                 <a href="<?= base_url() ?>/agentprofile/<?= $topagent['agent_token']; ?>">
                                                     <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
@@ -174,36 +194,16 @@
                                                         alt="Agent Image" style="width: 80px; height: 80px;"></a>
                                                 <h5 class="card-title mt-2 small">
                                                     <?= $topagent['username'] ?>
-                                                    <!-- <?= $topagent['total_fA'] ?> -->
+                                                    <!-- <?= number_format($topagent['total_commissions']) ?> -->
                                                 </h5>
                                                 <!-- Add other relevant information as needed -->
                                             </div>
                                         <?php endforeach; ?>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="card mb-3 text-center">
-                                        <h6 class="card-title mt-3">Top 3 Awardies</>
-                                            <?php foreach ($top_commi as $topagent): ?>
-                                                <div class="card-body">
-                                                    <a
-                                                        href="<?= base_url() ?>/agentprofile/<?= $topagent['agent_token']; ?>">
-                                                        <img src="<?= isset($topagent['agentprofile']) && !empty($topagent['agentprofile']) ? base_url('/uploads/' . $topagent['agentprofile']) : base_url('/uploads/def.png') ?>"
-                                                            class="card-img-top img-fluid rounded-circle mx-auto"
-                                                            alt="Agent Image" style="width: 80px; height: 80px;"></a>
-                                                    <h5 class="card-title mt-2 small">
-                                                        <?= $topagent['username'] ?>
-                                                        <!-- <?= number_format($topagent['total_commissions']) ?> -->
-                                                    </h5>
-                                                    <!-- Add other relevant information as needed -->
-                                                </div>
-                                            <?php endforeach; ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </main>
         </div>
     </div>
