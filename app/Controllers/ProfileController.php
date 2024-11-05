@@ -72,7 +72,7 @@ class ProfileController extends BaseController
             $data = $this->files($data, $agentid, 'subagent');
         } else {
             // Handle the case where the subagent is not found
-            return redirect()->to('some_error_page')->with('error', 'Subagent not found');
+            return redirect()->back()->with('error', 'Agent not found');
         }
         return view("Agent/subagentprofile", $data);
     }
@@ -87,7 +87,7 @@ class ProfileController extends BaseController
             $data = $this->files($data, $data['applicant']['applicant_id'], 'applicant'); // Pass $data to the files method
         } else {
             // Handle the case where the applicant is not found
-            return redirect()->to('some_error_page')->with('error', 'Applicant not found');
+            return redirect()->back()->with('error', 'Applicant not found');
         }
 
         return view("Admin/applicantprofile", $data);
