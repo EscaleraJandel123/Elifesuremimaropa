@@ -116,11 +116,11 @@
                 <div class="container">
                     <div class="option-inner">
                         <div class="others-options d-flex align-items-center">
-                            <div class="option-item">
+                            <!-- <div class="option-item">
                                 <button class="searchbtn" type="button">
                                     <i class="bx bx-search"></i>
                                 </button>
-                            </div>
+                            </div> -->
 							<div class="option-item mx-1">
                                 <a href="/ClientRegister" class="default-btn btn-style-2">Register   </a>
                             </div>
@@ -135,7 +135,7 @@
 	</div>
 
 
-	<div class="search-area">
+	<!-- <div class="search-area">
 		<div class="container">
 			<button type="button" class="close-searchbox">
 				<i class="bx bx-x"></i>
@@ -146,4 +146,4 @@
 				</div>
 			</form>
 		</div>
-	</div>
+	</div> -->
