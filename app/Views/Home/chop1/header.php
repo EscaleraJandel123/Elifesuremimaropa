@@ -86,28 +86,25 @@
 							<li class="nav-item">
 								<a href="/contactus" class="nav-link">Contact Us</a>
 							</li>
-							<li class="nav-item">
-                                <a href="/ClientRegister" class="nav-link">Register  </a>
-                            </li>
-							<li class="nav-item">
-                                <a href="/login" class="default-btn btn-style-2">Login  </a>
-                            </li>
+							<!-- <li class="nav-item">
+                                <a href="/login" class="nav-link">Login  </a>
+                            </li> -->
 						</ul>
-						<!-- <div class="others-options d-flex align-items-center">
-							<div class="option-item">
+						<div class="others-options d-flex align-items-center">
+							<!-- <div class="option-item">
 								<button class="searchbtn" type="button">
 									<i class="bx bx-search"></i>
 								</button>
-							</div>
+							</div> -->
 							<div class="option-item">
 								<a href="/login" class="default-btn btn-style-2">Login</a>
 							</div>
-						</div> -->
+						</div>
 					</div>
 				</nav>
 			</div>
 		</div>
-		<!-- <div class="others-option-for-responsive">
+		<div class="others-option-for-responsive">
             <div class="container">
                 <div class="dot-menu">
                     <div class="inner">
@@ -119,22 +116,22 @@
                 <div class="container">
                     <div class="option-inner">
                         <div class="others-options d-flex align-items-center">
-                            <div class="option-item">
+                            <!-- <div class="option-item">
                                 <button class="searchbtn" type="button">
                                     <i class="bx bx-search"></i>
                                 </button>
-                            </div>
+                            </div> -->
 							<div class="option-item mx-1">
                                 <a href="/login" class="default-btn">Register   </a>
                             </div>
                             <div class="option-item mx-1">
-                                <a href="/login" class="default-btn">Login         </a>
+                                <a href="/login" class="default-btn">Login   </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 	</div>
 
 
