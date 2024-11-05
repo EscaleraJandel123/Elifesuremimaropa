@@ -121,11 +121,11 @@
                                     <i class="bx bx-search"></i>
                                 </button>
                             </div> -->
-							<div class="option-item mx-1">
+							<!-- <div class="option-item mx-1">
                                 <a href="/login" class="default-btn">Register   </a>
-                            </div>
+                            </div> -->
                             <div class="option-item mx-1">
-                                <a href="/login" class="default-btn">Login   </a>
+                                <a href="/login" class="default-btn">Login         </a>
                             </div>
                         </div>
                     </div>
