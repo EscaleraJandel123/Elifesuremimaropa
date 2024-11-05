@@ -107,20 +107,26 @@
 		<div class="others-option-for-responsive">
             <div class="container">
                 <div class="dot-menu">
-                    <div class="inner">
+                    <!-- <div class="inner">
                         <div class="circle circle-one"></div>
                         <div class="circle circle-two"></div>
                         <div class="circle circle-three"></div>
-                    </div>
+                    </div> -->
+					<div class="option-item mx-1">
+                                <a href="/ClientRegister" class="default-btn btn-style-2">Register   </a>
+                            </div>
+                            <div class="option-item mx-1">
+                                <a href="/login" class="default-btn btn-style-2">Login   </a>
+                            </div>
                 </div>
-                <div class="container">
+                <!-- <div class="container">
                     <div class="option-inner">
                         <div class="others-options d-flex align-items-center">
-                            <!-- <div class="option-item">
+                            <div class="option-item">
                                 <button class="searchbtn" type="button">
                                     <i class="bx bx-search"></i>
                                 </button>
-                            </div> -->
+                            </div>
 							<div class="option-item mx-1">
                                 <a href="/ClientRegister" class="default-btn btn-style-2">Register   </a>
                             </div>
@@ -129,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 	</div>
