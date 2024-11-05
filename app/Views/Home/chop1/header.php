@@ -87,10 +87,10 @@
 								<a href="/contactus" class="nav-link">Contact Us</a>
 							</li>
 							<li class="nav-item">
-                                <a href="/login" class="nav-link">Login  </a>
+                                <a href="/ClientRegister" class="nav-link">Register  </a>
                             </li>
 							<li class="nav-item">
-                                <a href="/ClientRegister" class="nav-link">Register  </a>
+                                <a href="/login" class="nav-link active">Login  </a>
                             </li>
 						</ul>
 						<!-- <div class="others-options d-flex align-items-center">
