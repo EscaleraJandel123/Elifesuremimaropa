@@ -90,7 +90,7 @@
                                 <a href="/ClientRegister" class="nav-link">Register  </a>
                             </li>
 							<li class="nav-item">
-                                <a href="/login" class="nav-link active">Login  </a>
+                                <a href="/login" class="default-btn btn-style-2">Login  </a>
                             </li>
 						</ul>
 						<!-- <div class="others-options d-flex align-items-center">
