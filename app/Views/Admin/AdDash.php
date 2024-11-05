@@ -138,7 +138,7 @@
                     <div class="col-lg-4">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
-                                <div class="row">
+                                
 
                                     <div class="card mb-3">
                                         <div class="card-body text-center">
@@ -160,7 +160,7 @@
                                             </h3>
                                         </div>
                                     </div>
-                                </div>
+                                
                             </div>
 
 
