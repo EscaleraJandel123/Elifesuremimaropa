@@ -87,22 +87,22 @@
 								<a href="/contactus" class="nav-link">Contact Us</a>
 							</li>
 							<li class="nav-item">
-                                <a href="/login" class="nav-link">Login  </a>
-                            </li>
-							<li class="nav-item">
                                 <a href="/ClientRegister" class="nav-link">Register  </a>
                             </li>
-						</ul>
-						<div class="others-options d-flex align-items-center">
-							<!-- <div class="option-item">
-								<button class="searchbtn" type="button">
-									<i class="bx bx-search"></i>
-								</button>
-							</div> -->
 							<div class="option-item">
 								<a href="/login" class="default-btn btn-style-2">Login</a>
 							</div>
-						</div>
+						</ul>
+						<!-- <div class="others-options d-flex align-items-center">
+							<div class="option-item">
+								<button class="searchbtn" type="button">
+									<i class="bx bx-search"></i>
+								</button>
+							</div>
+							<div class="option-item">
+								<a href="/login" class="default-btn btn-style-2">Login</a>
+							</div>
+						</div> -->
 					</div>
 				</nav>
 			</div>
