@@ -71,6 +71,6 @@ class SemaphoreService
             $phoneNumber = '63' . ltrim($phoneNumber, '0');
         }
 
-        return '+' . $phoneNumber;
+        return $phoneNumber;
     }
 }
