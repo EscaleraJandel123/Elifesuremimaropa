@@ -16,11 +16,11 @@ class SemaphoreService
     public function sendSMS($to, $message)
     {
         $formattedPhoneNumber = $this->formatPhoneNumber($to);
-        $fullMessage = "ALLIANZ PNP MIMAROPA- " . $message;
+        $fullMessage = $message;
         return $this->sendSMSNotification($formattedPhoneNumber, $fullMessage);
     }
 
-    private function sendSMSNotification($number, $message)
+    public function sendSMSNotification($number, $message)
     {
         $ch = curl_init();
 
