@@ -8,19 +8,19 @@ class SemaphoreService
 
     public function __construct()
     {
-        $this->semaphoreApiKey = getenv('SEMAPHORE_API_KEY');
+        $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
         // Optional: Set your Semaphore sender name here if it's approved and required.
-        // $this->semaphoreSenderName = 'ALLIANZ_PNP';
+        // $this->semaphoreSenderName = 'ALLIANZ_PNB';
     }
 
     public function sendSMS($to, $message)
     {
         $formattedPhoneNumber = $this->formatPhoneNumber($to);
-        $fullMessage = $message;
+        $fullMessage = "ALLIANZ PNP MIMAROPA- " . $message;
         return $this->sendSMSNotification($formattedPhoneNumber, $fullMessage);
     }
 
-    public function sendSMSNotification($number, $message)
+    private function sendSMSNotification($number, $message)
     {
         $ch = curl_init();
 
@@ -29,7 +29,7 @@ class SemaphoreService
             'apikey' => $this->semaphoreApiKey,
             'number' => $number,
             'message' => $message,
-            // Uncomment this if sender name is required and approved by Semaphore.
+            // Uncomment if sender name is required and approved by Semaphore.
             // 'sendername' => $this->semaphoreSenderName
         );
 
@@ -38,10 +38,14 @@ class SemaphoreService
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        // Execute the request and capture the response.
+        // Execute the request and capture the response and HTTP status.
         $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        // Check for any cURL errors.
+        // Log the HTTP status code and raw response for debugging.
+        log_message('info', 'Semaphore API HTTP Status Code: ' . $httpCode);
+        log_message('info', 'Semaphore API raw response: ' . $response);
+
         if (curl_errno($ch)) {
             $error_msg = curl_error($ch);
             log_message('error', 'CURL error: ' . $error_msg);
@@ -54,9 +58,6 @@ class SemaphoreService
         }
 
         curl_close($ch);
-
-        // Log the raw response for debugging.
-        log_message('info', 'Semaphore API response: ' . $response);
 
         return $response;
     }
@@ -71,6 +72,6 @@ class SemaphoreService
             $phoneNumber = '63' . ltrim($phoneNumber, '0');
         }
 
-        return $phoneNumber;
+        return '+' . $phoneNumber;
     }
 }
