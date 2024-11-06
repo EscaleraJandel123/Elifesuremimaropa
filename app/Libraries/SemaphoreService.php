@@ -8,7 +8,7 @@ class SemaphoreService
 
     public function __construct()
     {
-        $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
+        $this->semaphoreApiKey = env('SEMAPHORE_API_KEY');
         // Optional: Set your Semaphore sender name here if it's approved and required.
         // $this->semaphoreSenderName = 'ALLIANZ_PNP';
     }
