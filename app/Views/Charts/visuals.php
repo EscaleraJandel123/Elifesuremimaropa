@@ -338,7 +338,7 @@
                     }],
                     chart: {
                         type: 'line',
-                        height: 250
+                        // height: 250
                     },
                     xaxis: {
                         categories: agentMonthsYears,
@@ -365,7 +365,7 @@
                     }],
                     chart: {
                         type: 'line',
-                        height: 250
+                        // height: 250
                     },
                     xaxis: {
                         categories: applicantMonthsYears,
@@ -392,7 +392,7 @@
                     }],
                     chart: {
                         type: 'line',
-                        height: 250
+                        // height: 250
                     },
                     xaxis: {
                         categories: commissionMonthsYears,
