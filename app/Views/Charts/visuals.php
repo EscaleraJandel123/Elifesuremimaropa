@@ -19,12 +19,12 @@
                             type: 'bar',
                             // height: 250
                         },
-                        // plotOptions: {
-                        //     bar: {
-                        //         borderRadius: 4,
-                        //         horizontal: false,
-                        //     }
-                        // },
+                        plotOptions: {
+                            bar: {
+                                borderRadius: 4,
+                                horizontal: false,
+                            }
+                        },
                         dataLabels: {
                             enabled: false
                         },
@@ -81,7 +81,7 @@
                         }],
                         chart: {
                             type: 'bar',
-                            height: 250
+                            // height: 250
                         },
                         plotOptions: {
                             bar: {
@@ -146,12 +146,12 @@
                         }],
                         chart: {
                             type: 'bar',
-                            height: 250
+                            // height: 250
                         },
                         plotOptions: {
                             bar: {
                                 borderRadius: 4,
-                                horizontal: true,
+                                horizontal: false,
                             }
                         },
                         grid: {
@@ -195,7 +195,7 @@
                         }],
                         chart: {
                             type: 'bar',
-                            height: 250
+                            // height: 250
                         },
                         plotOptions: {
                             bar: {
@@ -243,12 +243,12 @@
                         }],
                         chart: {
                             type: 'bar',
-                            height: 250
+                            // height: 250
                         },
                         plotOptions: {
                             bar: {
                                 borderRadius: 4,
-                                horizontal: true,
+                                horizontal: false,
                             }
                         },
                         grid: {
