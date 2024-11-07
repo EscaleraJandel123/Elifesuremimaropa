@@ -80,7 +80,7 @@
                             data: applicantCounts
                         }],
                         chart: {
-                            type: 'pie',
+                            type: 'bar',
                             height: 250
                         },
                         plotOptions: {

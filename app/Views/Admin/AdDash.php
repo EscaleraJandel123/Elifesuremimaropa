@@ -137,8 +137,9 @@
                     <!-- right side columns -->
                     <div class="col-lg-4">
                         <div class="row">
-                            <div class="col-lg-12 col-sm-12">
-                                <div class="card mb-3">
+                            <!-- Agent Card -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <div class="card">
                                     <div class="card-body text-center">
                                         <i class="fas fa-users fa-2x"></i>
                                         <small class="d-block mt-2">Agents</small>
@@ -147,7 +148,10 @@
                                         </h3>
                                     </div>
                                 </div>
-                                <div class="card mb-3">
+                            </div>
+                            <!-- Applicant Card -->
+                            <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <div class="card">
                                     <div class="card-body text-center">
                                         <i class="fas fa-user-tie fa-2x"></i>
                                         <small class="d-block mt-2">Applicants</small>
@@ -157,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card mb-3 text-center">
                                     <h5 class="card-title mt-3">Top 3 Recruiters</h5>
