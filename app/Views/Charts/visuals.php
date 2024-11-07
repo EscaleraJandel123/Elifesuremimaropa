@@ -158,7 +158,7 @@
                             show: false // Hide grid lines
                         },
                         dataLabels: {
-                            enabled: true
+                            enabled: false
                         },
                         xaxis: {
                             categories: months
@@ -205,7 +205,7 @@
                             }
                         },
                         dataLabels: {
-                            enabled: true
+                            enabled: false
                         },
                         grid: {
                             show: false // Hide grid lines
