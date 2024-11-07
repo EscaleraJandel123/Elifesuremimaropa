@@ -79,4 +79,55 @@ class ChartsController extends BaseController
     $jsonResult = json_encode($result);
     return $jsonResult;
   }
+
+
+  public function predictMonthlyAgents()
+  {
+    $result = json_decode($this->monthlyAgentCount(), true);
+    $predictions = $this->generatePredictions($result, 'agent_count');
+    return json_encode($predictions);
+  }
+
+  public function predictMonthlyApplicants()
+  {
+    $result = json_decode($this->getApplicantsCount(), true);
+    $predictions = $this->generatePredictions($result, 'applicant_count');
+    return json_encode($predictions);
+  }
+
+  public function predictMonthlyCommissions()
+  {
+    $result = json_decode($this->getoverallMonthlyCommissions(), true);
+    $predictions = $this->generatePredictions($result, 'total_commission');
+    return json_encode($predictions);
+  }
+
+  private function generatePredictions($data, $field, $periods = 3)
+  {
+    // Get the last available month and year
+    $lastYear = $data[count($data) - 1]['year'];
+    $lastMonth = $data[count($data) - 1]['month'];
+
+    // Calculate an average growth rate or trend
+    $values = array_column($data, $field);
+    $movingAverage = array_sum(array_slice($values, -$periods)) / $periods;
+
+    $predictions = [];
+    for ($i = 1; $i <= $periods; $i++) {
+      // Increment month and adjust year if necessary
+      $lastMonth++;
+      if ($lastMonth > 12) {
+        $lastMonth = 1;
+        $lastYear++;
+      }
+
+      $predictions[] = [
+        'month' => $lastMonth,
+        'year' => $lastYear,
+        $field => round($movingAverage)  // predicted value
+      ];
+    }
+
+    return $predictions;
+  }
 }

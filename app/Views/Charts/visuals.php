@@ -319,3 +319,96 @@
             });
     });
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Fetch and render agent count predictions
+        fetch('/predictMonthlyAgents')
+            .then(response => response.json())
+            .then(predictedAgentData => {
+                const agentMonthsYears = predictedAgentData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                const agentPredictions = predictedAgentData.map(item => item.agent_count);
+
+                new ApexCharts(document.querySelector("#agentPredictionChart"), {
+                    series: [{
+                        name: 'Predicted Agents',
+                        data: agentPredictions,
+                        colors: ['#00b3e6']
+                    }],
+                    chart: {
+                        type: 'line',
+                        height: 250
+                    },
+                    xaxis: {
+                        categories: agentMonthsYears,
+                        labels: { rotate: -45, style: { fontSize: '12px' } }
+                    },
+                    yaxis: {
+                        title: { text: 'Predicted Agent Counts' }
+                    }
+                }).render();
+            });
+
+        // Fetch and render applicant count predictions
+        fetch('/predictMonthlyApplicants')
+            .then(response => response.json())
+            .then(predictedApplicantData => {
+                const applicantMonthsYears = predictedApplicantData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                const applicantPredictions = predictedApplicantData.map(item => item.applicant_count);
+
+                new ApexCharts(document.querySelector("#applicantPredictionChart"), {
+                    series: [{
+                        name: 'Predicted Applicants',
+                        data: applicantPredictions,
+                        colors: ['#ff7b00']
+                    }],
+                    chart: {
+                        type: 'line',
+                        height: 250
+                    },
+                    xaxis: {
+                        categories: applicantMonthsYears,
+                        labels: { rotate: -45, style: { fontSize: '12px' } }
+                    },
+                    yaxis: {
+                        title: { text: 'Predicted Applicant Counts' }
+                    }
+                }).render();
+            });
+
+        // Fetch and render monthly commission predictions
+        fetch('/predictMonthlyCommissions')
+            .then(response => response.json())
+            .then(predictedCommissionData => {
+                const commissionMonthsYears = predictedCommissionData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                const commissionPredictions = predictedCommissionData.map(item => item.total_commission);
+
+                new ApexCharts(document.querySelector("#commissionPredictionChart"), {
+                    series: [{
+                        name: 'Predicted Commissions',
+                        data: commissionPredictions,
+                        colors: ['#28a745']
+                    }],
+                    chart: {
+                        type: 'line',
+                        height: 250
+                    },
+                    xaxis: {
+                        categories: commissionMonthsYears,
+                        labels: { rotate: -45, style: { fontSize: '12px' } }
+                    },
+                    yaxis: {
+                        title: { text: 'Predicted Commissions' }
+                    }
+                }).render();
+            });
+    });
+
+    // Helper function to convert month number to month name
+    function getMonthName(monthNumber) {
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        return months[monthNumber - 1];
+    }
+
+</script>
