@@ -3,8 +3,8 @@ namespace App\Libraries;
 
 class SemaphoreService
 {
-    protected $semaphoreApiKey;
-    protected $semaphoreSenderName;
+    private $semaphoreApiKey;
+    private $semaphoreSenderName;
 
     public function __construct()
     {
