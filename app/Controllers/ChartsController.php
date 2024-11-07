@@ -80,37 +80,36 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
-
   public function predictMonthlyAgents()
   {
     $result = json_decode($this->monthlyAgentCount(), true);
-    $predictions = $this->generatePredictions($result, 'agent_count');
+    $predictions = $this->generatePredictions($result, 'agent_count', 12);  // 12 months for a full year
     return json_encode($predictions);
   }
 
   public function predictMonthlyApplicants()
   {
     $result = json_decode($this->getApplicantsCount(), true);
-    $predictions = $this->generatePredictions($result, 'applicant_count');
+    $predictions = $this->generatePredictions($result, 'applicant_count', 12);  // 12 months for a full year
     return json_encode($predictions);
   }
 
   public function predictMonthlyCommissions()
   {
     $result = json_decode($this->getoverallMonthlyCommissions(), true);
-    $predictions = $this->generatePredictions($result, 'total_commission');
+    $predictions = $this->generatePredictions($result, 'total_commission', 12);  // 12 months for a full year
     return json_encode($predictions);
   }
 
-  private function generatePredictions($data, $field, $periods = 3)
+  private function generatePredictions($data, $field, $periods = 12)
   {
     // Get the last available month and year
     $lastYear = $data[count($data) - 1]['year'];
     $lastMonth = $data[count($data) - 1]['month'];
 
-    // Calculate an average growth rate or trend
+    // Calculate a moving average based on the last few months
     $values = array_column($data, $field);
-    $movingAverage = array_sum(array_slice($values, -$periods)) / $periods;
+    $movingAverage = array_sum(array_slice($values, -$periods)) / min(count($values), $periods);
 
     $predictions = [];
     for ($i = 1; $i <= $periods; $i++) {
@@ -124,10 +123,11 @@ class ChartsController extends BaseController
       $predictions[] = [
         'month' => $lastMonth,
         'year' => $lastYear,
-        $field => round($movingAverage)  // predicted value
+        $field => round($movingAverage)  // Predicted value based on moving average
       ];
     }
 
     return $predictions;
   }
+
 }
