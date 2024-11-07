@@ -337,7 +337,7 @@
                         colors: ['#00b3e6']
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'bubbles',
                         height: 250
                     },
                     grid: {
@@ -367,7 +367,7 @@
                         colors: ['#ff7b00']
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'bubbles',
                         height: 250
                     },
                     grid: {
@@ -397,7 +397,7 @@
                         colors: ['#28a745']
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'bubbles',
                         height: 250
                     },
                     grid: {
