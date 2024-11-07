@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
         fetch('/monthlyAgentCount')
             .then(response => response.json())
@@ -125,7 +125,11 @@
         const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
         return months[monthNumber - 1];
     }
-</script>
+</script> -->
+
+
+
+
 
 
 
