@@ -17,14 +17,14 @@
                         }],
                         chart: {
                             type: 'bar',
-                            height: 250
+                            // height: 250
                         },
-                        plotOptions: {
-                            bar: {
-                                borderRadius: 4,
-                                horizontal: false,
-                            }
-                        },
+                        // plotOptions: {
+                        //     bar: {
+                        //         borderRadius: 4,
+                        //         horizontal: false,
+                        //     }
+                        // },
                         dataLabels: {
                             enabled: false
                         },
