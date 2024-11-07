@@ -119,7 +119,6 @@
                             <!-- Agent Chart and Applicant Chart Row -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-
                                     <div id="agentChart"></div>
                                 </div>
                             </div>
@@ -135,28 +134,40 @@
                             <!-- Monthly Commission and Yearly Commission Row -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-
                                     <div id="ovmonthlycommi"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-
                                     <div id="ovyearlyComm"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-3">
-                            <h5>Agent Monthly Prediction</h5>
-                            <div id="agentPredictionChart"></div>
+
+                        <div class="row">
+                            <!-- Prediction -->
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5>Agent Monthly Prediction</h5>
+                                    <div id="agentPredictionChart"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5>Commission Monthly Prediction</h5>
+                                    <div id="commissionPredictionChart"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-6 mb-3">
-                            <h5>Applicant Monthly Prediction</h5>
-                            <div id="applicantPredictionChart"></div>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <h5>Commission Monthly Prediction</h5>
-                            <div id="commissionPredictionChart"></div>
+
+                        <div class="row">
+                            <!-- Prediction -->
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5>Applicant Monthly Prediction</h5>
+                                    <div id="applicantPredictionChart"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end of left side -->
