@@ -31,7 +31,7 @@ class SemaphoreService
             // 'sendername' => $this->semaphoreSenderName,
         ];
 
-        curl_setopt($ch, CURLOPT_URL, 'https://api.semaphore.co/api/v3/messages');
+        curl_setopt($ch, CURLOPT_URL, 'https://api.semaphore.co/api/v4/messages');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
