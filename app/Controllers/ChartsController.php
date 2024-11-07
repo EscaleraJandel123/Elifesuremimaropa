@@ -80,8 +80,6 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
-
-  
   public function predictTotalAgents()
   {
       $result = json_decode($this->monthlyAgentCount(), true);
