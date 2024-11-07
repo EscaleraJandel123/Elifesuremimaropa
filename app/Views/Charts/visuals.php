@@ -26,7 +26,7 @@
                             }
                         },
                         dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                         xaxis: {
                             categories: monthsYears,
@@ -90,7 +90,7 @@
                             }
                         },
                         dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                         xaxis: {
                             categories: monthsYears,
@@ -158,7 +158,7 @@
                             show: false // Hide grid lines
                         },
                         dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                         xaxis: {
                             categories: months
@@ -205,7 +205,7 @@
                             }
                         },
                         dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                         grid: {
                             show: false // Hide grid lines
@@ -341,7 +341,7 @@
                         height: 250
                     },
                     dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                     grid: {
                         show: false // Hide grid lines
@@ -374,7 +374,7 @@
                         height: 250
                     },
                     dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                     grid: {
                         show: false // Hide grid lines
@@ -410,7 +410,7 @@
                         show: false // Hide grid lines
                     },
                     dataLabels: {
-                            enabled: false
+                            enabled: true
                         },
                     xaxis: {
                         categories: commissionMonthsYears,
