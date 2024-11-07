@@ -80,54 +80,60 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
-  public function predictMonthlyAgents()
+
+  
+  public function predictTotalAgents()
   {
-    $result = json_decode($this->monthlyAgentCount(), true);
-    $predictions = $this->generatePredictions($result, 'agent_count', 12);  // 12 months for a full year
-    return json_encode($predictions);
+      $result = json_decode($this->monthlyAgentCount(), true);
+      $predictions = $this->generateCumulativePredictions($result, 'agent_count', 12);  // 12 months for a full year
+      return json_encode($predictions);
   }
-
-  public function predictMonthlyApplicants()
+  
+  public function predictTotalApplicants()
   {
-    $result = json_decode($this->getApplicantsCount(), true);
-    $predictions = $this->generatePredictions($result, 'applicant_count', 12);  // 12 months for a full year
-    return json_encode($predictions);
+      $result = json_decode($this->getApplicantsCount(), true);
+      $predictions = $this->generateCumulativePredictions($result, 'applicant_count', 12);  // 12 months for a full year
+      return json_encode($predictions);
   }
-
-  public function predictMonthlyCommissions()
+  
+  public function predictTotalCommissions()
   {
-    $result = json_decode($this->getoverallMonthlyCommissions(), true);
-    $predictions = $this->generatePredictions($result, 'total_commission', 12);  // 12 months for a full year
-    return json_encode($predictions);
+      $result = json_decode($this->getoverallMonthlyCommissions(), true);
+      $predictions = $this->generateCumulativePredictions($result, 'total_commission', 12);  // 12 months for a full year
+      return json_encode($predictions);
   }
-
-  private function generatePredictions($data, $field, $periods = 12)
+  
+  private function generateCumulativePredictions($data, $field, $periods = 12)
   {
-    // Get the last available month and year
-    $lastYear = $data[count($data) - 1]['year'];
-    $lastMonth = $data[count($data) - 1]['month'];
-
-    // Calculate a moving average based on the last few months
-    $values = array_column($data, $field);
-    $movingAverage = array_sum(array_slice($values, -$periods)) / min(count($values), $periods);
-
-    $predictions = [];
-    for ($i = 1; $i <= $periods; $i++) {
-      // Increment month and adjust year if necessary
-      $lastMonth++;
-      if ($lastMonth > 12) {
-        $lastMonth = 1;
-        $lastYear++;
+      // Get the last available month, year, and cumulative value
+      $lastYear = $data[count($data) - 1]['year'];
+      $lastMonth = $data[count($data) - 1]['month'];
+      $cumulativeTotal = array_sum(array_column($data, $field));
+  
+      // Calculate the average monthly increase based on recent months
+      $values = array_column($data, $field);
+      $averageIncrease = array_sum(array_slice($values, -$periods)) / min(count($values), $periods);
+  
+      $predictions = [];
+      for ($i = 1; $i <= $periods; $i++) {
+          // Increment month and adjust year if necessary
+          $lastMonth++;
+          if ($lastMonth > 12) {
+              $lastMonth = 1;
+              $lastYear++;
+          }
+  
+          // Add average increase to cumulative total for the prediction
+          $cumulativeTotal += $averageIncrease;
+  
+          $predictions[] = [
+              'month' => $lastMonth,
+              'year' => $lastYear,
+              $field => round($cumulativeTotal)  // Cumulative total prediction
+          ];
       }
-
-      $predictions[] = [
-        'month' => $lastMonth,
-        'year' => $lastYear,
-        $field => round($movingAverage)  // Predicted value based on moving average
-      ];
-    }
-
-    return $predictions;
+  
+      return $predictions;
   }
-
+  
 }
