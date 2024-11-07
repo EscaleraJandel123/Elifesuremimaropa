@@ -1,8 +1,0 @@
-CRITICAL - 2024-06-20 22:27:56 --> Undefined variable $dat
-in APPPATH\Controllers\AdminController.php on line 78.
- 1 APPPATH\Controllers\AdminController.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dat', 'C:\\CapstoneSystem\\app\\Controllers\\AdminController.php', 78)
- 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->AdDash()
- 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\CapstoneSystem\\public\\index.php')
