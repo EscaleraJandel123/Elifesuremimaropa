@@ -79,38 +79,47 @@ class ChartsController extends BaseController
     $jsonResult = json_encode($result);
     return $jsonResult;
   }
-
   public function predictMonthlyAgents()
   {
       $result = json_decode($this->monthlyAgentCount(), true);
-      $predictions = $this->generatePredictions($result, 'agent_count', 12);  // 12 months for a full year
+      $predictions = $this->generateTrendBasedPredictions($result, 'agent_count', 12);  // 12 months for a full year
       return json_encode($predictions);
   }
   
   public function predictMonthlyApplicants()
   {
       $result = json_decode($this->getApplicantsCount(), true);
-      $predictions = $this->generatePredictions($result, 'applicant_count', 12);  // 12 months for a full year
+      $predictions = $this->generateTrendBasedPredictions($result, 'applicant_count', 12);  // 12 months for a full year
       return json_encode($predictions);
   }
   
   public function predictMonthlyCommissions()
   {
       $result = json_decode($this->getoverallMonthlyCommissions(), true);
-      $predictions = $this->generatePredictions($result, 'total_commission', 12);  // 12 months for a full year
+      $predictions = $this->generateTrendBasedPredictions($result, 'total_commission', 12);  // 12 months for a full year
       return json_encode($predictions);
   }
   
-  private function generatePredictions($data, $field, $periods = 12)
+  private function generateTrendBasedPredictions($data, $field, $periods = 12)
   {
       // Get the last available month and year
       $lastYear = $data[count($data) - 1]['year'];
       $lastMonth = $data[count($data) - 1]['month'];
+      $lastValue = $data[count($data) - 1][$field];
   
-      // Calculate a moving average based on the last few months
-      $values = array_column($data, $field);
-      $movingAverage = array_sum(array_slice($values, -$periods)) / min(count($values), $periods);
+      // Calculate the growth rate based on recent data points (e.g., last 3 months)
+      $recentValues = array_slice(array_column($data, $field), -3);  // Adjust period as needed
+      $growthRate = 0;
+      
+      if (count($recentValues) > 1) {
+          // Calculate average growth rate between recent months
+          for ($i = 1; $i < count($recentValues); $i++) {
+              $growthRate += ($recentValues[$i] - $recentValues[$i - 1]) / max($recentValues[$i - 1], 1);  // Avoid division by zero
+          }
+          $growthRate /= (count($recentValues) - 1);  // Average growth rate
+      }
   
+      // Generate predictions
       $predictions = [];
       for ($i = 1; $i <= $periods; $i++) {
           // Increment month and adjust year if necessary
@@ -120,10 +129,13 @@ class ChartsController extends BaseController
               $lastYear++;
           }
   
+          // Apply growth rate to last value for prediction
+          $lastValue = $lastValue * (1 + $growthRate);
+  
           $predictions[] = [
               'month' => $lastMonth,
               'year' => $lastYear,
-              $field => round($movingAverage)  // Predicted value based on moving average
+              $field => round($lastValue)  // Predicted value with trend applied
           ];
       }
   
