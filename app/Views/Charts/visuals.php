@@ -28,16 +28,16 @@
                         dataLabels: {
                             enabled: false
                         },
-                        xaxis: {
-                            categories: monthsYears,
-                            labels: {
-                                rotate: -45,
-                                offsetY: 5,
-                                style: {
-                                    fontSize: '12px'
-                                }
-                            }
-                        },
+                        // xaxis: {
+                        //     categories: monthsYears,
+                        //     labels: {
+                        //         rotate: -45,
+                        //         offsetY: 5,
+                        //         style: {
+                        //             fontSize: '12px'
+                        //         }
+                        //     }
+                        // },
                         grid: {
                             show: false // Hide grid lines
                         },
