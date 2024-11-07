@@ -292,7 +292,7 @@
                         }],
                         chart: {
                             type: 'bar',
-                            height: 250
+                            // height: 250
                         },
                         plotOptions: {
                             bar: {
