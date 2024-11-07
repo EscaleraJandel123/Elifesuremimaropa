@@ -169,7 +169,7 @@
                     new ApexCharts(document.querySelector("#applicantChart"), {
                         series: applicantCounts,
                         chart: {
-                            type: 'pie',
+                            type: 'bar',
                             height: 250
                         },
                         labels: monthsYears,
