@@ -340,6 +340,9 @@
                         type: 'bar',
                         height: 250
                     },
+                    dataLabels: {
+                            enabled: false
+                        },
                     grid: {
                         show: false // Hide grid lines
                     },
@@ -370,6 +373,9 @@
                         type: 'bar',
                         height: 250
                     },
+                    dataLabels: {
+                            enabled: false
+                        },
                     grid: {
                         show: false // Hide grid lines
                     },
@@ -403,6 +409,9 @@
                     grid: {
                         show: false // Hide grid lines
                     },
+                    dataLabels: {
+                            enabled: false
+                        },
                     xaxis: {
                         categories: commissionMonthsYears,
                         labels: { rotate: -45, style: { fontSize: '12px' } }
