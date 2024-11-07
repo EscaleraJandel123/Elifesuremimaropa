@@ -116,17 +116,32 @@
                     <!-- left side columns -->
                     <div class="col-lg-8 mb-3">
                         <div class="row">
-                            <div class="col-lg-12 col-12">
-                                <div class="custom-block bg-white">
+                            <!-- Agent Chart and Applicant Chart Row -->
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5 class="text-center">Agent Monthly Distribution</h5>
                                     <div id="agentChart"></div>
                                 </div>
-                                <div class="custom-block bg-white">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5 class="text-center">Applicant Monthly Distribution</h5>
                                     <div id="ApplicantChart"></div>
                                 </div>
-                                <div class="custom-block bg-white">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Monthly Commission and Yearly Commission Row -->
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5 class="text-center">Overall Monthly Commission</h5>
                                     <div id="ovmonthlycommi"></div>
                                 </div>
-                                <div class="custom-block bg-white">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <h5 class="text-center">Overall Yearly Commission</h5>
                                     <div id="ovyearlyComm"></div>
                                 </div>
                             </div>
@@ -157,7 +172,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="col-lg-12 col-sm-12">
                                 <div class="card mb-3 text-center">
                                     <h5 class="card-title mt-3">Top 3 Recruiters</h5>
