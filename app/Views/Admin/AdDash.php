@@ -119,13 +119,13 @@
                             <!-- Agent Chart and Applicant Chart Row -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <h5 class="text-center">Agent Monthly Distribution</h5>
+                                    
                                     <div id="agentChart"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <h5 class="text-center">Applicant Monthly Distribution</h5>
+                                    
                                     <div id="ApplicantChart"></div>
                                 </div>
                             </div>
@@ -135,13 +135,13 @@
                             <!-- Monthly Commission and Yearly Commission Row -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <h5 class="text-center">Overall Monthly Commission</h5>
+                                    
                                     <div id="ovmonthlycommi"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <h5 class="text-center">Overall Yearly Commission</h5>
+                                    
                                     <div id="ovyearlyComm"></div>
                                 </div>
                             </div>
