@@ -10,7 +10,7 @@ class SemaphoreService
     {
         $this->semaphoreApiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
         // Optional: Set your Semaphore sender name here if it's approved and required.
-        // $this->semaphoreSenderName = 'ALLIANZ_PNP';
+        $this->semaphoreSenderName = 'ELIFESURE';
     }
 
     public function sendSMS($to, $message)
@@ -30,7 +30,7 @@ class SemaphoreService
             'number' => $number,
             'message' => $message,
             // Uncomment this if sender name is required and approved by Semaphore.
-            // 'sendername' => $this->semaphoreSenderName
+            'sendername' => $this->semaphoreSenderName
         );
 
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
