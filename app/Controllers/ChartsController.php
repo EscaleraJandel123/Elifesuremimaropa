@@ -80,21 +80,21 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
-  public function predictTotalAgents()
+  public function predictMonthlyAgents()
   {
       $result = json_decode($this->monthlyAgentCount(), true);
       $predictions = $this->generatePredictions($result, 'agent_count', 12);  // 12 months for a full year
       return json_encode($predictions);
   }
   
-  public function predictTotalApplicants()
+  public function predictMonthlyApplicants()
   {
       $result = json_decode($this->getApplicantsCount(), true);
       $predictions = $this->generatePredictions($result, 'applicant_count', 12);  // 12 months for a full year
       return json_encode($predictions);
   }
   
-  public function predictTotalCommissions()
+  public function predictMonthlyCommissions()
   {
       $result = json_decode($this->getoverallMonthlyCommissions(), true);
       $predictions = $this->generatePredictions($result, 'total_commission', 12);  // 12 months for a full year

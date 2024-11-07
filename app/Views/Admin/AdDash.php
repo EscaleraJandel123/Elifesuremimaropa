@@ -148,12 +148,14 @@
                             <!-- Prediction -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <div id="agentChart"></div>
+                                    
+                                    <div id="agentPredictionChart"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <div id="applicantChart"></div>
+                                    
+                                    <div id="commissionPredictionChart"></div>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +164,8 @@
                             <!-- Prediction -->
                             <div class="col-lg-12 col-md-12 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-                                    <div id="commissionChart"></div>
+                                    
+                                    <div id="applicantPredictionChart"></div>
                                 </div>
                             </div>
                         </div>
