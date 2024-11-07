@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
         fetch('/monthlyAgentCount')
             .then(response => response.json())
@@ -125,69 +125,7 @@
         const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
         return months[monthNumber - 1];
     }
-</script> -->
-
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Fetch data for agent pie chart
-        fetch('/monthlyAgentCount')
-            .then(response => response.json())
-            .then(data => {
-                if (data.length === 0) {
-                    document.querySelector("#agentChart").innerHTML = '<div style="text-align: center; padding: 20px;">No Data Available</div>';
-                } else {
-                    const monthsYears = data.map(item => `${getMonthName(item.month)} ${item.year}`);
-                    const agentCounts = data.map(item => item.agent_count);
-
-                    new ApexCharts(document.querySelector("#agentChart"), {
-                        series: agentCounts,
-                        chart: {
-                            type: 'pie',
-                            height: 250
-                        },
-                        labels: monthsYears,
-                        colors: ['#002379', '#0069b4', '#00b3e6', '#00e6b8', '#b4e600'],
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }).render();
-                }
-            });
-
-        // Fetch data for applicant pie chart
-        fetch('/getApplicantsCount')
-            .then(response => response.json())
-            .then(data => {
-                if (data.length === 0) {
-                    document.querySelector("#applicantChart").innerHTML = '<div style="text-align: center; padding: 20px;">No Data Available</div>';
-                } else {
-                    const monthsYears = data.map(item => `${getMonthName(item.month)} ${item.year}`);
-                    const applicantCounts = data.map(item => item.applicant_count);
-
-                    new ApexCharts(document.querySelector("#applicantChart"), {
-                        series: applicantCounts,
-                        chart: {
-                            type: 'bar',
-                            height: 250
-                        },
-                        labels: monthsYears,
-                        colors: ['#e63946', '#ff6b6b', '#ffd166', '#06d6a0', '#118ab2'],
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }).render();
-                }
-            });
-    });
-
-    function getMonthName(monthNumber) {
-        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-        return months[monthNumber - 1];
-    }
 </script>
-
 
 
 
