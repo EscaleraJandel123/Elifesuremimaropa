@@ -337,7 +337,7 @@
                         colors: ['#00b3e6']
                     }],
                     chart: {
-                        type: 'line',
+                        type: 'bar',
                         height: 250
                     },
                     xaxis: {
@@ -364,7 +364,7 @@
                         colors: ['#ff7b00']
                     }],
                     chart: {
-                        type: 'line',
+                        type: 'bar',
                         height: 250
                     },
                     xaxis: {
@@ -391,7 +391,7 @@
                         colors: ['#28a745']
                     }],
                     chart: {
-                        type: 'line',
+                        type: 'bar',
                         height: 250
                     },
                     xaxis: {
