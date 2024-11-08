@@ -21,7 +21,7 @@ use App\Models\SignatureModel;
 // use App\Models\NotifModel;
 use App\Controllers\NotifController;
 use App\Controllers\ReportsController;
-use App\Libraries\SemaphoreService;
+use App\Libraries\SmsLibrary;
 
 class AdminController extends BaseController
 {
@@ -43,7 +43,7 @@ class AdminController extends BaseController
     // private $notif;
     private $notifcont;
     private $reportscont;
-    private $sms;
+    private $smsLibrary;
 
     protected $scheduleModel;
     // protected $cache;
@@ -69,7 +69,7 @@ class AdminController extends BaseController
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
         $this->reportscont = new ReportsController();
-        $this->sms = new SemaphoreService();
+        $this->smsLibrary = new SmsLibrary();
     }
 
     public function AdDash()
@@ -383,9 +383,10 @@ class AdminController extends BaseController
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
 
         $to = $data['applicant']['number'];
-        $message = "Congratulations on your promotion! We're thrilled to see your hard work and dedication pay off. 
+        $from = '447491163443';
+        $text = "Congratulations on your promotion! We're thrilled to see your hard work and dedication pay off. 
         Please click the link below to login and access your new responsibilities: $verificationLink";
-        $response = $this->sms->sendSMS($to, $message);
+        $response = $this->smsLibrary->sendSms($to, $from, $text);
 
         return redirect()->to('promotion')->with('success', "$username was Promoted To Agent");
     }
@@ -501,10 +502,11 @@ class AdminController extends BaseController
         }
 
         $to = $data['applicant']['number'];
-        $message = 'Your account has been confirmed, Thank you for choosing ALLIANZ PNB MIMAROPA';
-        $response = $this->sms->sendSMS($to, $message);
-
+        $from = '447491163443';
+        $text = 'Your account has been confirmed, Thank you for choosing ALLIANZ PNB MIMAROPA';
+        $response = $this->smsLibrary->sendSms($to, $from, $text);
         $verificationLink = site_url("verify-email/{$verificationToken}");
+        
         $emailSubject = 'Registration Confirmation';
         $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);

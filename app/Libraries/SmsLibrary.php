@@ -10,6 +10,9 @@ class SmsLibrary
 
     public function sendSms($to, $from, $text)
     {
+        // Convert the phone number to international format if it starts with "09"
+        $to = $this->convertToInternationalFormat($to);
+
         $request = new HTTP_Request2();
         $request->setUrl($this->apiUrl);
         $request->setMethod(HTTP_Request2::METHOD_POST);
@@ -42,5 +45,14 @@ class SmsLibrary
         } catch (\HTTP_Request2_Exception $e) {
             return 'Error: ' . $e->getMessage();
         }
+    }
+
+    // Helper function to convert "09" to "63"
+    private function convertToInternationalFormat($number)
+    {
+        if (strpos($number, '09') === 0) {
+            return '63' . substr($number, 1); // Replace "09" with "63"
+        }
+        return $number;
     }
 }

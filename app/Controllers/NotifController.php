@@ -102,17 +102,10 @@ class NotifController extends BaseController
         //         'response' => $decodedResponse
         //     ]);
         
-        // Define the recipient, sender, and message text
         $to = '639945428697';
         $from = '447491163443';
         $text = 'Congratulations on sending your first message.';
-
-        // Send SMS and capture response
         $response = $this->smsLibrary->sendSms($to, $from, $text);
-        // $response = $this->smsLibrary->sendSms($to, $from, $text);
-
-
-        // Output the response
         return $this->response->setBody($response);
     }
 
