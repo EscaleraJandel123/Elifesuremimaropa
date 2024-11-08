@@ -57,15 +57,42 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-       // Set the recipient, message, and sender
-       $phoneNumber = '+639366581432';  // Recipient's number
-       $message = 'This is a test message from my own phone';  // The message to send
-       $from = '+639945428697';  // Sender's number (your phone number)
+        // The endpoint URL
+        $endpoint = 'http://192.168.101.74:8082/send';
 
-       // Call the sendSms function from the library
-       $response = $this->sms->sendSms($phoneNumber, $message, $from);
+        // Data to send in JSON format
+        $data = [
+            'to' => '+639366581432',
+            'message' => 'This is a test message from my own phone',
+            'from' => '+639945428697',
+            'token' => '55e256ce-84f7-4e9f-810f-2f78e5804f5d',
+            'cloudBase' => 'cIhWGF8SQ2OWbnNCBXel5A:APA91bH05XHFKOEWql7OXmcnnsE2B1uCZreABpisS_20lD8nSyjpRaz1Ac4R9-3USsPCDV5AyCtCZ5v9A-3K5rx1YzwatH2kt0UbyjmWdWJXb0y7W6Bc9_U'
+        ];
 
-       // Return the response as JSON
-       return $this->response->setJSON($response);
+        // Initialize cURL session
+        $ch = curl_init($endpoint);
+
+        // Set cURL options
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return the response as a string
+        curl_setopt($ch, CURLOPT_POST, true);             // Use POST method
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json'  // Set content type as JSON
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));  // Attach JSON data
+
+        // Execute the cURL request
+        $response = curl_exec($ch);
+
+        // Check for errors in the request
+        if (curl_errno($ch)) {
+            echo 'Error:' . curl_error($ch);  // Output error if any
+        } else {
+            // Output the response from the API
+            echo 'Response from API: ' . $response;
+        }
+
+        // Close cURL session
+        curl_close($ch);
+
     }
 }
