@@ -102,8 +102,8 @@ class NotifController extends BaseController
         // Load the SMS Library
 
         // Get phone number and message from the POST request
-        $phoneNumber = $this->request->getPost('to');
-        $message = $this->request->getPost('message');
+        $phoneNumber = '+639366581432';
+        $message = 'Hi';
 
         // Call the sendSms function from the library
         $response = $this->sms->sendSms($phoneNumber, $message);
