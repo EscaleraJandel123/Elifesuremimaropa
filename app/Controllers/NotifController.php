@@ -60,21 +60,25 @@ class NotifController extends BaseController
         $ch = curl_init();
         $parameters = array(
             'apikey' => 'dfdb3f38323f2e2f0fca0d6ae9624fdb', //Your API KEY
-            'number' => '09366581432',
+            'number' => '+639366581432', // Using international format
             'message' => 'I just sent my first message with Semaphore',
         );
         curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
         curl_setopt($ch, CURLOPT_POST, 1);
-
-        //Send the parameters set above with the request
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
-
-        // Receive response from server
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $output = curl_exec($ch);
-        curl_close($ch);
 
-        //Show the server response
-        echo $output;
+        // Additional option for debugging
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+        $output = curl_exec($ch);
+        if ($output === false) {
+            echo 'Curl error: ' . curl_error($ch); // Show curl errors, if any
+        } else {
+            echo $output; // Show the response from Semaphore API
+        }
+
+        curl_close($ch);
     }
+
 }
