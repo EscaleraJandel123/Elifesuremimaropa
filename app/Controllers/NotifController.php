@@ -114,6 +114,7 @@ class NotifController extends BaseController
         $result = $this->send_sms($number, $message);
 
         if ($result) {
+            echo $result;
             echo "Message sent successfully!";
         } else {
             echo "Failed to send message.";
