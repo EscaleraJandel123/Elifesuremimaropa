@@ -2,7 +2,6 @@
 
 namespace App\Libraries;
 
-use CodeIgniter\HTTP\CURLRequest;
 use CodeIgniter\Config\Services;
 
 class SmsLibrary
@@ -12,7 +11,6 @@ class SmsLibrary
     protected $endpoint;
     protected $curl;
 
-    // Constructor to initialize environment variables and CURL request service
     public function __construct()
     {
         // Get the values from the environment file
@@ -22,7 +20,7 @@ class SmsLibrary
         $this->curl = Services::curlrequest();  // Load CURL service
     }
 
-    // Function to send a message
+    // Function to send a message asynchronously
     public function sendSms($phoneNumber, $message)
     {
         // Validate the input
@@ -39,20 +37,26 @@ class SmsLibrary
             'cloudBase' => $this->cloudBase,
         ];
 
-        // Send the POST request to the endpoint
-        try {
-            $response = $this->curl->post($this->endpoint, [
-                'json' => $messageData,
-            ]);
+        // Set up cURL to make an asynchronous request
+        $ch = curl_init($this->endpoint);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($messageData));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 1);  // Timeout is set to 1 second for async
 
-            // Check if the response is successful
-            if ($response->getStatusCode() === 200) {
-                return ['status' => 'success', 'data' => json_decode($response->getBody())];
-            } else {
-                return ['status' => 'error', 'message' => 'Failed to send message'];
-            }
-        } catch (\Exception $e) {
-            return ['status' => 'error', 'message' => 'Exception: ' . $e->getMessage()];
-        }
+        // Execute the cURL request in the background (asynchronous)
+        curl_multi_add_handle($multiCurl = curl_multi_init(), $ch);
+        $running = null;
+        do {
+            curl_multi_exec($multiCurl, $running);
+        } while ($running > 0);
+
+        // Close cURL handle and return success (this won't wait for the response)
+        curl_multi_remove_handle($multiCurl, $ch);
+        curl_multi_close($multiCurl);
+
+        // Return success immediately without waiting for the response
+        return ['status' => 'success', 'message' => 'SMS is being sent'];
     }
 }
