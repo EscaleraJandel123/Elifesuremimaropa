@@ -6,6 +6,7 @@ use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
 use App\Libraries\SemaphoreService;
+
 class NotifController extends BaseController
 {
     private $notif;
@@ -55,49 +56,56 @@ class NotifController extends BaseController
         return $data;
     }
 
-    // public function sendNotification()
-    // {
-    //     $to = '09366581432';
-    //     $message = 'Welcome to Elifesure! Thank you for choosing us as your agency partner. We are here to serve you with excellence. For assistance. Mabuhay!';
+    public function sendNotification()
+    {
+        //     $to = '09366581432';
+        //     $message = 'Welcome to Elifesure! Thank you for choosing us as your agency partner. We are here to serve you with excellence. For assistance. Mabuhay!';
 
-    //     // Call sendSMS and capture the response
-    //     $response = $this->sms->sendSMS($to,$message);
+        //     // Call sendSMS and capture the response
+        //     $response = $this->sms->sendSMS($to,$message);
 
-    //     // Decode JSON response to array for easier inspection
-    //     $decodedResponse = json_decode($response, true);
+        //     // Decode JSON response to array for easier inspection
+        //     $decodedResponse = json_decode($response, true);
 
-    //     // Check if response is valid JSON and contains expected keys
-    //     if (json_last_error() !== JSON_ERROR_NONE) {
-    //         $error = json_last_error_msg();
-    //         log_message('error', 'Invalid JSON response from Semaphore API: ' . $error);
-    //         return $this->response->setJSON([
-    //             'status' => 'error',
-    //             'message' => 'Failed to parse response from Semaphore',
-    //             'error' => $error
-    //         ]);
-    //     }
+        //     // Check if response is valid JSON and contains expected keys
+        //     if (json_last_error() !== JSON_ERROR_NONE) {
+        //         $error = json_last_error_msg();
+        //         log_message('error', 'Invalid JSON response from Semaphore API: ' . $error);
+        //         return $this->response->setJSON([
+        //             'status' => 'error',
+        //             'message' => 'Failed to parse response from Semaphore',
+        //             'error' => $error
+        //         ]);
+        //     }
 
-    //     // Log the full response and additional info
-    //     log_message('info', 'Semaphore API full response: ' . print_r($decodedResponse, true));
+        //     // Log the full response and additional info
+        //     log_message('info', 'Semaphore API full response: ' . print_r($decodedResponse, true));
 
-    //     // Check if response indicates any errors
-    //     if (isset($decodedResponse['status']) && $decodedResponse['status'] !== 'success') {
-    //         $errorMessage = isset($decodedResponse['message']) ? $decodedResponse['message'] : 'Unknown error';
-    //         log_message('error', 'Semaphore API returned an error: ' . $errorMessage);
+        //     // Check if response indicates any errors
+        //     if (isset($decodedResponse['status']) && $decodedResponse['status'] !== 'success') {
+        //         $errorMessage = isset($decodedResponse['message']) ? $decodedResponse['message'] : 'Unknown error';
+        //         log_message('error', 'Semaphore API returned an error: ' . $errorMessage);
 
-    //         return $this->response->setJSON([
-    //             'status' => 'error',
-    //             'message' => 'Failed to send SMS',
-    //             'error_details' => $decodedResponse
-    //         ]);
-    //     }
+        //         return $this->response->setJSON([
+        //             'status' => 'error',
+        //             'message' => 'Failed to send SMS',
+        //             'error_details' => $decodedResponse
+        //         ]);
+        //     }
 
-    //     // If the response is pending or has other details, return that as well
-    //     return $this->response->setJSON([
-    //         'status' => 'success',
-    //         'message' => 'SMS sent (check status)',
-    //         'response' => $decodedResponse
-    //     ]);
-    // }
+        //     // If the response is pending or has other details, return that as well
+        //     return $this->response->setJSON([
+        //         'status' => 'success',
+        //         'message' => 'SMS sent (check status)',
+        //         'response' => $decodedResponse
+        //     ]);
+        $client = \Config\Services::curlrequest();
+
+        // Example API endpoint
+        $response = $client->get('https://api.semaphore.co/api/v4/messages');
+
+        // Display the response
+        echo $response->getBody();
+    }
 
 }
