@@ -13,7 +13,7 @@ use App\Models\FeedbackModel;
 use App\Models\PlanModel;
 use App\Controllers\ClientController;
 use App\Controllers\NotifController;
-use App\Libraries\SemaphoreService;
+use App\Libraries\SmsLibrary;
 
 
 class HomepageController extends BaseController
@@ -28,7 +28,7 @@ class HomepageController extends BaseController
     private $conclient;
     // protected $cache;
     private $notifcont;
-    private $sms;
+    private $smsLibrary;
 
 
     public function __construct()
@@ -43,7 +43,7 @@ class HomepageController extends BaseController
         $this->conclient = new ClientController();
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
-        $this->sms = new SemaphoreService();
+        $this->smsLibrary = new SmsLibrary();
     }
     public function home()
     {
@@ -135,8 +135,9 @@ class HomepageController extends BaseController
                 $this->notifcont->newnotif($userId, $link, $message, $r);
 
                 $to = $this->request->getVar('number'); 
-                $message = 'Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.';
-                $response = $this->sms->sendSMS($to, $message);
+                $from = '447491163443';
+                $text = 'Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.';
+                $response = $this->smsLibrary->sendSms($to, $from, $text);
                 $this->confirm->save($applicantData);
             }
 
@@ -211,7 +212,6 @@ class HomepageController extends BaseController
             return redirect()->to('/login')->with('error', 'Invalid or expired verification token.');
         }
     }
-
 
     public function authlog()
     {
