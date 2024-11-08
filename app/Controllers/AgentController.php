@@ -285,7 +285,6 @@ class AgentController extends BaseController
         $data['client'] = $this->client->findAll();
         $data['status'] = 'Awaiting';
         $data['class'] = 'Awaiting';
-
         return view('Agent/cliSched', $data);
     }
 
@@ -564,9 +563,6 @@ class AgentController extends BaseController
     {
         $id = base64_decode($dec);
         $status = $this->sched->where('id', $id)->get()->getRow()->status;
-        // $agentId = $this->sched->where('id', $id)->select('agent')->find();
-        // $agent = $this->agent->where('agent_id' , $agentId)->select('email')->find();
-        // $agentEmail = $agent ? $agent['email'] : null;
 
         $clientEmail = $this->sched->where('id', $id)->get()->getRow()->email;
         if ($status === 'pending') {

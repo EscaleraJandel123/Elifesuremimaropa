@@ -500,17 +500,10 @@ class AdminController extends BaseController
             $con = ['confirm' => 'true', 'verification_token' => $verificationToken];
             $this->user->set($con)->where('token', $token)->update();
         }
-
-        $to = $data['applicant']['number'];
-        $from = '447491163443';
-        $text = 'Your account has been confirmed, Thank you for choosing ALLIANZ PNB MIMAROPA';
-        $response = $this->smsLibrary->sendSms($to, $from, $text);
         $verificationLink = site_url("verify-email/{$verificationToken}");
-        
         $emailSubject = 'Registration Confirmation';
         $emailMessage = "Your account has been confirmed. Please click the link verify your account: {$verificationLink}";
         $this->homecon->sendVerificationEmail($data['applicant']['email'], $emailSubject, $emailMessage);
-
         return redirect()->to('/confirmation')->with('success', 'Acount Confirmed!');
     }
 
