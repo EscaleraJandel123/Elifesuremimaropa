@@ -12,7 +12,7 @@ use App\Models\Scheduler;
 use App\Models\ClientPlanModel;
 use App\Models\CommiModel;
 use App\Controllers\NotifController;
-
+use App\Libraries\SmsLibrary;
 
 class ClientController extends BaseController
 {
@@ -26,6 +26,7 @@ class ClientController extends BaseController
     protected $agent;
     private $notifcont;
     // protected $cache;
+    private $smsLibrary;
 
     public function __construct()
     {
@@ -39,6 +40,7 @@ class ClientController extends BaseController
         $this->commission = new CommiModel();
         // $this->cache = \Config\Services::cache();
         $this->notifcont = new NotifController();
+        $this->smsLibrary = new SmsLibrary();
     }
 
     public function ClientService()
@@ -358,38 +360,36 @@ class ClientController extends BaseController
         $agentEmail = $agent ? $agent['email'] : null;
         $agentNumber = $this->agent->select('number')->where('agent_id', $this->request->getVar('agent'))->first();
 
-        // $dat = [
-        //     'client_id' => $client['info']['client_id'],
-        //     'applicationNo' => $client['info']['applicationNo'],
-        //     'username' => $client['info']['username'],
-        //     'clientName' => $client['info']['lastName'] . ', ' . $client['info']['firstName'] . ' ' . $client['info']['middleName'] . '.',
-        //     'number' => $client['info']['number'],
-        //     'email' => $client['info']['email'],
-        //     'complteaddress' => $client['info']['region'] . ', ' . $client['info']['province'] . ', ' . $client['info']['city'] . ', ' . $client['info']['barangay'] . ', ' . $client['info']['street'],
-        //     'selected_date' => $this->request->getVar('selected_date'),
-        //     'agent' => $this->request->getVar('agent'),
-        //     'plan' => $this->request->getVar('plan'),
-        //     'schedule_time' => $this->request->getVar('schedule_time'),
-        //     'meeting_type' => $this->request->getVar('meeting_type'),
-        // ];
-        // // var_dump($agentEmail);
-        // $this->sched->save($dat);
-        // $emailSubject = "New Appointment Scheduled";
-        // $emailMessage = "You have a new appointment scheduled, please see at yout trsansations tab";
-        // $this->sendVerificationEmail($agentEmail, $emailSubject, $emailMessage);
+        $dat = [
+            'client_id' => $client['info']['client_id'],
+            'applicationNo' => $client['info']['applicationNo'],
+            'username' => $client['info']['username'],
+            'clientName' => $client['info']['lastName'] . ', ' . $client['info']['firstName'] . ' ' . $client['info']['middleName'] . '.',
+            'number' => $client['info']['number'],
+            'email' => $client['info']['email'],
+            'complteaddress' => $client['info']['region'] . ', ' . $client['info']['province'] . ', ' . $client['info']['city'] . ', ' . $client['info']['barangay'] . ', ' . $client['info']['street'],
+            'selected_date' => $this->request->getVar('selected_date'),
+            'agent' => $this->request->getVar('agent'),
+            'plan' => $this->request->getVar('plan'),
+            'schedule_time' => $this->request->getVar('schedule_time'),
+            'meeting_type' => $this->request->getVar('meeting_type'),
+        ];
+        // var_dump($agentEmail);
+        $this->sched->save($dat);
+        $emailSubject = "New Appointment Scheduled";
+        $emailMessage = "You have a new appointment scheduled, please see at yout trsansations tab";
+        $this->sendVerificationEmail($agentEmail, $emailSubject, $emailMessage);
 
-        // $emailSub = "Schedule Confirmation";
-        // $emailMes = "Thank you for scheduling an appointment with us";
-        // $this->sendVerificationEmail($client['info']['email'], $emailSub, $emailMes);
+        $emailSub = "Schedule Confirmation";
+        $emailMes = "Thank you for scheduling an appointment with us";
+        $this->sendVerificationEmail($client['info']['email'], $emailSub, $emailMes);
 
         $to = $agentNumber;
         $from = '447491163443';
         $text = 'Congratulations on sending your first message.';
-        // $response = $this->smsLibrary->sendSms($to, $from, $text);
+        $response = $this->smsLibrary->sendSms($to, $from, $text);
 
-        var_dump($agentNumber);
-
-        // return redirect()->to('/viewplans')->with('success', 'Schedule created!');
+        return redirect()->to('/viewplans')->with('success', 'Schedule created!');
     }
 
     public function mysched()
