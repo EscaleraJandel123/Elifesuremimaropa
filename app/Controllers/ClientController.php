@@ -384,7 +384,7 @@ class ClientController extends BaseController
         $emailMes = "Thank you for scheduling an appointment with us";
         $this->sendVerificationEmail($client['info']['email'], $emailSub, $emailMes);
 
-        $to = strval($agentNumber);
+        $to = $agentNumber;
         $from = '447491163443';
         $text = 'You have a new appointment scheduled from our beloved client';
         $response = $this->smsLibrary->sendSms($to, $from, $text);
