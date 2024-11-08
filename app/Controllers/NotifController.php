@@ -62,8 +62,15 @@ class NotifController extends BaseController
     {
         $to = '09366581432';
         $message = 'Welcome to Elifesure! Thank you for choosing us as your agency partner. We are here to serve you with excellence. For assistance. Mabuhay!';
+
         // Call sendSMS and capture the response
-        $this->sendSMS($to,$message);
+        $response = $this->sendSMS($to, $message);
+
+        // Log the response (for debugging)
+        log_message('error', 'SMS Response: ' . json_encode($response));
+
+        // You can also return this response to the frontend
+        return $this->response->setJSON($response);
     }
 
     public function sendSMS($to, $message)
@@ -81,17 +88,19 @@ class NotifController extends BaseController
             // Send a POST request to the Treccar SMS Gateway API
             $response = $client->post($this->apiUrl, [
                 'form_params' => $data,
+                'timeout' => 10,  // Timeout after 10 seconds
             ]);
 
             // Check for a successful response
             if ($response->getStatusCode() == ResponseInterface::HTTP_OK) {
-                return $this->response->setJSON(['status' => 'success', 'message' => 'SMS sent successfully']);
+                return ['status' => 'success', 'message' => 'SMS sent successfully'];
             } else {
-                return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to send SMS']);
+                return ['status' => 'error', 'message' => 'Failed to send SMS'];
             }
         } catch (\Exception $e) {
             // Handle errors
-            return $this->response->setJSON(['status' => 'error', 'message' => $e->getMessage()]);
+            return ['status' => 'error', 'message' => $e->getMessage()];
         }
     }
+
 }
