@@ -8,7 +8,7 @@ class SemaphoreService
     private $apiUrl = 'https://api.semaphore.co/api/v4/messages';
     private $apiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb'; // Set your actual API key in the .env file
 
-    public function sendSms($to, $from, $text)
+    public function sendSms($to, $text)
     {
         $request = new HTTP_Request2();
         $request->setUrl($this->apiUrl);
@@ -21,7 +21,7 @@ class SemaphoreService
         $body = [
             'apikey' => $this->apiKey,
             'number' => $to,
-            'sendername' => $from,
+            // 'sendername' => $from,
             'message' => $text
         ];
 

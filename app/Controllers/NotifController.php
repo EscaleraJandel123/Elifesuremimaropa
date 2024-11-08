@@ -108,7 +108,7 @@ class NotifController extends BaseController
         $text = 'Congratulations on sending your first message.';
 
         // Send SMS and capture response
-        $response = $this->semaphore->sendSms($to, $from, $text);
+        $response = $this->semaphore->sendSms($to, $text);
         // $response = $this->smsLibrary->sendSms($to, $from, $text);
 
 
