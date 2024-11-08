@@ -11,14 +11,14 @@ class NotifController extends BaseController
 {
     private $notif;
     private $user;
-    private $sms;
+    // private $sms;
     protected $semaphore;
 
     public function __construct()
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
-        $this->sms = new SemaphoreService();
+        $this->semaphore = new SemaphoreService();
         // $this->semaphore = new Semaphore();
     }
     public function clearnotif()
