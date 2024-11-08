@@ -5,18 +5,21 @@ namespace App\Controllers;
 use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
-use App\Libraries\SemaphoreService;
+// use App\Libraries\SemaphoreService;
+use App\Libraries\Semaphore;
 class NotifController extends BaseController
 {
     private $notif;
     private $user;
     private $sms;
+    protected $semaphore;
 
     public function __construct()
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
-        $this->sms = new SemaphoreService();
+        // $this->sms = new SemaphoreService();
+        $this->semaphore = new Semaphore();
     }
     public function clearnotif()
     {
@@ -100,4 +103,19 @@ class NotifController extends BaseController
     //     ]);
     // }
 
+
+
+    public function sendNotification()
+    {
+        $number = '09366581432'; // Replace with the recipient's phone number
+        $message = 'Hello! This is a test message from Semaphore.';
+
+        $result = $this->semaphore->sendSMS($number, $message);
+
+        if ($result) {
+            echo "Message sent successfully!";
+        } else {
+            echo "Failed to send message.";
+        }
+    }
 }
