@@ -79,7 +79,7 @@ use CodeIgniter\HTTP\CURLRequest;
 
 // }
 
-class Semaphore
+class SemaphoreService
 {
     protected $apiKey;
     protected $apiUrl = 'https://api.semaphore.co/api/v4/messages';

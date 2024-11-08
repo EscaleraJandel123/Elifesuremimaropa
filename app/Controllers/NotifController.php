@@ -5,8 +5,8 @@ namespace App\Controllers;
 use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
-// use App\Libraries\SemaphoreService;
-use App\Libraries\Semaphore;
+use App\Libraries\SemaphoreService;
+// use App\Libraries\Semaphore;
 class NotifController extends BaseController
 {
     private $notif;
@@ -18,8 +18,8 @@ class NotifController extends BaseController
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
-        // $this->sms = new SemaphoreService();
-        $this->semaphore = new Semaphore();
+        $this->sms = new SemaphoreService();
+        // $this->semaphore = new Semaphore();
     }
     public function clearnotif()
     {
