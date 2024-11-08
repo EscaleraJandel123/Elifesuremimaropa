@@ -12,8 +12,8 @@ class NotifController extends BaseController
     private $notif;
     private $user;
     // private $sms;
-    private $apiUrl = 'http://192.168.101.74:8082/send'; // Use the IP and port shown in Treccar SMS Gateway
-    private $apiKey = '0d9ff1fe-3750-417b-bd14-7b27c8a8a1d9'; // Replace with the API key from Treccar
+    private $apiUrl = 'http://192.168.101.74:8082'; // Use the IP and port shown in Treccar SMS Gateway
+    private $apiKey = '55e256ce-84f7-4e9f-810f-2f78e5804f5d'; // Replace with the API key from Treccar
 
     public function __construct()
     {
