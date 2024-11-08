@@ -1,8 +1,6 @@
 <?php
 namespace App\Libraries;
 
-require_once FCPATH . 'vendor/autoload.php'; // Ensure Composer's autoload file is included
-
 use HTTP_Request2;
 
 class SmsLibrary
