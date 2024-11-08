@@ -5,21 +5,18 @@ namespace App\Controllers;
 use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
-// use App\Libraries\SemaphoreService;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Libraries\SmsLibrary;
 class NotifController extends BaseController
 {
     private $notif;
     private $user;
-    // private $sms;
-    private $apiUrl = 'http://192.168.101.74:8082'; // Use the IP and port shown in Treccar SMS Gateway
-    private $apiKey = '55e256ce-84f7-4e9f-810f-2f78e5804f5d'; // Replace with the API key from Treccar
+    private $sms;
 
     public function __construct()
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
-        // $this->sms = new SemaphoreService();
+        $this->sms = new SmsLibrary();
     }
     public function clearnotif()
     {
@@ -60,47 +57,59 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-        $to = '09366581432';
-        $message = 'Welcome to Elifesure! Thank you for choosing us as your agency partner. We are here to serve you with excellence. For assistance. Mabuhay!';
+        //     $to = '09366581432';
+        //     $message = 'Welcome to Elifesure! Thank you for choosing us as your agency partner. We are here to serve you with excellence. For assistance. Mabuhay!';
 
-        // Call sendSMS and capture the response
-        $response = $this->sendSMS($to, $message);
+        //     // Call sendSMS and capture the response
+        //     $response = $this->sms->sendSMS($to,$message);
 
-        // Log the response (for debugging)
-        log_message('error', 'SMS Response: ' . json_encode($response));
+        //     // Decode JSON response to array for easier inspection
+        //     $decodedResponse = json_decode($response, true);
 
-        // You can also return this response to the frontend
+        //     // Check if response is valid JSON and contains expected keys
+        //     if (json_last_error() !== JSON_ERROR_NONE) {
+        //         $error = json_last_error_msg();
+        //         log_message('error', 'Invalid JSON response from Semaphore API: ' . $error);
+        //         return $this->response->setJSON([
+        //             'status' => 'error',
+        //             'message' => 'Failed to parse response from Semaphore',
+        //             'error' => $error
+        //         ]);
+        //     }
+
+        //     // Log the full response and additional info
+        //     log_message('info', 'Semaphore API full response: ' . print_r($decodedResponse, true));
+
+        //     // Check if response indicates any errors
+        //     if (isset($decodedResponse['status']) && $decodedResponse['status'] !== 'success') {
+        //         $errorMessage = isset($decodedResponse['message']) ? $decodedResponse['message'] : 'Unknown error';
+        //         log_message('error', 'Semaphore API returned an error: ' . $errorMessage);
+
+        //         return $this->response->setJSON([
+        //             'status' => 'error',
+        //             'message' => 'Failed to send SMS',
+        //             'error_details' => $decodedResponse
+        //         ]);
+        //     }
+
+        //     // If the response is pending or has other details, return that as well
+        //     return $this->response->setJSON([
+        //         'status' => 'success',
+        //         'message' => 'SMS sent (check status)',
+        //         'response' => $decodedResponse
+        //     ]);
+
+        // Load the SMS Library
+
+        // Get phone number and message from the POST request
+        $phoneNumber = $this->request->getPost('to');
+        $message = $this->request->getPost('message');
+
+        // Call the sendSms function from the library
+        $response = $this->sms->sendSms($phoneNumber, $message);
+
+        // Return the response in JSON format
         return $this->response->setJSON($response);
-    }
-
-    public function sendSMS($to, $message)
-    {
-        $client = \Config\Services::curlrequest();
-
-        // Prepare the data for the API request
-        $data = [
-            'api_key' => $this->apiKey,
-            'number' => $to,
-            'message' => $message,
-        ];
-
-        try {
-            // Send a POST request to the Treccar SMS Gateway API
-            $response = $client->post($this->apiUrl, [
-                'form_params' => $data,
-                'timeout' => 10,  // Timeout after 10 seconds
-            ]);
-
-            // Check for a successful response
-            if ($response->getStatusCode() == ResponseInterface::HTTP_OK) {
-                return ['status' => 'success', 'message' => 'SMS sent successfully'];
-            } else {
-                return ['status' => 'error', 'message' => 'Failed to send SMS'];
-            }
-        } catch (\Exception $e) {
-            // Handle errors
-            return ['status' => 'error', 'message' => $e->getMessage()];
-        }
     }
 
 }
