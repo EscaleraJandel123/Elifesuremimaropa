@@ -5,8 +5,8 @@ use HTTP_Request2;
 
 class SmsLibrary
 {
-    private $apiUrl = 'https://wg94q1.api.infobip.com/sms/2/text/advanced';
-    private $apiKey = '0e699c0e2bde6e673b9f8905c4e70220-3a340c6a-625a-423b-bc38-c496873ae589';
+    private $apiUrl = 'https://api.semaphore.co/api/v4/messages';
+    private $apiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb';
 
     public function sendSms($to, $from, $text)
     {
