@@ -7,52 +7,47 @@ use CodeIgniter\Config\Services;
 
 class SmsLibrary
 {
-    protected $cloudBase;
-    protected $token;
     protected $endpoint;
-    protected $curl;
+    protected $token;
+    protected $cloudBase;
 
-    // Constructor to initialize environment variables and CURL request service
+    // Constructor to initialize values
     public function __construct()
     {
-        // Get the values from the environment file
-        $this->cloudBase = 'cIhWGF8SQ2OWbnNCBXel5A:APA91bH05XHFKOEWql7OXmcnnsE2B1uCZreABpisS_20lD8nSyjpRaz1Ac4R9-3USsPCDV5AyCtCZ5v9A-3K5rx1YzwatH2kt0UbyjmWdWJXb0y7W6Bc9_U';
+        // Initialize the endpoint and keys
+        $this->endpoint = 'http://192.168.101.74:8082/send';
         $this->token = '55e256ce-84f7-4e9f-810f-2f78e5804f5d';
-        $this->endpoint = 'http://192.168.101.74:8082';
-        $this->curl = Services::curlrequest();  // Load CURL service
+        $this->cloudBase = 'cIhWGF8SQ2OWbnNCBXel5A:APA91bH05XHFKOEWql7OXmcnnsE2B1uCZreABpisS_20lD8nSyjpRaz1Ac4R9-3USsPCDV5AyCtCZ5v9A-3K5rx1YzwatH2kt0UbyjmWdWJXb0y7W6Bc9_U';
     }
 
-    // Function to send a message
-    public function sendSms($phoneNumber, $message)
+    // Function to send SMS
+    public function sendSms($to, $message, $from)
     {
-        // Validate the input
-        if (empty($phoneNumber) || empty($message)) {
-            return ['status' => 'error', 'message' => 'Phone number or message is missing'];
-        }
-
-        // Prepare the data to send to the API
-        $messageData = [
-            'to' => $phoneNumber,
+        // Prepare the data to be sent
+        $data = [
+            'to' => $to,
             'message' => $message,
-            'from' => '09945428697', // Use your own phone number as the sender
+            'from' => $from,
             'token' => $this->token,
             'cloudBase' => $this->cloudBase,
         ];
 
-        // Send the POST request to the endpoint
-        try {
-            $response = $this->curl->post($this->endpoint, [
-                'json' => $messageData,
-            ]);
+        // Initialize the CURL service
+        $curl = Services::curlrequest();
 
-            // Check if the response is successful
-            if ($response->getStatusCode() === 200) {
-                return ['status' => 'success', 'data' => json_decode($response->getBody())];
-            } else {
-                return ['status' => 'error', 'message' => 'Failed to send message'];
-            }
-        } catch (\Exception $e) {
-            return ['status' => 'error', 'message' => 'Exception: ' . $e->getMessage()];
+        // Send the POST request
+        $response = $curl->post($this->endpoint, [
+            'json' => $data,
+        ]);
+
+        // Check the response
+        if ($response->getStatusCode() === 200) {
+            return json_decode($response->getBody());
+        } else {
+            return [
+                'status' => 'error',
+                'message' => 'Failed to send message',
+            ];
         }
     }
 }

@@ -57,13 +57,15 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-        $phoneNumber = '09366581432';
-        $message = 'Hi';
+       // Set the recipient, message, and sender
+       $phoneNumber = '+639366581432';  // Recipient's number
+       $message = 'This is a test message from my own phone';  // The message to send
+       $from = '+639945428697';  // Sender's number (your phone number)
 
-        // Call the sendSms function from the library
-        $response = $this->sms->sendSms($phoneNumber, $message);
+       // Call the sendSms function from the library
+       $response = $this->sms->sendSms($phoneNumber, $message, $from);
 
-        // Return the response in JSON format
-        return $this->response->setJSON($response);
+       // Return the response as JSON
+       return $this->response->setJSON($response);
     }
 }
