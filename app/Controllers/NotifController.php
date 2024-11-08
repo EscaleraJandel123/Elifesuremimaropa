@@ -57,42 +57,24 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-        // The endpoint URL
-        $endpoint = 'http://192.168.101.74:8082/send';
+        $ch = curl_init();
+        $parameters = array(
+            'apikey' => 'dfdb3f38323f2e2f0fca0d6ae9624fdb', //Your API KEY
+            'number' => '09366581432',
+            'message' => 'I just sent my first message with Semaphore',
+        );
+        curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
+        curl_setopt($ch, CURLOPT_POST, 1);
 
-        // Data to send in JSON format
-        $data = [
-            'to' => '+639366581432',
-            'message' => 'This is a test message from my own phone',
-            'from' => '+639945428697',
-            'token' => '55e256ce-84f7-4e9f-810f-2f78e5804f5d',
-            'cloudBase' => 'cIhWGF8SQ2OWbnNCBXel5A:APA91bH05XHFKOEWql7OXmcnnsE2B1uCZreABpisS_20lD8nSyjpRaz1Ac4R9-3USsPCDV5AyCtCZ5v9A-3K5rx1YzwatH2kt0UbyjmWdWJXb0y7W6Bc9_U'
-        ];
+        //Send the parameters set above with the request
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
 
-        // Initialize cURL session
-        $ch = curl_init($endpoint);
-
-        // Set cURL options
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return the response as a string
-        curl_setopt($ch, CURLOPT_POST, true);             // Use POST method
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json'  // Set content type as JSON
-        ]);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));  // Attach JSON data
-
-        // Execute the cURL request
-        $response = curl_exec($ch);
-
-        // Check for errors in the request
-        if (curl_errno($ch)) {
-            echo 'Error:' . curl_error($ch);  // Output error if any
-        } else {
-            // Output the response from the API
-            echo 'Response from API: ' . $response;
-        }
-
-        // Close cURL session
+        // Receive response from server
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $output = curl_exec($ch);
         curl_close($ch);
 
+        //Show the server response
+        echo $output;
     }
 }
