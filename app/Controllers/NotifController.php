@@ -107,7 +107,7 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-        $number = '09366581432'; // Replace with the recipient's phone number
+        $number = '639366581432'; // Replace with the recipient's phone number
         $message = 'Hello! This is a test message from Semaphore.';
 
         $result = $this->semaphore->sendSMS($number, $message);
