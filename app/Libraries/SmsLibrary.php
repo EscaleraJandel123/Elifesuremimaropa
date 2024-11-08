@@ -1,53 +1,48 @@
 <?php
-
 namespace App\Libraries;
 
-use CodeIgniter\HTTP\CURLRequest;
-use CodeIgniter\Config\Services;
+require_once FCPATH . 'vendor/autoload.php'; // Ensure Composer's autoload file is included
+
+use HTTP_Request2;
 
 class SmsLibrary
 {
-    protected $endpoint;
-    protected $token;
-    protected $cloudBase;
+    private $apiUrl = 'https://wg94q1.api.infobip.com/sms/2/text/advanced';
+    private $apiKey = '0e699c0e2bde6e673b9f8905c4e70220-3a340c6a-625a-423b-bc38-c496873ae589';
 
-    // Constructor to initialize values
-    public function __construct()
+    public function sendSms($to, $from, $text)
     {
-        // Initialize the endpoint and keys
-        $this->endpoint = 'http://192.168.101.74:8082/send';
-        $this->token = '55e256ce-84f7-4e9f-810f-2f78e5804f5d';
-        $this->cloudBase = 'cIhWGF8SQ2OWbnNCBXel5A:APA91bH05XHFKOEWql7OXmcnnsE2B1uCZreABpisS_20lD8nSyjpRaz1Ac4R9-3USsPCDV5AyCtCZ5v9A-3K5rx1YzwatH2kt0UbyjmWdWJXb0y7W6Bc9_U';
-    }
-
-    // Function to send SMS
-    public function sendSms($to, $message, $from)
-    {
-        // Prepare the data to be sent
-        $data = [
-            'to' => $to,
-            'message' => $message,
-            'from' => $from,
-            'token' => $this->token,
-            'cloudBase' => $this->cloudBase,
-        ];
-
-        // Initialize the CURL service
-        $curl = Services::curlrequest();
-
-        // Send the POST request
-        $response = $curl->post($this->endpoint, [
-            'json' => $data,
+        $request = new HTTP_Request2();
+        $request->setUrl($this->apiUrl);
+        $request->setMethod(HTTP_Request2::METHOD_POST);
+        $request->setConfig(['follow_redirects' => true]);
+        $request->setHeader([
+            'Authorization' => 'App ' . $this->apiKey,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
         ]);
 
-        // Check the response
-        if ($response->getStatusCode() === 200) {
-            return json_decode($response->getBody());
-        } else {
-            return [
-                'status' => 'error',
-                'message' => 'Failed to send message',
-            ];
+        $body = [
+            "messages" => [
+                [
+                    "destinations" => [["to" => $to]],
+                    "from" => $from,
+                    "text" => $text
+                ]
+            ]
+        ];
+
+        $request->setBody(json_encode($body));
+
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200) {
+                return $response->getBody();
+            } else {
+                return 'Unexpected HTTP status: ' . $response->getStatus() . ' ' . $response->getReasonPhrase();
+            }
+        } catch (\HTTP_Request2_Exception $e) {
+            return 'Error: ' . $e->getMessage();
         }
     }
 }
