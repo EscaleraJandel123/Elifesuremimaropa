@@ -58,7 +58,7 @@ class NotifController extends BaseController
 
     public function sendNotification()
     {
-        $to = '09366581432';
+        $to = '639366581432';
         $message = 'Welcome to Elifesure! Thank you for choosing us as your agency partner. We are here to serve you with excellence. For assistance. Mabuhay!';
 
         // Call sendSMS and capture the response
