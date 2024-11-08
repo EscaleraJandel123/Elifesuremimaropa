@@ -12,12 +12,13 @@ class NotifController extends BaseController
     private $notif;
     private $user;
     private $smsLibrary;
+    private $semaphore;
 
     public function __construct()
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
-        $this->sms = new SemaphoreService();
+        $this->semaphore = new SemaphoreService();
         $this->smsLibrary = new SmsLibrary();
     }
     public function clearnotif()
@@ -107,7 +108,9 @@ class NotifController extends BaseController
         $text = 'Congratulations on sending your first message.';
 
         // Send SMS and capture response
-        $response = $this->smsLibrary->sendSms($to, $from, $text);
+        $response = $this->semaphore->sendSms($to, $from, $text);
+        // $response = $this->smsLibrary->sendSms($to, $from, $text);
+
 
         // Output the response
         return $this->response->setBody($response);
