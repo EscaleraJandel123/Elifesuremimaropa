@@ -386,7 +386,7 @@ class ClientController extends BaseController
 
         $to = $agentNumber;
         $from = '447491163443';
-        $text = 'Congratulations on sending your first message.';
+        $text = 'You have a new appointment scheduled from our beloved client';
         $response = $this->smsLibrary->sendSms($to, $from, $text);
 
         return redirect()->to('/viewplans')->with('success', 'Schedule created!');
