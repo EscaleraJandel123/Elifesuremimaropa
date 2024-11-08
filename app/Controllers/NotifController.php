@@ -6,7 +6,7 @@ use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
 use App\Libraries\SemaphoreService;
-use app\Libraries\SmsLibrary;
+use App\Libraries\SmsLibrary;
 class NotifController extends BaseController
 {
     private $notif;
