@@ -377,21 +377,20 @@ class ClientController extends BaseController
             'meeting_type' => $this->request->getVar('meeting_type'),
         ];
         // var_dump($agentEmail);
-        // $this->sched->save($dat);
-        // $emailSubject = "New Appointment Scheduled";
-        // $emailMessage = "You have a new appointment scheduled, please see at yout trsansations tab";
-        // $this->sendVerificationEmail($agentEmail, $emailSubject, $emailMessage);
+        $this->sched->save($dat);
+        $emailSubject = "New Appointment Scheduled";
+        $emailMessage = "You have a new appointment scheduled, please see at yout trsansations tab";
+        $this->sendVerificationEmail($agentEmail, $emailSubject, $emailMessage);
 
-        // $emailSub = "Schedule Confirmation";
-        // $emailMes = "Thank you for scheduling an appointment with us";
-        // $this->sendVerificationEmail($client['info']['email'], $emailSub, $emailMes);
+        $emailSub = "Schedule Confirmation";
+        $emailMes = "Thank you for scheduling an appointment with us";
+        $this->sendVerificationEmail($client['info']['email'], $emailSub, $emailMes);
 
         $to = $agentNumber;
         $from = '447491163443';
         $text = 'You have a new appointment scheduled from our beloved client';
-        // $response = $this->smsLibrary->sendSms($to, $from, $text);
-        var_dump($agentNumber);
-        // return redirect()->to('/viewplans')->with('success', 'Schedule created!');
+        $response = $this->smsLibrary->sendSms($to, $from, $text);
+        return redirect()->to('/viewplans')->with('success', 'Schedule created!');
     }
 
     public function mysched()
