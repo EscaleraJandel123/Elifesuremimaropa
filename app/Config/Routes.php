@@ -176,4 +176,4 @@ $routes->get('/clearnotif', 'NotifController::clearnotif', ['filter' => 'authGua
 // $routes->get('/sms', 'NotifController::sendNotification');
 
 
-$routes->get('/send-notification', 'NotifController::sendNotification');    
+// $routes->get('/send-notification', 'NotifController::sendNotification');    

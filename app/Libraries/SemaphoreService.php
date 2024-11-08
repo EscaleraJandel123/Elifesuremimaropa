@@ -1,12 +1,10 @@
 <?php
 namespace App\Libraries;
-use CodeIgniter\HTTP\CURLRequest;
 
-
-// class SemaphoreService
-// {
-//     private $semaphoreApiKey;
-//     private $semaphoreSenderName;
+class SemaphoreService
+{
+    private $semaphoreApiKey;
+    private $semaphoreSenderName;
 
     // public function __construct()
     // {
@@ -75,42 +73,4 @@ use CodeIgniter\HTTP\CURLRequest;
 
     //     return '+' . $phoneNumber;
     // }
-
-
-// }
-
-class SemaphoreService
-{
-    protected $apiKey;
-    protected $apiUrl = 'https://api.semaphore.co/api/v4/messages';
-
-    public function __construct()
-    {
-        $this->apiKey = 'dfdb3f38323f2e2f0fca0d6ae9624fdb'; // Replace with your Semaphore API key
-    }
-
-    /**
-     * Send an SMS message via Semaphore
-     * @param string $number Recipient's phone number
-     * @param string $message Message content
-     * @return bool|string
-     */
-    public function sendSMS($number, $message)
-    {
-        $client = \Config\Services::curlrequest();
-        
-        $response = $client->post($this->apiUrl, [
-            'form_params' => [
-                'apikey' => $this->apiKey,
-                'number' => $number,
-                'message' => $message
-            ]
-        ]);
-
-        if ($response->getStatusCode() === 200) {
-            return json_decode($response->getBody()); // returns response as object
-        } else {
-            return false; // failed to send
-        }
-    }
 }

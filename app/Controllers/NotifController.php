@@ -6,21 +6,17 @@ use \App\Models\NotifModel;
 use \App\Models\UserModel;
 use App\Controllers\BaseController;
 use App\Libraries\SemaphoreService;
-// use App\Libraries\Semaphore;
-use CodeIgniter\HTTP\CURLRequest;
 class NotifController extends BaseController
 {
     private $notif;
     private $user;
-    // private $sms;
-    protected $semaphore;
+    private $sms;
 
     public function __construct()
     {
         $this->notif = new NotifModel();
         $this->user = new UserModel();
-        $this->semaphore = new SemaphoreService();
-        // $this->semaphore = new Semaphore();
+        $this->sms = new SemaphoreService();
     }
     public function clearnotif()
     {
@@ -103,43 +99,5 @@ class NotifController extends BaseController
     //         'response' => $decodedResponse
     //     ]);
     // }
-
-
-
-    public function sendNotification()
-    {
-        $number = '639366581432'; // Replace with the recipient's phone number
-        $message = 'Hello! This is a test message from Semaphore.';
-
-        $result = $this->send_sms($number, $message);
-
-        if ($result && isset($result->message)) { // Check if the result has a message property
-            echo json_encode($result); // Convert the result to JSON for display
-            echo "Message sent successfully!";
-        } else {
-            echo "Failed to send message.";
-        }
-    }
-
-    function send_sms($number, $message)
-    {
-        $url = "https://api.semaphore.co/api/v4/messages";
-        $api_key = "dfdb3f38323f2e2f0fca0d6ae9624fdb";  // Replace with your actual Semaphore API key
-
-        $curl = service('curlrequest');
-        $response = $curl->request('POST', $url, [
-            'form_params' => [
-                'apikey' => $api_key,
-                'number' => $number,
-                'message' => $message,
-            ]
-        ]);
-
-        if ($response->getStatusCode() == 200) {
-            return json_decode($response->getBody()); // This returns an object
-        } else {
-            return "Failed to send SMS: " . $response->getStatusCode();
-        }
-    }
 
 }
