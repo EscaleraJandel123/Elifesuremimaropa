@@ -105,7 +105,7 @@ class NotifController extends BaseController
         $client = \Config\Services::curlrequest();
 
         // Fetch the API key from the environment
-        $apiKey = getenv('dfdb3f38323f2e2f0fca0d6ae9624fdb');
+        $apiKey ='dfdb3f38323f2e2f0fca0d6ae9624fdb';
 
         // Set up the request data
         $data = [
