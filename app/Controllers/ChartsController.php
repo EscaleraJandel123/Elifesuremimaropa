@@ -80,6 +80,24 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
+  public function getsubagentscount()
+{
+    $session = session();
+    $userId = $session->get('id');
+
+    // Fetch applicant counts where the agent's refcode matches the applicants' refcode
+    $query = $this->app->query("
+        SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count
+        FROM applicant
+        WHERE refcode = (SELECT refcode FROM agent WHERE agent_id = ?)
+        GROUP BY YEAR(created_at), MONTH(created_at)
+        ORDER BY year ASC, month ASC
+    ", [$userId]);
+    $result = $query->getResultArray();
+    return json_encode($result);
+}
+
+
   public function predictMonthlyAgents()
   {
     $result = json_decode($this->monthlyAgentCount(), true);
@@ -144,7 +162,6 @@ class ChartsController extends BaseController
   }
 
   // agents
-
   public function getMonthlyCommissions()
   {
     $session = session();
@@ -161,16 +178,7 @@ class ChartsController extends BaseController
     $predictions = $this->generatePredictions($result, 'total_commission', 12);  // Predict for the next 12 months
     return json_encode($predictions);
   }
-
-  public function getsubagentscount()
-{
-    $session = session();
-    $userId = $session->get('id');
-    $query = $this->app->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count FROM applicant WHERE refcode = $userId");
-    $result = $query->getResultArray();
-    return json_encode($result);
-}
-
+  
 
   private function generatePredictions($data, $field, $periods = 12)
   {
