@@ -353,7 +353,7 @@
 
                     new ApexCharts(document.querySelector("#ovyearlyComm"), {
                         series: [{
-                            name: 'Yearly commissions'
+                            name: 'Yearly commissions',
                             data: commissions
                         }],
                         chart: {
