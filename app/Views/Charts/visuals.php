@@ -610,7 +610,7 @@
                         }
                     },
                     title: {
-                        text: 'Overall Monthly Sales'
+                        text: 'Overall Monthly Production'
                     },
                     tooltip: {
                         y: {
@@ -657,7 +657,7 @@
                         }
                     },
                     title: {
-                        text: 'Overall Yearly Sales'
+                        text: 'Overall Yearly Production'
                     },
                     tooltip: {
                         y: {
