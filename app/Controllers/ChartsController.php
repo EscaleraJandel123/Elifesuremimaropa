@@ -80,22 +80,23 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
   public function getsubagentscount()
-  {
+{
     $session = session();
     $userId = $session->get('id');
 
-    // Fetch applicant counts where the applicant's refcode directly matches userId
+    // Fetch counts of sub-agents where FA matches the user's ID
     $query = $this->app->query("
-        SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count
-        FROM applicant
-        WHERE refcode = ?
+        SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(id) AS agent_count
+        FROM agent
+        WHERE FA = ?
         GROUP BY YEAR(created_at), MONTH(created_at)
         ORDER BY year ASC, month ASC
     ", [$userId]);
 
     $result = $query->getResultArray();
     return json_encode($result);
-  }
+}
+
   public function predictMonthlyAgents()
   {
     $result = json_decode($this->monthlyAgentCount(), true);

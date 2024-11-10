@@ -183,49 +183,49 @@
             .then(response => response.json())
             .then(subAgentData => {
                 if (subAgentData.length === 0) {
-                    // Display a message if no data is available
-                    document.querySelector("#subAgentChart").innerHTML = '<div style="text-align: center; padding: 20px;">No Data Available</div>';
-                    return;
+                    // If no data, display a message instead of the chart
+                    document.querySelector("#subAgentChart").innerHTML = "<p class='text-center'>No sub-agents data available yet.</p>";
+                } else {
+                    const monthsYears = subAgentData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                    const subAgentCounts = subAgentData.map(item => item.agent_count);
+
+                    // Render the chart using ApexCharts
+                    new ApexCharts(document.querySelector("#subAgentChart"), {
+                        series: [{
+                            name: 'Sub-Agent Count',
+                            data: subAgentCounts,
+                        }],
+                        chart: {
+                            type: 'bar',  // 'bar' chart for sub-agent counts
+                            height: 250
+                        },
+                        xaxis: {
+                            categories: monthsYears,
+                            labels: {
+                                rotate: -45,
+                                style: {
+                                    fontSize: '12px',
+                                    colors: '#333'
+                                }
+                            }
+                        },
+                        title: {
+                            text: 'Monthly Sub-Agent Count'
+                        },
+                        grid: {
+                            borderColor: '#f1f1f1'
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (value) {
+                                    return value + " sub-agents";
+                                }
+                            }
+                        }
+                    }).render();
                 }
+            });
 
-                const monthsYears = subAgentData.map(item => `${getMonthName(item.month)} ${item.year}`);
-                const subAgentCounts = subAgentData.map(item => item.applicant_count);
-
-                // Render the chart using ApexCharts
-                new ApexCharts(document.querySelector("#subAgentChart"), {
-                    series: [{
-                        name: 'Sub-Agent Count',
-                        data: subAgentCounts,
-                    }],
-                    chart: {
-                        type: 'bar',  // 'line' for a line chart; 'bar' for a bar chart, etc.
-                        height: 250
-                    },
-                    xaxis: {
-                        categories: monthsYears,
-                        labels: {
-                            rotate: -45,
-                            style: {
-                                fontSize: '12px',
-                                colors: '#333'
-                            }
-                        }
-                    },
-                    title: {
-                        text: 'Sub-Agents'
-                    },
-                    grid: {
-                        borderColor: '#f1f1f1'
-                    },
-                    tooltip: {
-                        y: {
-                            formatter: function (value) {
-                                return value + " sub-agents";
-                            }
-                        }
-                    }
-                }).render();
-            })
         // Helper function to get month name from month number
         function getMonthName(month) {
             const date = new Date();
