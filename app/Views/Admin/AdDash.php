@@ -124,7 +124,6 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
-
                                     <div id="ApplicantChart"></div>
                                 </div>
                             </div>
@@ -139,6 +138,20 @@
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
                                     <div id="ovyearlyComm"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Monthly Commission and Yearly Commission Row -->
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <div id="monthlySalesChart"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <div id="yearlySalesChart"></div>
                                 </div>
                             </div>
                         </div>
