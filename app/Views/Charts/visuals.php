@@ -431,3 +431,60 @@
     }
 
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Fetch the predicted commissions data for the next 12 months
+    fetch('/predictAgentMonthlyCommissions')
+        .then(response => response.json())
+        .then(predictedCommissionData => {
+            const commissionMonthsYears = predictedCommissionData.map(item => `${getMonthName(item.month)} ${item.year}`);
+            const commissionPredictions = predictedCommissionData.map(item => item.total_commission);
+
+            // Render the chart using ApexCharts
+            new ApexCharts(document.querySelector("#commissionPredictionChart"), {
+                series: [{
+                    name: 'Predicted Commissions',
+                    data: commissionPredictions,
+                }],
+                chart: {
+                    type: 'line',  // You can use 'line', 'bar', or other types
+                    height: 300
+                },
+                colors: ['#28a745'],
+                xaxis: {
+                    categories: commissionMonthsYears,
+                    labels: {
+                        rotate: -45,
+                        style: {
+                            fontSize: '12px',
+                            colors: '#333'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Predicted Commissions'
+                    }
+                },
+                grid: {
+                    borderColor: '#f1f1f1'
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (value) {
+                            return "₱" + value.toLocaleString();
+                        }
+                    }
+                }
+            }).render();
+        });
+    
+    // Helper function to get month name from month number
+    function getMonthName(month) {
+        const date = new Date();
+        date.setMonth(month - 1); // JavaScript months are 0-based
+        return date.toLocaleString('default', { month: 'short' });
+    }
+});
+</script>
