@@ -103,8 +103,7 @@ class HomepageController extends BaseController
                     'email' => $this->request->getVar('email'),
                     'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
                     'role' => $this->request->getVar('role'),
-                    // 'status' => 'unverified',
-                    'status' => 'verified',
+                    'status' => 'unverified',
                     'accountStatus' => 'active',
                     'token' => $usertoken,
                     'confirm' => 'false',
@@ -138,7 +137,7 @@ class HomepageController extends BaseController
                 $to = $this->request->getVar('number'); 
                 $from = '447491163443';
                 $text = 'Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.';
-                // $response = $this->smsLibrary->sendSms($to, $from, $text);
+                $response = $this->smsLibrary->sendSms($to, $from, $text);
                 $this->confirm->save($applicantData);
             }
 
