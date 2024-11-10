@@ -33,7 +33,7 @@ class ChartsController extends BaseController
 
   public function getApplicantsCount()
   {
-    $query = $this->app->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count FROM applicant WHERE status = 'confirmed' GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC");
+    $query = $this->app->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count FROM applicant WHERE status != 'confirmed' GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC");
     $result = $query->getResultArray();
     $jsonResult = json_encode($result);
     return $jsonResult;
