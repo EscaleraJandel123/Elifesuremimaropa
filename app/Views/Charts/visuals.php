@@ -462,11 +462,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 },
-                xaxis: {
-                    title: {
-                        text: 'Predicted Commissions'
-                    }
-                },
+                // xaxis: {
+                //     title: {
+                //         text: 'Predicted Commissions'
+                //     }
+                // },
                 grid: {
                     borderColor: '#f1f1f1'
                 },
