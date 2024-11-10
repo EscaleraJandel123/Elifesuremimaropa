@@ -146,7 +146,7 @@
                                 </div>
 
                                 <div class="col-lg-12 col-12">
-                                    <div class="card mb-2">
+                                    <div class="card mb-3">
                                         <div class="card-body d-flex flex-column align-items-center">
                                             <!-- Set max-width and max-height to constrain the image within the card body -->
                                             <div class="image-container"
@@ -174,7 +174,7 @@
                                                 <img src="<?= $imageSrc ?>" alt=""
                                                     style="width: 50%; height: 50%; transform: scale(3); display: block; margin: 0 auto;">
                                             </div>
-                                            <!-- The hidden input field -->
+                                            <h5 class="text-center mb-3"><?= $rankTitle ?> Rank</h5>
                                             <input type="text"
                                                 value="<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
                                                 id="myInput" style="display: none;">
