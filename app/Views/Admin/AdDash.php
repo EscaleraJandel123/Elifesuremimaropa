@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="card mb-3">
                                     <div class="card-body text-center">
-                                        <<i class="fas fa-users fa-2x"></i>
+                                        <i class="fas fa-users fa-2x"></i>
                                         <small class="d-block mt-2">Clients</small>
                                         <h3 class="card-title mt-2">
                                             <?= $totalClients ?>
