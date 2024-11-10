@@ -2,13 +2,7 @@
 <html lang="en">
 
 <?= view('/Home/chop/head'); ?>
-<style>
-    body {
-      background-image: url('req/allbg.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-  </style>
+
 <style>
   main {
     font-size: 10pt;
@@ -29,7 +23,7 @@
             <div class="d-flex justify-content-center py-4">
               <a href="/" class="logo d-flex align-items-center w-auto">
                 <img src="<?= base_url() ?>req/allianzlogo1.png" alt="">
-                <span class="d-none d-lg-block">ALLIANZ PNB</span>
+                <span class="d-none d-lg-block">ALLIANZ</span>
               </a>
             </div><!-- End Logo -->
 
