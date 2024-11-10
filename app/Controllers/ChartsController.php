@@ -79,25 +79,23 @@ class ChartsController extends BaseController
     $jsonResult = json_encode($result);
     return $jsonResult;
   }
-
   public function getsubagentscount()
-{
+  {
     $session = session();
     $userId = $session->get('id');
 
-    // Fetch applicant counts where the agent's refcode matches the applicants' refcode
+    // Fetch applicant counts where the applicant's refcode directly matches userId
     $query = $this->app->query("
         SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count
         FROM applicant
-        WHERE refcode = (SELECT refcode FROM agent WHERE agent_id = ?)
+        WHERE refcode = ?
         GROUP BY YEAR(created_at), MONTH(created_at)
         ORDER BY year ASC, month ASC
     ", [$userId]);
+
     $result = $query->getResultArray();
     return json_encode($result);
-}
-
-
+  }
   public function predictMonthlyAgents()
   {
     $result = json_decode($this->monthlyAgentCount(), true);
@@ -178,7 +176,7 @@ class ChartsController extends BaseController
     $predictions = $this->generatePredictions($result, 'total_commission', 12);  // Predict for the next 12 months
     return json_encode($predictions);
   }
-  
+
 
   private function generatePredictions($data, $field, $periods = 12)
   {
