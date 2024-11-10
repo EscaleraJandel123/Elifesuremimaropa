@@ -719,6 +719,12 @@
                         type: 'line',
                         height: 300
                     },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 4,
+                            horizontal: false,
+                        }
+                    },
                     xaxis: {
                         categories: monthsYears,
                         labels: {
