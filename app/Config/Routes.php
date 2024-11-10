@@ -132,7 +132,7 @@ $routes->get('/predictMonthlyCommissions', 'ChartsController::predictMonthlyComm
 $routes->get('/predictAgentMonthlyCommissions', 'ChartsController::predictAgentMonthlyCommissions', ['filter' => 'authGuard']);
 $routes->get('/getoverallMonthlysales', 'ChartsController::getoverallMonthlysales', ['filter' => 'adminFilter']);
 $routes->get('/getoverallYearlysales', 'ChartsController::getoverallYearlysales', ['filter' => 'adminFilter']);
-
+$routes->get('/predictNext12MonthsSales', 'ChartsController::predictNext12MonthsSales', ['filter' => 'adminFilter']);
 
 //pdf
 $routes->get('/generatePdf/(:num)', 'AdminController::generatePdf/$1', ['filter' => 'adminFilter']);

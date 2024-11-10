@@ -700,3 +700,53 @@
         }
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fetch and display predicted monthly sales data
+        fetch('/predictNext12MonthsSales')
+            .then(response => response.json())
+            .then(predictedSalesData => {
+                const monthsYears = predictedSalesData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                const predictedSales = predictedSalesData.map(item => item.predicted_commission);
+
+                new ApexCharts(document.querySelector("#salesPredictionChart"), {
+                    series: [{
+                        name: 'Predicted Production',
+                        data: predictedSales,
+                    }],
+                    chart: {
+                        type: 'line',
+                        height: 300
+                    },
+                    xaxis: {
+                        categories: monthsYears,
+                        labels: {
+                            rotate: -45,
+                            style: {
+                                fontSize: '12px',
+                                colors: '#333'
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Predicted Sales for Next 12 Months'
+                    },
+                    tooltip: {
+                        y: {
+                            formatter: function (value) {
+                                return "₱" + value.toLocaleString();
+                            }
+                        }
+                    }
+                }).render();
+            });
+
+        // Helper function to get month name from month number
+        function getMonthName(month) {
+            const date = new Date();
+            date.setMonth(month - 1);
+            return date.toLocaleString('default', { month: 'short' });
+        }
+    });
+</script>

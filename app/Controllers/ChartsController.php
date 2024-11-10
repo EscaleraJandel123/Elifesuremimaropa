@@ -90,6 +90,46 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
+  public function predictNext12MonthsSales()
+  {
+    $session = session();
+    $userId = $session->get('id');
+
+    // Fetch past 12 months data
+    $query = $this->commission->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(amount_paid) AS total_commission FROM commissions GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year DESC, month DESC LIMIT 12");
+    $pastData = array_reverse($query->getResultArray()); // Reverse to keep chronological order
+
+    // Calculate average growth rate
+    $totalGrowthRate = 0;
+    for ($i = 1; $i < count($pastData); $i++) {
+      $previous = $pastData[$i - 1]['total_commission'];
+      $current = $pastData[$i]['total_commission'];
+      $growthRate = ($current - $previous) / max($previous, 1); // Avoid division by zero
+      $totalGrowthRate += $growthRate;
+    }
+
+    $averageGrowthRate = $totalGrowthRate / max(count($pastData) - 1, 1); // Average growth rate
+
+    // Predict the next 12 months
+    $predictions = [];
+    $lastMonth = end($pastData);
+    $predictedCommission = $lastMonth['total_commission'];
+
+    for ($i = 1; $i <= 12; $i++) {
+      $nextMonth = ($lastMonth['month'] + $i - 1) % 12 + 1;
+      $nextYear = $lastMonth['year'] + (int) (($lastMonth['month'] + $i - 1) / 12);
+
+      $predictedCommission += $predictedCommission * $averageGrowthRate;
+      $predictions[] = [
+        'month' => $nextMonth,
+        'year' => $nextYear,
+        'predicted_commission' => round($predictedCommission, 2)
+      ];
+    }
+
+    return json_encode($predictions);
+  }
+
   public function getYearlyCommissions()
   {
     $session = session();
@@ -100,7 +140,7 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
   public function getsubagentscount()
-{
+  {
     $session = session();
     $userId = $session->get('id');
 
@@ -115,7 +155,7 @@ class ChartsController extends BaseController
 
     $result = $query->getResultArray();
     return json_encode($result);
-}
+  }
 
   public function predictMonthlyAgents()
   {
