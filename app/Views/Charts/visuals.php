@@ -462,7 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 },
-                yaxis: {
+                xaxis: {
                     title: {
                         text: 'Predicted Commissions'
                     }
@@ -473,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 tooltip: {
                     y: {
                         formatter: function (value) {
-                            return "₱" + value.toLocaleString();
+                            return value.toLocaleString();
                         }
                     }
                 }
