@@ -166,7 +166,7 @@ class ChartsController extends BaseController
 {
     $session = session();
     $userId = $session->get('id');
-    $query = $this->app->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count FROM applicant WHERE refcode = ?", [$userId]);
+    $query = $this->app->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, COUNT(applicant_id) AS applicant_count FROM applicant WHERE refcode = $userId");
     $result = $query->getResultArray();
     return json_encode($result);
 }
