@@ -530,6 +530,7 @@
         const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
         return months[monthNumber - 1];
     }
+
 </script>
 
 <script>
@@ -582,20 +583,9 @@
                                 return "₱" + value.toLocaleString();
                             }
                         }
-                    },
-                    dataLabels: {
-                        enabled: true,
-                        formatter: function (value) {
-                            return "₱" + value.toLocaleString(); // Display formatted value
-                        },
-                        style: {
-                            colors: ['#333'],
-                            fontSize: '10px'
-                        }
                     }
                 }).render();
-            });
-
+            })
         // Helper function to get month name from month number
         function getMonthName(month) {
             const date = new Date();
@@ -754,10 +744,7 @@
                         formatter: function (value) {
                             return "₱" + value.toLocaleString(); // Display formatted value
                         },
-                        style: {
-                            colors: ['#333'],
-                            fontSize: '10px'
-                        }
+                        
                     }
                 }).render();
             });
