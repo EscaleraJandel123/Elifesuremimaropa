@@ -563,11 +563,6 @@
                     }
                 }).render();
             })
-            .catch(error => {
-                document.querySelector("#commissionPredictionChart").innerHTML = "<p style='text-align: center; color: #f00;'>Error loading data.</p>";
-                console.error('Error fetching commission predictions:', error);
-            });
-
         // Helper function to get month name from month number
         function getMonthName(month) {
             const date = new Date();
