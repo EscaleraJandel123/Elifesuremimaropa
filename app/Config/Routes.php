@@ -122,9 +122,9 @@ $routes->get('/monthlyAgentCount', 'ChartsController::monthlyAgentCount', ['filt
 $routes->get('/getApplicantsCount', 'ChartsController::getApplicantsCount', ['filter' => 'authGuard']);
 $routes->get('/getMonthlyCommissions', 'ChartsController::getMonthlyCommissions', ['filter' => 'authGuard']);
 $routes->get('/getYearlyCommissions', 'ChartsController::getYearlyCommissions', ['filter' => 'authGuard']);
-$routes->get('/getoverallMonthlyCommissions', 'ChartsController::getoverallMonthlyCommissions', ['filter' => 'authGuard']);
-$routes->get('/getoverallYearlyCommissions', 'ChartsController::getoverallYearlyCommissions', ['filter' => 'authGuard']);
-$routes->get('/predictMonthlyAgents', 'ChartsController::predictMonthlyAgents', ['filter' => 'authGuard']);
+$routes->get('/getoverallMonthlyCommissions', 'ChartsController::getoverallMonthlyCommissions', ['filter' => 'adminFilter']);
+$routes->get('/getoverallYearlyCommissions', 'ChartsController::getoverallYearlyCommissions', ['filter' => 'adminFilter']);
+$routes->get('/predictMonthlyAgents', 'ChartsController::predictMonthlyAgents', ['filter' => 'adminFilter']);
 $routes->get('/predictMonthlyApplicants', 'ChartsController::predictMonthlyApplicants', ['filter' => 'adminFilter']);
 $routes->get('/predictMonthlyCommissions', 'ChartsController::predictMonthlyCommissions', ['filter' => 'adminFilter']);
 $routes->get('/predictAgentMonthlyCommissions', 'ChartsController::predictAgentMonthlyCommissions', ['filter' => 'authGuard']);
