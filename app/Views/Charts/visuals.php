@@ -505,7 +505,10 @@
                         show: false // Hide grid lines
                     },
                     dataLabels: {
-                        enabled: true
+                        enabled: true,
+                        formatter: function (value) {
+                            return "₱" + value.toLocaleString(); // Display formatted value
+                        },
                     },
                     xaxis: {
                         categories: commissionMonthsYears,
@@ -744,7 +747,6 @@
                         formatter: function (value) {
                             return "₱" + value.toLocaleString(); // Display formatted value
                         },
-                        
                     }
                 }).render();
             });
