@@ -250,6 +250,21 @@
             input.style.display = 'none'; // Hide input again after copying
             alert('Text copied to clipboard: ' + input.value);
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            const downloadButton = document.getElementById('downloadButton');
+            const qrCodeImage = document.querySelector('#qrCodeContainer img');
+
+            downloadButton.addEventListener('click', function () {
+                fetch(qrCodeImage.src)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = URL.createObjectURL(blob);
+                        downloadLink.download = '<?= $agent['username'] ?> referral qr-code.png';
+                        downloadLink.click();
+                    });
+            });
+        });
     </script>
 </body>
 
