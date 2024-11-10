@@ -184,7 +184,7 @@
             .then(subAgentData => {
                 if (subAgentData.length === 0) {
                     // Display a message if no data is available
-                    document.querySelector("#subAgentChart").innerHTML = "<p style='text-align: center; color: #888;'>No sub-agent data available.</p>";
+                    document.querySelector("#subAgentChart").innerHTML = '<div style="text-align: center; padding: 20px;">No Data Available</div>';
                     return;
                 }
 
@@ -226,11 +226,6 @@
                     }
                 }).render();
             })
-            .catch(error => {
-                document.querySelector("#subAgentChart").innerHTML = "<p style='text-align: center; color: #f00;'>Error loading data.</p>";
-                console.error('Error fetching sub-agent data:', error);
-            });
-
         // Helper function to get month name from month number
         function getMonthName(month) {
             const date = new Date();
@@ -521,6 +516,12 @@
         fetch('/predictAgentMonthlyCommissions')
             .then(response => response.json())
             .then(predictedCommissionData => {
+                if (predictedCommissionData.length === 0) {
+                    // Display a message if no data is available
+                    document.querySelector("#commissionPredictionChart").innerHTML = '<div style="text-align: center; padding: 20px;">No Data Available</div>';
+                    return;
+                }
+
                 const commissionMonthsYears = predictedCommissionData.map(item => `${getMonthName(item.month)} ${item.year}`);
                 const commissionPredictions = predictedCommissionData.map(item => item.total_commission);
 
@@ -531,13 +532,12 @@
                         data: commissionPredictions,
                     }],
                     chart: {
-                        type: 'bar',  // You can use 'line', 'bar', or other types
+                        type: 'bar',
                         height: 250
                     },
                     plotOptions: {
                         bar: {
                             borderRadius: 4,
-                            // horizontal: true,
                             horizontal: false,
                         }
                     },
@@ -562,6 +562,10 @@
                         }
                     }
                 }).render();
+            })
+            .catch(error => {
+                document.querySelector("#commissionPredictionChart").innerHTML = "<p style='text-align: center; color: #f00;'>Error loading data.</p>";
+                console.error('Error fetching commission predictions:', error);
             });
 
         // Helper function to get month name from month number
