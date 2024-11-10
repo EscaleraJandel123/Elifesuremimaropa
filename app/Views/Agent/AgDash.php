@@ -93,7 +93,6 @@
                     <!-- left side columns -->
                     <div class="col-lg-8">
                         <div class="row">
-                            <!-- Agent Chart and Applicant Chart Row -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
                                     <div id="barChart"></div>
@@ -102,6 +101,13 @@
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
                                 <div class="custom-block bg-white p-3">
                                     <div id="yearlyComm"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="custom-block bg-white p-3">
+                                    <div id="subAgentChart"></div>
                                 </div>
                             </div>
                         </div>

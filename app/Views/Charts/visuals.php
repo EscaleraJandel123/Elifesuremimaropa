@@ -41,17 +41,16 @@
                         grid: {
                             show: false // Hide grid lines
                         },
+                        title: {
+                            text: 'Number of Agents'
+                        },
                         yaxis: {
-                            title: {
-                                text: 'Number of Agents'
-                            },
                             labels: {
                                 formatter: function (value) {
                                     return Math.floor(value); // Remove decimals
                                 }
                             }
                         },
-
                     }).render();
                 }
             });
@@ -177,6 +176,61 @@
         return months[monthNumber - 1];
     }
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fetch the sub-agent count data
+        fetch('/getSubAgentsCount')
+            .then(response => response.json())
+            .then(subAgentData => {
+                const monthsYears = subAgentData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                const subAgentCounts = subAgentData.map(item => item.applicant_count);
+
+                // Render the chart using ApexCharts
+                new ApexCharts(document.querySelector("#subAgentChart"), {
+                    series: [{
+                        name: 'Sub-Agent Count',
+                        data: subAgentCounts,
+                    }],
+                    chart: {
+                        type: 'bar',  // 'line' for a line chart; 'bar' for a bar chart, etc.
+                        height: 250
+                    },
+                    xaxis: {
+                        categories: monthsYears,
+                        labels: {
+                            rotate: -45,
+                            style: {
+                                fontSize: '12px',
+                                colors: '#333'
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Sub-Agent Count'
+                    },
+                    grid: {
+                        borderColor: '#f1f1f1'
+                    },
+                    tooltip: {
+                        y: {
+                            formatter: function (value) {
+                                return value + " sub-agents";
+                            }
+                        }
+                    }
+                }).render();
+            });
+
+        // Helper function to get month name from month number
+        function getMonthName(month) {
+            const date = new Date();
+            date.setMonth(month - 1); // JavaScript months are 0-based
+            return date.toLocaleString('default', { month: 'short' });
+        }
+    });
+</script>
+
 
 <!-- Agent yearly commision -->
 <script>
@@ -342,8 +396,8 @@
                         height: 250
                     },
                     dataLabels: {
-                            enabled: true
-                        },
+                        enabled: true
+                    },
                     grid: {
                         show: false // Hide grid lines
                     },
@@ -375,8 +429,8 @@
                         height: 250
                     },
                     dataLabels: {
-                            enabled: true
-                        },
+                        enabled: true
+                    },
                     grid: {
                         show: false // Hide grid lines
                     },
@@ -411,8 +465,8 @@
                         show: false // Hide grid lines
                     },
                     dataLabels: {
-                            enabled: true
-                        },
+                        enabled: true
+                    },
                     xaxis: {
                         categories: commissionMonthsYears,
                         labels: { rotate: -45, style: { fontSize: '12px' } }
@@ -433,52 +487,52 @@
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Fetch the predicted commissions data for the next 12 months
-    fetch('/predictAgentMonthlyCommissions')
-        .then(response => response.json())
-        .then(predictedCommissionData => {
-            const commissionMonthsYears = predictedCommissionData.map(item => `${getMonthName(item.month)} ${item.year}`);
-            const commissionPredictions = predictedCommissionData.map(item => item.total_commission);
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fetch the predicted commissions data for the next 12 months
+        fetch('/predictAgentMonthlyCommissions')
+            .then(response => response.json())
+            .then(predictedCommissionData => {
+                const commissionMonthsYears = predictedCommissionData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                const commissionPredictions = predictedCommissionData.map(item => item.total_commission);
 
-            // Render the chart using ApexCharts
-            new ApexCharts(document.querySelector("#commissionPredictionChart"), {
-                series: [{
-                    name: 'Predicted Commissions',
-                    data: commissionPredictions,
-                }],
-                chart: {
-                    type: 'line',  // You can use 'line', 'bar', or other types
-                    height: 250
-                },
-                xaxis: {
-                    categories: commissionMonthsYears,
-                    labels: {
-                        rotate: -45,
-                        style: {
-                            fontSize: '12px',
-                            colors: '#333'
+                // Render the chart using ApexCharts
+                new ApexCharts(document.querySelector("#commissionPredictionChart"), {
+                    series: [{
+                        name: 'Predicted Commissions',
+                        data: commissionPredictions,
+                    }],
+                    chart: {
+                        type: 'line',  // You can use 'line', 'bar', or other types
+                        height: 250
+                    },
+                    xaxis: {
+                        categories: commissionMonthsYears,
+                        labels: {
+                            rotate: -45,
+                            style: {
+                                fontSize: '12px',
+                                colors: '#333'
+                            }
+                        }
+                    },
+                    title: {
+                        text: 'Predicted Commissions'
+                    },
+                    tooltip: {
+                        y: {
+                            formatter: function (value) {
+                                return "₱" + value.toLocaleString();
+                            }
                         }
                     }
-                },
-                title: {
-                    text: 'Predicted Commissions'
-                },
-                tooltip: {
-                    y: {
-                        formatter: function (value) {
-                            return "₱" + value.toLocaleString();
-                        }
-                    }
-                }
-            }).render();
-        });
-    
-    // Helper function to get month name from month number
-    function getMonthName(month) {
-        const date = new Date();
-        date.setMonth(month - 1); // JavaScript months are 0-based
-        return date.toLocaleString('default', { month: 'short' });
-    }
-});
+                }).render();
+            });
+
+        // Helper function to get month name from month number
+        function getMonthName(month) {
+            const date = new Date();
+            date.setMonth(month - 1); // JavaScript months are 0-based
+            return date.toLocaleString('default', { month: 'short' });
+        }
+    });
 </script>
