@@ -589,12 +589,15 @@
                     chart: {
                         type: 'bar',
                         height: 250
-                    }, 
+                    },
                     plotOptions: {
                         bar: {
                             borderRadius: 4,
                             horizontal: false,
                         }
+                    },
+                    grid: {
+                        show: false // Hide grid lines
                     },
                     xaxis: {
                         categories: monthsYears,
@@ -640,6 +643,9 @@
                             borderRadius: 4,
                             horizontal: false,
                         }
+                    },
+                    grid: {
+                        show: false // Hide grid lines
                     },
                     xaxis: {
                         categories: years,
