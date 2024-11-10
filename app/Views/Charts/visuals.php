@@ -717,13 +717,7 @@
                     }],
                     chart: {
                         type: 'line',
-                        height: 300
-                    },
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 4,
-                            horizontal: false,
-                        }
+                        height: 250
                     },
                     xaxis: {
                         categories: monthsYears,
@@ -736,13 +730,23 @@
                         }
                     },
                     title: {
-                        text: 'Predicted Sales for Next 12 Months'
+                        text: 'Predicted Production'
                     },
                     tooltip: {
                         y: {
                             formatter: function (value) {
                                 return "₱" + value.toLocaleString();
                             }
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function (value) {
+                            return "₱" + value.toLocaleString(); // Display formatted value
+                        },
+                        style: {
+                            colors: ['#333'],
+                            fontSize: '10px'
                         }
                     }
                 }).render();
