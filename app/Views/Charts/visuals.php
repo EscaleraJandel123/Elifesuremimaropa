@@ -571,3 +571,91 @@
         }
     });
 </script>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fetch and display monthly sales data
+            fetch('/getoverallMonthlysales')
+                .then(response => response.json())
+                .then(monthlyData => {
+                    const monthsYears = monthlyData.map(item => `${getMonthName(item.month)} ${item.year}`);
+                    const monthlySales = monthlyData.map(item => item.total_commission);
+
+                    new ApexCharts(document.querySelector("#monthlySalesChart"), {
+                        series: [{
+                            name: 'Monthly Sales',
+                            data: monthlySales,
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 300
+                        },
+                        xaxis: {
+                            categories: monthsYears,
+                            labels: {
+                                rotate: -45,
+                                style: {
+                                    fontSize: '12px',
+                                    colors: '#333'
+                                }
+                            }
+                        },
+                        title: {
+                            text: 'Overall Monthly Sales'
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (value) {
+                                    return "₱" + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }).render();
+                });
+
+            // Fetch and display yearly sales data
+            fetch('/getoverallYearlysales')
+                .then(response => response.json())
+                .then(yearlyData => {
+                    const years = yearlyData.map(item => item.year);
+                    const yearlySales = yearlyData.map(item => item.total_commission);
+
+                    new ApexCharts(document.querySelector("#yearlySalesChart"), {
+                        series: [{
+                            name: 'Yearly Sales',
+                            data: yearlySales,
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 300
+                        },
+                        xaxis: {
+                            categories: years,
+                            labels: {
+                                style: {
+                                    fontSize: '12px',
+                                    colors: '#333'
+                                }
+                            }
+                        },
+                        title: {
+                            text: 'Overall Yearly Sales'
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (value) {
+                                    return "₱" + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }).render();
+                });
+
+            // Helper function to get month name from month number
+            function getMonthName(month) {
+                const date = new Date();
+                date.setMonth(month - 1);
+                return date.toLocaleString('default', { month: 'short' });
+            }
+        });
+    </script>

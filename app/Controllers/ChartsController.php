@@ -70,6 +70,26 @@ class ChartsController extends BaseController
     return $jsonResult;
   }
 
+  public function getoverallMonthlysales()
+  {
+    $session = session();
+    $userId = $session->get('id');
+    $query = $this->commission->query("SELECT MONTH(created_at) AS month, YEAR(created_at) AS year, SUM(amount_sales) AS total_commission FROM commissions GROUP BY YEAR(created_at), MONTH(created_at) ORDER BY year ASC, month ASC");
+    $result = $query->getResultArray();
+    $jsonResult = json_encode($result);
+    return $jsonResult;
+  }
+
+  public function getoverallYearlysales()
+  {
+    $session = session();
+    $userId = $session->get('id');
+    $query = $this->commission->query("SELECT YEAR(created_at) AS year, SUM(amount_sales) AS total_commission FROM commissions GROUP BY YEAR(created_at) ORDER BY year ASC");
+    $result = $query->getResultArray();
+    $jsonResult = json_encode($result);
+    return $jsonResult;
+  }
+
   public function getYearlyCommissions()
   {
     $session = session();
