@@ -127,6 +127,22 @@
                     <div class="col-lg-4">
                         <div class="col-lg-12 col-sm-12">
                             <div class="row">
+
+                                <div class="card mb-3">
+                                    <div class="card-body text-center">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <div class="text-center">
+                                                <div class="qr-code-container mt-3 mb-3" id="qrCodeContainer">
+                                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $client['applicationNo'] ?>"
+                                                        alt="QR Code">
+                                                </div>
+                                                <button type="button" class="btn btn-dark" id="downloadButton"><i
+                                                        class="bi bi-download"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-12 col-12">
                                     <div class="card mb-2">
                                         <div class="card-body d-flex flex-column align-items-center">
