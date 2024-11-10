@@ -174,7 +174,25 @@
                                                 <img src="<?= $imageSrc ?>" alt=""
                                                     style="width: 50%; height: 50%; transform: scale(3); display: block; margin: 0 auto;">
                                             </div>
-                                            
+                                            <?php
+                                            switch ($ranking) {
+                                                case ($ranking >= 1 && $ranking <= 10):
+                                                    echo 'Bronze';
+                                                    break;
+                                                case ($ranking >= 11 && $ranking <= 20):
+                                                    echo 'Silver';
+                                                    break;
+                                                case ($ranking >= 21 && $ranking <= 30):
+                                                    echo 'Gold';
+                                                    break;
+                                                case ($ranking >= 31 && $ranking <= 40):
+                                                    echo 'Diamond';
+                                                    break;
+                                                default:
+                                                    echo 'Platinum';
+                                                    break;
+                                            }
+                                            ?>
                                             <input type="text"
                                                 value="<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
                                                 id="myInput" style="display: none;">
