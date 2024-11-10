@@ -162,7 +162,7 @@ class ChartsController extends BaseController
     return json_encode($predictions);
   }
 
-  public function getsubagentscount()
+  public function getSubAgentsCount()
   {
     $session = session();
     $userId = $session->get('id');
