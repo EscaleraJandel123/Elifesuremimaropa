@@ -91,7 +91,7 @@
 
                 <div class="row">
                     <!-- left side columns -->
-                    <div class="col-lg-9">
+                    <div class="col-lg-8">
                         <div class="row">
                             <!-- Agent Chart and Applicant Chart Row -->
                             <div class="col-lg-6 col-md-6 col-12 mb-3">
@@ -110,7 +110,7 @@
                     <!-- end of left side -->
 
                     <!-- right side columns -->
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="col-lg-12 col-sm-12">
                             <div class="row">
                                 <div class="col-lg-12 col-12">
