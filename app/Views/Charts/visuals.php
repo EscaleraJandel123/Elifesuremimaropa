@@ -449,9 +449,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }],
                 chart: {
                     type: 'line',  // You can use 'line', 'bar', or other types
-                    height: 300
+                    height: 250
                 },
-                colors: ['#28a745'],
                 xaxis: {
                     categories: commissionMonthsYears,
                     labels: {
