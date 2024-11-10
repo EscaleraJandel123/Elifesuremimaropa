@@ -2,7 +2,13 @@
 <html lang="en">
 
 <?= view('/Home/chop/head'); ?>
-
+<style>
+    body {
+      background-image: url('req/allbg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
 <style>
   main {
     font-size: 10pt;
