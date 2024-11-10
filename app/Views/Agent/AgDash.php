@@ -133,7 +133,7 @@
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="text-center">
                                                 <div class="qr-code-container mt-3 mb-3" id="qrCodeContainer">
-                                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $client['applicationNo'] ?>"
+                                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
                                                         alt="QR Code">
                                                 </div>
                                                 <button type="button" class="btn btn-dark" id="downloadButton"><i
