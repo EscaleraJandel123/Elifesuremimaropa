@@ -156,36 +156,13 @@
                                                 <img src="<?= $imageSrc ?>" alt=""
                                                     style="width: 50%; height: 50%; transform: scale(3); display: block; margin: 0 auto;">
                                             </div>
-                                            <!-- Rank text -->
-                                            <!-- <div class="fs-4 mt-2">
-
-                                                <?php
-                                                switch ($ranking) {
-                                                    case ($ranking >= 1 && $ranking <= 10):
-                                                        echo 'Bronze';
-                                                        break;
-                                                    case ($ranking >= 11 && $ranking <= 20):
-                                                        echo 'Silver';
-                                                        break;
-                                                    case ($ranking >= 21 && $ranking <= 30):
-                                                        echo 'Gold';
-                                                        break;
-                                                    case ($ranking >= 31 && $ranking <= 40):
-                                                        echo 'Diamond';
-                                                        break;
-                                                    default:
-                                                        echo 'Platinum';
-                                                        break;
-                                                }
-                                                ?>
-                                            </div> -->
                                             <!-- The hidden input field -->
                                             <input type="text"
                                                 value="<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
                                                 id="myInput" style="display: none;">
 
                                             <!-- The clipboard icon button with tooltip -->
-                                            <button class="btn btn-secondary btn-sm w-100" onclick="copyToClipboard()"
+                                            <button class="btn btn-secondary btn-sm w-80" onclick="copyToClipboard()"
                                                 data-toggle="tooltip" data-placement="top"
                                                 title="Copy Verification Code">
                                                 <i class="bi bi-clipboard"></i>
