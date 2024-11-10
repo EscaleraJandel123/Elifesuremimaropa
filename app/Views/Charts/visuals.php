@@ -182,6 +182,12 @@
         fetch('/getSubAgentsCount')
             .then(response => response.json())
             .then(subAgentData => {
+                if (subAgentData.length === 0) {
+                    // Display a message if no data is available
+                    document.querySelector("#subAgentChart").innerHTML = "<p style='text-align: center; color: #888;'>No sub-agent data available.</p>";
+                    return;
+                }
+
                 const monthsYears = subAgentData.map(item => `${getMonthName(item.month)} ${item.year}`);
                 const subAgentCounts = subAgentData.map(item => item.applicant_count);
 
@@ -219,6 +225,10 @@
                         }
                     }
                 }).render();
+            })
+            .catch(error => {
+                document.querySelector("#subAgentChart").innerHTML = "<p style='text-align: center; color: #f00;'>Error loading data.</p>";
+                console.error('Error fetching sub-agent data:', error);
             });
 
         // Helper function to get month name from month number
@@ -229,7 +239,6 @@
         }
     });
 </script>
-
 
 <!-- Agent yearly commision -->
 <script>
