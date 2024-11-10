@@ -134,11 +134,10 @@
                                                 <div class="qr-code-container mt-3 mb-3" id="qrCodeContainer">
                                                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
                                                         alt="QR Code"
-                                                        onclick="copyToClipboard('<?php echo $agent['AgentCode']; ?>')"
+                                                        onclick="copyToClipboard('<?php echo base_url() ?>register/<?= $agent['AgentCode']; ?>')"
                                                         style="cursor: pointer;">
                                                 </div>
-                                                <button type="button" class="btn btn-dark" id="downloadButton"
-                                                    onclick="copyToClipboard('<?php echo $agent['AgentCode']; ?>')">
+                                                <button type="button" class="btn btn-dark" id="downloadButton">
                                                     <i class="bi bi-download"></i>
                                                 </button>
                                             </div>
