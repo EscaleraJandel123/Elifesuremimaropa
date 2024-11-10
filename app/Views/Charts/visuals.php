@@ -449,7 +449,7 @@
                     }],
                     chart: {
                         type: 'line',  // You can use 'line', 'bar', or other types
-                        // height: 250
+                        height: 250
                     },
                     colors: ['#28a745'],
                     xaxis: {
@@ -464,9 +464,6 @@
                     },
                     title: {
                         text: 'Predicted Commissions'
-                    },
-                    grid: {
-                        borderColor: '#f1f1f1'
                     },
                     tooltip: {
                         y: {
