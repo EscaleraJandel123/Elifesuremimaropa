@@ -205,7 +205,7 @@
                                 rotate: -45,
                                 style: {
                                     fontSize: '12px',
-                                    colors: '#333'
+                                    colors: '#333'  
                                 }
                             }
                         },
@@ -395,7 +395,7 @@
                         colors: ['#00b3e6']
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'line',
                         height: 250
                     },
                     plotOptions: {
@@ -435,7 +435,7 @@
                         colors: ['#ff7b00']
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'line',
                         height: 250
                     },
                     plotOptions: {
@@ -475,7 +475,7 @@
                         colors: ['#28a745']
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'line',
                         height: 250
                     },
                     plotOptions: {
@@ -532,7 +532,7 @@
                         data: commissionPredictions,
                     }],
                     chart: {
-                        type: 'bar',
+                        type: 'line',
                         height: 250
                     },
                     plotOptions: {
