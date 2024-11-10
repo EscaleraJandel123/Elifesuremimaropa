@@ -33,11 +33,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <!-- <style>
+  <style>
     body {
       background-image: url('req/allbg.png');
       background-size: cover;
       background-repeat: no-repeat;
     }
-  </style> -->
+  </style>
 </head>
