@@ -475,6 +475,13 @@
                         type: 'bar',
                         height: 250
                     },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 4,
+                            // horizontal: true,
+                            horizontal: false,
+                        }
+                    },
                     grid: {
                         show: false // Hide grid lines
                     },
@@ -518,6 +525,13 @@
                     chart: {
                         type: 'bar',  // You can use 'line', 'bar', or other types
                         height: 250
+                    },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 4,
+                            // horizontal: true,
+                            horizontal: false,
+                        }
                     },
                     xaxis: {
                         categories: commissionMonthsYears,
