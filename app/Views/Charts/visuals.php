@@ -509,6 +509,13 @@
                         categories: commissionMonthsYears,
                         labels: { rotate: -45, style: { fontSize: '12px' } }
                     },
+                    tooltip: {
+                        y: {
+                            formatter: function (value) {
+                                return "₱" + value.toLocaleString();
+                            }
+                        }
+                    },
                     title: {
                         text: 'Predicted Commissions'
                     }
