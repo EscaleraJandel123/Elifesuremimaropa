@@ -193,7 +193,52 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-6">
+
+
+                                <div class="col-lg-12 col-sm-12">
+                                    <div class="card mb-3">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-users fa-2x"></i>
+                                            <small class="d-block mt-2">Sub Agents</small>
+                                            <div class="fs-4 mt-2">
+                                                <?= $ranking ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-users fa-2x"></i>
+                                            <small class="d-block mt-2">Applicants</small>
+                                            <div class="fs-4 mt-2">
+                                                <?= $applicants ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-3">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-users fa-2x"></i>
+                                            <small class="d-block mt-2">Clients</small>
+                                            <div class="fs-4 mt-2">
+                                                <?= $clients ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card mb-3">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-cash-coin fa-2x"></i>
+                                            <small class="d-block mt-1">Commissions</small>
+                                            <div class="fs-7 mt-2">
+                                                ₱ <?= number_format($totalcommi, 2, '.', ',') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--  -->
+                                <!-- <div class="col-lg-6 col-6">
                                     <div class="card mb-2">
                                         <div class="card-body text-center">
                                             <i class="fas fa-users fa-2x"></i>
@@ -238,7 +283,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
