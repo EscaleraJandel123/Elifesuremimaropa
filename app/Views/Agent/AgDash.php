@@ -174,7 +174,7 @@
                                                 <img src="<?= $imageSrc ?>" alt=""
                                                     style="width: 50%; height: 50%; transform: scale(3); display: block; margin: 0 auto;">
                                             </div>
-                                            <h5 class="text-center mb-3"><?= $rankTitle ?> Rank</h5>
+                                            <h5 class="text-center mb-3"><?= $rank?> Rank</h5>
                                             <input type="text"
                                                 value="<?php echo base_url() ?>register/<?= $agent['AgentCode'] ?>"
                                                 id="myInput" style="display: none;">
