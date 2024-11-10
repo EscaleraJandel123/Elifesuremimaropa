@@ -462,13 +462,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 },
-                yaxis: {
-                    title: {
-                        text: 'Predicted Commissions'
-                    }
-                },
-                grid: {
-                    borderColor: '#f1f1f1'
+                title: {
+                    text: 'Predicted Commissions'
                 },
                 tooltip: {
                     y: {
