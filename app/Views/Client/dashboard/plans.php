@@ -99,13 +99,6 @@
                                                             </a>
                                                             <h2><?= isset($agents['username']) ? $agents['username'] : '' ?>
                                                             </h2>
-                                                            <div class="social-links mt-2">
-                                                                <a href="#" class="twitter"><i
-                                                                        class="bi bi-messenger"></i></a>
-                                                                <a href="#" class="facebook"><i
-                                                                        class="bi bi-facebook"></i></a>
-                                                                <a href="#" class="gmail"><i class="bi bi-envelope"></i></a>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
