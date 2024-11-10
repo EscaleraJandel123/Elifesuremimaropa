@@ -207,7 +207,7 @@
                         }
                     },
                     title: {
-                        text: 'Sub-Agent Count'
+                        text: 'Sub-Agents'
                     },
                     grid: {
                         borderColor: '#f1f1f1'
@@ -395,6 +395,13 @@
                         type: 'bar',
                         height: 250
                     },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 4,
+                            // horizontal: true,
+                            horizontal: false,
+                        }
+                    },
                     dataLabels: {
                         enabled: true
                     },
@@ -427,6 +434,13 @@
                     chart: {
                         type: 'bar',
                         height: 250
+                    },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 4,
+                            // horizontal: true,
+                            horizontal: false,
+                        }
                     },
                     dataLabels: {
                         enabled: true
@@ -502,7 +516,7 @@
                         data: commissionPredictions,
                     }],
                     chart: {
-                        type: 'line',  // You can use 'line', 'bar', or other types
+                        type: 'bar',  // You can use 'line', 'bar', or other types
                         height: 250
                     },
                     xaxis: {
