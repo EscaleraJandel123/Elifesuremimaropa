@@ -318,6 +318,13 @@
                         xaxis: {
                             categories: months
                         },
+                        tooltip: {
+                            y: {
+                                formatter: function (value) {
+                                    return "₱" + value.toLocaleString();
+                                }
+                            }
+                        },
                         title: {
                             text: 'Over all Monthly Commissions',
                             // align: 'center',
@@ -367,6 +374,13 @@
                         },
                         xaxis: {
                             categories: years
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (value) {
+                                    return "₱" + value.toLocaleString();
+                                }
+                            }
                         },
                         title: {
                             text: 'Over all Yearly Commissions',
