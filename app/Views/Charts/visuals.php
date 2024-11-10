@@ -128,7 +128,7 @@
 </script>
 
 
-
+<!-- Agent monthly commision -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         fetch('/getMonthlyCommissions')
@@ -146,7 +146,7 @@
                         }],
                         chart: {
                             type: 'bar',
-                            // height: 250
+                            height: 250
                         },
                         plotOptions: {
                             bar: {
@@ -178,6 +178,7 @@
     }
 </script>
 
+<!-- Agent yearly commision -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         fetch('/getYearlyCommissions')
@@ -195,7 +196,7 @@
                         }],
                         chart: {
                             type: 'bar',
-                            // height: 250
+                            height: 250
                         },
                         plotOptions: {
                             bar: {
