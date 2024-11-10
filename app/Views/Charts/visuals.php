@@ -105,16 +105,15 @@
                             show: false // Hide grid lines
                         },
                         yaxis: {
-                            title: {
-                                text: 'Number of Applicants'
-                            },
                             labels: {
                                 formatter: function (value) {
                                     return Math.floor(value); // Remove decimals
                                 }
                             }
                         },
-
+                        title: {
+                            text: 'Number of Applicants'
+                        },
                     }).render();
                 }
             });
@@ -412,8 +411,8 @@
                         categories: agentMonthsYears,
                         labels: { rotate: -45, style: { fontSize: '12px' } }
                     },
-                    title: { 
-                        text: 'Predicted Agent Counts' 
+                    title: {
+                        text: 'Predicted Agent Counts'
                     }
                 }).render();
             });
@@ -452,8 +451,8 @@
                         categories: applicantMonthsYears,
                         labels: { rotate: -45, style: { fontSize: '12px' } }
                     },
-                    title: { 
-                        text: 'Predicted Applicant Counts' 
+                    title: {
+                        text: 'Predicted Applicant Counts'
                     }
                 }).render();
             });
@@ -492,8 +491,8 @@
                         categories: commissionMonthsYears,
                         labels: { rotate: -45, style: { fontSize: '12px' } }
                     },
-                    title: { 
-                        text: 'Predicted Commissions' 
+                    title: {
+                        text: 'Predicted Commissions'
                     }
                 }).render();
             });
@@ -527,12 +526,12 @@
                         height: 250
                     },
                     plotOptions: {
-                            bar: {
-                                borderRadius: 4,
-                                // horizontal: true,
-                                horizontal: false,
-                            }
-                        },
+                        bar: {
+                            borderRadius: 4,
+                            // horizontal: true,
+                            horizontal: false,
+                        }
+                    },
                     xaxis: {
                         categories: commissionMonthsYears,
                         labels: {
