@@ -162,7 +162,7 @@
                                                 id="myInput" style="display: none;">
 
                                             <!-- The clipboard icon button with tooltip -->
-                                            <button class="btn btn-secondary btn-sm w-80" onclick="copyToClipboard()"
+                                            <button class="btn btn-secondary btn-sm w-100" onclick="copyToClipboard()"
                                                 data-toggle="tooltip" data-placement="top"
                                                 title="Copy Verification Code">
                                                 <i class="bi bi-clipboard"></i>
