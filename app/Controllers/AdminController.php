@@ -77,6 +77,7 @@ class AdminController extends BaseController
         $totalAgents = count($this->agent->findAll());
         $totalApplicants = count($this->applicant->findAll());
         $pendingApplicants = $this->applicant->where('status', 'pending')->countAllResults();
+        $totalClients = $this->client->countAllResults();
         $data = array_merge(
             $this->getData(),
             $this->getDataAd(),
@@ -89,6 +90,7 @@ class AdminController extends BaseController
         $data['totalAgents'] = $totalAgents;
         $data['totalApplicants'] = $totalApplicants;
         $data['pendingApplicants'] = $pendingApplicants;
+        $data['totalClients'] = $totalClients;
         return view('Admin/AdDash', $data);
     }
 

@@ -194,6 +194,15 @@
                                         </h3>
                                     </div>
                                 </div>
+                                <div class="card mb-3">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-user-tie fa-2x"></i>
+                                        <small class="d-block mt-2">Clients</small>
+                                        <h3 class="card-title mt-2">
+                                            <?= $totalClients ?>
+                                        </h3>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-lg-12 col-sm-12">
