@@ -264,8 +264,8 @@
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <?php if (isset($payment['receipts']) && !empty($payment['receipts'])): ?>
-                                                                                <?php $image_path = base_url('uploads/clients/receipts/' . $payment['receipts']); ?>
+                                                                            <?php if (isset($payment['receipts']) && !empty($payment['receipt'])): ?>
+                                                                                <?php $image_path = base_url('uploads/clients/receipts/' . $payment['receipt']); ?>
                                                                                 <img src="<?= $image_path ?>"
                                                                                     alt="Receipt Image" class="img-fluid">
                                                                             <?php else: ?>
