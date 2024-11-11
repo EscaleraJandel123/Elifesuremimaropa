@@ -152,17 +152,7 @@
                                         <button class="nav-link" data-bs-toggle="tab"
                                             data-bs-target="#sub-agents">Plan</button>
                                     </li>
-
-                                    <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#forms">Log</button>
-                                    </li>
-                                    <!-- <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab"
-                                            data-bs-target="#files">Files</button>
-                                    </li> -->
                                 </ul>
-
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                         <h5 class="card-title">Profile Details</h5>
@@ -285,36 +275,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="forms">
-                                        <h5 class="h2 mb-0">Payment history</h5>
-                                        <div class="table-responsive">
-                                            <!-- Table with hoverable rows -->
-                                            <div class="table-container mx-auto">
-                                                <table class="table table-hover">
-                                                    <thead class="thead-light bg-white">
-                                                        <tr>
-                                                            <th scope="col">Plan</th>
-                                                            <th scope="col">Date</th>
-                                                            <th scope="col">Cost</th>
-                                                            <th scope="col">Receipt</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div><!-- End Bordered Tabs -->
                             </div>
                         </div>
                     </div>
-                    <footer class="site-footer">
-                        <div class="container">
-                            <div class="row">
-
-                            </div>
-                        </div>
-                    </footer>
             </main>
         </div>
     </div>
