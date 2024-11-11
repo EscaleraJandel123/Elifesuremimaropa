@@ -122,21 +122,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!--QR Modal-->
-                    <div class="modal fade" id="profileModal" tabindex="-1">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="text-center">
-                                        <div class="qr-code-container mt-3 mb-3" id="qrCodeContainer"></div>
-                                        <button type="button" class="btn btn-dark" id="downloadButton"><i
-                                                class="bi bi-download"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-8">
                         <div class="card">
                             <div class="card-body pt-3">
@@ -281,9 +266,7 @@
             </main>
         </div>
     </div>
-
     <?= view('js'); ?>
-
 </body>
 
 </html>
