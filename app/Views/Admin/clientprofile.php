@@ -246,7 +246,11 @@
                                                                 <td><?= $payment['mode_payment'] ?></td>
                                                                 <td><?= $payment['term'] ?></td>
                                                                 <td><?= $payment['status'] ?></td>
-                                                                <td><?= $payment['receipt'] ?></td>
+                                                                <td><a href="#" class="btn btn-outline-primary"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#receipt<?= $payment['id'] ?>">
+                                                                        <i class="bi bi-receipt"></i>
+                                                                    </a></td>
                                                             </tr>
                                                         <?php endforeach ?>
                                                     </tbody>
