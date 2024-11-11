@@ -258,13 +258,13 @@
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
-                                                                            <h5 class="modal-title"><?= $payment['id'] ?></h5>
+                                                                            <h5 class="modal-title">Receipt Details</h5>
                                                                             <button type="button" class="btn-close"
                                                                                 data-bs-dismiss="modal"
                                                                                 aria-label="Close"></button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <?php if (isset($payment['receipts']) && !empty($payment['receipt'])): ?>
+                                                                            <?php if (isset($payment['receipt']) && !empty($payment['receipt'])): ?>
                                                                                 <?php $image_path = base_url('uploads/clients/receipts/' . $payment['receipt']); ?>
                                                                                 <img src="<?= $image_path ?>"
                                                                                     alt="Receipt Image" class="img-fluid">
