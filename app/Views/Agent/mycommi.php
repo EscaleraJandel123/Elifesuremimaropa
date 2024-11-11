@@ -129,7 +129,7 @@
                                                         </td>
                                                         <td><?= $commi['mode_payment'] ?></td>
                                                         <!-- <td>₱ <?= number_format($commi['price'], 2, '.', ',') ?></td> -->
-                                                        <td>₱ <?= number_format($commi['commission'], 2, '.', ',') ?>
+                                                        <td>₱ <?= number_format($commi['price'], 2, '.', ',') ?>
                                                         </td>
                                                         <td style="color: 
                                                                 <?php
