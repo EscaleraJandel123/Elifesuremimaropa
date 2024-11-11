@@ -110,7 +110,7 @@
                                                     <th scope="col">Start Date</th>
                                                     <th scope="col">Due Dates</th>
                                                     <!-- <th scope="col">Amount</th> -->
-                                                    <th scope="col">Commission</th>
+                                                    <th scope="col">Amount Paid</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Receipt</th>
                                                     <th scope="col"></th>
@@ -129,7 +129,7 @@
                                                         </td>
                                                         <td><?= $commi['mode_payment'] ?></td>
                                                         <!-- <td>₱ <?= number_format($commi['price'], 2, '.', ',') ?></td> -->
-                                                        <td>₱ <?= number_format($commi['price'], 2, '.', ',') ?>
+                                                        <td>₱ <?= number_format($commi['commission'], 2, '.', ',') ?>
                                                         </td>
                                                         <td style="color: 
                                                                 <?php
