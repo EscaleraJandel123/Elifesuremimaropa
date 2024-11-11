@@ -178,7 +178,6 @@
                                                                 <select class="form-select" name="typeofpayment"
                                                                     aria-label="Default select example" required>
                                                                     <option value="" selected>Select</option>
-                                                                    <option value="One Time">One Time</option>
                                                                     <option value="Annual">Annual</option>
                                                                     <option value="Semi-Annual">Semi-Annual</option>
                                                                     <option value="Quarterly">Quarterly</option>
