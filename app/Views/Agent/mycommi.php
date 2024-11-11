@@ -100,7 +100,6 @@
                                     </div>
                                 <?php endif; ?>
                                 <div class="card">
-
                                     <div class="table-responsive mx-3">
                                         <table class="table datatable">
                                             <thead>

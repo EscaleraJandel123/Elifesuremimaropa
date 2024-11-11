@@ -233,7 +233,7 @@
                                                             <th scope="col">Due Dates</th>
                                                             <th scope="col">Terms</th>
                                                             <th scope="col">Status</th>
-                                                            <th scope="col"></th>
+                                                            <th scope="col">Rreceipt</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -246,6 +246,7 @@
                                                                 <td><?= $payment['mode_payment'] ?></td>
                                                                 <td><?= $payment['term'] ?></td>
                                                                 <td><?= $payment['status'] ?></td>
+                                                                <td><?= $payment['receipt'] ?></td>
                                                             </tr>
                                                         <?php endforeach ?>
                                                     </tbody>
@@ -267,7 +268,6 @@
                                                             <th scope="col">Receipt</th>
                                                         </tr>
                                                     </thead>
-
                                                 </table>
                                             </div>
                                         </div>
