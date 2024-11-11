@@ -37,7 +37,7 @@ class MapController extends BaseController
         $applicants = $this->applicants->findAll();
         $clients = $this->clients->findAll();
         $agents = $this->agents->findAll();
-        
+
         // Define the coordinates for the cities
         $cities = [
             'Puerto Princesa City (Capital)' => ['lat' => 9.7392, 'lng' => 118.7353],
@@ -85,6 +85,63 @@ class MapController extends BaseController
             'City Of Calapan (Capital)' => ['lat' => 13.4117, 'lng' => 121.1806],
             'Santa Maria (Imelda)' => ['lat' => 12.4000, 'lng' => 122.0500],
             'Romblon (Capital)' => ['lat' => 12.5703, 'lng' => 122.2870],
+
+            // Region I (Ilocos Region)
+            'Laoag City, Ilocos Norte' => ['lat' => 18.1972, 'lng' => 120.5926],
+            'Batac, Ilocos Norte' => ['lat' => 18.0556, 'lng' => 120.5657],
+            'San Nicolas, Ilocos Norte' => ['lat' => 18.1798, 'lng' => 120.6194],
+            'Vigan City, Ilocos Sur' => ['lat' => 17.5745, 'lng' => 120.3869],
+            'Candon, Ilocos Sur' => ['lat' => 17.1943, 'lng' => 120.4506],
+            'San Fernando, La Union' => ['lat' => 16.6158, 'lng' => 120.3191],
+            'Agoo, La Union' => ['lat' => 16.3191, 'lng' => 120.3678],
+            'Alaminos City, Pangasinan' => ['lat' => 16.1554, 'lng' => 119.9801],
+            'Dagupan City, Pangasinan' => ['lat' => 16.0432, 'lng' => 120.3336],
+            'Urdaneta City, Pangasinan' => ['lat' => 15.9761, 'lng' => 120.5714],
+
+            // Region II (Cagayan Valley)
+            'Tuguegarao City, Cagayan' => ['lat' => 17.6131, 'lng' => 121.7269],
+            'Aparri, Cagayan' => ['lat' => 18.3521, 'lng' => 121.6406],
+            'Ilagan City, Isabela' => ['lat' => 17.1448, 'lng' => 121.8611],
+            'Cauayan City, Isabela' => ['lat' => 16.9349, 'lng' => 121.7690],
+            'Bayombong, Nueva Vizcaya' => ['lat' => 16.4817, 'lng' => 121.1488],
+            'Solano, Nueva Vizcaya' => ['lat' => 16.5235, 'lng' => 121.1835],
+            'Basco, Batanes' => ['lat' => 20.4487, 'lng' => 121.9702],
+
+            // Region III (Central Luzon)
+            'Angeles City, Pampanga' => ['lat' => 15.1473, 'lng' => 120.5840],
+            'San Fernando, Pampanga' => ['lat' => 15.0286, 'lng' => 120.6908],
+            'Olongapo City, Zambales' => ['lat' => 14.8370, 'lng' => 120.2864],
+            'Balanga City, Bataan' => ['lat' => 14.6760, 'lng' => 120.5367],
+            'Malolos City, Bulacan' => ['lat' => 14.8443, 'lng' => 120.8106],
+            'Meycauayan, Bulacan' => ['lat' => 14.7366, 'lng' => 120.9605],
+            'Cabanatuan City, Nueva Ecija' => ['lat' => 15.4862, 'lng' => 120.9674],
+            'Gapan City, Nueva Ecija' => ['lat' => 15.3079, 'lng' => 120.9450],
+
+            // Region IV-A (CALABARZON)
+            'Batangas City, Batangas' => ['lat' => 13.7565, 'lng' => 121.0583],
+            'Lipa City, Batangas' => ['lat' => 13.9417, 'lng' => 121.1635],
+            'Lucena City, Quezon' => ['lat' => 13.9374, 'lng' => 121.6179],
+            'Antipolo City, Rizal' => ['lat' => 14.6255, 'lng' => 121.1245],
+            'Calamba City, Laguna' => ['lat' => 14.1876, 'lng' => 121.1251],
+            'Santa Rosa, Laguna' => ['lat' => 14.3122, 'lng' => 121.1111],
+            'Trece Martires, Cavite' => ['lat' => 14.2811, 'lng' => 120.8497],
+            'Tagaytay City, Cavite' => ['lat' => 14.1154, 'lng' => 120.9687],
+
+            // Cordillera Administrative Region (CAR)
+            'Baguio City, Benguet' => ['lat' => 16.4023, 'lng' => 120.5960],
+            'Tabuk City, Kalinga' => ['lat' => 17.4767, 'lng' => 121.4583],
+            'Bontoc, Mountain Province' => ['lat' => 17.0909, 'lng' => 120.9783],
+            'La Trinidad, Benguet' => ['lat' => 16.4554, 'lng' => 120.5879],
+
+            // National Capital Region (NCR)
+            'Manila' => ['lat' => 14.5995, 'lng' => 120.9842],
+            'Quezon City' => ['lat' => 14.6760, 'lng' => 121.0437],
+            'Makati' => ['lat' => 14.5547, 'lng' => 121.0244],
+            'Pasig' => ['lat' => 14.5764, 'lng' => 121.0851],
+            'Taguig' => ['lat' => 14.5176, 'lng' => 121.0509],
+            'Las Piñas' => ['lat' => 14.4445, 'lng' => 120.9939],
+            'Caloocan' => ['lat' => 14.7566, 'lng' => 120.9943],
+            'Valenzuela' => ['lat' => 14.7011, 'lng' => 120.9830],
         ];
 
         // Initialize city counts
