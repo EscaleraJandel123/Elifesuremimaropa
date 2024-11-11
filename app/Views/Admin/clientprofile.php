@@ -115,8 +115,7 @@
                             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                                 <img src="<?= isset($client['profile']) && !empty($client['profile']) ? base_url('/uploads/' . $client['profile']) : base_url('/uploads/def.png') ?>"
                                     alt="Profile" class="rounded-circle"
-                                    style="width: 150px; height: 150px; cursor: pointer;" data-bs-placement="bottom"
-                                    title="Click to see QR code">
+                                    style="width: 150px; height: 150px; cursor: pointer;">
                                 <h5>
                                     <?= $client['username'] ?>
                                 </h5>
