@@ -250,8 +250,35 @@
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#receipt<?= $payment['id'] ?>">
                                                                         <i class="bi bi-receipt"></i>
-                                                                    </a></td>
+                                                                    </a>
+                                                                </td>
                                                             </tr>
+                                                            <div class="modal fade" id="receipt<?= $payment['id'] ?>"
+                                                                tabindex="-1">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Receipt Details</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <?php if (isset($payment['receipts']) && !empty($payment['receipts'])): ?>
+                                                                                <?php $image_path = base_url('uploads/clients/receipts/' . $payment['receipts']); ?>
+                                                                                <img src="<?= $image_path ?>"
+                                                                                    alt="Receipt Image" class="img-fluid">
+                                                                            <?php else: ?>
+                                                                                <p>No receipt available.</p>
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php endforeach ?>
                                                     </tbody>
                                                 </table>
