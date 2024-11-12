@@ -55,8 +55,8 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
         // Set security headers
-        $response->setHeader('X-Frame-Options', 'DENY');
-        $response->setHeader('X-XSS-Protection', '1; mode=block');
-        $response->setHeader('X-Content-Type-Options', 'nosniff');
+        // $response->setHeader('X-Frame-Options', 'DENY');
+        // $response->setHeader('X-XSS-Protection', '1; mode=block');
+        // $response->setHeader('X-Content-Type-Options', 'nosniff');
     }
 }
