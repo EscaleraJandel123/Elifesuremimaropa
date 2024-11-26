@@ -109,7 +109,7 @@
                                                     <th scope="col">Start Date</th>
                                                     <th scope="col">Due Dates</th>
                                                     <!-- <th scope="col">Amount</th> -->
-                                                    <th scope="col">Amount Paid</th>
+                                                    <th scope="col">Commission</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Receipt</th>
                                                     <th scope="col"></th>
