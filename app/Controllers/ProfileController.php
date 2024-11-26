@@ -53,7 +53,6 @@ class ProfileController extends BaseController
             // Handle the case where the agent is not found
             return redirect()->back()->with('error', 'Agent not found');
         }
-
         return view("Admin/agentprofile", $data);
     }
 

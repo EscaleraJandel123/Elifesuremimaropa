@@ -275,7 +275,7 @@ class AdminController extends BaseController
     {
         $lifechangerForm = $this->form1->where('app_life_token', $token)->first();
         if (!$lifechangerForm) {
-            return redirect()->back()->with('error', 'No valid Data');
+            return redirect()->back()->with('error', 'No Data Found');
         }
         $data['lifechangerform'] = $this->form1->where('app_life_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
@@ -287,7 +287,7 @@ class AdminController extends BaseController
     {
         $aial = $this->form2->where('aial_token', $token)->first();
         if (!$aial) {
-            return redirect()->back()->with('error', 'No valid Data');
+            return redirect()->back()->with('error', 'No Data Found');
         }
         $data['aial'] = $this->form2->where('aial_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
@@ -298,7 +298,7 @@ class AdminController extends BaseController
     {
         $gli = $this->form3->where('app_gli_token', $token)->first();
         if (!$gli) {
-            return redirect()->back()->with('error', 'No valid Data');
+            return redirect()->back()->with('error', 'No Data Found');
         }
         $data['gli'] = $this->form3->where('app_gli_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
@@ -309,7 +309,7 @@ class AdminController extends BaseController
     {
         $aonff = $this->form4->where('app_aonff_token', $token)->first();
         if (!$aonff) {
-            return redirect()->back()->with('error', 'No valid Data');
+            return redirect()->back()->with('error', 'No Data Found');
         }
         $data['aonff'] = $this->form4->where('app_aonff_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
@@ -320,7 +320,7 @@ class AdminController extends BaseController
     {
         $sou = $this->form5->where('app_sou_token', $token)->first();
         if (!$sou) {
-            return redirect()->back()->with('error', 'No valid Data');
+            return redirect()->back()->with('error', 'No Data Found');
         }
         $data['sou'] = $this->form5->where('app_sou_token', $token)->first();
         $data['sign'] = $this->esign->where('user_token', $token)->first();
