@@ -114,9 +114,15 @@ class ClientController extends BaseController
             $message = 'A new Client, ' . $this->request->getVar('username') . ', has just signed up.';
             $r = 'admin';
             $this->notifcont->newnotif($userId, $link, $message, $r);
+
+
+            $to = $this->request->getVar('number');
+            $from = '447491163443';
+            $text = 'Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.';
+            $response = $this->smsLibrary->sendSms($to, $from, $text);
+
             $this->confirm->save($clientData);
-            // var_dump($data);
-            // var_dump($clientData);
+            
             $emailSubject = "Account Registration Confirmation";
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in. An email has been sent to your registered email address.";
             $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
@@ -358,7 +364,7 @@ class ClientController extends BaseController
         $client['info'] = $this->client->where('client_id', $userId)->first();
         $agent = $this->agent->select('email')->where('agent_id', $this->request->getVar('agent'))->first();
         $agentEmail = $agent ? $agent['email'] : null;
-        
+
         $agentNumberData = $this->agent->select('number')->where('agent_id', $this->request->getVar('agent'))->first();
         $agentNumber = $agentNumberData ? $agentNumberData['number'] : null;
 
