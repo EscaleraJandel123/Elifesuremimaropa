@@ -116,13 +116,13 @@ class ClientController extends BaseController
             $this->notifcont->newnotif($userId, $link, $message, $r);
 
 
-            $to = $this->request->getVar('number');
+            $to = $this->request->getVar('phone');
             $from = '447491163443';
             $text = 'Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in.';
             $response = $this->smsLibrary->sendSms($to, $from, $text);
 
             $this->confirm->save($clientData);
-            
+
             $emailSubject = "Account Registration Confirmation";
             $emailMessage = "Thank you for registering! Your account is currently registered. Please wait for confirmation from the admin before you can log in. An email has been sent to your registered email address.";
             $this->sendVerificationEmail($this->request->getVar('email'), $emailSubject, $emailMessage);
