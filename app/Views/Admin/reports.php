@@ -123,7 +123,7 @@
                     </div> -->
                     <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
-                        <button id="generate-report-btn" class="btn btn-primary ms-2">Download</button>
+                        <button id="download-report-btn" class="btn btn-primary ms-2">Download</button>
                         <button id="view-report-btn" class="btn btn-secondary ms-2">View</button>
                         <button id="print-report-btn" class="btn btn-success ms-2">Print</button>
                     </div>
@@ -279,7 +279,7 @@
         //     }
         // });
 
-        document.getElementById('generate-report-btn').addEventListener('click', function () {
+        document.getElementById('download-report-btn').addEventListener('click', function () {
             const monthYear = document.getElementById('report-month').value;
             if (monthYear) {
                 const [year, month] = monthYear.split('-');
@@ -354,8 +354,6 @@
             }
             return doc;
         }
-
-
         function updateTables(data) {
             const agentsTableBody = document.querySelector('#agents-table tbody');
             agentsTableBody.innerHTML = '';
