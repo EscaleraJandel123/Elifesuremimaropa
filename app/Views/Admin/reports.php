@@ -421,9 +421,16 @@
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.src = string;
+
             document.body.appendChild(iframe);
-            iframe.contentWindow.print();
+
+            // Wait for the iframe to load the document before printing
+            iframe.onload = function () {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+            };
         }
+
 
     </script>
 </body>
