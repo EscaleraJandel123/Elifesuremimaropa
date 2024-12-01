@@ -325,7 +325,7 @@
             const actionsDiv = document.createElement('div');
             actionsDiv.id = 'report-actions';
             actionsDiv.innerHTML = `
-        <button id="download-btn" class="btn btn-success me-2"><i class="bi bi-download"></i></button>
+        <button id="download-btn" class="btn btn-success me-2">Download</i></button>
         <button id="view-btn" class="btn btn-info me-2"><i class="bi bi-eye"></i></button>
         <button id="print-btn" class="btn btn-warning"><i class="bi bi-printer"></i></button>
     `;
