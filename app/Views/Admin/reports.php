@@ -123,7 +123,7 @@
                     </div> -->
                     <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
-                        <button id="download-report-btn" class="btn btn-primary ms-2">Download</button>
+                        <button id="generate-report-btn" class="btn btn-primary ms-2">Download</button>
                         <button id="view-report-btn" class="btn btn-secondary ms-2">View</button>
                         <button id="print-report-btn" class="btn btn-success ms-2">Print</button>
                     </div>
