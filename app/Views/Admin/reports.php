@@ -429,6 +429,11 @@
 
             // Append the iframe to the body
             document.body.appendChild(iframe);
+
+            // Trigger the print once the iframe loads
+            iframe.onload = function () {
+                iframe.contentWindow.print();
+            };
         }
     </script>
 </body>
