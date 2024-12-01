@@ -261,128 +261,178 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         document.getElementById('generate-report-btn').addEventListener('click', function () {
-    const monthYear = document.getElementById('report-month').value;
-    if (monthYear) {
-        const [year, month] = monthYear.split('-');
-        fetch(`/reports/generateReport/${year}/${month}`)
-            .then(response => response.json())
-            .then(data => {
-                // Update tables with data
-                updateTables(data);
+            const monthYear = document.getElementById('report-month').value;
+            if (monthYear) {
+                const [year, month] = monthYear.split('-');
+                fetch(`/reports/generateReport/${year}/${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update tables with data
+                        updateTables(data);
 
-                // Add buttons for actions
-                addActionButtons(data, month, year);
-            })
-            .catch(error => console.error('Error fetching report:', error));
-    } else {
-        alert("Please select a month and year.");
-    }
-});
+                        // Generate PDF
+                        generatePDF(data, month, year);
+                    })
+                    .catch(error => console.error('Error fetching report:', error));
+            } else {
+                alert("Please select a month and year.");
+            }
+        });
 
-function updateTables(data) {
-    const agentsTableBody = document.querySelector('#agents-table tbody');
-    agentsTableBody.innerHTML = '';
-    data.agents.forEach(agent => {
-        const row = `<tr>
-                <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
-                <td>${agent.birthday}</td>
-                <td>${agent.number}</td>
-             </tr>`;
-        agentsTableBody.innerHTML += row;
-    });
+        function updateTables(data) {
+            const agentsTableBody = document.querySelector('#agents-table tbody');
+            agentsTableBody.innerHTML = '';
+            data.agents.forEach(agent => {
+                const row = `<tr>
+                        <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                        <td>${agent.birthday}</td>
+                        <td>${agent.number}</td>
+                     </tr>`;
+                agentsTableBody.innerHTML += row;
+            });
 
-    const applicantsTableBody = document.querySelector('#applicants-table tbody');
-    applicantsTableBody.innerHTML = '';
-    data.applicants.forEach(applicant => {
-        const row = `<tr>
-                <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
-                <td>${applicant.birthday}</td>
-                <td>${applicant.number}</td>
-             </tr>`;
-        applicantsTableBody.innerHTML += row;
-    });
+            const applicantsTableBody = document.querySelector('#applicants-table tbody');
+            applicantsTableBody.innerHTML = '';
+            data.applicants.forEach(applicant => {
+                const row = `<tr>
+                        <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                        <td>${applicant.birthday}</td>
+                        <td>${applicant.number}</td>
+                     </tr>`;
+                applicantsTableBody.innerHTML += row;
+            });
 
-    const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
-    recruitersTableBody.innerHTML = '';
-    data.top_recruiters.forEach((recruiter, index) => {
-        const row = `<tr>
-                <td>${index + 1}</td>
-                <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
-                <td>${recruiter.total_fA}</td>
-             </tr>`;
-        recruitersTableBody.innerHTML += row;
-    });
+            const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
+            recruitersTableBody.innerHTML = '';
+            data.top_recruiters.forEach((recruiter, index) => {
+                const row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                        <td>${recruiter.total_fA}</td>
+                     </tr>`;
+                recruitersTableBody.innerHTML += row;
+            });
 
-    const awardeesTableBody = document.querySelector('#awardee-table tbody');
-    awardeesTableBody.innerHTML = '';
-    data.top_awardees.forEach((awardee, index) => {
-        const row = `<tr>
-                <td>${index + 1}</td>
-                <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
-                <td>${awardee.total_commissions}</td>
-             </tr>`;
-        awardeesTableBody.innerHTML += row;
-    });
-}
+            const awardeesTableBody = document.querySelector('#awardee-table tbody');
+            awardeesTableBody.innerHTML = '';
+            data.top_awardees.forEach((awardee, index) => {
+                const row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                        <td>${awardee.total_commissions}</td>
+                     </tr>`;
+                awardeesTableBody.innerHTML += row;
+            });
+        }
 
-function addActionButtons(data, month, year) {
-    const actionsDiv = document.createElement('div');
-    actionsDiv.id = 'report-actions';
-    actionsDiv.innerHTML = `
-        <button id="download-btn" class="btn btn-success me-2">Download</button>
-        <button id="view-btn" class="btn btn-info me-2">View</button>
-        <button id="print-btn" class="btn btn-warning">Print</button>
-    `;
+        function generatePDF(data, month, year) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
 
-    const existingActions = document.getElementById('report-actions');
-    if (existingActions) existingActions.remove();
+            // Function to get month name from month number
+            function getMonthName(monthNumber) {
+                const monthNames = [
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                return monthNames[monthNumber - 1]; // Month numbers are 1-based
+            }
 
-    document.querySelector('.title-group').appendChild(actionsDiv);
+            // Add title
+            const monthName = getMonthName(parseInt(month)); // Convert month to integer and get name
+            doc.setFontSize(20);
+            doc.text(`Month of ${monthName} ${year}`, 10, 10); // Updated title
 
-    document.getElementById('download-btn').addEventListener('click', () => downloadReport(data, month, year));
-    document.getElementById('view-btn').addEventListener('click', () => viewReport(data, month, year));
-    document.getElementById('print-btn').addEventListener('click', () => printReport(data, month, year));
-}
+            // Function to draw a simple table with borders and background colors
+            function drawTable(headers, rows, startY) {
+                const colWidth = 60; // Width of each column
+                const rowHeight = 10; // Height of each row (increased for padding)
+                const textOffset = 2; // Padding between text and top of the cell
+                let y = startY;
 
-function generatePDF(data, month, year) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+                // Draw headers
+                doc.setFontSize(12);
+                doc.setTextColor(255, 255, 255); // White text
+                doc.setFillColor(0, 102, 204); // Blue background
+                doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
 
-    // Create the PDF content
-    doc.setFontSize(20);
-    doc.text(`Report - ${month}/${year}`, 10, 10);
-    doc.setFontSize(12);
-    doc.text(JSON.stringify(data, null, 2), 10, 20);
+                headers.forEach((header, index) => {
+                    // Center the text in the header
+                    const headerX = 10 + index * colWidth + colWidth / 2; // Center X position
+                    doc.text(header, headerX, y - textOffset, { align: 'center' }); // Center align
+                });
+                y += rowHeight; // Move down for rows
 
-    return doc;
-}
+                // Draw rows
+                if (rows.length === 0) {
+                    doc.setTextColor(0, 0, 0); // Black text
+                    const noDataX = 10 + colWidth / 2; // Center X position for "No Data"
+                    doc.text("No data available", noDataX, y - textOffset, { align: 'center' });
+                    y += rowHeight; // Move down after "No data"
+                } else {
+                    rows.forEach((row) => {
+                        doc.setTextColor(0, 0, 0); // Black text
+                        row.forEach((cell, index) => {
+                            // Center the text in each cell
+                            const cellX = 10 + index * colWidth + colWidth / 2; // Center X position
+                            doc.text(cell, cellX, y - textOffset, { align: 'center' }); // Center align
+                        });
+                        doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
+                        y += rowHeight; // Move down for the next row
+                    });
+                }
 
-function downloadReport(data, month, year) {
-    const doc = generatePDF(data, month, year);
-    doc.save(`report_${month}_${year}.pdf`);
-}
+                return y; // Return the new Y position for the next section
+            }
 
-function viewReport(data, month, year) {
-    const doc = generatePDF(data, month, year);
-    const string = doc.output('datauristring');
-    const iframe = `<iframe width='100%' height='100%' src='${string}'></iframe>`;
-    const x = window.open();
-    x.document.open();
-    x.document.write(iframe);
-    x.document.close();
-}
+            // Add Agents section
+            let yPosition = 30; // Start position for the first section
+            doc.setFontSize(16);
+            doc.text('Agents', 10, yPosition);
+            const agentHeaders = ['Name', 'Birthday', 'Contact'];
+            const agentRows = data.agents.map(agent => [
+                `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+                agent.birthday,
+                agent.number
+            ]);
+            yPosition = drawTable(agentHeaders, agentRows, yPosition + 15); // 15 for extra space after section
 
-function printReport(data, month, year) {
-    const doc = generatePDF(data, month, year);
-    doc.autoPrint();
-    const string = doc.output('datauristring');
-    const iframe = `<iframe width='0' height='0' src='${string}'></iframe>`;
-    const x = window.open();
-    x.document.open();
-    x.document.write(iframe);
-    x.document.close();
-}
+            // Add Applicants section
+            doc.setFontSize(16);
+            doc.text('Applicants', 10, yPosition);
+            const applicantHeaders = ['Name', 'Birthday', 'Contact'];
+            const applicantRows = data.applicants.map(applicant => [
+                `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+                applicant.birthday,
+                applicant.number
+            ]);
+            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 15); // 15 for extra space after section
 
+            // Add Top Recruiters section
+            doc.setFontSize(16);
+            doc.text('Top Recruiters', 10, yPosition);
+            const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
+            const recruiterRows = data.top_recruiters.map((recruiter, index) => [
+                (index + 1).toString(),
+                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+                recruiter.total_fA.toString()
+            ]);
+            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 15); // 15 for extra space after section
+
+            // Add Awardees section
+            doc.setFontSize(16);
+            doc.text('Awardees', 10, yPosition);
+            const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
+            const awardeeRows = data.top_awardees.map((awardee, index) => [
+                (index + 1).toString(),
+                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+                awardee.total_commissions.toString()
+            ]);
+            yPosition = drawTable(awardeeHeaders, awardeeRows, yPosition + 15); // 15 for extra space after section
+
+            console.log("Saving PDF");
+            doc.save(`report_${month}_${year}.pdf`);
+        }
 
     </script>
 </body>
