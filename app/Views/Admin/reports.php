@@ -423,6 +423,32 @@
         }
 
 
+        function downloadReport(data, month, year) {
+            const doc = generatePDF(data, month, year);
+            doc.save(`report_${month}_${year}.pdf`);
+        }
+
+        function viewReport(data, month, year) {
+            const doc = generatePDF(data, month, year);
+            const string = doc.output('datauristring');
+            const iframe = `<iframe width='100%' height='100%' src='${string}'></iframe>`;
+            const x = window.open();
+            x.document.open();
+            x.document.write(iframe);
+            x.document.close();
+        }
+
+        function printReport(data, month, year) {
+            const doc = generatePDF(data, month, year);
+            doc.autoPrint();
+            const string = doc.output('datauristring');
+            const iframe = `<iframe width='0' height='0' src='${string}'></iframe>`;
+            const x = window.open();
+            x.document.open();
+            x.document.write(iframe);
+            x.document.close();
+        }
+
     </script>
 </body>
 
