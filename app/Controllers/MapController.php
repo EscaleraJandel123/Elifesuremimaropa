@@ -170,8 +170,8 @@ class MapController extends BaseController
         foreach ($applicants as $applicant) {
             if (isset($applicantCounts[$applicant['city']])) {
                 $applicantCounts[$applicant['city']]['count']++;
-                $applicant['role']="Applicant";
             }
+            $applicant['role']="Applicant";
         }
 
         // Count clients in each city
