@@ -117,9 +117,15 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
-                    <div>
+                    <!-- <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
                         <button id="generate-report-btn" class="btn btn-primary ms-2">Generate Report</button>
+                    </div> -->
+                    <div>
+                        <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
+                        <button id="download-report-btn" class="btn btn-primary ms-2">Download</button>
+                        <button id="view-report-btn" class="btn btn-secondary ms-2">View</button>
+                        <button id="print-report-btn" class="btn btn-success ms-2">Print</button>
                     </div>
                 </div>
                 <div class="row">
