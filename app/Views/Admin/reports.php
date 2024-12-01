@@ -260,6 +260,25 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
+        // document.getElementById('generate-report-btn').addEventListener('click', function () {
+        //     const monthYear = document.getElementById('report-month').value;
+        //     if (monthYear) {
+        //         const [year, month] = monthYear.split('-');
+        //         fetch(`/reports/generateReport/${year}/${month}`)
+        //             .then(response => response.json())
+        //             .then(data => {
+        //                 // Update tables with data
+        //                 updateTables(data);
+
+        //                 // Generate PDF
+        //                 generatePDF(data, month, year);
+        //             })
+        //             .catch(error => console.error('Error fetching report:', error));
+        //     } else {
+        //         alert("Please select a month and year.");
+        //     }
+        // });
+
         document.getElementById('generate-report-btn').addEventListener('click', function () {
             const monthYear = document.getElementById('report-month').value;
             if (monthYear) {
@@ -267,17 +286,75 @@
                 fetch(`/reports/generateReport/${year}/${month}`)
                     .then(response => response.json())
                     .then(data => {
-                        // Update tables with data
-                        updateTables(data);
-
-                        // Generate PDF
-                        generatePDF(data, month, year);
+                        const pdfDoc = generatePDF(data, month, year, false);
+                        pdfDoc.save(`report_${month}_${year}.pdf`); // Save the PDF
                     })
                     .catch(error => console.error('Error fetching report:', error));
             } else {
                 alert("Please select a month and year.");
             }
         });
+
+        document.getElementById('view-report-btn').addEventListener('click', function () {
+            const monthYear = document.getElementById('report-month').value;
+            if (monthYear) {
+                const [year, month] = monthYear.split('-');
+                fetch(`/reports/generateReport/${year}/${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const pdfDoc = generatePDF(data, month, year, false);
+                        const pdfUrl = pdfDoc.output('bloburl'); // Get blob URL
+                        window.open(pdfUrl, '_blank'); // Open in a new tab
+                    })
+                    .catch(error => console.error('Error fetching report:', error));
+            } else {
+                alert("Please select a month and year.");
+            }
+        });
+
+        document.getElementById('print-report-btn').addEventListener('click', function () {
+            const monthYear = document.getElementById('report-month').value;
+            if (monthYear) {
+                const [year, month] = monthYear.split('-');
+                fetch(`/reports/generateReport/${year}/${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const pdfDoc = generatePDF(data, month, year, false);
+                        pdfDoc.autoPrint(); // Trigger print
+                        const pdfUrl = pdfDoc.output('bloburl');
+                        const printWindow = window.open(pdfUrl, '_blank');
+                        printWindow.print(); // Print the document
+                    })
+                    .catch(error => console.error('Error fetching report:', error));
+            } else {
+                alert("Please select a month and year.");
+            }
+        });
+
+        function generatePDF(data, month, year, autoSave = true) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Generate PDF content
+            function getMonthName(monthNumber) {
+                const monthNames = [
+                    "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                return monthNames[monthNumber - 1]; // Month numbers are 1-based
+            }
+            const monthName = getMonthName(parseInt(month));
+            doc.setFontSize(20);
+            doc.text(`Month of ${monthName} ${year}`, 10, 10);
+
+            // Add sections (reuse your logic here)
+
+            if (autoSave) {
+                doc.save(`report_${month}_${year}.pdf`);
+            }
+            return doc;
+        }
+
 
         function updateTables(data) {
             const agentsTableBody = document.querySelector('#agents-table tbody');
