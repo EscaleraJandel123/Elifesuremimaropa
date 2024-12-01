@@ -166,26 +166,27 @@ class MapController extends BaseController
             ];
         }
 
-        // Count applicants in each city
         foreach ($applicants as $applicant) {
             if (isset($applicantCounts[$applicant['city']])) {
                 $applicantCounts[$applicant['city']]['count']++;
+                $applicantCounts[$applicant['city']]['role'] = 'Applicant';
             }
         }
-
-        // Count clients in each city
+        
         foreach ($clients as $client) {
             if (isset($clientCounts[$client['city']])) {
                 $clientCounts[$client['city']]['count']++;
+                $clientCounts[$client['city']]['role'] = 'Client';
             }
         }
-
-        // Count agents in each city
+        
         foreach ($agents as $agent) {
             if (isset($agentCounts[$agent['city']])) {
                 $agentCounts[$agent['city']]['count']++;
+                $agentCounts[$agent['city']]['role'] = 'Agent';
             }
         }
+
         $data = $this->notifcont->notification();
         $data = array_merge($this->notifcont->notification(), $this->getDataAd());
         $data['applicantCounts'] = $applicantCounts;
