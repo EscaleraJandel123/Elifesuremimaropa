@@ -117,16 +117,16 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
-                    <!-- <div>
+                    <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
                         <button id="generate-report-btn" class="btn btn-primary ms-2">Generate Report</button>
-                    </div> -->
-                    <div>
+                    </div>
+                    <!-- <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
                         <button id="download-report-btn" class="btn btn-primary ms-2">Download</button>
                         <button id="view-report-btn" class="btn btn-secondary ms-2">View</button>
                         <button id="print-report-btn" class="btn btn-success ms-2">Print</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                     <!-- left and right table columns -->
@@ -261,167 +261,127 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         document.getElementById('generate-report-btn').addEventListener('click', function () {
-            const monthYear = document.getElementById('report-month').value;
-            if (monthYear) {
-                const [year, month] = monthYear.split('-');
-                fetch(`/reports/generateReport/${year}/${month}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Update tables with data
-                        updateTables(data);
+    const monthYear = document.getElementById('report-month').value;
+    if (monthYear) {
+        const [year, month] = monthYear.split('-');
+        fetch(`/reports/generateReport/${year}/${month}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update tables with data
+                updateTables(data);
 
-                        // Add buttons for actions
-                        addActionButtons(data, month, year);
-                    })
-                    .catch(error => console.error('Error fetching report:', error));
-            } else {
-                alert("Please select a month and year.");
-            }
-        });
+                // Add buttons for actions
+                addActionButtons(data, month, year);
+            })
+            .catch(error => console.error('Error fetching report:', error));
+    } else {
+        alert("Please select a month and year.");
+    }
+});
 
-        function updateTables(data) {
-            const agentsTableBody = document.querySelector('#agents-table tbody');
-            agentsTableBody.innerHTML = '';
-            data.agents.forEach(agent => {
-                const row = `<tr>
+function updateTables(data) {
+    const agentsTableBody = document.querySelector('#agents-table tbody');
+    agentsTableBody.innerHTML = '';
+    data.agents.forEach(agent => {
+        const row = `<tr>
                 <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
                 <td>${agent.birthday}</td>
                 <td>${agent.number}</td>
              </tr>`;
-                agentsTableBody.innerHTML += row;
-            });
+        agentsTableBody.innerHTML += row;
+    });
 
-            const applicantsTableBody = document.querySelector('#applicants-table tbody');
-            applicantsTableBody.innerHTML = '';
-            data.applicants.forEach(applicant => {
-                const row = `<tr>
+    const applicantsTableBody = document.querySelector('#applicants-table tbody');
+    applicantsTableBody.innerHTML = '';
+    data.applicants.forEach(applicant => {
+        const row = `<tr>
                 <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
                 <td>${applicant.birthday}</td>
                 <td>${applicant.number}</td>
              </tr>`;
-                applicantsTableBody.innerHTML += row;
-            });
+        applicantsTableBody.innerHTML += row;
+    });
 
-            const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
-            recruitersTableBody.innerHTML = '';
-            data.top_recruiters.forEach((recruiter, index) => {
-                const row = `<tr>
+    const recruitersTableBody = document.querySelector('#top-recruiters-table tbody');
+    recruitersTableBody.innerHTML = '';
+    data.top_recruiters.forEach((recruiter, index) => {
+        const row = `<tr>
                 <td>${index + 1}</td>
                 <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
                 <td>${recruiter.total_fA}</td>
              </tr>`;
-                recruitersTableBody.innerHTML += row;
-            });
+        recruitersTableBody.innerHTML += row;
+    });
 
-            const awardeesTableBody = document.querySelector('#awardee-table tbody');
-            awardeesTableBody.innerHTML = '';
-            data.top_awardees.forEach((awardee, index) => {
-                const row = `<tr>
+    const awardeesTableBody = document.querySelector('#awardee-table tbody');
+    awardeesTableBody.innerHTML = '';
+    data.top_awardees.forEach((awardee, index) => {
+        const row = `<tr>
                 <td>${index + 1}</td>
                 <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
                 <td>${awardee.total_commissions}</td>
              </tr>`;
-                awardeesTableBody.innerHTML += row;
-            });
-        }
+        awardeesTableBody.innerHTML += row;
+    });
+}
 
-        function addActionButtons(data, month, year) {
-            const actionsDiv = document.createElement('div');
-            actionsDiv.id = 'report-actions';
-            actionsDiv.innerHTML = `
+function addActionButtons(data, month, year) {
+    const actionsDiv = document.createElement('div');
+    actionsDiv.id = 'report-actions';
+    actionsDiv.innerHTML = `
         <button id="download-btn" class="btn btn-success me-2">Download</button>
         <button id="view-btn" class="btn btn-info me-2">View</button>
         <button id="print-btn" class="btn btn-warning">Print</button>
     `;
 
-            const existingActions = document.getElementById('report-actions');
-            if (existingActions) existingActions.remove();
+    const existingActions = document.getElementById('report-actions');
+    if (existingActions) existingActions.remove();
 
-            document.querySelector('.title-group').appendChild(actionsDiv);
+    document.querySelector('.title-group').appendChild(actionsDiv);
 
-            document.getElementById('download-btn').addEventListener('click', () => downloadReport(data, month, year));
-            document.getElementById('view-btn').addEventListener('click', () => viewReport(data, month, year));
-            document.getElementById('print-btn').addEventListener('click', () => printReport(data, month, year));
-        }
+    document.getElementById('download-btn').addEventListener('click', () => downloadReport(data, month, year));
+    document.getElementById('view-btn').addEventListener('click', () => viewReport(data, month, year));
+    document.getElementById('print-btn').addEventListener('click', () => printReport(data, month, year));
+}
 
-        function generatePDF(data, month, year) {
-            const { jsPDF } = window.jspdf;
-            require('jspdf-autotable'); // Ensure jsPDF AutoTable is available
+function generatePDF(data, month, year) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-            const doc = new jsPDF();
+    // Create the PDF content
+    doc.setFontSize(20);
+    doc.text(`Report - ${month}/${year}`, 10, 10);
+    doc.setFontSize(12);
+    doc.text(JSON.stringify(data, null, 2), 10, 20);
 
-            // Header
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(16);
-            doc.text(`Monthly Report - ${month}/${year}`, 105, 15, { align: 'center' });
+    return doc;
+}
 
-            // Section 1: Agents Table
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(12);
-            doc.text('Agents Information:', 10, 30);
+function downloadReport(data, month, year) {
+    const doc = generatePDF(data, month, year);
+    doc.save(`report_${month}_${year}.pdf`);
+}
 
-            doc.autoTable({
-                startY: 35,
-                head: [['Name', 'Birthday', 'Number']],
-                body: data.agents.map(agent => [
-                    `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
-                    agent.birthday,
-                    agent.number
-                ]),
-                theme: 'grid',
-                headStyles: { fillColor: [0, 102, 204] }, // Blue Header
-                styles: { fontSize: 10 },
-            });
+function viewReport(data, month, year) {
+    const doc = generatePDF(data, month, year);
+    const string = doc.output('datauristring');
+    const iframe = `<iframe width='100%' height='100%' src='${string}'></iframe>`;
+    const x = window.open();
+    x.document.open();
+    x.document.write(iframe);
+    x.document.close();
+}
 
-            // Section 2: Applicants Table
-            doc.text('Applicants Information:', 10, doc.lastAutoTable.finalY + 10);
-            doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 15,
-                head: [['Name', 'Birthday', 'Number']],
-                body: data.applicants.map(applicant => [
-                    `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
-                    applicant.birthday,
-                    applicant.number
-                ]),
-                theme: 'grid',
-                headStyles: { fillColor: [204, 0, 102] }, // Pink Header
-                styles: { fontSize: 10 },
-            });
-
-            // Section 3: Top Recruiters Table
-            doc.text('Top Recruiters:', 10, doc.lastAutoTable.finalY + 10);
-            doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 15,
-                head: [['Rank', 'Name', 'Total Recruitments']],
-                body: data.top_recruiters.map((recruiter, index) => [
-                    index + 1,
-                    `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
-                    recruiter.total_fA
-                ]),
-                theme: 'grid',
-                headStyles: { fillColor: [102, 153, 0] }, // Green Header
-                styles: { fontSize: 10 },
-            });
-
-            // Section 4: Top Awardees Table
-            doc.text('Top Awardees:', 10, doc.lastAutoTable.finalY + 10);
-            doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 15,
-                head: [['Rank', 'Name', 'Total Commissions']],
-                body: data.top_awardees.map((awardee, index) => [
-                    index + 1,
-                    `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
-                    awardee.total_commissions
-                ]),
-                theme: 'grid',
-                headStyles: { fillColor: [255, 165, 0] }, // Orange Header
-                styles: { fontSize: 10 },
-            });
-
-            // Save or Export PDF
-            doc.save(`Monthly_Report_${month}_${year}.pdf`);
-        }
-
+function printReport(data, month, year) {
+    const doc = generatePDF(data, month, year);
+    doc.autoPrint();
+    const string = doc.output('datauristring');
+    const iframe = `<iframe width='0' height='0' src='${string}'></iframe>`;
+    const x = window.open();
+    x.document.open();
+    x.document.write(iframe);
+    x.document.close();
+}
 
     </script>
 </body>
