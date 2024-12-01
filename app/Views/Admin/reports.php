@@ -346,82 +346,58 @@
 
         function generatePDF(data, month, year) {
             const { jsPDF } = window.jspdf;
-            require('jspdf-autotable'); // Ensure jsPDF AutoTable is available
-
             const doc = new jsPDF();
 
-            // Header
-            doc.setFont('helvetica', 'bold');
+            // Add title
             doc.setFontSize(16);
-            doc.text(`Monthly Report - ${month}/${year}`, 105, 15, { align: 'center' });
+            doc.text(`Report - ${month}/${year}`, 10, 10);
 
-            // Section 1: Agents Table
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(12);
-            doc.text('Agents Information:', 10, 30);
-
+            // Add Agents Table
             doc.autoTable({
-                startY: 35,
+                startY: 20,
                 head: [['Name', 'Birthday', 'Number']],
                 body: data.agents.map(agent => [
                     `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
                     agent.birthday,
                     agent.number
                 ]),
-                theme: 'grid',
-                headStyles: { fillColor: [0, 102, 204] }, // Blue Header
-                styles: { fontSize: 10 },
             });
 
-            // Section 2: Applicants Table
-            doc.text('Applicants Information:', 10, doc.lastAutoTable.finalY + 10);
+            // Add Applicants Table
             doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 15,
+                startY: doc.lastAutoTable.finalY + 10,
                 head: [['Name', 'Birthday', 'Number']],
                 body: data.applicants.map(applicant => [
                     `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
                     applicant.birthday,
                     applicant.number
                 ]),
-                theme: 'grid',
-                headStyles: { fillColor: [204, 0, 102] }, // Pink Header
-                styles: { fontSize: 10 },
             });
 
-            // Section 3: Top Recruiters Table
-            doc.text('Top Recruiters:', 10, doc.lastAutoTable.finalY + 10);
+            // Add Top Recruiters Table
             doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 15,
+                startY: doc.lastAutoTable.finalY + 10,
                 head: [['Rank', 'Name', 'Total Recruitments']],
                 body: data.top_recruiters.map((recruiter, index) => [
                     index + 1,
                     `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
                     recruiter.total_fA
                 ]),
-                theme: 'grid',
-                headStyles: { fillColor: [102, 153, 0] }, // Green Header
-                styles: { fontSize: 10 },
             });
 
-            // Section 4: Top Awardees Table
-            doc.text('Top Awardees:', 10, doc.lastAutoTable.finalY + 10);
+            // Add Awardees Table
             doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 15,
+                startY: doc.lastAutoTable.finalY + 10,
                 head: [['Rank', 'Name', 'Total Commissions']],
                 body: data.top_awardees.map((awardee, index) => [
                     index + 1,
                     `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
                     awardee.total_commissions
                 ]),
-                theme: 'grid',
-                headStyles: { fillColor: [255, 165, 0] }, // Orange Header
-                styles: { fontSize: 10 },
             });
 
-            // Save or Export PDF
-            doc.save(`Monthly_Report_${month}_${year}.pdf`);
+            return doc;
         }
-
 
         function downloadReport(data, month, year) {
             const doc = generatePDF(data, month, year);
@@ -430,23 +406,21 @@
 
         function viewReport(data, month, year) {
             const doc = generatePDF(data, month, year);
-            const string = doc.output('datauristring');
-            const iframe = `<iframe width='100%' height='100%' src='${string}'></iframe>`;
+            const string = doc.output('dataurlstring');
             const x = window.open();
             x.document.open();
-            x.document.write(iframe);
+            x.document.write(`<iframe width='100%' height='100%' src='${string}'></iframe>`);
             x.document.close();
         }
 
         function printReport(data, month, year) {
             const doc = generatePDF(data, month, year);
-            doc.autoPrint();
-            const string = doc.output('datauristring');
-            const iframe = `<iframe width='0' height='0' src='${string}'></iframe>`;
-            const x = window.open();
-            x.document.open();
-            x.document.write(iframe);
-            x.document.close();
+            const string = doc.output('dataurlstring');
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = string;
+            document.body.appendChild(iframe);
+            iframe.contentWindow.print();
         }
 
     </script>
