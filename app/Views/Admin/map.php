@@ -195,9 +195,9 @@
                 });
             }
 
-            createMap('map', applicantCounts);
-            createMap('map2', agentCounts);
-            createMap('map3', clientCounts);
+            createMap('map', applicantCounts, 'Applicants');
+            createMap('map2', agentCounts, 'Agents');
+            createMap('map3', clientCounts, 'Clients');
         });
     </script>
     <?= view('js'); ?>
