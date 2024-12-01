@@ -417,17 +417,29 @@
 
         function printReport(data, month, year) {
             const doc = generatePDF(data, month, year);
-            const string = doc.output('dataurlstring');
+            const pdfBlob = doc.output('blob');
+
+            // Create an object URL for the PDF blob
+            const url = URL.createObjectURL(pdfBlob);
             const iframe = document.createElement('iframe');
-            iframe.style.display = 'none'; // Ensure the iframe is hidden
+
+            // Set the iframe attributes
+            iframe.style.display = 'none';
+            iframe.src = url;
+
+            // Append the iframe to the body
             document.body.appendChild(iframe);
 
-            // Load the PDF in the iframe and trigger the print dialog
-            iframe.src = string;
+            // Trigger the print once the iframe loads
             iframe.onload = function () {
-                iframe.contentWindow.focus();
                 iframe.contentWindow.print();
-                document.body.removeChild(iframe); // Clean up the iframe after printing
+
+                // Clean up the iframe and object URL after printing
+                iframe.onload = null;
+                setTimeout(() => {
+                    document.body.removeChild(iframe);
+                    URL.revokeObjectURL(url);
+                }, 1000); // Delay to ensure the print dialog has been displayed
             };
         }
     </script>
