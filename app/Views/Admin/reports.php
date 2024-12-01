@@ -119,8 +119,7 @@
                     <h1 class="h2 mb-0">Reports</h1>
                     <div class="d-flex flex-wrap align-items-center gap-2">
                         <input type="month" id="report-month" class="form-control" style="width: auto;">
-                        <button id="generate-report-btn" class="btn btn-primary flex-grow-1 flex-md-grow-0">Generate
-                            Report</button>
+                        <button id="generate-report-btn" class="btn btn-primary flex-grow-1 flex-md-grow-0"><i class="bi bi-clipboard-data"></i></button>
                     </div>
                 </div>
                 <div class="row">
@@ -326,9 +325,9 @@
             const actionsDiv = document.createElement('div');
             actionsDiv.id = 'report-actions';
             actionsDiv.innerHTML = `
-        <button id="download-btn" class="btn btn-success me-2">Download</button>
-        <button id="view-btn" class="btn btn-info me-2">View</button>
-        <button id="print-btn" class="btn btn-warning">Print</button>
+        <button id="download-btn" class="btn btn-success me-2"><i class="bi bi-download"></i></button>
+        <button id="view-btn" class="btn btn-info me-2"><i class="bi bi-eye"></i></button>
+        <button id="print-btn" class="btn btn-warning"><i class="bi bi-printer"></i></button>
     `;
 
             const existingActions = document.getElementById('report-actions');
