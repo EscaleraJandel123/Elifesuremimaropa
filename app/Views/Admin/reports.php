@@ -260,34 +260,18 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        // document.getElementById('generate-report-btn').addEventListener('click', function () {
-        //     const monthYear = document.getElementById('report-month').value;
-        //     if (monthYear) {
-        //         const [year, month] = monthYear.split('-');
-        //         fetch(`/reports/generateReport/${year}/${month}`)
-        //             .then(response => response.json())
-        //             .then(data => {
-        //                 // Update tables with data
-        //                 updateTables(data);
-
-        //                 // Generate PDF
-        //                 generatePDF(data, month, year);
-        //             })
-        //             .catch(error => console.error('Error fetching report:', error));
-        //     } else {
-        //         alert("Please select a month and year.");
-        //     }
-        // });
-
-        document.getElementById('download-report-btn').addEventListener('click', function () {
+        document.getElementById('generate-report-btn').addEventListener('click', function () {
             const monthYear = document.getElementById('report-month').value;
             if (monthYear) {
                 const [year, month] = monthYear.split('-');
                 fetch(`/reports/generateReport/${year}/${month}`)
                     .then(response => response.json())
                     .then(data => {
-                        const pdfDoc = generatePDF(data, month, year, false);
-                        pdfDoc.save(`report_${month}_${year}.pdf`); // Save the PDF
+                        // Update tables with data
+                        updateTables(data);
+
+                        // Add buttons for actions
+                        addActionButtons(data, month, year);
                     })
                     .catch(error => console.error('Error fetching report:', error));
             } else {
@@ -295,74 +279,15 @@
             }
         });
 
-        document.getElementById('view-report-btn').addEventListener('click', function () {
-            const monthYear = document.getElementById('report-month').value;
-            if (monthYear) {
-                const [year, month] = monthYear.split('-');
-                fetch(`/reports/generateReport/${year}/${month}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const pdfDoc = generatePDF(data, month, year, false);
-                        const pdfUrl = pdfDoc.output('bloburl'); // Get blob URL
-                        window.open(pdfUrl, '_blank'); // Open in a new tab
-                    })
-                    .catch(error => console.error('Error fetching report:', error));
-            } else {
-                alert("Please select a month and year.");
-            }
-        });
-
-        document.getElementById('print-report-btn').addEventListener('click', function () {
-            const monthYear = document.getElementById('report-month').value;
-            if (monthYear) {
-                const [year, month] = monthYear.split('-');
-                fetch(`/reports/generateReport/${year}/${month}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const pdfDoc = generatePDF(data, month, year, false);
-                        pdfDoc.autoPrint(); // Trigger print
-                        const pdfUrl = pdfDoc.output('bloburl');
-                        const printWindow = window.open(pdfUrl, '_blank');
-                        printWindow.print(); // Print the document
-                    })
-                    .catch(error => console.error('Error fetching report:', error));
-            } else {
-                alert("Please select a month and year.");
-            }
-        });
-
-        function generatePDF(data, month, year, autoSave = true) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Generate PDF content
-            function getMonthName(monthNumber) {
-                const monthNames = [
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-                ];
-                return monthNames[monthNumber - 1]; // Month numbers are 1-based
-            }
-            const monthName = getMonthName(parseInt(month));
-            doc.setFontSize(20);
-            doc.text(`Month of ${monthName} ${year}`, 10, 10);
-
-            // Add sections (reuse your logic here)
-
-            if (autoSave) {
-                doc.save(`report_${month}_${year}.pdf`);
-            }
-            return doc;
-        }
         function updateTables(data) {
             const agentsTableBody = document.querySelector('#agents-table tbody');
             agentsTableBody.innerHTML = '';
             data.agents.forEach(agent => {
                 const row = `<tr>
-                        <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
-                        <td>${agent.birthday}</td>
-                        <td>${agent.number}</td>
-                     </tr>`;
+                <td>${agent.lastname}, ${agent.firstname} ${agent.middlename}.</td>
+                <td>${agent.birthday}</td>
+                <td>${agent.number}</td>
+             </tr>`;
                 agentsTableBody.innerHTML += row;
             });
 
@@ -370,10 +295,10 @@
             applicantsTableBody.innerHTML = '';
             data.applicants.forEach(applicant => {
                 const row = `<tr>
-                        <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
-                        <td>${applicant.birthday}</td>
-                        <td>${applicant.number}</td>
-                     </tr>`;
+                <td>${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}.</td>
+                <td>${applicant.birthday}</td>
+                <td>${applicant.number}</td>
+             </tr>`;
                 applicantsTableBody.innerHTML += row;
             });
 
@@ -381,10 +306,10 @@
             recruitersTableBody.innerHTML = '';
             data.top_recruiters.forEach((recruiter, index) => {
                 const row = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
-                        <td>${recruiter.total_fA}</td>
-                     </tr>`;
+                <td>${index + 1}</td>
+                <td>${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}</td>
+                <td>${recruiter.total_fA}</td>
+             </tr>`;
                 recruitersTableBody.innerHTML += row;
             });
 
@@ -392,122 +317,111 @@
             awardeesTableBody.innerHTML = '';
             data.top_awardees.forEach((awardee, index) => {
                 const row = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
-                        <td>${awardee.total_commissions}</td>
-                     </tr>`;
+                <td>${index + 1}</td>
+                <td>${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}</td>
+                <td>${awardee.total_commissions}</td>
+             </tr>`;
                 awardeesTableBody.innerHTML += row;
             });
         }
 
+        function addActionButtons(data, month, year) {
+            const actionsDiv = document.createElement('div');
+            actionsDiv.id = 'report-actions';
+            actionsDiv.innerHTML = `
+        <button id="download-btn" class="btn btn-success me-2">Download</button>
+        <button id="view-btn" class="btn btn-info me-2">View</button>
+        <button id="print-btn" class="btn btn-warning">Print</button>
+    `;
+
+            const existingActions = document.getElementById('report-actions');
+            if (existingActions) existingActions.remove();
+
+            document.querySelector('.title-group').appendChild(actionsDiv);
+
+            document.getElementById('download-btn').addEventListener('click', () => downloadReport(data, month, year));
+            document.getElementById('view-btn').addEventListener('click', () => viewReport(data, month, year));
+            document.getElementById('print-btn').addEventListener('click', () => printReport(data, month, year));
+        }
+
         function generatePDF(data, month, year) {
             const { jsPDF } = window.jspdf;
+            require('jspdf-autotable'); // Ensure jsPDF AutoTable is available
+
             const doc = new jsPDF();
 
-            // Function to get month name from month number
-            function getMonthName(monthNumber) {
-                const monthNames = [
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-                ];
-                return monthNames[monthNumber - 1]; // Month numbers are 1-based
-            }
-
-            // Add title
-            const monthName = getMonthName(parseInt(month)); // Convert month to integer and get name
-            doc.setFontSize(20);
-            doc.text(`Month of ${monthName} ${year}`, 10, 10); // Updated title
-
-            // Function to draw a simple table with borders and background colors
-            function drawTable(headers, rows, startY) {
-                const colWidth = 60; // Width of each column
-                const rowHeight = 10; // Height of each row (increased for padding)
-                const textOffset = 2; // Padding between text and top of the cell
-                let y = startY;
-
-                // Draw headers
-                doc.setFontSize(12);
-                doc.setTextColor(255, 255, 255); // White text
-                doc.setFillColor(0, 102, 204); // Blue background
-                doc.rect(10, y - rowHeight, colWidth * headers.length + 10, rowHeight, 'F'); // Header background
-
-                headers.forEach((header, index) => {
-                    // Center the text in the header
-                    const headerX = 10 + index * colWidth + colWidth / 2; // Center X position
-                    doc.text(header, headerX, y - textOffset, { align: 'center' }); // Center align
-                });
-                y += rowHeight; // Move down for rows
-
-                // Draw rows
-                if (rows.length === 0) {
-                    doc.setTextColor(0, 0, 0); // Black text
-                    const noDataX = 10 + colWidth / 2; // Center X position for "No Data"
-                    doc.text("No data available", noDataX, y - textOffset, { align: 'center' });
-                    y += rowHeight; // Move down after "No data"
-                } else {
-                    rows.forEach((row) => {
-                        doc.setTextColor(0, 0, 0); // Black text
-                        row.forEach((cell, index) => {
-                            // Center the text in each cell
-                            const cellX = 10 + index * colWidth + colWidth / 2; // Center X position
-                            doc.text(cell, cellX, y - textOffset, { align: 'center' }); // Center align
-                        });
-                        doc.rect(10, y - rowHeight, colWidth * row.length + 10, rowHeight); // Draw cell border
-                        y += rowHeight; // Move down for the next row
-                    });
-                }
-
-                return y; // Return the new Y position for the next section
-            }
-
-            // Add Agents section
-            let yPosition = 30; // Start position for the first section
+            // Header
+            doc.setFont('helvetica', 'bold');
             doc.setFontSize(16);
-            doc.text('Agents', 10, yPosition);
-            const agentHeaders = ['Name', 'Birthday', 'Contact'];
-            const agentRows = data.agents.map(agent => [
-                `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
-                agent.birthday,
-                agent.number
-            ]);
-            yPosition = drawTable(agentHeaders, agentRows, yPosition + 15); // 15 for extra space after section
+            doc.text(`Monthly Report - ${month}/${year}`, 105, 15, { align: 'center' });
 
-            // Add Applicants section
-            doc.setFontSize(16);
-            doc.text('Applicants', 10, yPosition);
-            const applicantHeaders = ['Name', 'Birthday', 'Contact'];
-            const applicantRows = data.applicants.map(applicant => [
-                `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
-                applicant.birthday,
-                applicant.number
-            ]);
-            yPosition = drawTable(applicantHeaders, applicantRows, yPosition + 15); // 15 for extra space after section
+            // Section 1: Agents Table
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(12);
+            doc.text('Agents Information:', 10, 30);
 
-            // Add Top Recruiters section
-            doc.setFontSize(16);
-            doc.text('Top Recruiters', 10, yPosition);
-            const recruiterHeaders = ['Rank', 'Name', 'No. of Recruits'];
-            const recruiterRows = data.top_recruiters.map((recruiter, index) => [
-                (index + 1).toString(),
-                `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
-                recruiter.total_fA.toString()
-            ]);
-            yPosition = drawTable(recruiterHeaders, recruiterRows, yPosition + 15); // 15 for extra space after section
+            doc.autoTable({
+                startY: 35,
+                head: [['Name', 'Birthday', 'Number']],
+                body: data.agents.map(agent => [
+                    `${agent.lastname}, ${agent.firstname} ${agent.middlename}`,
+                    agent.birthday,
+                    agent.number
+                ]),
+                theme: 'grid',
+                headStyles: { fillColor: [0, 102, 204] }, // Blue Header
+                styles: { fontSize: 10 },
+            });
 
-            // Add Awardees section
-            doc.setFontSize(16);
-            doc.text('Awardees', 10, yPosition);
-            const awardeeHeaders = ['Top', 'Name', 'Total Commissions'];
-            const awardeeRows = data.top_awardees.map((awardee, index) => [
-                (index + 1).toString(),
-                `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
-                awardee.total_commissions.toString()
-            ]);
-            yPosition = drawTable(awardeeHeaders, awardeeRows, yPosition + 15); // 15 for extra space after section
+            // Section 2: Applicants Table
+            doc.text('Applicants Information:', 10, doc.lastAutoTable.finalY + 10);
+            doc.autoTable({
+                startY: doc.lastAutoTable.finalY + 15,
+                head: [['Name', 'Birthday', 'Number']],
+                body: data.applicants.map(applicant => [
+                    `${applicant.lastname}, ${applicant.firstname} ${applicant.middlename}`,
+                    applicant.birthday,
+                    applicant.number
+                ]),
+                theme: 'grid',
+                headStyles: { fillColor: [204, 0, 102] }, // Pink Header
+                styles: { fontSize: 10 },
+            });
 
-            console.log("Saving PDF");
-            doc.save(`report_${month}_${year}.pdf`);
+            // Section 3: Top Recruiters Table
+            doc.text('Top Recruiters:', 10, doc.lastAutoTable.finalY + 10);
+            doc.autoTable({
+                startY: doc.lastAutoTable.finalY + 15,
+                head: [['Rank', 'Name', 'Total Recruitments']],
+                body: data.top_recruiters.map((recruiter, index) => [
+                    index + 1,
+                    `${recruiter.lastname}, ${recruiter.firstname} ${recruiter.middlename}`,
+                    recruiter.total_fA
+                ]),
+                theme: 'grid',
+                headStyles: { fillColor: [102, 153, 0] }, // Green Header
+                styles: { fontSize: 10 },
+            });
+
+            // Section 4: Top Awardees Table
+            doc.text('Top Awardees:', 10, doc.lastAutoTable.finalY + 10);
+            doc.autoTable({
+                startY: doc.lastAutoTable.finalY + 15,
+                head: [['Rank', 'Name', 'Total Commissions']],
+                body: data.top_awardees.map((awardee, index) => [
+                    index + 1,
+                    `${awardee.lastname}, ${awardee.firstname} ${awardee.middlename}`,
+                    awardee.total_commissions
+                ]),
+                theme: 'grid',
+                headStyles: { fillColor: [255, 165, 0] }, // Orange Header
+                styles: { fontSize: 10 },
+            });
+
+            // Save or Export PDF
+            doc.save(`Monthly_Report_${month}_${year}.pdf`);
         }
+
 
     </script>
 </body>
