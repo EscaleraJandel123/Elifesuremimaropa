@@ -429,18 +429,6 @@
 
             // Append the iframe to the body
             document.body.appendChild(iframe);
-
-            // Trigger the print once the iframe loads
-            iframe.onload = function () {
-                iframe.contentWindow.print();
-
-                // Clean up the iframe and object URL after printing
-                iframe.onload = null;
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                    URL.revokeObjectURL(url);
-                }, 1000); // Delay to ensure the print dialog has been displayed
-            };
         }
     </script>
 </body>
