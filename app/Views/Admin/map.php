@@ -174,11 +174,11 @@
             var clientCounts = <?= json_encode($clientCounts) ?>;
             var agentCounts = <?= json_encode($agentCounts) ?>;
 
-            function createMap(mapId, counts) {
+            function createMap(mapId, counts, role) {
                 var map = L.map(mapId, {
                     center: [12.345, 121.0],
                     zoom: 7,
-                    scrollWheelZoom: false  // Disable scroll zoom
+                    scrollWheelZoom: false // Disable scroll zoom
                 });
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -189,7 +189,7 @@
                     if (counts[city].count > 0) {
                         var marker = L.marker([counts[city].lat, counts[city].lng])
                             .addTo(map)
-                            .bindPopup(city + ': ' + counts[city].count + ' users')
+                            .bindPopup(city + ': ' + counts[city].count + ' ' + role)
                             .openPopup();
                     }
                 });
