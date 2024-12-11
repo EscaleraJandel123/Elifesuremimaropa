@@ -162,4 +162,11 @@
         </section>
     </main><!-- End #main -->
 </body>
+
+<script>
+    fetch('/check-due-policies')
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+</script>
 <?= view('/Home/chop/jsh'); ?>
