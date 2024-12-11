@@ -450,10 +450,10 @@ class ClientController extends BaseController
                             <p>Thank you!</p>";
 
                 // Send the email
-                // $this->sendVerificationEmail($clientEmail, $subject, $message);
+                $this->sendVerificationEmail($clientEmail, $subject, $message);
             }
-            // return 'Emails sent successfully for due policies.';
-            var_dump($clientEmail);
+            return 'Emails sent successfully for due policies.';
+            // var_dump($clientEmail);
         } else {
             return 'No policies are due today.';
         }
