@@ -429,39 +429,46 @@ class ClientController extends BaseController
         return redirect()->to('mysched')->with('success', 'Schedule Updated!');
     }
     public function checkDuePoliciesAndSendEmails()
-    {
-        $today = date('Y-m-d');
+{
+    $today = date('Y-m-d');
 
-        // Query for policies with due date equal to today
-        $duePolicies = $this->client_plan->where('duedate', $today)->findAll();
+    // Query for policies with due date equal to today and email not sent
+    $duePolicies = $this->client_plan
+        ->where('duedate', $today)
+        ->where('email_sent', 0) // Only select policies where email has not been sent
+        ->findAll();
 
-        if (!empty($duePolicies)) {
-            foreach ($duePolicies as $policy) {
-                $clientEmail = $this->client
-                    ->select('email')
-                    ->where('client_id', $policy['client_id'])
-                    ->first();
+    if (!empty($duePolicies)) {
+        foreach ($duePolicies as $policy) {
+            $clientEmail = $this->client
+                ->select('email')
+                ->where('client_id', $policy['client_id'])
+                ->first();
 
-                if ($clientEmail) {
-                    $formattedDate = date('M d, Y', strtotime($policy['duedate']));
-                    $plan = $this->plan->select('plan_name')->where('token', $policy['plan'])->first();
+            if ($clientEmail) {
+                $formattedDate = date('M d, Y', strtotime($policy['duedate']));
+                $plan = $this->plan->select('plan_name')->where('token', $policy['plan'])->first();
 
-                    // Ensure the plan was found and extract its name
-                    $policyDetails = $plan ? $plan['plan_name'] : 'Unknown Plan';
+                // Ensure the plan was found and extract its name
+                $policyDetails = $plan ? $plan['plan_name'] : 'Unknown Plan';
 
-                    $subject = 'Policy Due Reminder';
-                    $message = "<p>Dear Client,</p>
+                $subject = 'Policy Due Reminder';
+                $message = "<p>Dear Client,</p>
                             <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$formattedDate}).</p>
                             <p>Please make the necessary payments to avoid any inconvenience.</p>
                             <p>Thank you!</p>";
 
-                    // Send the email
-                    $this->sendVerificationEmail($clientEmail['email'], $subject, $message);
-                }
+                // Send the email
+                $this->sendVerificationEmail($clientEmail['email'], $subject, $message);
+
+                // Update the policy to mark the email as sent
+                $this->client_plan->update($policy['id'], ['email_sent' => 1]);
             }
-            return 'Emails sent successfully for due policies.';
-        } else {
-            return 'No policies are due today.';
         }
+        return 'Emails sent successfully for due policies.';
+    } else {
+        return 'No policies are due today.';
     }
+}
+
 }
