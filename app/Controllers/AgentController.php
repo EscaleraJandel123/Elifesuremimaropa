@@ -14,6 +14,7 @@ use App\Models\PlanModel;
 use App\Models\ClientPlanModel;
 use App\Models\CommiModel;
 use App\Controllers\FilesController;
+use DateTime;
 
 class AgentController extends BaseController
 {
@@ -592,7 +593,7 @@ class AgentController extends BaseController
 
     $newcommi = $oldcommi;
     $amountPaid = 0;
-    $currentDate = new \DateTime();
+    $currentDate = new DateTime();
 
     switch ($paymentmode) {
         case 'Annual':
