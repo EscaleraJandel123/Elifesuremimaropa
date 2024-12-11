@@ -457,7 +457,7 @@ class AgentController extends BaseController
         if ($addDuration) {
             $currentDate->modify($addDuration);
         }
-        $duedate = $currentDate->format('Y-m-d');
+        $duedate = $currentDate->format('Y-m-d H:i:s');
 
         $token = bin2hex(random_bytes(25));
         $tokens = bin2hex(random_bytes(50));
