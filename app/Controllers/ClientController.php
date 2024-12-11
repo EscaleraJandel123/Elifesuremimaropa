@@ -435,24 +435,22 @@ class ClientController extends BaseController
         // Query for policies with due date equal to today
         $duePolicies = $this->client_plan->where('duedate', $today)->findAll();
 
-        // if (!empty($duePolicies)) {
-        //     foreach ($duePolicies as $policy) {
-        //         $clientEmail = $this->client->find($policy['client_id'])['email']; // Get client email
-        //         $policyDetails = $policy['plan']; 
-        //         $subject = 'Policy Due Reminder';
-        //         $message = "<p>Dear Client,</p>
-        //                     <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$policy['duedate']}).</p>
-        //                     <p>Please make the necessary payments to avoid any inconvenience.</p>
-        //                     <p>Thank you!</p>";
+        if (!empty($duePolicies)) {
+            foreach ($duePolicies as $policy) {
+                $clientEmail = $this->client->find($policy['client_id'])['email']; // Get client email
+                $policyDetails = $policy['plan']; 
+                $subject = 'Policy Due Reminder';
+                $message = "<p>Dear Client,</p>
+                            <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$policy['duedate']}).</p>
+                            <p>Please make the necessary payments to avoid any inconvenience.</p>
+                            <p>Thank you!</p>";
 
-        //         // Send the email
-        //         $this->sendVerificationEmail($clientEmail, $subject, $message);
-        //     }
-        //     return 'Emails sent successfully for due policies.';
-        // } else {
-        //     return 'No policies are due today.';
-        // }
-
-        echo $duePolicies;
+                // Send the email
+                $this->sendVerificationEmail($clientEmail, $subject, $message);
+            }
+            return 'Emails sent successfully for due policies.';
+        } else {
+            return 'No policies are due today.';
+        }
     }
 }
