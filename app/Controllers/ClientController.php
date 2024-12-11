@@ -448,7 +448,7 @@ class ClientController extends BaseController
                 // Send the email
                 // $this->sendVerificationEmail($clientEmail, $subject, $message);
             }
-            echo 'Emails sent successfully for due policies.'.''. $clientEmail ;
+            echo 'Emails sent successfully for due policies.'. $clientEmail ;
         } else {
             echo 'No policies are due today.';
         }
