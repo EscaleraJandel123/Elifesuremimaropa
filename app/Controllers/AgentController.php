@@ -14,7 +14,6 @@ use App\Models\PlanModel;
 use App\Models\ClientPlanModel;
 use App\Models\CommiModel;
 use App\Controllers\FilesController;
-use DateTime;
 
 class AgentController extends BaseController
 {
@@ -319,9 +318,87 @@ class AgentController extends BaseController
         // var_dump($agent);
     }
 
+    // public function compost()
+    // {
+
+    //     $data = [];
+    //     $uploadPath = FCPATH . 'uploads/clients/receipts/';
+
+    //     // Ensure the upload directory exists
+    //     if (!is_dir($uploadPath)) {
+    //         mkdir($uploadPath, 0777, true);
+    //     }
+
+    //     if ($imageFile = $this->request->getFile('receipt')) {
+    //         if ($imageFile->isValid()) {
+    //             $imageName = $imageFile->getRandomName();
+    //             if ($imageFile->move($uploadPath, $imageName)) {
+    //                 $data['receipt'] = $imageName;
+    //             } else {
+    //                 $error = $imageFile->getError();
+    //                 // Handle the error accordingly
+    //             }
+    //         }
+    //     }
+
+    //     // Calculate commission based on the mode of payment
+    //     $cal['plan'] = $this->plan->where('token', $this->request->getVar('plan'))->first();
+    //     if ($cal['plan']) {
+    //         $price = $cal['plan']['price'];
+    //         $percentage = $cal['plan']['com_percentage'] / 100;
+    //         switch ($this->request->getVar('typeofpayment')) {
+    //             case 'Annual':
+    //                 $commissionAmount = $price * $percentage;
+    //                 $amountPaid = $price; // Amount Paid = Annual Price - Commission
+    //                 break;
+    //             case 'Semi-Annual':
+    //                 $commissionAmount = ($price / 2) * $percentage;
+    //                 $amountPaid = ($price / 2); // Amount Paid = Half of Annual Price
+    //                 break;
+    //             case 'Quarterly':
+    //                 $commissionAmount = ($price / 4) * $percentage;
+    //                 $amountPaid = ($price / 4); // Amount Paid = Quarter of Annual Price
+    //                 break;
+    //             case 'Monthly':
+    //                 $commissionAmount = ($price / 12) * $percentage;
+    //                 $amountPaid = ($price / 12); // Amount Paid = Twelfth of Annual Price
+    //                 break;
+    //             default:
+    //                 $commissionAmount = 0;
+    //                 $amountPaid = 0;
+    //         }
+    //     }
+
+    //     $token = bin2hex(random_bytes(25));
+    //     $tokens = bin2hex(random_bytes(50));
+    //     $data += [
+    //         'plan' => $this->request->getVar('plan'),
+    //         'agent' => $this->request->getVar('agent'),
+    //         'client_id' => $this->request->getVar('client_id'),
+    //         'mode_payment' => $this->request->getVar('typeofpayment'),
+    //         'term' => $this->request->getVar('term'),
+    //         'applicationNo' => $this->request->getVar('applicationNo'),
+    //         'status' => 'paid',
+    //         'token' => $token,
+    //         'commission' => $commissionAmount,
+    //     ];
+    //     $this->client_plan->save($data);
+
+    //     $this->sched->set(['status' => 'completed'])->where('id', $this->request->getVar('schedId'))->update();
+
+    //     $this->commission->save([
+    //         'token' => $tokens,
+    //         'commi' => $commissionAmount,
+    //         'agent_id' => $this->request->getVar('agent'),
+    //         'client_id' => $this->request->getVar('client_id'),
+    //         'amount_paid' => $amountPaid,
+    //         'receipts' => $imageName,
+    //     ]);
+    //     return redirect()->to('cliSched')->with('success', 'Transaction Completed');
+    // }
+
     public function compost()
     {
-
         $data = [];
         $uploadPath = FCPATH . 'uploads/clients/receipts/';
 
@@ -350,25 +427,37 @@ class AgentController extends BaseController
             switch ($this->request->getVar('typeofpayment')) {
                 case 'Annual':
                     $commissionAmount = $price * $percentage;
-                    $amountPaid = $price; // Amount Paid = Annual Price - Commission
+                    $amountPaid = $price;
+                    $addDuration = '+1 year';
                     break;
                 case 'Semi-Annual':
                     $commissionAmount = ($price / 2) * $percentage;
-                    $amountPaid = ($price / 2); // Amount Paid = Half of Annual Price
+                    $amountPaid = ($price / 2);
+                    $addDuration = '+6 months';
                     break;
                 case 'Quarterly':
                     $commissionAmount = ($price / 4) * $percentage;
-                    $amountPaid = ($price / 4); // Amount Paid = Quarter of Annual Price
+                    $amountPaid = ($price / 4);
+                    $addDuration = '+3 months';
                     break;
                 case 'Monthly':
                     $commissionAmount = ($price / 12) * $percentage;
-                    $amountPaid = ($price / 12); // Amount Paid = Twelfth of Annual Price
+                    $amountPaid = ($price / 12);
+                    $addDuration = '+1 month';
                     break;
                 default:
                     $commissionAmount = 0;
                     $amountPaid = 0;
+                    $addDuration = null;
             }
         }
+
+        // Calculate the due date
+        $currentDate = new \DateTime();
+        if ($addDuration) {
+            $currentDate->modify($addDuration);
+        }
+        $duedate = $currentDate->format('Y-m-d');
 
         $token = bin2hex(random_bytes(25));
         $tokens = bin2hex(random_bytes(50));
@@ -382,6 +471,7 @@ class AgentController extends BaseController
             'status' => 'paid',
             'token' => $token,
             'commission' => $commissionAmount,
+            'duedate' => $duedate,
         ];
         $this->client_plan->save($data);
 
@@ -397,7 +487,6 @@ class AgentController extends BaseController
         ]);
         return redirect()->to('cliSched')->with('success', 'Transaction Completed');
     }
-
 
     // public function compost()
     // {
@@ -467,99 +556,6 @@ class AgentController extends BaseController
     //     return redirect()->to('cliSched')->with('success', 'Transaction Completed');
     // }
 
-    // public function upstatusplan($token)
-    // {
-    //     $stats = [];
-
-    //     if ($imageFile = $this->request->getFile('receipt')) {
-    //         if ($imageFile->isValid()) {
-    //             $imageName = $imageFile->getRandomName();
-    //             $uploadPath = FCPATH . 'uploads/clients/receipts/';
-
-    //             if ($imageFile->move($uploadPath, $imageName)) {
-    //                 $data['receipt'] = $imageName;
-
-    //             } else {
-    //                 $error = $imageFile->getError();
-    //                 // Handle the error as needed
-    //                 return redirect()->back()->with('error', 'Image upload error: ' . $error);
-    //             }
-    //         } else {
-    //             return redirect()->back()->with('error', 'Invalid file upload');
-    //         }
-    //     }
-
-    //     $tokens = bin2hex(random_bytes(50));
-    //     $data['commi'] = $this->client_plan->where('token', $token)->first();
-    //     $data['percentage'] = $this->plan->where('token', $data['commi']['plan'])->first();
-
-    //     $annualpay = $data['percentage']['price'];
-    //     $per = $data['percentage']['com_percentage'];
-    //     $paymentmode = $data['commi']['mode_payment'];
-    //     $oldcommi = $data['commi']['commission'];
-    //     $agentid = $data['commi']['agent'];
-    //     $clientid = $data['commi']['client_id'];
-
-    //     // Calculate new commission based on payment mode
-
-    //     $newcommi = $oldcommi;
-    //     $amountPaid = 0; // Initialize amount_paid variable
-
-    //     switch ($paymentmode) {
-    //         case 'Annual':
-    //             $newcommi += $annualpay * ($per / 100);
-    //             $amountPaid = $annualpay;
-    //             break;
-    //         case 'Semi-Annual':
-    //             $newcommi += $annualpay * ($per / 100) / 2;
-    //             $amountPaid = $annualpay / 2;
-    //             break;
-    //         case 'Quarterly':
-    //             $newcommi += $annualpay * ($per / 100) / 4;
-    //             $amountPaid = $annualpay / 4;
-    //             break;
-    //         case 'Monthly':
-    //             $newcommi += $annualpay * ($per / 100) / 12;
-    //             $amountPaid = $annualpay / 12;
-    //             break;
-    //     }
-
-    //     if ($paymentmode == 'Annual') {
-    //         $commi = $annualpay * ($per / 100);
-    //     } elseif ($paymentmode == 'Semi-Annual') {
-    //         $commi = $annualpay * ($per / 100) / 2;
-    //     } elseif ($paymentmode == 'Quarterly') {
-    //         $commi = $annualpay * ($per / 100) / 4;
-    //     } elseif ($paymentmode == 'Monthly') {
-    //         $commi = $annualpay * ($per / 100) / 12;
-    //     }
-
-    //     // Update the commission and status in the database
-    //     $stats += [
-    //         'status' => 'paid',
-    //         'commission' => $newcommi,
-    //     ];
-
-    //     // Merge image data into the stats array if an image was uploaded
-    //     if (isset($data['receipt'])) {
-    //         $stats['receipt'] = $data['receipt'];
-    //     }
-
-    //     $this->client_plan->set($stats)->where('token', $token)->update();
-    //     // pwede ko ditong lagyan ng add para ma filters yung monthly nya
-
-    //     $commiS = [
-    //         'token' => $tokens,
-    //         'commi' => $commi,
-    //         'agent_id' => $agentid,
-    //         'client_id' => $clientid,
-    //         'receipts' => $imageName,
-    //         'amount_paid' => $amountPaid,
-    //     ];
-    //     $this->commission->save($commiS);
-    //     return redirect()->back()->with('success', 'Plan updated successfully');
-    // }
-
     public function upstatusplan($token)
     {
         $stats = [];
@@ -574,6 +570,7 @@ class AgentController extends BaseController
 
                 } else {
                     $error = $imageFile->getError();
+                    // Handle the error as needed
                     return redirect()->back()->with('error', 'Image upload error: ' . $error);
                 }
             } else {
@@ -592,61 +589,64 @@ class AgentController extends BaseController
         $agentid = $data['commi']['agent'];
         $clientid = $data['commi']['client_id'];
 
+        // Calculate new commission based on payment mode
+
         $newcommi = $oldcommi;
-        $amountPaid = 0;
-        $currentDate = new DateTime();
+        $amountPaid = 0; // Initialize amount_paid variable
 
         switch ($paymentmode) {
             case 'Annual':
                 $newcommi += $annualpay * ($per / 100);
                 $amountPaid = $annualpay;
-                $currentDate->modify('+1 year');
                 break;
             case 'Semi-Annual':
                 $newcommi += $annualpay * ($per / 100) / 2;
                 $amountPaid = $annualpay / 2;
-                $currentDate->modify('+6 months');
                 break;
             case 'Quarterly':
                 $newcommi += $annualpay * ($per / 100) / 4;
                 $amountPaid = $annualpay / 4;
-                $currentDate->modify('+3 months');
                 break;
             case 'Monthly':
                 $newcommi += $annualpay * ($per / 100) / 12;
                 $amountPaid = $annualpay / 12;
-                $currentDate->modify('+1 month');
                 break;
         }
 
-        $duedate = $currentDate->format('Y-m-d');
+        if ($paymentmode == 'Annual') {
+            $commi = $annualpay * ($per / 100);
+        } elseif ($paymentmode == 'Semi-Annual') {
+            $commi = $annualpay * ($per / 100) / 2;
+        } elseif ($paymentmode == 'Quarterly') {
+            $commi = $annualpay * ($per / 100) / 4;
+        } elseif ($paymentmode == 'Monthly') {
+            $commi = $annualpay * ($per / 100) / 12;
+        }
 
+        // Update the commission and status in the database
         $stats += [
             'status' => 'paid',
             'commission' => $newcommi,
         ];
 
+        // Merge image data into the stats array if an image was uploaded
         if (isset($data['receipt'])) {
             $stats['receipt'] = $data['receipt'];
         }
 
         $this->client_plan->set($stats)->where('token', $token)->update();
+        // pwede ko ditong lagyan ng add para ma filters yung monthly nya
 
         $commiS = [
             'token' => $tokens,
-            'commi' => $newcommi,
+            'commi' => $commi,
             'agent_id' => $agentid,
             'client_id' => $clientid,
-            'receipts' => $imageName ?? null,
+            'receipts' => $imageName,
             'amount_paid' => $amountPaid,
-            'duedate' => $duedate,
         ];
-
-        // $this->commission->save($commiS);
-
-        // return redirect()->back()->with('success', 'Plan updated successfully');
-
-        var_dump($duedate);
+        $this->commission->save($commiS);
+        return redirect()->back()->with('success', 'Plan updated successfully');
     }
 
 
