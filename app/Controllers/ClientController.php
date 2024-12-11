@@ -442,18 +442,20 @@ class ClientController extends BaseController
                     ->where('client_id', $policy['client_id'])
                     ->first();
 
-                $policyDetails = $policy['plan']; // Example: policy plan name
-                $subject = 'Policy Due Reminder';
-                $message = "<p>Dear Client,</p>
-                            <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$policy['duedate']}).</p>
+                if ($clientEmail) {
+                    $formattedDate = date('M d, Y', strtotime($policy['duedate']));
+                    $policyDetails = $policy['plan']; // Example: policy plan name
+                    $subject = 'Policy Due Reminder';
+                    $message = "<p>Dear Client,</p>
+                            <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$formattedDate}).</p>
                             <p>Please make the necessary payments to avoid any inconvenience.</p>
                             <p>Thank you!</p>";
 
-                // Send the email
-                $this->sendVerificationEmail($clientEmail, $subject, $message);
+                    // Send the email
+                    $this->sendVerificationEmail($clientEmail['email'], $subject, $message);
+                }
             }
             return 'Emails sent successfully for due policies.';
-            // var_dump($clientEmail);
         } else {
             return 'No policies are due today.';
         }
