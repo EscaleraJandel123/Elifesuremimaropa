@@ -444,7 +444,7 @@ class ClientController extends BaseController
 
                 if ($clientEmail) {
                     $formattedDate = date('M d, Y', strtotime($policy['duedate']));
-                    $policyDetails = $policy['plan']; // Example: policy plan name
+                    $policyDetails = $this->plan->select('plan_name')->where('token' , $policy['plan'])->first(); // Example: policy plan name
                     $subject = 'Policy Due Reminder';
                     $message = "<p>Dear Client,</p>
                             <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$formattedDate}).</p>
