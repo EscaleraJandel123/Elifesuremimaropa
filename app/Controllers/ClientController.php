@@ -437,7 +437,7 @@ class ClientController extends BaseController
 
         if (!empty($duePolicies)) {
             foreach ($duePolicies as $policy) {
-                $clientEmail = $this->client->find($policy['client_id']); // Get client email
+                $clientEmail = $this->client->where('client_id' , $policy['client_id'])->find();
                 $policyDetails = $policy['plan']; // Example: policy plan name
                 $subject = 'Policy Due Reminder';
                 $message = "<p>Dear Client,</p>
@@ -448,7 +448,7 @@ class ClientController extends BaseController
                 // Send the email
                 // $this->sendVerificationEmail($clientEmail, $subject, $message);
             }
-            echo 'Emails sent successfully for due policies.' . $clientEmail;
+            echo 'Emails sent successfully for due policies.'.''. $clientEmail ;
         } else {
             echo 'No policies are due today.';
         }
