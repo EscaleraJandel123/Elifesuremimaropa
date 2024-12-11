@@ -462,8 +462,11 @@ class ClientController extends BaseController
                     $this->sendVerificationEmail($clientEmail['email'], $subject, $message);
 
                     // Update the policy to mark the email as sent
-                    $this->client_plan->update($policy['id'], ['status' => 'unpaid']);
-                    $this->client_plan->set('email_sent',1)->update();
+                    $this->client_plan
+                    ->set('email_sent', 1)
+                    ->set('status', 'unpaid')
+                    ->where('id', $policy['id'])  // Specify the policy ID to target the correct record
+                    ->update();
                 }
             }
             return 'Emails sent successfully for due policies.';
