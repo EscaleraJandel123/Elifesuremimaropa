@@ -453,6 +453,6 @@ class ClientController extends BaseController
         //     return 'No policies are due today.';
         // }
 
-        return $duePolicies;
+        echo $duePolicies;
     }
 }
