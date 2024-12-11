@@ -222,7 +222,7 @@ class AgentController extends BaseController
     }
     public function AgForm2()
     {
-        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(),$this->appcon->getform2Data());
+        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(), $this->appcon->getform2Data());
         return view('Agent/AgForm2', $data);
     }
     public function AgForm3()
@@ -232,17 +232,17 @@ class AgentController extends BaseController
     }
     public function AgForm4()
     {
-        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(),$this->appcon->getform4Data());
+        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(), $this->appcon->getform4Data());
         return view('Agent/AgForm4', $data);
     }
     public function AgForm5()
     {
-        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(),$this->appcon->getform5Data());
+        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(), $this->appcon->getform5Data());
         return view('Agent/AgForm5', $data);
     }
     public function Agsignature()
     {
-        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(),$this->appcon->esign());
+        $data = array_merge($this->getData(), $this->appcon->getDataApp(), $this->getDataAge(), $this->appcon->esign());
         return view('Agent/signature', $data);
     }
 
@@ -256,7 +256,8 @@ class AgentController extends BaseController
             $this->appcon->getDataApp(),
             $this->getDataAge(),
             $this->appcon->getform1Data(),
-            $this->appcon->esign(),$data
+            $this->appcon->esign(),
+            $data
         );
         return view('Agent/AgForm1', $data);
     }
@@ -560,91 +561,93 @@ class AgentController extends BaseController
     // }
 
     public function upstatusplan($token)
-{
-    $stats = [];
+    {
+        $stats = [];
 
-    if ($imageFile = $this->request->getFile('receipt')) {
-        if ($imageFile->isValid()) {
-            $imageName = $imageFile->getRandomName();
-            $uploadPath = FCPATH . 'uploads/clients/receipts/';
+        if ($imageFile = $this->request->getFile('receipt')) {
+            if ($imageFile->isValid()) {
+                $imageName = $imageFile->getRandomName();
+                $uploadPath = FCPATH . 'uploads/clients/receipts/';
 
-            if ($imageFile->move($uploadPath, $imageName)) {
-                $data['receipt'] = $imageName;
+                if ($imageFile->move($uploadPath, $imageName)) {
+                    $data['receipt'] = $imageName;
 
+                } else {
+                    $error = $imageFile->getError();
+                    return redirect()->back()->with('error', 'Image upload error: ' . $error);
+                }
             } else {
-                $error = $imageFile->getError();
-                return redirect()->back()->with('error', 'Image upload error: ' . $error);
+                return redirect()->back()->with('error', 'Invalid file upload');
             }
-        } else {
-            return redirect()->back()->with('error', 'Invalid file upload');
         }
+
+        $tokens = bin2hex(random_bytes(50));
+        $data['commi'] = $this->client_plan->where('token', $token)->first();
+        $data['percentage'] = $this->plan->where('token', $data['commi']['plan'])->first();
+
+        $annualpay = $data['percentage']['price'];
+        $per = $data['percentage']['com_percentage'];
+        $paymentmode = $data['commi']['mode_payment'];
+        $oldcommi = $data['commi']['commission'];
+        $agentid = $data['commi']['agent'];
+        $clientid = $data['commi']['client_id'];
+
+        $newcommi = $oldcommi;
+        $amountPaid = 0;
+        $currentDate = new DateTime();
+
+        switch ($paymentmode) {
+            case 'Annual':
+                $newcommi += $annualpay * ($per / 100);
+                $amountPaid = $annualpay;
+                $currentDate->modify('+1 year');
+                break;
+            case 'Semi-Annual':
+                $newcommi += $annualpay * ($per / 100) / 2;
+                $amountPaid = $annualpay / 2;
+                $currentDate->modify('+6 months');
+                break;
+            case 'Quarterly':
+                $newcommi += $annualpay * ($per / 100) / 4;
+                $amountPaid = $annualpay / 4;
+                $currentDate->modify('+3 months');
+                break;
+            case 'Monthly':
+                $newcommi += $annualpay * ($per / 100) / 12;
+                $amountPaid = $annualpay / 12;
+                $currentDate->modify('+1 month');
+                break;
+        }
+
+        $duedate = $currentDate->format('Y-m-d');
+
+        $stats += [
+            'status' => 'paid',
+            'commission' => $newcommi,
+        ];
+
+        if (isset($data['receipt'])) {
+            $stats['receipt'] = $data['receipt'];
+        }
+
+        $this->client_plan->set($stats)->where('token', $token)->update();
+
+        $commiS = [
+            'token' => $tokens,
+            'commi' => $newcommi,
+            'agent_id' => $agentid,
+            'client_id' => $clientid,
+            'receipts' => $imageName ?? null,
+            'amount_paid' => $amountPaid,
+            'duedate' => $duedate,
+        ];
+
+        // $this->commission->save($commiS);
+
+        // return redirect()->back()->with('success', 'Plan updated successfully');
+
+        var_dump($duedate);
     }
-
-    $tokens = bin2hex(random_bytes(50));
-    $data['commi'] = $this->client_plan->where('token', $token)->first();
-    $data['percentage'] = $this->plan->where('token', $data['commi']['plan'])->first();
-
-    $annualpay = $data['percentage']['price'];
-    $per = $data['percentage']['com_percentage'];
-    $paymentmode = $data['commi']['mode_payment'];
-    $oldcommi = $data['commi']['commission'];
-    $agentid = $data['commi']['agent'];
-    $clientid = $data['commi']['client_id'];
-
-    $newcommi = $oldcommi;
-    $amountPaid = 0;
-    $currentDate = new DateTime();
-
-    switch ($paymentmode) {
-        case 'Annual':
-            $newcommi += $annualpay * ($per / 100);
-            $amountPaid = $annualpay;
-            $currentDate->modify('+1 year');
-            break;
-        case 'Semi-Annual':
-            $newcommi += $annualpay * ($per / 100) / 2;
-            $amountPaid = $annualpay / 2;
-            $currentDate->modify('+6 months');
-            break;
-        case 'Quarterly':
-            $newcommi += $annualpay * ($per / 100) / 4;
-            $amountPaid = $annualpay / 4;
-            $currentDate->modify('+3 months');
-            break;
-        case 'Monthly':
-            $newcommi += $annualpay * ($per / 100) / 12;
-            $amountPaid = $annualpay / 12;
-            $currentDate->modify('+1 month');
-            break;
-    }
-
-    $duedate = $currentDate->format('Y-m-d');
-
-    $stats += [
-        'status' => 'paid',
-        'commission' => $newcommi,
-    ];
-
-    if (isset($data['receipt'])) {
-        $stats['receipt'] = $data['receipt'];
-    }
-
-    $this->client_plan->set($stats)->where('token', $token)->update();
-
-    $commiS = [
-        'token' => $tokens,
-        'commi' => $newcommi,
-        'agent_id' => $agentid,
-        'client_id' => $clientid,
-        'receipts' => $imageName ?? null,
-        'amount_paid' => $amountPaid,
-        'duedate' => $duedate,
-    ];
-
-    $this->commission->save($commiS);
-
-    return redirect()->back()->with('success', 'Plan updated successfully');
-}
 
 
     public function con($dec)
