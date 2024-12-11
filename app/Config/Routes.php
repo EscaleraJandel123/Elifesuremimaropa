@@ -183,4 +183,4 @@ $routes->get('/clearnotif', 'NotifController::clearnotif', ['filter' => 'authGua
 
 // $routes->get('/send-notification', 'NotifController::sendNotification');    
 
-$routes->get('check-due-policies', 'YourController::checkDuePoliciesAndSendEmails', ['filter' => 'clientFilter']);
+$routes->get('check-due-policies', 'ClientController::checkDuePoliciesAndSendEmails', ['filter' => 'clientFilter']);
