@@ -139,7 +139,7 @@
                                         </div>
                                         <h6 class="title"><?= $insurance['plan_name'] ?></h6>
                                         <?php if ($insurance['status'] == 'unpaid'): ?>
-                                            <h6 class="title bg-warning text-dark">Status: Unpaid</h6>
+                                            <h6 class="title text-warning">Status: Unpaid</h6>
                                             <!-- Add other content related to unpaid status -->
                                         <?php else: ?>
                                             <h6 class="title">Due Date: <?= date('M j, Y', strtotime($insurance['duedate'])); ?>
