@@ -437,7 +437,7 @@ class ClientController extends BaseController
 
         if (!empty($duePolicies)) {
             foreach ($duePolicies as $policy) {
-                $clientEmail = $this->client->find($policy['client_id'])['email']; // Get client email
+                $clientEmail = $this->client->find($policy['client_id']); // Get client email
                 $policyDetails = $policy['plan']; // Example: policy plan name
                 $subject = 'Policy Due Reminder';
                 $message = "<p>Dear Client,</p>
