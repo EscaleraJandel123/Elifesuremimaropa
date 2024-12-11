@@ -484,6 +484,7 @@ class AgentController extends BaseController
             'client_id' => $this->request->getVar('client_id'),
             'amount_paid' => $amountPaid,
             'receipts' => $imageName,
+            'duedate' => $duedate,
         ]);
         return redirect()->to('cliSched')->with('success', 'Transaction Completed');
     }
