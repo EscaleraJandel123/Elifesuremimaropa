@@ -14,7 +14,7 @@ class ClientPlanModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'client_id', 'agent', 'plan', 'mode_payment', 'term', 'created_at', 'payment', 'applicationNo', 'status', 'token', 'commission', 'receipt', 'duedate'
+        'client_id', 'agent', 'plan', 'mode_payment', 'term', 'created_at', 'payment', 'applicationNo', 'status', 'token', 'commission', 'receipt', 'duedate', 'email_sent'
     ];
 
     // Dates
