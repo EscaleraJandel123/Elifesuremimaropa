@@ -430,7 +430,7 @@ class ClientController extends BaseController
     }
     public function checkDuePoliciesAndSendEmails()
     {
-        $today = date('Y-m-d');
+        $today = date('Y-m-d H:i:s');
 
         // Query for policies with due date equal to today
         $duePolicies = $this->client_plan->where('duedate', $today)->findAll();
