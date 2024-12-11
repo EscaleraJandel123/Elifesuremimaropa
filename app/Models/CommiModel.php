@@ -13,7 +13,7 @@ class CommiModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['token', 'agent_id', 'client_id', 'commi', 'created_at', 'receipts', 'amount_paid', 'duedate', 'email_sent'];
+    protected $allowedFields = ['token', 'agent_id', 'client_id', 'commi', 'created_at', 'receipts', 'amount_paid', 'duedate'];
 
     // Dates
     protected $useTimestamps = false;
