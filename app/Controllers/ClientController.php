@@ -428,6 +428,32 @@ class ClientController extends BaseController
         $this->sched->set($data)->where('id', $id)->update();
         return redirect()->to('mysched')->with('success', 'Schedule Updated!');
     }
+    // public function checkDuePoliciesAndSendEmails()
+    // {
+    //     $today = date('Y-m-d');
+
+    //     // Query for policies with due date equal to today
+    //     $duePolicies = $this->client_plan->where('duedate', $today)->findAll();
+
+    //     if (!empty($duePolicies)) {
+    //         foreach ($duePolicies as $policy) {
+    //             $clientEmail = $this->client->find($policy['client_id'])['email']; // Get client email
+    //             $policyDetails = $policy['plan']; // Example: policy plan name
+    //             $subject = 'Policy Due Reminder';
+    //             $message = "<p>Dear Client,</p>
+    //                         <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$policy['duedate']}).</p>
+    //                         <p>Please make the necessary payments to avoid any inconvenience.</p>
+    //                         <p>Thank you!</p>";
+
+    //             // Send the email
+    //             $this->sendVerificationEmail($clientEmail, $subject, $message);
+    //         }
+    //         return 'Emails sent successfully for due policies.';
+    //     } else {
+    //         return 'No policies are due today.';
+    //     }
+    // }
+
     public function checkDuePoliciesAndSendEmails()
     {
         $today = date('Y-m-d');
@@ -436,21 +462,16 @@ class ClientController extends BaseController
         $duePolicies = $this->client_plan->where('duedate', $today)->findAll();
 
         if (!empty($duePolicies)) {
+            $messages = [];
             foreach ($duePolicies as $policy) {
-                $clientEmail = $this->client->find($policy['client_id']); // Get client email
-                // $policyDetails = $policy['plan']; 
-                // $subject = 'Policy Due Reminder';
-                // $message = "<p>Dear Client,</p>
-                //             <p>This is a reminder that your policy <strong>{$policyDetails}</strong> is due today ({$policy['duedate']}).</p>
-                //             <p>Please make the necessary payments to avoid any inconvenience.</p>
-                //             <p>Thank you!</p>";
-
-                // // Send the email
-                // $this->sendVerificationEmail($clientEmail, $subject, $message);
+                $clientEmail = $this->client->where('id', $policy['client_id'])->first()['email'];
+                $this->sendVerificationEmail($clientEmail, 'Policy Due', 'Your policy is due.');
+                $messages[] = 'Email sent to ' . $clientEmail;
             }
-            echo 'Emails sent successfully for due policies. ' . $clientEmail;
+            return $this->response->setJSON(['success' => true, 'messages' => $messages]);
         } else {
-            return 'No policies are due today.';
+            return $this->response->setJSON(['success' => false, 'message' => 'No due policies today.']);
         }
     }
+
 }
