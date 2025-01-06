@@ -257,7 +257,21 @@
         </div>
     </div>
 
-    <div id="iframe-container" class="mb-3"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportModalLabel">Generated Report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="reportIframe" width="100%" height="500px" style="border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <?= view('js'); ?>
@@ -419,27 +433,40 @@
         //     x.document.close();
         // }
 
+        // function viewReport(data, month, year) {
+        //     const doc = generatePDF(data, month, year);
+        //     const string = doc.output('dataurlstring');
+
+        //     // Create an iframe element
+        //     const iframe = document.createElement('iframe');
+        //     iframe.style.width = '100%';
+        //     iframe.style.height = '600px';  // You can adjust the height as needed
+        //     iframe.src = string;
+
+        //     // Check if the iframe container exists; if not, create it
+        //     let iframeContainer = document.getElementById('iframe-container');
+        //     if (!iframeContainer) {
+        //         iframeContainer = document.createElement('div');
+        //         iframeContainer.id = 'iframe-container';
+        //         document.querySelector('.main-wrapper').appendChild(iframeContainer);
+        //     }
+
+        //     // Clear previous content and append the new iframe
+        //     iframeContainer.innerHTML = '';  // Remove any previous iframe
+        //     iframeContainer.appendChild(iframe);
+        // }
+
         function viewReport(data, month, year) {
             const doc = generatePDF(data, month, year);
             const string = doc.output('dataurlstring');
 
-            // Create an iframe element
-            const iframe = document.createElement('iframe');
-            iframe.style.width = '100%';
-            iframe.style.height = '600px';  // You can adjust the height as needed
+            // Get the iframe and set its source to the PDF data
+            const iframe = document.getElementById('reportIframe');
             iframe.src = string;
 
-            // Check if the iframe container exists; if not, create it
-            let iframeContainer = document.getElementById('iframe-container');
-            if (!iframeContainer) {
-                iframeContainer = document.createElement('div');
-                iframeContainer.id = 'iframe-container';
-                document.querySelector('.main-wrapper').appendChild(iframeContainer);
-            }
-
-            // Clear previous content and append the new iframe
-            iframeContainer.innerHTML = '';  // Remove any previous iframe
-            iframeContainer.appendChild(iframe);
+            // Open the modal
+            const myModal = new bootstrap.Modal(document.getElementById('reportModal'));
+            myModal.show();
         }
 
 
