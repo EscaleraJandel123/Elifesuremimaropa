@@ -409,7 +409,7 @@
         function viewReport(data, month, year) {
             const doc = generatePDF(data, month, year);
             const string = doc.output('dataurlstring');
-            const x = window.open();
+            // const x = window.open();
             x.document.open();
             x.document.write(`<iframe width='100%' height='100%' src='${string}'></iframe>`);
             x.document.close();
