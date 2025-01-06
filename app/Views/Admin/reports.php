@@ -411,7 +411,7 @@
             const string = doc.output('dataurlstring');
             const x = window.open();
             x.document.open();
-            x.document.write(`<iframe width='100%' height='100%' src='${string}'></iframe>`);
+            x.document.write(`<iframe width='80%' height='80%' src='${string}'></iframe>`);
             x.document.close();
         }
 
