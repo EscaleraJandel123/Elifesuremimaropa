@@ -117,10 +117,9 @@
             <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
                 <div class="title-group mb-3 d-flex justify-content-between align-items-center">
                     <h1 class="h2 mb-0">Reports</h1>
-                    <div>
+                    <div >
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
-                        <button id="generate-report-btn" class="btn btn-primary ms-2"><i
-                                class="bi bi-clipboard-data"></i></button>
+                        <button id="generate-report-btn" class="btn btn-primary ms-2"><i class="bi bi-clipboard-data"></i></button>
                     </div>
                     <!-- <div>
                         <input type="month" id="report-month" class="form-control d-inline-block" style="width: auto;">
@@ -252,25 +251,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Report Viewer Modal -->
-                    <div class="modal fade" id="reportViewerModal" tabindex="-1"
-                        aria-labelledby="reportViewerModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="reportViewerModalLabel">Report Viewer</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe id="reportIframe" src="" frameborder="0"
-                                        style="width: 100%; height: 500px;"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </main>
         </div>
@@ -362,14 +342,9 @@
             document.querySelector('.title-group').appendChild(actionsDiv);
 
             document.getElementById('download-btn').addEventListener('click', () => downloadReport(data, month, year));
-            document.getElementById('view-btn').addEventListener('click', () => {
-                const reportUrl = `/reports/view/${year}/${month}`;
-                document.getElementById('reportIframe').src = reportUrl;
-                new bootstrap.Modal(document.getElementById('reportViewerModal')).show();
-            });
+            document.getElementById('view-btn').addEventListener('click', () => viewReport(data, month, year));
             document.getElementById('print-btn').addEventListener('click', () => printReport(data, month, year));
         }
-
 
         function generatePDF(data, month, year) {
             const { jsPDF } = window.jspdf;
