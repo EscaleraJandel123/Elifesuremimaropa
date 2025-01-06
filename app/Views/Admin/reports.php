@@ -257,21 +257,7 @@
         </div>
     </div>
 
-    <!-- Modal for viewing reports -->
-    <div class="modal fade" id="viewReportModal" tabindex="-1" aria-labelledby="viewReportModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewReportModalLabel">View Report</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <iframe id="reportIframe" src=""></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="iframe-container" class="mb-3"></div>
 
 
     <?= view('js'); ?>
@@ -346,36 +332,23 @@
         }
 
         function addActionButtons(data, month, year) {
-            // Create the actions div with buttons
             const actionsDiv = document.createElement('div');
             actionsDiv.id = 'report-actions';
             actionsDiv.innerHTML = `
-        <button id="download-btn" class="btn btn-success me-2"><i class="bi bi-download"></i></button>
-        <button id="view-btn" class="btn btn-info me-2"><i class="bi bi-eye"></i></button>
-        <button id="print-btn" class="btn btn-warning"><i class="bi bi-printer"></i></button>
-    `;
+            <button id="download-btn" class="btn btn-success me-2"><i class="bi bi-download"></i></button>
+            <button id="view-btn" class="btn btn-info me-2"><i class="bi bi-eye"></i></button>
+            <button id="print-btn" class="btn btn-warning"><i class="bi bi-printer"></i></button>
+            `;
 
-            // Remove the old actions div if it exists
             const existingActions = document.getElementById('report-actions');
             if (existingActions) existingActions.remove();
 
-            // Append the new actions div
             document.querySelector('.title-group').appendChild(actionsDiv);
 
-            // Add event listeners for the buttons
             document.getElementById('download-btn').addEventListener('click', () => downloadReport(data, month, year));
-            document.getElementById('view-btn').addEventListener('click', () => {
-                // View report in a modal iframe
-                const reportUrl = `/reports/view/${year}/${month}`;
-                const iframe = document.getElementById('reportIframe');
-                iframe.src = reportUrl; // Set the iframe src dynamically
-                const modal = new bootstrap.Modal(document.getElementById('reportViewerModal'));
-                modal.show(); // Show the modal with the report iframe
-            });
+            document.getElementById('view-btn').addEventListener('click', () => viewReport(data, month, year));
             document.getElementById('print-btn').addEventListener('click', () => printReport(data, month, year));
         }
-
-
 
         function generatePDF(data, month, year) {
             const { jsPDF } = window.jspdf;
@@ -437,14 +410,38 @@
             doc.save(`report_${month}_${year}.pdf`);
         }
 
+        // function viewReport(data, month, year) {
+        //     const doc = generatePDF(data, month, year);
+        //     const string = doc.output('dataurlstring');
+        //     const x = window.open();
+        //     x.document.open();
+        //     x.document.write(`<iframe width='100%' height='100%' src='${string}'></iframe>`);
+        //     x.document.close();
+        // }
+
         function viewReport(data, month, year) {
             const doc = generatePDF(data, month, year);
             const string = doc.output('dataurlstring');
-            const x = window.open();
-            x.document.open();
-            x.document.write(`<iframe width='100%' height='100%' src='${string}'></iframe>`);
-            x.document.close();
+
+            // Create an iframe element
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '600px';  // You can adjust the height as needed
+            iframe.src = string;
+
+            // Check if the iframe container exists; if not, create it
+            let iframeContainer = document.getElementById('iframe-container');
+            if (!iframeContainer) {
+                iframeContainer = document.createElement('div');
+                iframeContainer.id = 'iframe-container';
+                document.querySelector('.main-wrapper').appendChild(iframeContainer);
+            }
+
+            // Clear previous content and append the new iframe
+            iframeContainer.innerHTML = '';  // Remove any previous iframe
+            iframeContainer.appendChild(iframe);
         }
+
 
         function printReport(data, month, year) {
             const doc = generatePDF(data, month, year);
